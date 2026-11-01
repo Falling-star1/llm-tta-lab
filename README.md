@@ -51,3 +51,8 @@ python scripts/run_cpu_tests.py
 第一条只使用 Python 标准库；第二条要求已有 torch、Transformers 4.46.1、PEFT 0.12.0、NumPy。服务器环境与 CPU 验证的边界见[环境说明](docs/环境与运行.md)。本仓库不会自动启动 GPU 实验。
 
 历史版本和回溯方式见 [归档说明](archive/README.md)。
+
+
+## 三人协作入口
+
+[团队看板](https://github.com/users/Falling-star1/projects/1) · [快速开始](docs/team-workflow.md) · [Agent 约定](AGENTS.md)。新任务通过 Issue 分工，以 PR 交接；新实验用统一入口关联 MLflow，现有实验沿用原运行路径。
