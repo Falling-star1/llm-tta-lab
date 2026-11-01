@@ -4,7 +4,12 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+import threading
+import time
+import io
+import os
 import unittest
+from unittest.mock import patch
 
 ROOT=Path(__file__).resolve().parents[1]
 PATH=ROOT/'scripts/labctl.py'
@@ -102,6 +107,11 @@ class LauncherTest(unittest.TestCase):
         r=lab.run_request(self.request,self.site)
         self.assertEqual((r['status'],r['mlflow_sync']),('SUCCEEDED','PENDING'))
 
+    def test_auto_sync_busy_preserves_successful_execution(self):
+        with patch.object(lab,'sync_run',side_effect=lab.LabError('Already leased: sync')):
+            result=lab.run_request(self.request,self.site)
+        self.assertEqual(result['status'],'SUCCEEDED')
+
     def test_timeout_keeps_record(self):
         (self.code/'job.py').write_text('import time;time.sleep(30)')
         self.request['code_files']['job.py']=lab.sha(self.code/'job.py')
@@ -122,5 +132,40 @@ class LauncherTest(unittest.TestCase):
         state={'status':'SUCCEEDED','mlflow_sync':'SYNCED','mlflow_run_id':'existing'}
         lab.write(directory/'state.json',state)
         self.assertEqual(lab.sync_run(directory,self.site),state)
+
+    @unittest.skipUnless(os.name=='posix' and Path('/proc').exists(),'Linux process-group integration')
+    def test_timeout_waits_for_worker_after_leader_exits(self):
+        script="""import subprocess,sys,time
+worker='import signal,time;signal.signal(signal.SIGTERM,lambda *a:None);time.sleep(0.9)'
+subprocess.Popen([sys.executable,'-c',worker],close_fds=True)
+time.sleep(30)
+"""
+        (self.code/'job.py').write_text(script)
+        self.request['code_files']['job.py']=lab.sha(self.code/'job.py')
+        self.request['timeout_seconds']=0.4
+        start=time.monotonic();result=lab.run_request(self.request,self.site)
+        self.assertEqual(result['status'],'TIMED_OUT')
+        self.assertGreater(time.monotonic()-start,0.8,'Released before worker finished')
+
+    def test_concurrent_sync_cannot_create_duplicate_run(self):
+        self.site['tracking_uri']='http://unused.test'
+        directory=self.root/'done';directory.mkdir()
+        state={'status':'SUCCEEDED','started_ms':1,'finished_ms':2,'identity':'x','output_dir':'synthetic'}
+        lab.write(directory/'state.json',state);lab.write(directory/'request.json',self.request)
+        searching=threading.Event();resume=threading.Event();creates=[];results=[]
+        def fake_post(uri,endpoint,payload):
+            if endpoint=='runs/search':
+                searching.set();resume.wait(5);return {'runs':[]}
+            if endpoint=='runs/create':creates.append(1);return {'run':{'info':{'run_id':'one'}}}
+            return {}
+        with (patch.object(lab.urllib.request,'urlopen',side_effect=lambda *a,**k:io.BytesIO(b'{"experiment":{"experiment_id":"2"}}')),
+              patch.object(lab,'post',side_effect=fake_post)):
+            thread=threading.Thread(target=lambda:results.append(lab.sync_run(directory,self.site)))
+            thread.start();self.assertTrue(searching.wait(5))
+            try:
+                with self.assertRaises(lab.LabError):lab.sync_run(directory,self.site)
+            finally:resume.set();thread.join(8)
+        self.assertFalse(thread.is_alive());self.assertEqual(len(creates),1)
+        self.assertEqual(results[0]['mlflow_sync'],'SYNCED')
 
 if __name__=='__main__':unittest.main()

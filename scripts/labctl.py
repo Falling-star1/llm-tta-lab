@@ -219,6 +219,12 @@ def post(uri,endpoint,payload):
         return json.loads(raw) if raw else {}
 
 def sync_run(directory,site):
+    directory=Path(directory)
+    require(directory.is_dir(),'Unknown experiment directory')
+    with FileLease(directory/'.sync.lock'):
+        return _sync_run(directory,site)
+
+def _sync_run(directory,site):
     directory=Path(directory);state=read(directory/'state.json')
     require(state['status'] in {'SUCCEEDED','FAILED','CANCELLED','TIMED_OUT'},'Job is not finished')
     if state.get('mlflow_sync')=='SYNCED':return state
@@ -262,6 +268,30 @@ def sync_run(directory,site):
         state.update(mlflow_sync='PENDING',mlflow_error=type(exc).__name__+': '+str(exc)[:300])
     write(directory/'state.json',state)
     return state
+
+def group_alive(process):
+    """Wait for live workers too, including those that close inherited lease FDs."""
+    running=process.poll() is None
+    if os.name=='nt':return running
+    proc=Path('/proc')
+    if proc.is_dir():
+        for entry in proc.iterdir():
+            if not entry.name.isdigit():continue
+            try:
+                fields=(entry/'stat').read_text().rpartition(')')[2].split()
+                if int(fields[2])==process.pid and fields[0]!='Z':return True
+            except (FileNotFoundError,ProcessLookupError):continue
+        return running
+    try:os.killpg(process.pid,0)
+    except ProcessLookupError:return False
+    return True
+
+def terminate_group(process):
+    try:
+        if os.name=='nt':
+            if process.poll() is None:process.terminate()
+        else:os.killpg(process.pid,signal.SIGTERM)
+    except ProcessLookupError:pass
 
 def run_request(request,site):
     plan=validate(request,site)
@@ -309,22 +339,20 @@ def run_request(request,site):
                                          stdout=log,stderr=subprocess.STDOUT,**options)
                 state['child_pid']=process.pid;write(directory/'state.json',state)
                 begin=time.monotonic();termination=None
-                while process.poll() is None:
+                while group_alive(process):
                     if termination is None and (stop or time.monotonic()-begin>request['timeout_seconds']):
                         termination='CANCELLED' if stop else 'TIMED_OUT'
                         state['status']='STOPPING';write(directory/'state.json',state)
-                        if os.name=='nt':process.terminate()
-                        else:os.killpg(process.pid,signal.SIGTERM)
+                        terminate_group(process)
                     time.sleep(0.1)
                 state.update(returncode=process.returncode,
                              status=termination or ('SUCCEEDED' if process.returncode==0 else 'FAILED'),
                              elapsed_seconds=time.monotonic()-begin)
         finally:
             # Do not release leases while our child continues after a controller error.
-            if process is not None and process.poll() is None:
-                if os.name=='nt':process.terminate()
-                else:os.killpg(process.pid,signal.SIGTERM)
-                process.wait()
+            if process is not None and group_alive(process):
+                terminate_group(process)
+                while group_alive(process):time.sleep(0.1)
             stack.__exit__(None,None,None)
     except Exception as exc:
         state.update(status='CANCELLED' if stop else 'FAILED',error=type(exc).__name__+': '+str(exc)[:500])
@@ -341,7 +369,12 @@ def run_request(request,site):
         except Exception as exc:
             state['metrics_warning']=str(exc)[:300]
     write(directory/'state.json',state)
-    return sync_run(directory,site)
+    try:return sync_run(directory,site)
+    except LabError as exc:
+        if str(exc).startswith('Already leased:'):
+            # A concurrent sync owns this record; do not overwrite its state.
+            return read(directory/'state.json')
+        raise
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)

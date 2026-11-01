@@ -71,14 +71,14 @@ CPU 演示请求保存在服务器 `requests/team-smoke-20261101.json`，已执�
 - 输出统一放 `runs/<experiment_id>/output`；旁边保存 request.json、state.json、console.log。禁止复用或覆盖冻结结果目录。
 - 选择 nvidia-smi 显示空闲的 GPU，再取中央文件锁和已知 TLM/TENT 锁，并二次检查占用。已运行的旧实验继续按旧方式工作。
 - 默认 wrapper 持有兼容锁；若前台子程序自身取得旧锁，必须用 child 策略：入口只探测旧锁，子程序自行持有，中央锁仍保留。对自行后台化或绕过约定的入口不提供完整互斥保证；这不是 Slurm，也不是权限沙箱。
-- 超时/中断只向本任务子进程组发送 SIGTERM，等待退出才释放锁；不自动 SIGKILL。若子程序不退出，保持 STOPPING，需要 owner 排查。不要终止其他人的进程。控制器被 SIGKILL 后，状态可能需要人工核对，不能仅凭状态文件判定 GPU 空闲。
+- Linux 上超时/中断只向本任务子进程组发送 SIGTERM，等待组内存活 worker 全部退出才释放锁（包括已关闭继承锁 FD 的 worker）；不自动 SIGKILL。若子程序不退出，保持 STOPPING，需要 owner 排查。不要终止其他人的进程。控制器被 SIGKILL 后，状态可能需要人工核对，不能仅凭状态文件判定 GPU 空闲。Windows 的 CPU 开发检查只管理直接子进程，正式多进程实验在 Linux 服务器运行。
 - CPU 请求设置 gpu_count=0，CUDA_VISIBLE_DEVICES 为空。GPU 可见设备会被重编号；一般子程序使用 `cuda:0`，`{gpu}` 表示物理编号，仅供确实需要物理编号的旧入口。
 
 ## MLflow 与质量验收
 
 新入口写入独立 experiment `Team-experiments`，已有历史结果仍保留。成功结束不等于科学有效：`execution_status` 和 `quality_status` 分开。应用在 output/metrics.json 中写数值指标和 quality_status；未提供质量检查就是 NOT_REPORTED，演示为 NOT_APPLICABLE。
 
-MLflow 不通时，实验结果与日志留在服务器，state 标记 PENDING，恢复后 sync。MLflow 记录 commit、协议、owner、Issue、实验身份和产物路径；本版不上传大文件/原始预测，需通过服务器路径查看。
+MLflow 不通时，实验结果与日志留在服务器，state 标记 PENDING，恢复后 sync。同一任务的 sync 使用文件锁互斥，正在同步时再次手动同步会报告 Already leased；自动同步遇到竞争则保留已完成状态，不覆盖正在同步者的记录。MLflow 记录 commit、协议、owner、Issue、实验身份和产物路径；本版不上传大文件/原始预测，需通过服务器路径查看。
 
 仅通过 SSH 隧道访问 MLflow，例如本机将远端 localhost:5000 转发到 localhost:15000，然后打开 http://127.0.0.1:15000。无需公开服务器端口。
 
