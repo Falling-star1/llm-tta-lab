@@ -1,6 +1,6 @@
 # 已交付源码包
 
-训练固定使用 [TLM v6](tlm_offline_v6_bundle/README.md)，六组各 5000 条适应已完成。目前使用 [完整评测接续入口](tlm_evaluate_all_v1/README.md) 补齐六组各 5000 条回答；质量报警如实记录并继续评测，不调参追分。见 [当前方案](../docs/TLM复现实验方案.md)。
+TLM 原版实验使用 [Gaussian v6](tlm_offline_v6_bundle/README.md)，六组各 5000 条适应及评测均已完成，见[正式结果与官方核对](../docs/records/20261028/TLM原版复现与官方实现对照.md)。[完整评测接续入口](tlm_evaluate_all_v1/README.md) 保留供追溯，不表示需要再次运行。v7、格式清理与目标屏蔽只作独立诊断，不替换原版分数。见 [实验方案](../docs/TLM复现实验方案.md)。
 
 以下为 TENT 交付时的历史入口。
 

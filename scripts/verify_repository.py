@@ -34,7 +34,9 @@ def main():
             assert path.resolve().is_relative_to(checksum.parent.resolve()), 'Unsafe checksum path'
             assert sha(path) == expected, f'Bundle hash mismatch: {path.relative_to(ROOT)}'
             hashed_files += 1
-    syntax_files = list((ROOT / 'offline_tta').rglob('*.py')) + list((ROOT / 'scripts').glob('*.py'))
+    syntax_files = (list((ROOT / 'offline_tta').rglob('*.py'))
+                    + list((ROOT / 'scripts').glob('*.py'))
+                    + list((ROOT / 'local_repro').rglob('*.py')))
     for path in syntax_files:
         compile(path.read_bytes(), str(path), 'exec')
     documents = list(ROOT.glob('*.md')) + list((ROOT / 'docs').rglob('*.md')) + [ROOT / 'offline_tta/README.md']
