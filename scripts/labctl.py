@@ -189,16 +189,45 @@ def reserve_gpus(request, site, probe=None):
 def claim(request,site,digest):
     root=Path(site['root'])
     require(not root.is_symlink(),'Refusing linked registry root')
-    root.mkdir(parents=True,exist_ok=True)
-    with closing(sqlite3.connect(str(root/'registry.sqlite'),timeout=10)) as db, db:
-        db.execute('CREATE TABLE IF NOT EXISTS jobs (id TEXT PRIMARY KEY, identity TEXT UNIQUE NOT NULL, created TEXT NOT NULL)')
-        try:
-            db.execute('INSERT INTO jobs VALUES(?,?,?)',(request['experiment_id'],digest,now()))
-        except sqlite3.IntegrityError:
-            raise LabError('Experiment ID or scientific identity already registered; inspect status instead of rerunning') from None
     directory=root/'runs'/request['experiment_id']
-    directory.mkdir(parents=True,exist_ok=False)
+    try:
+        root.mkdir(parents=True,exist_ok=True)
+        with closing(sqlite3.connect(str(root/'registry.sqlite'),timeout=10)) as db, db:
+            db.execute('CREATE TABLE IF NOT EXISTS jobs (id TEXT PRIMARY KEY, identity TEXT UNIQUE NOT NULL, created TEXT NOT NULL)')
+            try:
+                db.execute('INSERT INTO jobs VALUES(?,?,?)',(request['experiment_id'],digest,now()))
+            except sqlite3.IntegrityError:
+                raise LabError('Experiment ID or scientific identity already registered; inspect status instead of rerunning') from None
+            # Keep the unique claim uncommitted until mkdir succeeds. On a
+            # filesystem error the transaction rolls back without deleting data.
+            directory.mkdir(parents=True,exist_ok=False)
+    except (OSError,sqlite3.Error) as exc:
+        raise LabError('Cannot create experiment registration or directory: '+str(exc)) from None
     return directory
+
+def status(site,experiment_id=None):
+    """Read registered jobs too, including interrupted/legacy initialization."""
+    root=Path(site['root']);registry=root/'registry.sqlite';records={}
+    try:
+        if registry.is_file():
+            # A read-only query must not create a missing database or migrate it.
+            with closing(sqlite3.connect(registry.resolve().as_uri()+'?mode=ro',uri=True,timeout=10)) as db:
+                records={row[0]:row for row in db.execute('SELECT id,identity,created FROM jobs')}
+        states={path.parent.name:path for path in (root/'runs').glob('*/state.json')}
+        ids=[experiment_id] if experiment_id else sorted(set(records)|set(states))
+        values=[]
+        for job_id in ids:
+            if job_id in states:
+                values.append(read(states[job_id]));continue
+            require(job_id in records,'Unknown experiment ID: '+job_id)
+            _,identity,created=records[job_id]
+            values.append({'experiment_id':job_id,'identity':identity,'created_at':created,
+                           'status':'INITIALIZATION_INCOMPLETE',
+                           'output_dir':str(root/'runs'/job_id/'output'),
+                           'error':'Registered job has no state.json; inspect the directory before deciding how to recover. Do not rerun automatically.'})
+    except (OSError,sqlite3.Error,json.JSONDecodeError) as exc:
+        raise LabError('Cannot read experiment status: '+str(exc)) from None
+    return values[0] if experiment_id else values
 
 def metric_values(value,prefix=''):
     result={}
@@ -296,12 +325,15 @@ def terminate_group(process):
 def run_request(request,site):
     plan=validate(request,site)
     directory=claim(request,site,plan['identity'])
-    write(directory/'request.json',request)
     state={'experiment_id':request['experiment_id'],'identity':plan['identity'],'status':'QUEUED',
            'owner':request['owner'],'issue':request['issue'],'created_at':now(),
            'output_dir':str(directory/'output'),'mlflow_sync':'NOT_ATTEMPTED',
            'started_ms':int(time.time()*1000)}
-    write(directory/'state.json',state)
+    try:
+        write(directory/'request.json',request)
+        write(directory/'state.json',state)
+    except OSError as exc:
+        raise LabError('Cannot initialize experiment files; registration is preserved, inspect status: '+str(exc)) from None
     process=None;stop=False;old_handlers={};started=time.monotonic()
     def stop_handler(signum,frame):
         nonlocal stop
@@ -396,10 +428,10 @@ def main():
         if args.experiment_id:
             require(bool(re.fullmatch(r'[a-z0-9][a-z0-9-]{2,79}',args.experiment_id)),'Invalid experiment_id')
             directory=Path(site['root'])/'runs'/args.experiment_id
-            value=sync_run(directory,site) if args.action=='sync' else read(directory/'state.json')
+            value=sync_run(directory,site) if args.action=='sync' else status(site,args.experiment_id)
         else:
             require(args.action=='status','sync requires experiment_id')
-            value=[read(p) for p in sorted((Path(site['root'])/'runs').glob('*/state.json'))]
+            value=status(site)
     print(json.dumps(value,ensure_ascii=False,indent=2))
     if args.action=='run' and value['status']!='SUCCEEDED':raise SystemExit(1)
 
