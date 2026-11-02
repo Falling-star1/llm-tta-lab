@@ -31,6 +31,8 @@ $PY "$LAB" sync 你的实验id
 
 `plan` 只校验，不登记任务和占 GPU。`run` 前台执行；可在 tmux 中运行。每次提交都会登记 ID 和实验身份，改名也不能绕过重复检查。失败也保留登记；需要复验时先评审新的 protocol_id，不删除历史登记。
 
+目录创建失败时，本次数据库登记会回滚；已有同名目录和内容保留，CLI 返回 JSON 错误及退出码 2。对于旧版遗留或初始化中断后“数据库已登记、state.json 缺失”的任务，`status` 列表和按 ID 查询都显示 `INITIALIZATION_INCOMPLETE`。这不表示任务可安全重跑：先由 owner 检查目录、日志和进程，再决定如何恢复；查询不会修复、删除登记或覆盖结果。
+
 CPU 演示请求保存在服务器 `requests/team-smoke-20261101.json`，已执行过，**只能 plan/status/sync，不要再次 run**。它不加载模型和数据，不代表科研指标。
 
 新 GPU 请求先将现有脚本与依赖放进独立 release 目录，以 `fingerprint <code_root>` 获取 code_files，填写下面字段。请求放在代码目录外，避免请求自身参与哈希循环。站点配置示例见 [lab-site.example.json](../configs/lab-site.example.json)。

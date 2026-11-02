@@ -8,6 +8,10 @@ import threading
 import time
 import io
 import os
+import json
+import sqlite3
+from concurrent.futures import ThreadPoolExecutor
+from contextlib import closing
 import unittest
 from unittest.mock import patch
 
@@ -47,6 +51,87 @@ class LauncherTest(unittest.TestCase):
         lab.run_request(self.request,self.site)
         r=copy.deepcopy(self.request);r['experiment_id']='smoke-002'
         with self.assertRaises(lab.LabError):lab.run_request(r,self.site)
+
+    def cli(self,*args):
+        site=self.root/'site.json';lab.write(site,self.site)
+        return subprocess.run([sys.executable,'-B',str(PATH),'--site',str(site),*args],
+                              capture_output=True,text=True,encoding='utf-8',
+                              env=dict(os.environ,PYTHONIOENCODING='utf-8'))
+
+    def test_directory_creation_failure_rolls_back_registration(self):
+        target=Path(self.site['root'])/'runs'/self.request['experiment_id']
+        mkdir=Path.mkdir
+        def failing_mkdir(path,*args,**kwargs):
+            if path==target:raise PermissionError('simulated directory failure')
+            return mkdir(path,*args,**kwargs)
+        with patch.object(Path,'mkdir',new=failing_mkdir):
+            with self.assertRaises(lab.LabError):lab.run_request(self.request,self.site)
+        with closing(sqlite3.connect(Path(self.site['root'])/'registry.sqlite')) as db:
+            self.assertEqual(db.execute('SELECT COUNT(*) FROM jobs').fetchone()[0],0)
+        self.assertEqual(lab.run_request(self.request,self.site)['status'],'SUCCEEDED')
+
+    def test_existing_directory_reports_json_error_without_overwrite(self):
+        directory=Path(self.site['root'])/'runs'/self.request['experiment_id']
+        directory.mkdir(parents=True)
+        sentinel=directory/'keep.txt';sentinel.write_text('existing result')
+        request=self.root/'request.json';lab.write(request,self.request)
+        result=self.cli('run',str(request))
+        self.assertEqual(result.returncode,2,result.stderr)
+        self.assertIn('error',json.loads(result.stderr))
+        self.assertNotIn('Traceback',result.stderr)
+        self.assertEqual(sentinel.read_text(),'existing result')
+        with closing(sqlite3.connect(Path(self.site['root'])/'registry.sqlite')) as db:
+            self.assertEqual(db.execute('SELECT COUNT(*) FROM jobs').fetchone()[0],0)
+
+    def test_registration_without_state_is_visible_in_status_list(self):
+        directory=lab.claim(self.request,self.site,'legacy-identity')
+        before=(Path(self.site['root'])/'registry.sqlite').read_bytes()
+        result=self.cli('status')
+        self.assertEqual(result.returncode,0,result.stderr)
+        rows=json.loads(result.stdout)
+        self.assertEqual(len(rows),1)
+        self.assertEqual(rows[0]['status'],'INITIALIZATION_INCOMPLETE')
+        self.assertEqual(rows[0]['experiment_id'],self.request['experiment_id'])
+        self.assertEqual(rows[0]['identity'],'legacy-identity')
+        self.assertFalse((directory/'state.json').exists())
+        self.assertEqual((Path(self.site['root'])/'registry.sqlite').read_bytes(),before)
+
+    def test_registration_without_directory_has_single_status(self):
+        directory=lab.claim(self.request,self.site,'legacy-identity')
+        directory.rmdir()  # Simulate an old registry entry with no result directory.
+        result=self.cli('status',self.request['experiment_id'])
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertEqual(json.loads(result.stdout)['status'],'INITIALIZATION_INCOMPLETE')
+        self.assertFalse(directory.exists())
+
+    def test_initial_state_write_failure_is_visible_without_traceback(self):
+        write=lab.write
+        def failing_write(path,value):
+            if Path(path).name=='state.json':raise OSError('simulated disk full')
+            return write(path,value)
+        with patch.object(lab,'write',side_effect=failing_write):
+            with self.assertRaises(lab.LabError):lab.run_request(self.request,self.site)
+        result=self.cli('status',self.request['experiment_id'])
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertEqual(json.loads(result.stdout)['status'],'INITIALIZATION_INCOMPLETE')
+
+    def test_status_does_not_create_registry(self):
+        result=self.cli('status')
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertEqual(json.loads(result.stdout),[])
+        self.assertFalse(Path(self.site['root']).exists())
+
+    def test_concurrent_duplicate_claim_creates_only_one_directory(self):
+        start=threading.Barrier(2)
+        def attempt(job_id):
+            request=dict(self.request,experiment_id=job_id)
+            start.wait(5)
+            try:return str(lab.claim(request,self.site,'shared-identity'))
+            except lab.LabError:return None
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            results=list(pool.map(attempt,['race-001','race-002']))
+        self.assertEqual(sum(value is not None for value in results),1)
+        self.assertEqual(len(list((Path(self.site['root'])/'runs').iterdir())),1)
 
     def test_code_change_rejected_before_run_created(self):
         (self.code/'job.py').write_text('changed')
