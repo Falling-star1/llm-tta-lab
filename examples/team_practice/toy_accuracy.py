@@ -25,7 +25,7 @@ def calculate_accuracy(predictions, references):
 def write_metrics(result, output_dir):
     """Write the toy result and its quality status to output_dir/metrics.json."""
     directory = Path(output_dir)
-    directory.mkdir(parents=True, exist_ok=True)
+    directory.mkdir(parents=True, exist_ok=False)
     metrics = {
         "correct": result["correct"],
         "total": result["total"],

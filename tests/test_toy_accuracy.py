@@ -8,12 +8,18 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 MODULE = ROOT / "examples/team_practice/toy_accuracy.py"
-spec = importlib.util.spec_from_file_location("toy_accuracy", MODULE)
-toy = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(toy)
+if MODULE.exists():
+    spec = importlib.util.spec_from_file_location("toy_accuracy", MODULE)
+    toy = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(toy)
+else:
+    toy = None
 
 
 class ToyAccuracyTest(unittest.TestCase):
+    def setUp(self):
+        self.assertIsNotNone(toy, "Toy accuracy example is missing: " + str(MODULE))
+
     def test_fixed_sample_returns_three_of_four(self):
         result = toy.calculate_accuracy(["A", "B", "C", "A"], ["A", "B", "D", "A"])
         self.assertEqual((result["correct"], result["total"], result["accuracy"]), (3, 4, 0.75))
@@ -38,6 +44,20 @@ class ToyAccuracyTest(unittest.TestCase):
             metrics = json.loads((output_dir / "metrics.json").read_text(encoding="utf-8"))
             self.assertEqual((metrics["correct"], metrics["total"], metrics["accuracy"]), (3, 4, 0.75))
             self.assertEqual(metrics["quality_status"], "NOT_APPLICABLE")
+
+    def test_command_line_refuses_existing_output_directory(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output_dir = Path(temporary) / "run"
+            first = subprocess.run(
+                [sys.executable, str(MODULE), "--output-dir", str(output_dir)],
+                capture_output=True, text=True,
+            )
+            self.assertEqual(first.returncode, 0, first.stderr)
+            second = subprocess.run(
+                [sys.executable, str(MODULE), "--output-dir", str(output_dir)],
+                capture_output=True, text=True,
+            )
+            self.assertNotEqual(second.returncode, 0)
 
 
 if __name__ == "__main__":

@@ -5,8 +5,10 @@
 ## 运行
 
 ```bash
-python examples/team_practice/toy_accuracy.py --output-dir /tmp/toy-accuracy
+python examples/team_practice/toy_accuracy.py --output-dir output/toy-accuracy
 ```
+
+输出目录必须是新目录；已存在时会报错，避免覆盖旧结果。
 
 固定样例：
 
@@ -23,7 +25,7 @@ python examples/team_practice/toy_accuracy.py --output-dir /tmp/toy-accuracy
 }
 ```
 
-同时会在 `/tmp/toy-accuracy/metrics.json` 写入：
+同时会在 `output/toy-accuracy/metrics.json` 写入：
 
 ```json
 {
@@ -43,4 +45,4 @@ python examples/team_practice/toy_accuracy.py --output-dir /tmp/toy-accuracy
 python -m unittest discover -s tests -p test_toy_accuracy.py
 ```
 
-覆盖正常输入、空输入和两个列表长度不一致三种情况，并检查命令行写出的 `metrics.json`。
+覆盖正常输入、空输入和两个列表长度不一致三种情况，并检查命令行写出的 `metrics.json` 以及重复运行不会覆盖已有目录。
