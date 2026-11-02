@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-25",
+  "code_id": "04c4e9cc515f8f71da571e47b90f5a3551eaa84ad61b62f3412e19b3eaa26bc9",
+  "cpu_tests": 45,
+  "status": "PASS",
+  "local_accelerate": "1.0.1",
+  "local_torch": "2.14.0+cu126",
+  "local_transformers": "4.46.1",
+  "local_peft": "0.12.0",
+  "regressions": [
+    "TrainingArguments with Accelerate below 1.1",
+    "libc missing renameat2 falls back to kernel syscall",
+    "syscall EEXIST preserves no-overwrite error"
+  ],
+  "linux_syscall_execution": "NOT_RUN_LOCALLY; validated via mocked libc; server check.py required",
+  "server_gpu_jobs_started": 0,
+  "delivery_hashes": "PASS"
+}

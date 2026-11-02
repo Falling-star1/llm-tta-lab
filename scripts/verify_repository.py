@@ -21,7 +21,11 @@ def main():
     with zipfile.ZipFile(old_branch) as snapshot:
         assert snapshot.testzip() is None, 'Invalid feature ZIP'
     bundles = sorted((ROOT / 'offline_tta').glob('*/SHA256SUMS'))
-    assert len(bundles) == 5, 'Expected five frozen delivery bundles'
+    required = {'tlm_stage1_bundle', 'tlm_source_smoke_bundle',
+                'tlm_tent_preflight_bundle', 'tlm_tent_offline_smoke_bundle',
+                'tlm_tent_full_3gpu_det_bundle', 'tlm_offline_v1_bundle',
+                'tlm_offline_v2_bundle', 'tlm_offline_v3_bundle'}
+    assert required <= {p.parent.name for p in bundles}, 'Missing required frozen delivery'
     hashed_files = 0
     for checksum in bundles:
         for row in checksum.read_text(encoding='utf-8').splitlines():
@@ -30,7 +34,9 @@ def main():
             assert path.resolve().is_relative_to(checksum.parent.resolve()), 'Unsafe checksum path'
             assert sha(path) == expected, f'Bundle hash mismatch: {path.relative_to(ROOT)}'
             hashed_files += 1
-    syntax_files = list((ROOT / 'offline_tta').rglob('*.py')) + list((ROOT / 'scripts').glob('*.py'))
+    syntax_files = (list((ROOT / 'offline_tta').rglob('*.py'))
+                    + list((ROOT / 'scripts').glob('*.py'))
+                    + list((ROOT / 'local_repro').rglob('*.py')))
     for path in syntax_files:
         compile(path.read_bytes(), str(path), 'exec')
     documents = list(ROOT.glob('*.md')) + list((ROOT / 'docs').rglob('*.md')) + [ROOT / 'offline_tta/README.md']

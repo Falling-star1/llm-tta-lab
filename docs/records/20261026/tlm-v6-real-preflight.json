@@ -1,0 +1,583 @@
+{
+  "time_utc": "2026-10-26T00:07:50.057166+00:00",
+  "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+  "preflight_root": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7",
+  "server_cpu_tests": 72,
+  "server_cpu_status": "PASS",
+  "all_six_preflights": "PASS",
+  "datasets": {
+    "geosignal_5k": {
+      "schema_version": 1,
+      "record_count": 5000,
+      "source_sha256": "4d0bd9b6e8e874506d2d604e4542a0659faca1b695147f8f4d1796a1b53f5094",
+      "files": {
+        "inputs.jsonl": "9c55d4253c11556b7b658da061d61f829d74b55232b405568633a4ae34bdf021",
+        "references.jsonl": "a55621761389f2d03642217aad1502de62c4ecd09edd20471daa1e5af6954177"
+      }
+    },
+    "dolly_5k": {
+      "schema_version": 1,
+      "record_count": 5000,
+      "source_sha256": "5f4b68a265000ebb725bd05e5395989a18c4e52e588b8422eee9ca20f341e354",
+      "files": {
+        "inputs.jsonl": "1267654773a17e9843faaca78aaf69ed422922ea8bf3e3a0374a6834148a83f8",
+        "references.jsonl": "ee4f478daf464b6407f9225ece75998ea293706173cb3b00b2ff22bd9da5141d"
+      }
+    },
+    "gsm8k_5k": {
+      "schema_version": 1,
+      "record_count": 5000,
+      "source_sha256": "d2843770014f663dd3df3ab796816f16e1ff384622bfd8c83ea056315602c5ba",
+      "files": {
+        "inputs.jsonl": "40df0e26530dfcd44acffe93d94ae8a8193187f05e0f6070350efe8594a70f93",
+        "references.jsonl": "fc032d2b3ebdbd0b9be5903409c745cccf38143cdfc41b07e537b3f1c7aa304d"
+      }
+    }
+  },
+  "jobs": [
+    {
+      "gpu": 0,
+      "model": "llama3b",
+      "dataset": "geosignal_5k",
+      "status": "PASS",
+      "receipt": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/llama3b__geosignal_5k/receipt.json",
+      "receipt_sha256": "d2f3a1b0e2f9310274a07342eb619cc238047066564ae4c71d174b49163f0e49",
+      "precision_checks": [
+        {
+          "tokens": 130,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        },
+        {
+          "tokens": 130,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        },
+        {
+          "tokens": 258,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        },
+        {
+          "tokens": 258,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        },
+        {
+          "tokens": 386,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        },
+        {
+          "tokens": 386,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        }
+      ],
+      "checkpoint_continuation": "EXACT_MATCH",
+      "resume_successful_optimizer_steps": 16,
+      "resume_skipped_optimizer_steps": 0,
+      "checkpoint_hash_audits": [
+        {
+          "path": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/llama3b__geosignal_5k/resume_probe/full/trainer/checkpoint-16",
+          "commit_sha256": "994253df307ac83be1b87cdaa317de398b3f29335e2ce563c60985be0752f066",
+          "verified_files": 10
+        },
+        {
+          "path": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/llama3b__geosignal_5k/resume_probe/partial/trainer/checkpoint-16",
+          "commit_sha256": "18a21d784184eeb1b62ed02882d62e27161aadc7e74b8b4cd28a4142972dfe5f",
+          "verified_files": 10
+        }
+      ],
+      "longest_actual_trainer": {
+        "status": "PASS",
+        "source_index": 3396,
+        "tokens": 4096,
+        "steps": 16,
+        "successful_optimizer_steps": 16,
+        "parameters_finite": true,
+        "optimizer_finite": true,
+        "history_finite": true,
+        "adapter_changed": true,
+        "learning_rate": 5e-05,
+        "seconds": 78.37865282595158,
+        "peak_allocated_mib": 8210.77880859375,
+        "peak_reserved_mib": 8728.0,
+        "adapter_restored": true
+      },
+      "base_frozen": true,
+      "source": {
+        "path": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/llama3b__geosignal_5k/source.jsonl",
+        "sha256": "b62ce6ee1b73a065ea8ab3c45fb9635a83c10c7667705d7ed41bd21ab911493b",
+        "records": 5000,
+        "sample_generation_match": true
+      }
+    },
+    {
+      "gpu": 1,
+      "model": "llama3b",
+      "dataset": "dolly_5k",
+      "status": "PASS",
+      "receipt": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/llama3b__dolly_5k/receipt.json",
+      "receipt_sha256": "6def3df40633cb9e82363a64153597924cfbb844710467f225d267d4f2292160",
+      "precision_checks": [
+        {
+          "tokens": 130,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        },
+        {
+          "tokens": 130,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        },
+        {
+          "tokens": 258,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        },
+        {
+          "tokens": 258,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        },
+        {
+          "tokens": 386,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        },
+        {
+          "tokens": 386,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        }
+      ],
+      "checkpoint_continuation": "EXACT_MATCH",
+      "resume_successful_optimizer_steps": 15,
+      "resume_skipped_optimizer_steps": 1,
+      "checkpoint_hash_audits": [
+        {
+          "path": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/llama3b__dolly_5k/resume_probe/full/trainer/checkpoint-16",
+          "commit_sha256": "772f87a5d274cab46f7ccb0e193cecac34ddb707a5a3e1fdc6c8496126ca73c4",
+          "verified_files": 10
+        },
+        {
+          "path": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/llama3b__dolly_5k/resume_probe/partial/trainer/checkpoint-16",
+          "commit_sha256": "594013dc0c6213b3d980a5609a554f2950b3111e680480d74327f9918aaa738c",
+          "verified_files": 10
+        }
+      ],
+      "longest_actual_trainer": {
+        "status": "PASS",
+        "source_index": 1404,
+        "tokens": 4096,
+        "steps": 16,
+        "successful_optimizer_steps": 16,
+        "parameters_finite": true,
+        "optimizer_finite": true,
+        "history_finite": true,
+        "adapter_changed": true,
+        "learning_rate": 5e-05,
+        "seconds": 76.00333525240421,
+        "peak_allocated_mib": 8210.77880859375,
+        "peak_reserved_mib": 8772.0,
+        "adapter_restored": true
+      },
+      "base_frozen": true,
+      "source": {
+        "path": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/llama3b__dolly_5k/source.jsonl",
+        "sha256": "344fd458dba6f577c58fd2823b53d3a5c13d66a7c3a2a9a3614247fafeaef189",
+        "records": 5000,
+        "sample_generation_match": true
+      }
+    },
+    {
+      "gpu": 2,
+      "model": "llama3b",
+      "dataset": "gsm8k_5k",
+      "status": "PASS",
+      "receipt": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/llama3b__gsm8k_5k/receipt.json",
+      "receipt_sha256": "580e9a31a80a8573915ab54175f63f0c4acbf17bc1bd12c8276b0ed61b9cf4e0",
+      "precision_checks": [
+        {
+          "tokens": 130,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        },
+        {
+          "tokens": 130,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        },
+        {
+          "tokens": 226,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        },
+        {
+          "tokens": 226,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 112,
+          "status": "PASS"
+        }
+      ],
+      "checkpoint_continuation": "EXACT_MATCH",
+      "resume_successful_optimizer_steps": 16,
+      "resume_skipped_optimizer_steps": 0,
+      "checkpoint_hash_audits": [
+        {
+          "path": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/llama3b__gsm8k_5k/resume_probe/full/trainer/checkpoint-16",
+          "commit_sha256": "8662e70215a7372d33f70555b42d6503ca38ece24828736badbb20a86643d2b1",
+          "verified_files": 10
+        },
+        {
+          "path": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/llama3b__gsm8k_5k/resume_probe/partial/trainer/checkpoint-16",
+          "commit_sha256": "4b339e699d2fa44695bd1d57f99b40d9bfde6f0d840d7b9f30787b1cba84cad8",
+          "verified_files": 10
+        }
+      ],
+      "longest_actual_trainer": {
+        "status": "PASS",
+        "source_index": 1445,
+        "tokens": 226,
+        "steps": 16,
+        "successful_optimizer_steps": 16,
+        "parameters_finite": true,
+        "optimizer_finite": true,
+        "history_finite": true,
+        "adapter_changed": true,
+        "learning_rate": 1e-06,
+        "seconds": 8.90657103061676,
+        "peak_allocated_mib": 6633.00439453125,
+        "peak_reserved_mib": 7096.0,
+        "adapter_restored": true
+      },
+      "base_frozen": true,
+      "source": {
+        "path": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/llama3b__gsm8k_5k/source.jsonl",
+        "sha256": "a3ab41913f5b1364fe2e5b717f86a797fb465bc052af265370b0c4ea8ae50a94",
+        "records": 5000,
+        "sample_generation_match": true
+      }
+    },
+    {
+      "gpu": 3,
+      "model": "qwen3b",
+      "dataset": "geosignal_5k",
+      "status": "PASS",
+      "receipt": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/qwen3b__geosignal_5k/receipt.json",
+      "receipt_sha256": "b519f124736419e5d4de0165a8e389a2e94c64e7743a22f186afec8af95eb548",
+      "precision_checks": [
+        {
+          "tokens": 130,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        },
+        {
+          "tokens": 130,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        },
+        {
+          "tokens": 258,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        },
+        {
+          "tokens": 258,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        },
+        {
+          "tokens": 386,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        },
+        {
+          "tokens": 386,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        }
+      ],
+      "checkpoint_continuation": "EXACT_MATCH",
+      "resume_successful_optimizer_steps": 13,
+      "resume_skipped_optimizer_steps": 3,
+      "checkpoint_hash_audits": [
+        {
+          "path": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/qwen3b__geosignal_5k/resume_probe/full/trainer/checkpoint-16",
+          "commit_sha256": "bdd13505db7c163cf0bb20bdbeee2c29bea3d0671a6f5621aa7580f1327d2671",
+          "verified_files": 10
+        },
+        {
+          "path": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/qwen3b__geosignal_5k/resume_probe/partial/trainer/checkpoint-16",
+          "commit_sha256": "399edf2f40ac37e4dbc1d5e7e403958694e1f1084a72e20af45301fc12b70003",
+          "verified_files": 10
+        }
+      ],
+      "longest_actual_trainer": {
+        "status": "PASS",
+        "source_index": 3131,
+        "tokens": 4096,
+        "steps": 16,
+        "successful_optimizer_steps": 16,
+        "parameters_finite": true,
+        "optimizer_finite": true,
+        "history_finite": true,
+        "adapter_changed": true,
+        "learning_rate": 5e-05,
+        "seconds": 83.03725384175777,
+        "peak_allocated_mib": 8188.56591796875,
+        "peak_reserved_mib": 9096.0,
+        "adapter_restored": true
+      },
+      "base_frozen": true,
+      "source": {
+        "path": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/qwen3b__geosignal_5k/source.jsonl",
+        "sha256": "587ca277edd1ee31a517bcfb0d8f7d5fcf0c0acf75afb3b61703113b9d24f853",
+        "records": 5000,
+        "sample_generation_match": true
+      }
+    },
+    {
+      "gpu": 4,
+      "model": "qwen3b",
+      "dataset": "dolly_5k",
+      "status": "PASS",
+      "receipt": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/qwen3b__dolly_5k/receipt.json",
+      "receipt_sha256": "09c6fdce32787e879a19c72ce525143abeaa21404f8ece3d21345e72cec64189",
+      "precision_checks": [
+        {
+          "tokens": 130,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        },
+        {
+          "tokens": 130,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        },
+        {
+          "tokens": 258,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        },
+        {
+          "tokens": 258,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        },
+        {
+          "tokens": 386,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        },
+        {
+          "tokens": 386,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        }
+      ],
+      "checkpoint_continuation": "EXACT_MATCH",
+      "resume_successful_optimizer_steps": 13,
+      "resume_skipped_optimizer_steps": 3,
+      "checkpoint_hash_audits": [
+        {
+          "path": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/qwen3b__dolly_5k/resume_probe/full/trainer/checkpoint-16",
+          "commit_sha256": "645c877b056fe90f0ebfff9000a6f8ee6de8ab3a5e327efe904afbcdb3e8a33b",
+          "verified_files": 10
+        },
+        {
+          "path": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/qwen3b__dolly_5k/resume_probe/partial/trainer/checkpoint-16",
+          "commit_sha256": "02e5a3452c2cdc88ceb6b9886dc6ef2b357e26a38faeeedc7b41d74bf823b5b4",
+          "verified_files": 10
+        }
+      ],
+      "longest_actual_trainer": {
+        "status": "PASS",
+        "source_index": 1404,
+        "tokens": 4096,
+        "steps": 16,
+        "successful_optimizer_steps": 16,
+        "parameters_finite": true,
+        "optimizer_finite": true,
+        "history_finite": true,
+        "adapter_changed": true,
+        "learning_rate": 5e-05,
+        "seconds": 84.65728217363358,
+        "peak_allocated_mib": 8188.56591796875,
+        "peak_reserved_mib": 9090.0,
+        "adapter_restored": true
+      },
+      "base_frozen": true,
+      "source": {
+        "path": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/qwen3b__dolly_5k/source.jsonl",
+        "sha256": "721a396fae0a2aeff70a8d4d474b058d516fb9a98c66923291f61ba7b7fbeccb",
+        "records": 5000,
+        "sample_generation_match": true
+      }
+    },
+    {
+      "gpu": 5,
+      "model": "qwen3b",
+      "dataset": "gsm8k_5k",
+      "status": "PASS",
+      "receipt": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/qwen3b__gsm8k_5k/receipt.json",
+      "receipt_sha256": "45c6f4d662b50eaa8bbee9d52ffcd665a26e5f5985849598410042910e1b7bf5",
+      "precision_checks": [
+        {
+          "tokens": 130,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        },
+        {
+          "tokens": 130,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        },
+        {
+          "tokens": 248,
+          "B": 0.0,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        },
+        {
+          "tokens": 248,
+          "B": 0.001,
+          "max_gradient_abs": 0.0,
+          "dlogits_exact": true,
+          "parameters": 144,
+          "status": "PASS"
+        }
+      ],
+      "checkpoint_continuation": "EXACT_MATCH",
+      "resume_successful_optimizer_steps": 16,
+      "resume_skipped_optimizer_steps": 0,
+      "checkpoint_hash_audits": [
+        {
+          "path": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/qwen3b__gsm8k_5k/resume_probe/full/trainer/checkpoint-16",
+          "commit_sha256": "27e235f9db18c57bf8608e553afbcd0e0f9f82461f131428a27ea29daa73cd8c",
+          "verified_files": 10
+        },
+        {
+          "path": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7/preflight/qwen3b__gsm8k_5k/resume_probe/partial/trainer/checkpoint-16",
+          "commit_sha256": "014eac7a89963fb3f7330d8df93c7bd66e4d85ed3cd158cf63c7cf842c0eb520",
+          "verified_files": 10
+        }
+      ],
+      "longest_actual_trainer": {
+        "status": "PASS",
+        "source_index": 1445,
+        "tokens": 248,
+        "steps": 16,
+        "successful_optimizer_steps": 16,
+        "parameters_finite": true,
+        "optimizer_finite": true,
+        "history_finite": true,
+        "adapter_changed": true,
+        "learning_rate": 1e-06,
+        "seconds": 11.390235856175423,
+        "peak_allocated_mib": 6587.2763671875,
+        "peak_reserved_mib": 7256.0,
+        "adapter_restored": true
+      },
+      "base_frozen": true,
+      "source": {
+        "path": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/qwen3b__gsm8k_5k/source.jsonl",
+        "sha256": "8ee5ef7e2c66d225d16469e9fe95c8990c4150e0dca5df0f1c82c2c3340d0800",
+        "records": 5000,
+        "sample_generation_match": true
+      }
+    }
+  ]
+}

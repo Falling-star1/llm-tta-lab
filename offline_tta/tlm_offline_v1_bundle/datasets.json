@@ -1,0 +1,32 @@
+{
+  "source_commit": "496c9ed97d0fb8bc4854ed2479259e7e9e70a790",
+  "datasets": [
+    {
+      "benchmark": "DomainBench",
+      "dataset": "Geography",
+      "alias": "geosignal_5k",
+      "filename": "geosignal_random_5k.json",
+      "metric": "rougeLsum",
+      "records": 5000,
+      "sha256": "4d0bd9b6e8e874506d2d604e4542a0659faca1b695147f8f4d1796a1b53f5094"
+    },
+    {
+      "benchmark": "InstructionBench",
+      "dataset": "Dolly",
+      "alias": "dolly_5k",
+      "filename": "dolly_random_5k.json",
+      "metric": "rougeLsum",
+      "records": 5000,
+      "sha256": "5f4b68a265000ebb725bd05e5395989a18c4e52e588b8422eee9ca20f341e354"
+    },
+    {
+      "benchmark": "ReasoningBench",
+      "dataset": "GSM8K",
+      "alias": "gsm8k_5k",
+      "filename": "gsm8k_random_5k.json",
+      "metric": "exact_match",
+      "records": 5000,
+      "sha256": "d2843770014f663dd3df3ab796816f16e1ff384622bfd8c83ea056315602c5ba"
+    }
+  ]
+}

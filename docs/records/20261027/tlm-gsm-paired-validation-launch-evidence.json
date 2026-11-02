@@ -1,0 +1,239 @@
+{
+  "deployment": {
+    "status": "RUNNING",
+    "root": "/data/chuwenjing/results/tlm_gsm_paired_validation/run_20261027_125214_86cafa",
+    "remote": "/data/chuwenjing/tta_offline/tlm_gsm_paired_validation_8e828e3d6d44",
+    "hashes": {
+      "evaluate.py": "f2c12a9dda1f8570ec5fd2bb453082babfa08c53427701b3cfaa74a9f0419ab7",
+      "protocol.py": "e679e9d45810674b379cda8758d2ed15157b46c237cc9b4c6c934fc186d4a1a5",
+      "README.md": "57ff929f749a929f38fa95a35a8dcdec5a9a4c80062bcb79974b13ccb348e5f4",
+      "tests/test_protocol.py": "721a417fe6a2c4fe60e0f088bbd7fa0bad684b5083c0d923e9fa8ae52c93aa23",
+      "SHA256SUMS": "cabc33f2d14b998b35100c56684ae6234fcd50eb597bc22140c61829c53e9055"
+    },
+    "receipt": "/data/chuwenjing/tta_offline/tlm_launch_receipts/gsm-paired-validation-8e828e3d6d44.json",
+    "registration": "/data/chuwenjing/results/tlm_gsm_paired_validation/run_20261027_125214_86cafa/registration.json",
+    "registration_sha256": "0460a809b56aa8e43620442e165306a2311577883e846a1d35f5ab0d4ae7a2ae",
+    "jobs": [
+      {
+        "mode": "original_step2500",
+        "gpu": 0,
+        "pid": 29803,
+        "output": "/data/chuwenjing/results/tlm_gsm_paired_validation/run_20261027_125214_86cafa/original_step2500",
+        "log": "/data/chuwenjing/results/tlm_gsm_paired_validation/run_20261027_125214_86cafa/original_step2500.log"
+      },
+      {
+        "mode": "hint_masked",
+        "gpu": 1,
+        "pid": 29810,
+        "output": "/data/chuwenjing/results/tlm_gsm_paired_validation/run_20261027_125214_86cafa/hint_masked",
+        "log": "/data/chuwenjing/results/tlm_gsm_paired_validation/run_20261027_125214_86cafa/hint_masked.log"
+      },
+      {
+        "mode": "eot_masked",
+        "gpu": 2,
+        "pid": 29817,
+        "output": "/data/chuwenjing/results/tlm_gsm_paired_validation/run_20261027_125214_86cafa/eot_masked",
+        "log": "/data/chuwenjing/results/tlm_gsm_paired_validation/run_20261027_125214_86cafa/eot_masked.log"
+      },
+      {
+        "mode": "both_masked",
+        "gpu": 3,
+        "pid": 29825,
+        "output": "/data/chuwenjing/results/tlm_gsm_paired_validation/run_20261027_125214_86cafa/both_masked",
+        "log": "/data/chuwenjing/results/tlm_gsm_paired_validation/run_20261027_125214_86cafa/both_masked.log"
+      }
+    ],
+    "server_tests": "10 PASS",
+    "count": 200,
+    "excluded_count": 116,
+    "started_at": 1793105615.468382,
+    "training_performed": false,
+    "original_runs_modified": false,
+    "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5"
+  },
+  "progress": {
+    "read_only": true,
+    "checks": [
+      {
+        "time_utc": "2026-10-27T12:56:12.432555+00:00",
+        "read_only": true
+      },
+      {
+        "mode": "original_step2500",
+        "gpu": 0,
+        "pid": 29803,
+        "expected_process_alive": true,
+        "status.json": {
+          "status": "EVALUATING",
+          "mode": "original_step2500",
+          "completed": 2,
+          "n": 200,
+          "elapsed_seconds": 151.5212370455265,
+          "training_performed": false
+        },
+        "replay.json": {
+          "original_step5000": [
+            {
+              "source_index": 23,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 68,
+              "generated_ids_and_text_exact": true
+            }
+          ],
+          "target_step2500": [
+            {
+              "source_index": 274,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 762,
+              "generated_ids_and_text_exact": true
+            }
+          ]
+        },
+        "selection.json": {
+          "seed": 20261027,
+          "registration_sha256": "0460a809b56aa8e43620442e165306a2311577883e846a1d35f5ab0d4ae7a2ae",
+          "same_adaptation_population": true,
+          "not_a_full_score": true
+        },
+        "completed": 2
+      },
+      {
+        "mode": "hint_masked",
+        "gpu": 1,
+        "pid": 29810,
+        "expected_process_alive": true,
+        "status.json": {
+          "status": "EVALUATING",
+          "mode": "hint_masked",
+          "completed": 2,
+          "n": 200,
+          "elapsed_seconds": 150.07135970890522,
+          "training_performed": false
+        },
+        "replay.json": {
+          "original_step5000": [
+            {
+              "source_index": 23,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 68,
+              "generated_ids_and_text_exact": true
+            }
+          ],
+          "target_step2500": [
+            {
+              "source_index": 274,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 762,
+              "generated_ids_and_text_exact": true
+            }
+          ]
+        },
+        "selection.json": {
+          "seed": 20261027,
+          "registration_sha256": "0460a809b56aa8e43620442e165306a2311577883e846a1d35f5ab0d4ae7a2ae",
+          "same_adaptation_population": true,
+          "not_a_full_score": true
+        },
+        "completed": 2
+      },
+      {
+        "mode": "eot_masked",
+        "gpu": 2,
+        "pid": 29817,
+        "expected_process_alive": true,
+        "status.json": {
+          "status": "EVALUATING",
+          "mode": "eot_masked",
+          "completed": 2,
+          "n": 200,
+          "elapsed_seconds": 151.45669063925743,
+          "training_performed": false
+        },
+        "replay.json": {
+          "original_step5000": [
+            {
+              "source_index": 23,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 68,
+              "generated_ids_and_text_exact": true
+            }
+          ],
+          "target_step2500": [
+            {
+              "source_index": 274,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 762,
+              "generated_ids_and_text_exact": true
+            }
+          ]
+        },
+        "selection.json": {
+          "seed": 20261027,
+          "registration_sha256": "0460a809b56aa8e43620442e165306a2311577883e846a1d35f5ab0d4ae7a2ae",
+          "same_adaptation_population": true,
+          "not_a_full_score": true
+        },
+        "completed": 2
+      },
+      {
+        "mode": "both_masked",
+        "gpu": 3,
+        "pid": 29825,
+        "expected_process_alive": true,
+        "status.json": {
+          "status": "EVALUATING",
+          "mode": "both_masked",
+          "completed": 2,
+          "n": 200,
+          "elapsed_seconds": 150.5409201234579,
+          "training_performed": false
+        },
+        "replay.json": {
+          "original_step5000": [
+            {
+              "source_index": 23,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 68,
+              "generated_ids_and_text_exact": true
+            }
+          ],
+          "target_step2500": [
+            {
+              "source_index": 274,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 762,
+              "generated_ids_and_text_exact": true
+            }
+          ]
+        },
+        "selection.json": {
+          "seed": 20261027,
+          "registration_sha256": "0460a809b56aa8e43620442e165306a2311577883e846a1d35f5ab0d4ae7a2ae",
+          "same_adaptation_population": true,
+          "not_a_full_score": true
+        },
+        "completed": 2
+      }
+    ],
+    "exit_status": 0
+  },
+  "local_tests": "10 PASS",
+  "server_tests": "10 PASS",
+  "independent_review": "GO"
+}

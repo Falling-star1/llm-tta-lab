@@ -1,0 +1,169 @@
+{
+  "date_beijing": "2026-11-02",
+  "pr": 3,
+  "original_head": "0770e5e406bd0483937503331c25768327018115",
+  "main_merged_for_review": "52d5d988d6e184f25d44c47121dee3edfd90c6c4",
+  "cpu_environment": "torch 2.5.1+cu118 / transformers 4.46.1 / peft 0.12.0",
+  "gpu_visible": "",
+  "cpu_suites": [
+    {
+      "bundle": "tlm_evaluate_all_v1",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 6 tests in 0.029s\n\nOK"
+    },
+    {
+      "bundle": "tlm_fp32_head_probe",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 2 tests in 0.030s\n\nOK"
+    },
+    {
+      "bundle": "tlm_full_projection_probe",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 3 tests in 0.405s\n\nOK"
+    },
+    {
+      "bundle": "tlm_full_run_gate",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 13 tests in 0.021s\n\nOK"
+    },
+    {
+      "bundle": "tlm_full_run_gate_v2",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 14 tests in 0.024s\n\nOK"
+    },
+    {
+      "bundle": "tlm_gsm_failure_replay_v1",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK"
+    },
+    {
+      "bundle": "tlm_gsm_milestone_probe_v1",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nOK"
+    },
+    {
+      "bundle": "tlm_gsm_paired_validation_v1",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 10 tests in 0.005s\n\nOK"
+    },
+    {
+      "bundle": "tlm_gsm_transition_control_v1",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK"
+    },
+    {
+      "bundle": "tlm_offline_v6_bundle",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 72 tests in 3.912s\n\nOK"
+    },
+    {
+      "bundle": "tlm_precision_diagnostic_bundle",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 5 tests in 7.904s\n\nOK"
+    },
+    {
+      "bundle": "tlm_reproduction_protocol_fix_v1",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 5 tests in 0.001s\n\nOK"
+    },
+    {
+      "bundle": "tlm_scaled_precision_bundle",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 7 tests in 2.597s\n\nOK"
+    },
+    {
+      "bundle": "tlm_single_recovery",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK"
+    },
+    {
+      "bundle": "tlm_template_diagnostic_runner_v1",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 6 tests in 0.001s\n\nOK"
+    },
+    {
+      "bundle": "tlm_template_diagnostic_v1",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 11 tests in 0.358s\n\nOK"
+    },
+    {
+      "bundle": "tlm_template_evaluation_recovery_v1",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK"
+    },
+    {
+      "bundle": "tlm_tent_full_3gpu_det_bundle",
+      "returncode": 0,
+      "summary": "----------------------------------------------------------------------\nRan 39 tests in 2.243s\n\nOK"
+    }
+  ],
+  "cpu_test_count": 211,
+  "all_cpu_tests_passed": true,
+  "live_result_review": {
+    "read_only_result_review": [
+      {
+        "model": "llama3b",
+        "dataset": "geosignal_5k",
+        "score": 0.2931859894090287,
+        "n": 5000,
+        "training_steps": 5000,
+        "prediction_sha256": "71a0b7269573a0b2a3a5a7eb14451a1c29154050d4b3d95fa5b09ebc5ae8d77e",
+        "metrics_sha256": "d71615bb87b7942569f86f918781e601c02de8f95e4f4ac47c00fea9adeadb12",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__geosignal_5k"
+      },
+      {
+        "model": "llama3b",
+        "dataset": "dolly_5k",
+        "score": 0.24070134864742532,
+        "n": 5000,
+        "training_steps": 5000,
+        "prediction_sha256": "d7d4ff47bfe1c5dbabcea05bfe732a461414602a62031d8383154ce22d721a97",
+        "metrics_sha256": "6d7d640c96528b2633962a10988efb51f0a8b898798357723ec8fa2e095044ce",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k"
+      },
+      {
+        "model": "llama3b",
+        "dataset": "gsm8k_5k",
+        "score": 0.7798,
+        "n": 5000,
+        "training_steps": 5000,
+        "prediction_sha256": "5287f9330deffe20dc4efe9b027779ddf9e5ee7d88e6c8de8ab20adc3e8e4025",
+        "metrics_sha256": "1c29270bae2e1468de510049d7584fba7644d7841f2126e71696fdc1ef9a4f74",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__gsm8k_5k"
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "geosignal_5k",
+        "score": 0.2964073371290318,
+        "n": 5000,
+        "training_steps": 5000,
+        "prediction_sha256": "4ca3a866978f11e5492b3c043f68872f1bfed6bae193be117c8413209f60c99a",
+        "metrics_sha256": "bf85975854bcc066f69c7685ed30ef674a4a77099a1c56ef04f0c51b44b0a969",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__geosignal_5k"
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "dolly_5k",
+        "score": 0.25685452320147295,
+        "n": 5000,
+        "training_steps": 5000,
+        "prediction_sha256": "1eefda0e82960a6452441e8d6a53bf3bcec01231ed69cc3c4d3461cb2dbf6e93",
+        "metrics_sha256": "eea4452fc964030dfd33e341b3dc47e5e52d4627583b08f72afbfd328a0a9b46",
+        "run": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k"
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "gsm8k_5k",
+        "score": 0.8142,
+        "n": 5000,
+        "training_steps": 5000,
+        "prediction_sha256": "8db72c79e4982db9a8d7c1b87d07339b9f4a52b83650a973ecb8a20384fd511a",
+        "metrics_sha256": "104f7debca50ddc28af555760596a4fe885b5339c63f7a2ff7bdc943399385e5",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__gsm8k_5k"
+      }
+    ],
+    "all_six_match_recorded_evidence": true
+  },
+  "frozen_files_unchanged": true,
+  "scope": "Read-only source and result review; CPU tiny-model/unit tests only. No real-model adaptation or generation was rerun."
+}

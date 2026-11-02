@@ -1,0 +1,2273 @@
+{
+  "checked_at_beijing": "2026-10-25 22:11-22:13",
+  "run_root": "/data/chuwenjing/results/tlm_precision_diagnosis/run_20261025_134824",
+  "reports": [
+    {
+      "report": "/data/chuwenjing/results/tlm_precision_diagnosis/run_20261025_134824/llama/report.json",
+      "metadata": {
+        "comparison_status": "MISMATCH",
+        "model": "llama3b",
+        "dataset": "dolly_5k",
+        "lora_init": "gaussian",
+        "seed": 42,
+        "optimizer_steps": 0,
+        "source_index": 1404,
+        "tokens": 258,
+        "chunk_size": 128,
+        "gpu_name": "NVIDIA GeForce RTX 2080 Ti",
+        "torch": "2.5.1+cu118",
+        "cuda": "11.8",
+        "precision_settings": {
+          "deterministic_algorithms": true,
+          "matmul_allow_tf32": false,
+          "matmul_allow_fp16_reduced_precision_reduction": true,
+          "float32_matmul_precision": "highest",
+          "cublas_workspace_config": ":4096:8"
+        },
+        "v3_code_id": "267c3593e1d2c62f7d741168dcfd82ff76dc60f5458a06e481beca570997915d",
+        "diagnostic_delivery_sha256": "7d606a2b95c62e4e2468ea59b1addfc1a7daf1a5cc470260b775dee6a6a1b2fd",
+        "not_a_preflight_receipt": true
+      }
+    },
+    {
+      "report": "/data/chuwenjing/results/tlm_precision_diagnosis/run_20261025_134824/qwen/report.json",
+      "metadata": {
+        "comparison_status": "MISMATCH",
+        "model": "qwen3b",
+        "dataset": "dolly_5k",
+        "lora_init": "gaussian",
+        "seed": 42,
+        "optimizer_steps": 0,
+        "source_index": 1404,
+        "tokens": 258,
+        "chunk_size": 128,
+        "gpu_name": "NVIDIA GeForce RTX 2080 Ti",
+        "torch": "2.5.1+cu118",
+        "cuda": "11.8",
+        "precision_settings": {
+          "deterministic_algorithms": true,
+          "matmul_allow_tf32": false,
+          "matmul_allow_fp16_reduced_precision_reduction": true,
+          "float32_matmul_precision": "highest",
+          "cublas_workspace_config": ":4096:8"
+        },
+        "v3_code_id": "267c3593e1d2c62f7d741168dcfd82ff76dc60f5458a06e481beca570997915d",
+        "diagnostic_delivery_sha256": "7d606a2b95c62e4e2468ea59b1addfc1a7daf1a5cc470260b775dee6a6a1b2fd",
+        "not_a_preflight_receipt": true
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "model": "llama",
+      "state": "initial_zero_B",
+      "path": "full",
+      "strict_match": true,
+      "autocast": true,
+      "values": {
+        "base_ce": 2.9509143829345703,
+        "current_ce": 2.9509143829345703,
+        "weight": 0.09520996361970901,
+        "weighted_loss": 0.2809564471244812
+      },
+      "gradients_vs_full": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": null,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999999,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999999,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      }
+    },
+    {
+      "model": "llama",
+      "state": "initial_zero_B",
+      "path": "direct_full_head",
+      "strict_match": true,
+      "autocast": true,
+      "values": {
+        "base_ce": 2.9509143829345703,
+        "current_ce": 2.9509143829345703,
+        "weight": 0.09520996361970901,
+        "weighted_loss": 0.2809564471244812
+      },
+      "gradients_vs_full": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": null,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999999,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999999,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "full",
+      "gradients_vs_previous": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": null,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "llama",
+      "state": "initial_zero_B",
+      "path": "direct_single",
+      "strict_match": true,
+      "autocast": true,
+      "values": {
+        "base_ce": 2.9509143829345703,
+        "current_ce": 2.9509143829345703,
+        "weight": 0.09520996361970901,
+        "weighted_loss": 0.2809564471244812
+      },
+      "gradients_vs_full": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": null,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999999,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999999,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "direct_full_head",
+      "gradients_vs_previous": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": null,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "llama",
+      "state": "initial_zero_B",
+      "path": "direct_multi",
+      "strict_match": false,
+      "autocast": true,
+      "values": {
+        "base_ce": 2.9509146213531494,
+        "current_ce": 2.9509146213531494,
+        "weight": 0.0952099859714508,
+        "weighted_loss": 0.28095653653144836
+      },
+      "gradients_vs_full": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 56,
+        "relative_l2_failed_parameters": 56,
+        "global_relative_l2": 0.031940250841967735,
+        "global_cosine": 0.9994982655275363,
+        "max_absolute_difference": 0.0011281967163085938,
+        "outside_elements": 186798,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.9.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": false,
+            "max_absolute_difference": 0.000278472900390625,
+            "relative_l2": 0.047246476524790026,
+            "cosine": 0.9988848803333551,
+            "outside_fraction": 0.2502848307291667,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.10.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": false,
+            "max_absolute_difference": 0.00031566619873046875,
+            "relative_l2": 0.04675212084952636,
+            "cosine": 0.9989094174135403,
+            "outside_fraction": 0.22444661458333334,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.00390625,
+          "relative_l2": 2.8025954104067953e-06,
+          "cosine": 0.9999999999960726,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 2.980232238769531e-07,
+          "relative_l2": 0.007043509724427874,
+          "cosine": 0.9999751942340648,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "direct_single",
+      "gradients_vs_previous": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 56,
+        "relative_l2_failed_parameters": 56,
+        "global_relative_l2": 0.031940250841967735,
+        "global_cosine": 0.9994982655275363,
+        "max_absolute_difference": 0.0011281967163085938,
+        "outside_elements": 186798,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.9.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": false,
+            "max_absolute_difference": 0.000278472900390625,
+            "relative_l2": 0.047246476524790026,
+            "cosine": 0.9988848803333551,
+            "outside_fraction": 0.2502848307291667,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.10.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": false,
+            "max_absolute_difference": 0.00031566619873046875,
+            "relative_l2": 0.04675212084952636,
+            "cosine": 0.9989094174135403,
+            "outside_fraction": 0.22444661458333334,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "llama",
+      "state": "initial_zero_B",
+      "path": "trainer_multi",
+      "strict_match": false,
+      "autocast": true,
+      "values": {
+        "base_ce": 2.9509146213531494,
+        "current_ce": 2.9509146213531494,
+        "weight": 0.0952099859714508,
+        "weighted_loss": 0.28095653653144836
+      },
+      "gradients_vs_full": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 56,
+        "relative_l2_failed_parameters": 56,
+        "global_relative_l2": 0.031940250841967735,
+        "global_cosine": 0.9994982655275363,
+        "max_absolute_difference": 0.0011281967163085938,
+        "outside_elements": 186798,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.9.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": false,
+            "max_absolute_difference": 0.000278472900390625,
+            "relative_l2": 0.047246476524790026,
+            "cosine": 0.9988848803333551,
+            "outside_fraction": 0.2502848307291667,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.10.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": false,
+            "max_absolute_difference": 0.00031566619873046875,
+            "relative_l2": 0.04675212084952636,
+            "cosine": 0.9989094174135403,
+            "outside_fraction": 0.22444661458333334,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.00390625,
+          "relative_l2": 2.8025954104067953e-06,
+          "cosine": 0.9999999999960726,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 2.980232238769531e-07,
+          "relative_l2": 0.007043509724427874,
+          "cosine": 0.9999751942340648,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "direct_multi",
+      "gradients_vs_previous": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": null,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "llama",
+      "state": "nonzero_B",
+      "path": "full",
+      "strict_match": true,
+      "autocast": true,
+      "values": {
+        "base_ce": 2.9509143829345703,
+        "current_ce": 2.948920726776123,
+        "weight": 0.09520996361970901,
+        "weighted_loss": 0.28076663613319397
+      },
+      "gradients_vs_full": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      }
+    },
+    {
+      "model": "llama",
+      "state": "nonzero_B",
+      "path": "direct_full_head",
+      "strict_match": true,
+      "autocast": true,
+      "values": {
+        "base_ce": 2.9509143829345703,
+        "current_ce": 2.948920726776123,
+        "weight": 0.09520996361970901,
+        "weighted_loss": 0.28076663613319397
+      },
+      "gradients_vs_full": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "full",
+      "gradients_vs_previous": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "llama",
+      "state": "nonzero_B",
+      "path": "direct_single",
+      "strict_match": true,
+      "autocast": true,
+      "values": {
+        "base_ce": 2.9509143829345703,
+        "current_ce": 2.948920726776123,
+        "weight": 0.09520996361970901,
+        "weighted_loss": 0.28076663613319397
+      },
+      "gradients_vs_full": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "direct_full_head",
+      "gradients_vs_previous": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "llama",
+      "state": "nonzero_B",
+      "path": "direct_multi",
+      "strict_match": false,
+      "autocast": true,
+      "values": {
+        "base_ce": 2.9509146213531494,
+        "current_ce": 2.948920726776123,
+        "weight": 0.0952099859714508,
+        "weighted_loss": 0.28076669573783875
+      },
+      "gradients_vs_full": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 59,
+        "relative_l2_failed_parameters": 112,
+        "global_relative_l2": 0.031739496027594856,
+        "global_cosine": 0.999496178907941,
+        "max_absolute_difference": 0.0008046627044677734,
+        "outside_elements": 189632,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.18.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 3.337860107421875e-06,
+            "relative_l2": 0.26231023390771296,
+            "cosine": 0.9665399395060587,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.12.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 5.7220458984375e-06,
+            "relative_l2": 0.2319948361195862,
+            "cosine": 0.9759656892865858,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0078125,
+          "relative_l2": 2.9381699149596714e-06,
+          "cosine": 0.9999999999956836,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 3.5762786865234375e-07,
+          "relative_l2": 0.00705068402707604,
+          "cosine": 0.9999751436224646,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "direct_single",
+      "gradients_vs_previous": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 59,
+        "relative_l2_failed_parameters": 112,
+        "global_relative_l2": 0.031739496027594856,
+        "global_cosine": 0.999496178907941,
+        "max_absolute_difference": 0.0008046627044677734,
+        "outside_elements": 189632,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.18.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 3.337860107421875e-06,
+            "relative_l2": 0.26231023390771296,
+            "cosine": 0.9665399395060587,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.12.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 5.7220458984375e-06,
+            "relative_l2": 0.2319948361195862,
+            "cosine": 0.9759656892865858,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "llama",
+      "state": "nonzero_B",
+      "path": "trainer_multi",
+      "strict_match": false,
+      "autocast": true,
+      "values": {
+        "base_ce": 2.9509146213531494,
+        "current_ce": 2.948920726776123,
+        "weight": 0.0952099859714508,
+        "weighted_loss": 0.28076669573783875
+      },
+      "gradients_vs_full": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 59,
+        "relative_l2_failed_parameters": 112,
+        "global_relative_l2": 0.031739496027594856,
+        "global_cosine": 0.999496178907941,
+        "max_absolute_difference": 0.0008046627044677734,
+        "outside_elements": 189632,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.18.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 3.337860107421875e-06,
+            "relative_l2": 0.26231023390771296,
+            "cosine": 0.9665399395060587,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.12.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 5.7220458984375e-06,
+            "relative_l2": 0.2319948361195862,
+            "cosine": 0.9759656892865858,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0078125,
+          "relative_l2": 2.9381699149596714e-06,
+          "cosine": 0.9999999999956836,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 3.5762786865234375e-07,
+          "relative_l2": 0.00705068402707604,
+          "cosine": 0.9999751436224646,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "direct_multi",
+      "gradients_vs_previous": {
+        "parameter_count": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 2293760,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen",
+      "state": "initial_zero_B",
+      "path": "full",
+      "strict_match": true,
+      "autocast": true,
+      "values": {
+        "base_ce": 3.103837251663208,
+        "current_ce": 3.103837251663208,
+        "weight": 0.11094199866056442,
+        "weighted_loss": 0.34434589743614197
+      },
+      "gradients_vs_full": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": null,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999999,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      }
+    },
+    {
+      "model": "qwen",
+      "state": "initial_zero_B",
+      "path": "direct_full_head",
+      "strict_match": true,
+      "autocast": true,
+      "values": {
+        "base_ce": 3.103837251663208,
+        "current_ce": 3.103837251663208,
+        "weight": 0.11094199866056442,
+        "weighted_loss": 0.34434589743614197
+      },
+      "gradients_vs_full": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": null,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999999,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "full",
+      "gradients_vs_previous": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": null,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen",
+      "state": "initial_zero_B",
+      "path": "direct_single",
+      "strict_match": true,
+      "autocast": true,
+      "values": {
+        "base_ce": 3.103837251663208,
+        "current_ce": 3.103837251663208,
+        "weight": 0.11094199866056442,
+        "weighted_loss": 0.34434589743614197
+      },
+      "gradients_vs_full": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": null,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999999,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "direct_full_head",
+      "gradients_vs_previous": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": null,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen",
+      "state": "initial_zero_B",
+      "path": "direct_multi",
+      "strict_match": false,
+      "autocast": true,
+      "values": {
+        "base_ce": 3.103837490081787,
+        "current_ce": 3.103837490081787,
+        "weight": 0.11094202846288681,
+        "weighted_loss": 0.3443460166454315
+      },
+      "gradients_vs_full": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 71,
+        "relative_l2_failed_parameters": 66,
+        "global_relative_l2": 0.016019808719863676,
+        "global_cosine": 0.9998716903432053,
+        "max_absolute_difference": 0.00173187255859375,
+        "outside_elements": 180347,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": false,
+            "max_absolute_difference": 0.0010970830917358398,
+            "relative_l2": 0.13843461042278896,
+            "cosine": 0.9903919230985722,
+            "outside_fraction": 0.28045654296875,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.1.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": false,
+            "max_absolute_difference": 0.0003763437271118164,
+            "relative_l2": 0.07948322943173053,
+            "cosine": 0.9968369935027687,
+            "outside_fraction": 0.1788330078125,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999999,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": false,
+          "max_absolute_difference": 0.0078125,
+          "relative_l2": 2.7453540402407417e-06,
+          "cosine": 0.9999999999962316,
+          "outside_fraction": 1.0243920028584635e-07,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 1.1920928955078125e-07,
+          "relative_l2": 0.00029094245522932503,
+          "cosine": 0.9999999576762493,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "direct_single",
+      "gradients_vs_previous": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 71,
+        "relative_l2_failed_parameters": 66,
+        "global_relative_l2": 0.016019808719863676,
+        "global_cosine": 0.9998716903432053,
+        "max_absolute_difference": 0.00173187255859375,
+        "outside_elements": 180347,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": false,
+            "max_absolute_difference": 0.0010970830917358398,
+            "relative_l2": 0.13843461042278896,
+            "cosine": 0.9903919230985722,
+            "outside_fraction": 0.28045654296875,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.1.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": false,
+            "max_absolute_difference": 0.0003763437271118164,
+            "relative_l2": 0.07948322943173053,
+            "cosine": 0.9968369935027687,
+            "outside_fraction": 0.1788330078125,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen",
+      "state": "initial_zero_B",
+      "path": "trainer_multi",
+      "strict_match": false,
+      "autocast": true,
+      "values": {
+        "base_ce": 3.103837490081787,
+        "current_ce": 3.103837490081787,
+        "weight": 0.11094202846288681,
+        "weighted_loss": 0.3443460166454315
+      },
+      "gradients_vs_full": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 71,
+        "relative_l2_failed_parameters": 66,
+        "global_relative_l2": 0.016019808719863676,
+        "global_cosine": 0.9998716903432053,
+        "max_absolute_difference": 0.00173187255859375,
+        "outside_elements": 180347,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": false,
+            "max_absolute_difference": 0.0010970830917358398,
+            "relative_l2": 0.13843461042278896,
+            "cosine": 0.9903919230985722,
+            "outside_fraction": 0.28045654296875,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.1.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": false,
+            "max_absolute_difference": 0.0003763437271118164,
+            "relative_l2": 0.07948322943173053,
+            "cosine": 0.9968369935027687,
+            "outside_fraction": 0.1788330078125,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999999,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": false,
+          "max_absolute_difference": 0.0078125,
+          "relative_l2": 2.7453540402407417e-06,
+          "cosine": 0.9999999999962316,
+          "outside_fraction": 1.0243920028584635e-07,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 1.1920928955078125e-07,
+          "relative_l2": 0.00029094245522932503,
+          "cosine": 0.9999999576762493,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "direct_multi",
+      "gradients_vs_previous": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": null,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen",
+      "state": "nonzero_B",
+      "path": "full",
+      "strict_match": true,
+      "autocast": true,
+      "values": {
+        "base_ce": 3.103837251663208,
+        "current_ce": 3.1030657291412354,
+        "weight": 0.11094199866056442,
+        "weighted_loss": 0.3442603051662445
+      },
+      "gradients_vs_full": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999998,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      }
+    },
+    {
+      "model": "qwen",
+      "state": "nonzero_B",
+      "path": "direct_full_head",
+      "strict_match": true,
+      "autocast": true,
+      "values": {
+        "base_ce": 3.103837251663208,
+        "current_ce": 3.1030657291412354,
+        "weight": 0.11094199866056442,
+        "weighted_loss": 0.3442603051662445
+      },
+      "gradients_vs_full": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999998,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "full",
+      "gradients_vs_previous": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen",
+      "state": "nonzero_B",
+      "path": "direct_single",
+      "strict_match": true,
+      "autocast": true,
+      "values": {
+        "base_ce": 3.103837251663208,
+        "current_ce": 3.1030657291412354,
+        "weight": 0.11094199866056442,
+        "weighted_loss": 0.3442603051662445
+      },
+      "gradients_vs_full": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 0.9999999999999998,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "direct_full_head",
+      "gradients_vs_previous": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen",
+      "state": "nonzero_B",
+      "path": "direct_multi",
+      "strict_match": false,
+      "autocast": true,
+      "values": {
+        "base_ce": 3.103837490081787,
+        "current_ce": 3.103065252304077,
+        "weight": 0.11094202846288681,
+        "weighted_loss": 0.3442603647708893
+      },
+      "gradients_vs_full": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 75,
+        "relative_l2_failed_parameters": 136,
+        "global_relative_l2": 0.015508846740344435,
+        "global_cosine": 0.9998797312653579,
+        "max_absolute_difference": 0.001556396484375,
+        "outside_elements": 182261,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.1.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 7.3909759521484375e-06,
+            "relative_l2": 0.21371763329004465,
+            "cosine": 0.9803908336827073,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.2.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 2.384185791015625e-06,
+            "relative_l2": 0.16319210351232563,
+            "cosine": 0.9866028101669472,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": false,
+          "max_absolute_difference": 0.0078125,
+          "relative_l2": 2.558149339169264e-06,
+          "cosine": 0.9999999999967281,
+          "outside_fraction": 5.1219600142923174e-08,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 5.960464477539063e-08,
+          "relative_l2": 0.0002876017637982751,
+          "cosine": 0.9999999586426197,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "direct_single",
+      "gradients_vs_previous": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 75,
+        "relative_l2_failed_parameters": 136,
+        "global_relative_l2": 0.015508846740344435,
+        "global_cosine": 0.9998797312653579,
+        "max_absolute_difference": 0.001556396484375,
+        "outside_elements": 182261,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.1.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 7.3909759521484375e-06,
+            "relative_l2": 0.21371763329004465,
+            "cosine": 0.9803908336827073,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.2.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 2.384185791015625e-06,
+            "relative_l2": 0.16319210351232563,
+            "cosine": 0.9866028101669472,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen",
+      "state": "nonzero_B",
+      "path": "trainer_multi",
+      "strict_match": false,
+      "autocast": true,
+      "values": {
+        "base_ce": 3.103837490081787,
+        "current_ce": 3.103065252304077,
+        "weight": 0.11094202846288681,
+        "weighted_loss": 0.3442603647708893
+      },
+      "gradients_vs_full": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 75,
+        "relative_l2_failed_parameters": 136,
+        "global_relative_l2": 0.015508846740344435,
+        "global_cosine": 0.9998797312653579,
+        "max_absolute_difference": 0.001556396484375,
+        "outside_elements": 182261,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.1.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 7.3909759521484375e-06,
+            "relative_l2": 0.21371763329004465,
+            "cosine": 0.9803908336827073,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.2.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 2.384185791015625e-06,
+            "relative_l2": 0.16319210351232563,
+            "cosine": 0.9866028101669472,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      },
+      "current_representation_vs_full": {
+        "hidden": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 0.0,
+          "relative_l2": 0.0,
+          "cosine": 1.0,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "head_logits": {
+          "finite": true,
+          "pointwise_close": false,
+          "max_absolute_difference": 0.0078125,
+          "relative_l2": 2.558149339169264e-06,
+          "cosine": 0.9999999999967281,
+          "outside_fraction": 5.1219600142923174e-08,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        },
+        "hidden_gradient": {
+          "finite": true,
+          "pointwise_close": true,
+          "max_absolute_difference": 5.960464477539063e-08,
+          "relative_l2": 0.0002876017637982751,
+          "cosine": 0.9999999586426197,
+          "outside_fraction": 0.0,
+          "reference_dtype": "torch.float16",
+          "candidate_dtype": "torch.float16"
+        }
+      },
+      "previous_path": "direct_multi",
+      "gradients_vs_previous": {
+        "parameter_count": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "relative_l2_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0,
+        "outside_elements": 0,
+        "total_elements": 1843200,
+        "worst_relative_parameters": [
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 1.0,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          },
+          {
+            "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+            "finite": true,
+            "pointwise_close": true,
+            "max_absolute_difference": 0.0,
+            "relative_l2": 0.0,
+            "cosine": 0.9999999999999998,
+            "outside_fraction": 0.0,
+            "reference_dtype": "torch.float32",
+            "candidate_dtype": "torch.float32"
+          }
+        ]
+      }
+    }
+  ],
+  "conclusion": "Differences first appear when changing single projection to 128-token multi-block path",
+  "observed_exact_matches": [
+    "full vs direct_full_head",
+    "full vs direct_single",
+    "direct_multi vs trainer_multi",
+    "decoder hidden states across all paths"
+  ],
+  "scope": "One 258-token input prefix per model; initial zero B and temporary nonzero B; unscaled gradients",
+  "engineering_selection_note": "Selection was forced with compensating lambda. Llama base CE is below the formal threshold; these percentages are diagnostic, not formal training error rates.",
+  "unresolved": [
+    "FP16 head GEMM vs reduction vs projection checkpoint contribution",
+    "Whether differences persist under actual GradScaler-scaled backward and unscaling",
+    "Effect on optimizer updates and relation to Dolly degeneration"
+  ],
+  "formal_preflight_passed": false,
+  "new_full_training_started": false,
+  "legacy_dolly_state_change": {
+    "observed": "Same two previously paused PIDs were running again; cause unknown",
+    "action": "Reapplied prior user-authorized SIGSTOP after identity verification",
+    "pause_record": "/data/chuwenjing/results/tlm_offline_v2/run_20261025_063426/audit_dolly_pause_20261025_141247.json",
+    "targets": [
+      {
+        "pid": 17071,
+        "model": "llama3b",
+        "process_state": "State:\tT (stopped)",
+        "saved_prediction_lines": 557
+      },
+      {
+        "pid": 17129,
+        "model": "qwen3b",
+        "process_state": "State:\tT (stopped)",
+        "saved_prediction_lines": 501
+      }
+    ]
+  }
+}

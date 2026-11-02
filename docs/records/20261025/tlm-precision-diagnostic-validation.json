@@ -1,0 +1,47 @@
+{
+  "date_beijing": "2026-10-25",
+  "purpose": "Collect evidence for unresolved v3 FP16 full/chunk gradient mismatch",
+  "v3_code_id": "267c3593e1d2c62f7d741168dcfd82ff76dc60f5458a06e481beca570997915d",
+  "diagnostic_delivery_sha256": "7d606a2b95c62e4e2468ea59b1addfc1a7daf1a5cc470260b775dee6a6a1b2fd",
+  "files": {
+    "check.py": "5f649562d096f894c669b723b95493922005f5c0450f24c6091d6d54f0d860c8",
+    "diagnose.py": "875450ac0f400cdb0066b0c854ce52556939eedb204d93284af65e8d20adffe0",
+    "README.md": "3e14c1e45647a1433faabdb2ef69229b38c74d1005d70e5c5a15f42bc3fda4b4",
+    "tests/test_diagnose.py": "28358b4c09213ec9eff3de87b43a9fae56599f696a72764ad96bf33eeca076a1"
+  },
+  "cpu_validation": {
+    "status": "PASS",
+    "test_count": 65,
+    "v3_tests": 60,
+    "new_diagnostic_tests": 5,
+    "exit_code": 0,
+    "torch": "2.14.0+cu126",
+    "transformers": "4.46.1",
+    "peft": "0.12.0",
+    "accelerate": "1.0.1"
+  },
+  "regression_evidence": [
+    "Missing diagnostic first failed four tests",
+    "Missing hidden gradient capture failed both model architectures",
+    "Injected infinite reference gradient reproduced non-JSON-safe reporting; fixed",
+    "Python-exp weight differed from actual FP32 sample_weights; fixed"
+  ],
+  "cpu_coverage": [
+    "Llama and Qwen five paths in two B states",
+    "Restore original parameters, mixed module modes, RNG, cache and history",
+    "Injected 20 percent loss/gradient error still collects all parameters",
+    "Injected Inf produces complete JSON-safe MISMATCH report",
+    "Exception removes hooks and restores original state",
+    "Diagnostic report rejected as formal preflight receipt"
+  ],
+  "independent_review": "No remaining blocking issue after nonfinite norm and actual FP32 weight fixes",
+  "new_diagnostic_gpu_execution": "NOT_RUN",
+  "server_read_only_checked_at_beijing": "2026-10-25 20:15",
+  "server_read_only_observation": "GPU6/7 each 1MiB and 0 percent utilization; old v3 failures unchanged",
+  "v3_real_gpu_preflight": "FAIL_GRADIENT_ALIGNMENT",
+  "optimizer_steps_in_diagnostic": 0,
+  "old_bundles_or_jobs_modified": false,
+  "formal_receipt_issued": false,
+  "dolly_fixed": "NOT_ESTABLISHED",
+  "next_step": "User runs the two bounded diagnostic commands; analyze report before changing numerical strategy"
+}

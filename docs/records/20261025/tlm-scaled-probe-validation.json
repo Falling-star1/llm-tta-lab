@@ -1,0 +1,64 @@
+{
+  "date_beijing": "2026-10-25",
+  "purpose": "Validate actual GradScaler backward/unscale and two bounded Trainer update trajectories",
+  "delivery_sha256": "3fe59f2d1af0800c9d22b8ce93d33f721025919d09f2a154a696b059302ac556",
+  "files": {
+    "check.py": "e905d5f3d5d892695cbc210739cb4c069f4eee9cf4eaabf28c9ed81f184bc471",
+    "diagnose_scaled.py": "41359b976617f5e8ef82413ed9ee5e7a65834fd906ece4475ca9c9aff5582d74",
+    "probe_support.py": "6246076cffe9561bf5a2272f05c21ac2f67af44965cfca500dc9c04bf2f187c0",
+    "README.md": "2640521b082735eee40582aa47b9a6e6c8e40708e894a5ac5ba5fa7db6369495",
+    "scaled_probe.py": "6d7ae35a9cfc1b2b61a66e23a4893b3a7c4b13bc2266fb1eb0b9aa8311ed9a03",
+    "tests/test_scaled_probe.py": "5b9215f85badff42ebe8ad7135800d265ce1e37675a81ed2dd6f24899e2ec426",
+    "trajectory.py": "501beff0d2c7bda503a02e8d768b23a9fabc1304e6dcd617193b7278a860bec5"
+  },
+  "pinned_v3_code_id": "267c3593e1d2c62f7d741168dcfd82ff76dc60f5458a06e481beca570997915d",
+  "pinned_first_diagnostic_delivery": "7d606a2b95c62e4e2468ea59b1addfc1a7daf1a5cc470260b775dee6a6a1b2fd",
+  "cpu_validation": {
+    "status": "PASS",
+    "exit_code": 0,
+    "tests": 72,
+    "new_tests": 7,
+    "torch": "2.14.0+cu126",
+    "transformers": "4.46.1",
+    "peft": "0.12.0",
+    "accelerate": "1.0.1"
+  },
+  "regression_evidence": [
+    "Five missing-implementation tests failed before code existed",
+    "Missing required nonzero factor coverage failed before addition",
+    "Missing finite-trajectory result failed before addition"
+  ],
+  "new_cpu_coverage": [
+    "Real CPU GradScaler with FP16 intermediate and FP32 trainable parameter",
+    "Llama and Qwen scaled gradient paths",
+    "Joint overflow backoff stops at first finite scale",
+    "Restore original scaler, parameters, modes, RNG, caches and checkpoint alias",
+    "Two actual Trainer update trajectories from common initialization",
+    "Restore forward wrappers, weights and loss alias on trajectory exception",
+    "Finite parameter states and complete matching step counts"
+  ],
+  "independent_review": "No blocking issues; release temporary raw optimizer reference after collecting step counts",
+  "real_gpu_scaled_probe": "NOT_RUN",
+  "actual_server_stack": "Torch2.5.1+cu118 differs from local Torch; real GPU acceptance remains required",
+  "old_unscaled_real_gpu_observation": "MISMATCH begins at 128-token projection chunks",
+  "probe_scaling_policy": "Actual scaler initial state; joint backoff only for nonfinite; stop at first jointly finite scale",
+  "gradient_tolerances_changed": false,
+  "formal_initialization": "Gaussian A and zero B",
+  "engineering_trajectory": {
+    "steps_per_path": 16,
+    "paths": [
+      "full",
+      "chunk"
+    ],
+    "learning_rate": 1e-06,
+    "four_real_input_prefixes": true,
+    "max_tokens": 258,
+    "formal_training": false
+  },
+  "new_gpu_jobs_started_by_agent": false,
+  "old_bundles_or_model_files_changed": false,
+  "formal_preflight_passed": false,
+  "full_training_started": false,
+  "not_a_preflight_receipt": true,
+  "dolly_fixed": "NOT_ESTABLISHED"
+}

@@ -1,0 +1,663 @@
+{
+  "snapshot": {
+    "read_only": true,
+    "checks": [
+      {
+        "time_utc": "2026-10-26T08:51:48.820202+00:00",
+        "cohort_root": "/data/chuwenjing/results/tlm_eval_complete_v6/run_20261026_052804_45ad81",
+        "supervisor_status": {
+          "status": "RUNNING",
+          "stage": "evaluation",
+          "jobs": [
+            {
+              "model": "llama3b",
+              "dataset": "geosignal_5k",
+              "gpu": 0,
+              "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__geosignal_5k",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "status": "ACTIVE",
+              "continuation": null,
+              "existing_pid": 32225,
+              "predictions_complete": 2813,
+              "original_failure": null,
+              "continuation_failure": null,
+              "quality_latest": {
+                "status": "PASS",
+                "window_start": 2700,
+                "n": 100,
+                "tlm": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "source": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "excess_rate_threshold": 0.05,
+                "alerts": [],
+                "dominant_answer": {
+                  "tlm_count": 1,
+                  "source_count": 0,
+                  "text": "i don't have information about the m 6.7 - 237 km wsw of adak, alaska's magnitude.",
+                  "share_threshold": 0.5,
+                  "excess_rate_threshold": 0.1
+                }
+              },
+              "quality_alert_seen": false
+            },
+            {
+              "model": "llama3b",
+              "dataset": "dolly_5k",
+              "gpu": 1,
+              "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "status": "ACTIVE",
+              "continuation": {
+                "pid": 35237,
+                "log": "/data/chuwenjing/results/tlm_eval_complete_v6/run_20261026_052804_45ad81/llama3b__dolly_5k.log"
+              },
+              "existing_pid": 35237,
+              "predictions_complete": 1357,
+              "original_failure": null,
+              "continuation_failure": null,
+              "quality_latest": {
+                "status": "ALERT",
+                "window_start": 1200,
+                "n": 100,
+                "tlm": {
+                  "empty": 0,
+                  "repetition": 11
+                },
+                "source": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "excess_rate_threshold": 0.05,
+                "alerts": [
+                  "repetition"
+                ],
+                "dominant_answer": {
+                  "tlm_count": 8,
+                  "source_count": 0,
+                  "text": "### response:",
+                  "share_threshold": 0.5,
+                  "excess_rate_threshold": 0.1
+                }
+              },
+              "quality_alert_seen": true
+            },
+            {
+              "model": "llama3b",
+              "dataset": "gsm8k_5k",
+              "gpu": 2,
+              "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__gsm8k_5k",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "status": "ACTIVE",
+              "continuation": null,
+              "existing_pid": 32229,
+              "predictions_complete": 1821,
+              "original_failure": null,
+              "continuation_failure": null,
+              "quality_latest": {
+                "status": "PASS",
+                "window_start": 1700,
+                "n": 100,
+                "tlm": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "source": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "excess_rate_threshold": 0.05,
+                "alerts": [],
+                "dominant_answer": {
+                  "tlm_count": 12,
+                  "source_count": 0,
+                  "text": "let's think step by step.",
+                  "share_threshold": 0.5,
+                  "excess_rate_threshold": 0.1
+                }
+              },
+              "quality_alert_seen": false
+            },
+            {
+              "model": "qwen3b",
+              "dataset": "geosignal_5k",
+              "gpu": 3,
+              "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__geosignal_5k",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "status": "ACTIVE",
+              "continuation": null,
+              "existing_pid": 32228,
+              "predictions_complete": 2291,
+              "original_failure": null,
+              "continuation_failure": null,
+              "quality_latest": {
+                "status": "PASS",
+                "window_start": 2100,
+                "n": 100,
+                "tlm": {
+                  "empty": 0,
+                  "repetition": 3
+                },
+                "source": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "excess_rate_threshold": 0.05,
+                "alerts": [],
+                "dominant_answer": {
+                  "tlm_count": 1,
+                  "source_count": 0,
+                  "text": "sure, please provide the input.",
+                  "share_threshold": 0.5,
+                  "excess_rate_threshold": 0.1
+                }
+              },
+              "quality_alert_seen": false
+            },
+            {
+              "model": "qwen3b",
+              "dataset": "dolly_5k",
+              "gpu": 6,
+              "run": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "status": "ACTIVE",
+              "continuation": {
+                "pid": 35238,
+                "log": "/data/chuwenjing/results/tlm_eval_complete_v6/run_20261026_052804_45ad81/qwen3b__dolly_5k.log"
+              },
+              "existing_pid": 35238,
+              "predictions_complete": 737,
+              "original_failure": null,
+              "continuation_failure": null,
+              "quality_latest": {
+                "status": "ALERT",
+                "window_start": 600,
+                "n": 100,
+                "tlm": {
+                  "empty": 20,
+                  "repetition": 6
+                },
+                "source": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "excess_rate_threshold": 0.05,
+                "alerts": [
+                  "empty",
+                  "repetition"
+                ],
+                "dominant_answer": {
+                  "tlm_count": 1,
+                  "source_count": 0,
+                  "text": "#### response: finland and sweden joined nato in 2023. - finland officially joined nato on april 4, 2023. - sweden's membership process is still ongoing as of the latest informatio",
+                  "share_threshold": 0.5,
+                  "excess_rate_threshold": 0.1
+                }
+              },
+              "quality_alert_seen": true
+            },
+            {
+              "model": "qwen3b",
+              "dataset": "gsm8k_5k",
+              "gpu": 5,
+              "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__gsm8k_5k",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "status": "ACTIVE",
+              "continuation": null,
+              "existing_pid": 32227,
+              "predictions_complete": 910,
+              "original_failure": null,
+              "continuation_failure": null,
+              "quality_latest": {
+                "status": "PASS",
+                "window_start": 800,
+                "n": 100,
+                "tlm": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "source": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "excess_rate_threshold": 0.05,
+                "alerts": [],
+                "dominant_answer": {
+                  "tlm_count": 1,
+                  "source_count": 0,
+                  "text": "sure, let's break this down step by step. 1. **determine the number of boys and girls:** - there are 200 grade 5 students in total. - \\( \\frac{2}{5} \\) of the students are boys. - ",
+                  "share_threshold": 0.5,
+                  "excess_rate_threshold": 0.1
+                }
+              },
+              "quality_alert_seen": false
+            }
+          ],
+          "quality_policy": "record_and_continue",
+          "training_performed": false,
+          "completion_does_not_imply_quality_pass": true,
+          "time": 1793004703.7539942
+        }
+      },
+      {
+        "model": "llama3b",
+        "dataset": "geosignal_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__geosignal_5k",
+        "run_manifest.json": {
+          "status": "RUNNING",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "llama3b",
+            "dataset": "geosignal_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "9c55d4253c11556b7b658da061d61f829d74b55232b405568633a4ae34bdf021",
+            "count": 5000,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "d2f3a1b0e2f9310274a07342eb619cc238047066564ae4c71d174b49163f0e49"
+          },
+          "stage": "evaluation"
+        },
+        "quality_latest.json": {
+          "status": "PASS",
+          "window_start": 2700,
+          "n": 100,
+          "tlm": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "source": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "excess_rate_threshold": 0.05,
+          "alerts": [],
+          "dominant_answer": {
+            "tlm_count": 1,
+            "source_count": 0,
+            "text": "i don't have information about the m 6.7 - 237 km wsw of adak, alaska's magnitude.",
+            "share_threshold": 0.5,
+            "excess_rate_threshold": 0.1
+          }
+        },
+        "prediction_count": 2813
+      },
+      {
+        "model": "llama3b",
+        "dataset": "dolly_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k",
+        "run_manifest.json": {
+          "status": "RUNNING",
+          "stage": "evaluation",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "llama3b",
+            "dataset": "dolly_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "1267654773a17e9843faaca78aaf69ed422922ea8bf3e3a0374a6834148a83f8",
+            "count": 5000,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "6def3df40633cb9e82363a64153597924cfbb844710467f225d267d4f2292160"
+          },
+          "evaluation_policy": "record_quality_alerts_continue",
+          "resume_audit": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k/evaluation_resume_20261026_053006"
+        },
+        "evaluation_policy.json": {
+          "quality_alerts": "record_and_continue",
+          "all_predictions_retained": true,
+          "training_unchanged": true,
+          "audit": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k/evaluation_resume_20261026_053006",
+          "requested_at": "2026-10-26 user requested paper reproduction and full six-group evaluation"
+        },
+        "quality_latest.json": {
+          "status": "ALERT",
+          "window_start": 1200,
+          "n": 100,
+          "tlm": {
+            "empty": 0,
+            "repetition": 11
+          },
+          "source": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "excess_rate_threshold": 0.05,
+          "alerts": [
+            "repetition"
+          ],
+          "dominant_answer": {
+            "tlm_count": 8,
+            "source_count": 0,
+            "text": "### response:",
+            "share_threshold": 0.5,
+            "excess_rate_threshold": 0.1
+          }
+        },
+        "prediction_count": 1357,
+        "resume_verification": {
+          "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+          "evaluation_driver_sha256": "bb8abbebd9d32428122f4667efd061b580340cd0e0c44ac4abbb4994a3cd64cf",
+          "policy": "Record quality alerts and evaluate every input; user requested original reproduction without tuning",
+          "optimizer_steps": 0,
+          "training_performed": false,
+          "final_adapter_sha256": "a97f2946f187221a245ddff108755a9b5f4da62b7e19cfc8bf7ff79824da5cb6",
+          "saved_prefix_rows": 100,
+          "saved_prefix_sha256": "99d009610fc91d95cb8155502e78981c8845d0338cbc16a86321935ca8492b7e",
+          "incomplete_tail_bytes_preserved": 0,
+          "replay": [
+            {
+              "source_index": 0,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 99,
+              "generated_ids_exact": true
+            }
+          ],
+          "decoder_autocast_values": [
+            false
+          ]
+        },
+        "continuation_log_tail": "\", \"completed\": 800, \"total\": 5000, \"seconds\": 6507.493968427181}\n{\"phase\": \"evaluation\", \"completed\": 825, \"total\": 5000, \"seconds\": 6783.100842013955}\n{\"phase\": \"evaluation\", \"completed\": 850, \"total\": 5000, \"seconds\": 7013.262745320797}\n{\"phase\": \"evaluation\", \"completed\": 875, \"total\": 5000, \"seconds\": 7171.181869789958}\n{\"phase\": \"evaluation\", \"completed\": 900, \"total\": 5000, \"seconds\": 7343.441078692675}\n{\"phase\": \"evaluation\", \"completed\": 925, \"total\": 5000, \"seconds\": 7612.03152744472}\n{\"phase\": \"evaluation\", \"completed\": 950, \"total\": 5000, \"seconds\": 7892.727190792561}\n{\"phase\": \"evaluation\", \"completed\": 975, \"total\": 5000, \"seconds\": 8230.511071711779}\n{\"phase\": \"evaluation\", \"completed\": 1000, \"total\": 5000, \"seconds\": 8423.408615484834}\n{\"phase\": \"evaluation\", \"completed\": 1025, \"total\": 5000, \"seconds\": 8731.562011241913}\n{\"phase\": \"evaluation\", \"completed\": 1050, \"total\": 5000, \"seconds\": 8977.57964386046}\n{\"phase\": \"evaluation\", \"completed\": 1075, \"total\": 5000, \"seconds\": 9147.114831864834}\n{\"phase\": \"evaluation\", \"completed\": 1100, \"total\": 5000, \"seconds\": 9421.304180175066}\n{\"phase\": \"evaluation\", \"completed\": 1125, \"total\": 5000, \"seconds\": 9565.232549905777}\n{\"phase\": \"evaluation\", \"completed\": 1150, \"total\": 5000, \"seconds\": 9780.570112720132}\n{\"phase\": \"evaluation\", \"completed\": 1175, \"total\": 5000, \"seconds\": 10059.182684570551}\n{\"phase\": \"evaluation\", \"completed\": 1200, \"total\": 5000, \"seconds\": 10254.355963692069}\n{\"phase\": \"evaluation\", \"completed\": 1225, \"total\": 5000, \"seconds\": 10517.191231399775}\n{\"phase\": \"evaluation\", \"completed\": 1250, \"total\": 5000, \"seconds\": 10890.981327012181}\n{\"phase\": \"evaluation\", \"completed\": 1275, \"total\": 5000, \"seconds\": 11198.82016134262}\n{\"phase\": \"evaluation\", \"completed\": 1300, \"total\": 5000, \"seconds\": 11482.106890842319}\n{\"phase\": \"evaluation\", \"completed\": 1325, \"total\": 5000, \"seconds\": 11792.972008362412}\n{\"phase\": \"evaluation\", \"completed\": 1350, \"total\": 5000, \"seconds\": 12031.343853607774}\n"
+      },
+      {
+        "model": "llama3b",
+        "dataset": "gsm8k_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__gsm8k_5k",
+        "run_manifest.json": {
+          "status": "RUNNING",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "llama3b",
+            "dataset": "gsm8k_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "40df0e26530dfcd44acffe93d94ae8a8193187f05e0f6070350efe8594a70f93",
+            "count": 5000,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "580e9a31a80a8573915ab54175f63f0c4acbf17bc1bd12c8276b0ed61b9cf4e0"
+          },
+          "stage": "evaluation"
+        },
+        "quality_latest.json": {
+          "status": "PASS",
+          "window_start": 1700,
+          "n": 100,
+          "tlm": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "source": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "excess_rate_threshold": 0.05,
+          "alerts": [],
+          "dominant_answer": {
+            "tlm_count": 12,
+            "source_count": 0,
+            "text": "let's think step by step.",
+            "share_threshold": 0.5,
+            "excess_rate_threshold": 0.1
+          }
+        },
+        "prediction_count": 1821
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "geosignal_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__geosignal_5k",
+        "run_manifest.json": {
+          "status": "RUNNING",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "qwen3b",
+            "dataset": "geosignal_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "9c55d4253c11556b7b658da061d61f829d74b55232b405568633a4ae34bdf021",
+            "count": 5000,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "b519f124736419e5d4de0165a8e389a2e94c64e7743a22f186afec8af95eb548"
+          },
+          "stage": "evaluation"
+        },
+        "quality_latest.json": {
+          "status": "PASS",
+          "window_start": 2100,
+          "n": 100,
+          "tlm": {
+            "empty": 0,
+            "repetition": 3
+          },
+          "source": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "excess_rate_threshold": 0.05,
+          "alerts": [],
+          "dominant_answer": {
+            "tlm_count": 1,
+            "source_count": 0,
+            "text": "sure, please provide the input.",
+            "share_threshold": 0.5,
+            "excess_rate_threshold": 0.1
+          }
+        },
+        "prediction_count": 2291
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "dolly_5k",
+        "run": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k",
+        "run_manifest.json": {
+          "status": "RUNNING",
+          "stage": "evaluation",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "qwen3b",
+            "dataset": "dolly_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "1267654773a17e9843faaca78aaf69ed422922ea8bf3e3a0374a6834148a83f8",
+            "count": 5000,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "021ceb35178ceb1d0c1f5bec5f17286e4c39e7be1f78e71c96f75ed537ca8689"
+          },
+          "evaluation_policy": "record_quality_alerts_continue",
+          "resume_audit": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k/evaluation_resume_20261026_053016"
+        },
+        "evaluation_policy.json": {
+          "quality_alerts": "record_and_continue",
+          "all_predictions_retained": true,
+          "training_unchanged": true,
+          "audit": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k/evaluation_resume_20261026_053016",
+          "requested_at": "2026-10-26 user requested paper reproduction and full six-group evaluation"
+        },
+        "quality_latest.json": {
+          "status": "ALERT",
+          "window_start": 600,
+          "n": 100,
+          "tlm": {
+            "empty": 20,
+            "repetition": 6
+          },
+          "source": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "excess_rate_threshold": 0.05,
+          "alerts": [
+            "empty",
+            "repetition"
+          ],
+          "dominant_answer": {
+            "tlm_count": 1,
+            "source_count": 0,
+            "text": "#### response: finland and sweden joined nato in 2023. - finland officially joined nato on april 4, 2023. - sweden's membership process is still ongoing as of the latest informatio",
+            "share_threshold": 0.5,
+            "excess_rate_threshold": 0.1
+          }
+        },
+        "prediction_count": 737,
+        "resume_verification": {
+          "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+          "evaluation_driver_sha256": "bb8abbebd9d32428122f4667efd061b580340cd0e0c44ac4abbb4994a3cd64cf",
+          "policy": "Record quality alerts and evaluate every input; user requested original reproduction without tuning",
+          "optimizer_steps": 0,
+          "training_performed": false,
+          "final_adapter_sha256": "6b21cafb589aee8195c93032356c3b725cc2b28bfbc4b1264a87ce744a864918",
+          "saved_prefix_rows": 100,
+          "saved_prefix_sha256": "1d1168eeae064e3a33915562ef26d676406b36f02b90187717173b01a37e6eaa",
+          "incomplete_tail_bytes_preserved": 0,
+          "replay": [
+            {
+              "source_index": 0,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 99,
+              "generated_ids_exact": true
+            }
+          ],
+          "decoder_autocast_values": [
+            false
+          ]
+        },
+        "continuation_log_tail": ": \"evaluation\", \"completed\": 175, \"total\": 5000, \"seconds\": 1239.806008309126}\n{\"phase\": \"evaluation\", \"completed\": 200, \"total\": 5000, \"seconds\": 1544.6114338189363}\n{\"phase\": \"evaluation\", \"completed\": 225, \"total\": 5000, \"seconds\": 2110.1064787060022}\n{\"phase\": \"evaluation\", \"completed\": 250, \"total\": 5000, \"seconds\": 2649.715982839465}\n{\"phase\": \"evaluation\", \"completed\": 275, \"total\": 5000, \"seconds\": 3175.964223012328}\n{\"phase\": \"evaluation\", \"completed\": 300, \"total\": 5000, \"seconds\": 3649.1953582167625}\n{\"phase\": \"evaluation\", \"completed\": 325, \"total\": 5000, \"seconds\": 4107.102463513613}\n{\"phase\": \"evaluation\", \"completed\": 350, \"total\": 5000, \"seconds\": 4505.946643412113}\n{\"phase\": \"evaluation\", \"completed\": 375, \"total\": 5000, \"seconds\": 4992.142301410437}\n{\"phase\": \"evaluation\", \"completed\": 400, \"total\": 5000, \"seconds\": 5608.984021738172}\n{\"phase\": \"evaluation\", \"completed\": 425, \"total\": 5000, \"seconds\": 6008.0989722162485}\n{\"phase\": \"evaluation\", \"completed\": 450, \"total\": 5000, \"seconds\": 6464.037511155009}\n{\"phase\": \"evaluation\", \"completed\": 475, \"total\": 5000, \"seconds\": 6987.572163879871}\n{\"phase\": \"evaluation\", \"completed\": 500, \"total\": 5000, \"seconds\": 7356.422556489706}\n{\"phase\": \"evaluation\", \"completed\": 525, \"total\": 5000, \"seconds\": 8035.486230656505}\n{\"phase\": \"evaluation\", \"completed\": 550, \"total\": 5000, \"seconds\": 8505.865692228079}\n{\"phase\": \"evaluation\", \"completed\": 575, \"total\": 5000, \"seconds\": 8903.710667848587}\n{\"phase\": \"evaluation\", \"completed\": 600, \"total\": 5000, \"seconds\": 9537.925419613719}\n{\"phase\": \"evaluation\", \"completed\": 625, \"total\": 5000, \"seconds\": 9917.763774648309}\n{\"phase\": \"evaluation\", \"completed\": 650, \"total\": 5000, \"seconds\": 10379.902405649424}\n{\"phase\": \"evaluation\", \"completed\": 675, \"total\": 5000, \"seconds\": 10879.589112356305}\n{\"phase\": \"evaluation\", \"completed\": 700, \"total\": 5000, \"seconds\": 11266.59542696178}\n{\"phase\": \"evaluation\", \"completed\": 725, \"total\": 5000, \"seconds\": 11829.985016778111}\n"
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "gsm8k_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__gsm8k_5k",
+        "run_manifest.json": {
+          "status": "RUNNING",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "qwen3b",
+            "dataset": "gsm8k_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "40df0e26530dfcd44acffe93d94ae8a8193187f05e0f6070350efe8594a70f93",
+            "count": 5000,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "45c6f4d662b50eaa8bbee9d52ffcd665a26e5f5985849598410042910e1b7bf5"
+          },
+          "stage": "evaluation"
+        },
+        "quality_latest.json": {
+          "status": "PASS",
+          "window_start": 800,
+          "n": 100,
+          "tlm": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "source": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "excess_rate_threshold": 0.05,
+          "alerts": [],
+          "dominant_answer": {
+            "tlm_count": 1,
+            "source_count": 0,
+            "text": "sure, let's break this down step by step. 1. **determine the number of boys and girls:** - there are 200 grade 5 students in total. - \\( \\frac{2}{5} \\) of the students are boys. - ",
+            "share_threshold": 0.5,
+            "excess_rate_threshold": 0.1
+          }
+        },
+        "prediction_count": 911
+      },
+      {
+        "gpu": "0, 9585, 25\n1, 7681, 25\n2, 7891, 25\n3, 9771, 18\n4, 1, 0\n5, 7759, 22\n6, 7329, 18\n7, 1, 0\n"
+      }
+    ],
+    "exit_status": 0
+  },
+  "deployment": {
+    "cohort_root": "/data/chuwenjing/results/tlm_eval_complete_v6/run_20261026_052804_45ad81",
+    "jobs_file": "/data/chuwenjing/results/tlm_eval_complete_v6/run_20261026_052804_45ad81.jobs.json",
+    "jobs": [
+      {
+        "model": "llama3b",
+        "dataset": "geosignal_5k",
+        "gpu": 0,
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__geosignal_5k",
+        "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5"
+      },
+      {
+        "model": "llama3b",
+        "dataset": "dolly_5k",
+        "gpu": 1,
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k",
+        "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5"
+      },
+      {
+        "model": "llama3b",
+        "dataset": "gsm8k_5k",
+        "gpu": 2,
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__gsm8k_5k",
+        "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5"
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "geosignal_5k",
+        "gpu": 3,
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__geosignal_5k",
+        "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5"
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "dolly_5k",
+        "gpu": 6,
+        "run": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k",
+        "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5"
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "gsm8k_5k",
+        "gpu": 5,
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__gsm8k_5k",
+        "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5"
+      }
+    ],
+    "supervisor_pid": 35230,
+    "evaluation_driver": "/data/chuwenjing/tta_offline/tlm_evaluate_all_3528090c41f1",
+    "driver_hashes": {
+      "continue_evaluation.py": "bb8abbebd9d32428122f4667efd061b580340cd0e0c44ac4abbb4994a3cd64cf",
+      "README.md": "62492a801a44a18c2dcac3e3d1e18b4618cc511b8fefb05daae5ad23d8b3205f",
+      "supervisor.py": "ccec516115f4afa4846d88a6137b8d0d1023027431b0d45283bf0316113deb9f",
+      "tests/test_evaluation.py": "5367ff38d04a70f8490ca529467568e972793eca6d68faf31d20a26f4ae61243",
+      "SHA256SUMS": "a92bba90ef3bd3d7295aa9686712cd5cb049d02074a16e3371abf04e633f7dc8"
+    },
+    "training_code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+    "server_tests": "6 PASS",
+    "quality_policy": "record_and_continue",
+    "training_performed": false,
+    "started_at": 1792992484.055417
+  }
+}

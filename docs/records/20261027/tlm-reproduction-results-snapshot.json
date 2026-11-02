@@ -1,0 +1,3084 @@
+{
+  "main": {
+    "read_only": true,
+    "checks": [
+      {
+        "time_utc": "2026-10-27T13:24:06.185298+00:00",
+        "cohort_root": "/data/chuwenjing/results/tlm_eval_complete_v6/run_20261026_052804_45ad81",
+        "supervisor_status": {
+          "status": "RUNNING",
+          "stage": "evaluation",
+          "jobs": [
+            {
+              "model": "llama3b",
+              "dataset": "geosignal_5k",
+              "gpu": 0,
+              "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__geosignal_5k",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "status": "COMPLETE",
+              "continuation": null,
+              "existing_pid": null,
+              "predictions_complete": 5000,
+              "original_failure": null,
+              "continuation_failure": null,
+              "quality_latest": {
+                "status": "PASS",
+                "window_start": 4900,
+                "n": 100,
+                "tlm": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "source": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "excess_rate_threshold": 0.05,
+                "alerts": [],
+                "dominant_answer": {
+                  "tlm_count": 2,
+                  "source_count": 1,
+                  "text": "a",
+                  "share_threshold": 0.5,
+                  "excess_rate_threshold": 0.1
+                }
+              },
+              "quality_alert_seen": false
+            },
+            {
+              "model": "llama3b",
+              "dataset": "dolly_5k",
+              "gpu": 1,
+              "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "status": "COMPLETE",
+              "continuation": {
+                "pid": 35237,
+                "log": "/data/chuwenjing/results/tlm_eval_complete_v6/run_20261026_052804_45ad81/llama3b__dolly_5k.log"
+              },
+              "existing_pid": null,
+              "predictions_complete": 5000,
+              "original_failure": null,
+              "continuation_failure": null,
+              "quality_latest": {
+                "status": "PASS",
+                "window_start": 4900,
+                "n": 100,
+                "tlm": {
+                  "empty": 0,
+                  "repetition": 6
+                },
+                "source": {
+                  "empty": 0,
+                  "repetition": 1
+                },
+                "excess_rate_threshold": 0.05,
+                "alerts": [],
+                "dominant_answer": {
+                  "tlm_count": 4,
+                  "source_count": 0,
+                  "text": "### response:",
+                  "share_threshold": 0.5,
+                  "excess_rate_threshold": 0.1
+                }
+              },
+              "quality_alert_seen": true
+            },
+            {
+              "model": "llama3b",
+              "dataset": "gsm8k_5k",
+              "gpu": 2,
+              "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__gsm8k_5k",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "status": "COMPLETE",
+              "continuation": null,
+              "existing_pid": null,
+              "predictions_complete": 5000,
+              "original_failure": null,
+              "continuation_failure": null,
+              "quality_latest": {
+                "status": "PASS",
+                "window_start": 4900,
+                "n": 100,
+                "tlm": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "source": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "excess_rate_threshold": 0.05,
+                "alerts": [],
+                "dominant_answer": {
+                  "tlm_count": 5,
+                  "source_count": 0,
+                  "text": "let's think step by step.",
+                  "share_threshold": 0.5,
+                  "excess_rate_threshold": 0.1
+                }
+              },
+              "quality_alert_seen": false
+            },
+            {
+              "model": "qwen3b",
+              "dataset": "geosignal_5k",
+              "gpu": 3,
+              "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__geosignal_5k",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "status": "COMPLETE",
+              "continuation": {
+                "pid": 5147,
+                "log": "/data/chuwenjing/results/tlm_eval_complete_v6/run_20261026_052804_45ad81/qwen3b__geosignal_5k.log"
+              },
+              "existing_pid": null,
+              "predictions_complete": 5000,
+              "original_failure": null,
+              "continuation_failure": null,
+              "quality_latest": {
+                "status": "PASS",
+                "window_start": 4900,
+                "n": 100,
+                "tlm": {
+                  "empty": 0,
+                  "repetition": 3
+                },
+                "source": {
+                  "empty": 0,
+                  "repetition": 1
+                },
+                "excess_rate_threshold": 0.05,
+                "alerts": [],
+                "dominant_answer": {
+                  "tlm_count": 3,
+                  "source_count": 2,
+                  "text": "b",
+                  "share_threshold": 0.5,
+                  "excess_rate_threshold": 0.1
+                }
+              },
+              "quality_alert_seen": true
+            },
+            {
+              "model": "qwen3b",
+              "dataset": "dolly_5k",
+              "gpu": 6,
+              "run": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "status": "COMPLETE",
+              "continuation": {
+                "pid": 35238,
+                "log": "/data/chuwenjing/results/tlm_eval_complete_v6/run_20261026_052804_45ad81/qwen3b__dolly_5k.log"
+              },
+              "existing_pid": null,
+              "predictions_complete": 5000,
+              "original_failure": null,
+              "continuation_failure": null,
+              "quality_latest": {
+                "status": "ALERT",
+                "window_start": 4900,
+                "n": 100,
+                "tlm": {
+                  "empty": 10,
+                  "repetition": 8
+                },
+                "source": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "excess_rate_threshold": 0.05,
+                "alerts": [
+                  "empty",
+                  "repetition"
+                ],
+                "dominant_answer": {
+                  "tlm_count": 1,
+                  "source_count": 0,
+                  "text": "input: #### response: anandapuram mandal is a mandal in the visakhapatnam district of the indian state of andhra pradesh. it is under the administration of visakhapatnam revenue di",
+                  "share_threshold": 0.5,
+                  "excess_rate_threshold": 0.1
+                }
+              },
+              "quality_alert_seen": true
+            },
+            {
+              "model": "qwen3b",
+              "dataset": "gsm8k_5k",
+              "gpu": 5,
+              "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__gsm8k_5k",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "status": "ACTIVE",
+              "continuation": null,
+              "existing_pid": 32227,
+              "predictions_complete": 4725,
+              "original_failure": null,
+              "continuation_failure": null,
+              "quality_latest": {
+                "status": "PASS",
+                "window_start": 4600,
+                "n": 100,
+                "tlm": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "source": {
+                  "empty": 0,
+                  "repetition": 0
+                },
+                "excess_rate_threshold": 0.05,
+                "alerts": [],
+                "dominant_answer": {
+                  "tlm_count": 1,
+                  "source_count": 0,
+                  "text": "certainly! let's break down the costs for both offers and then find the difference. ### step 1: calculate the total cost for furniture united's offer - advance payment: $1,350 - mo",
+                  "share_threshold": 0.5,
+                  "excess_rate_threshold": 0.1
+                }
+              },
+              "quality_alert_seen": false
+            }
+          ],
+          "quality_policy": "record_and_continue",
+          "training_performed": false,
+          "completion_does_not_imply_quality_pass": true,
+          "time": 1793107442.2641907
+        }
+      },
+      {
+        "model": "llama3b",
+        "dataset": "geosignal_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__geosignal_5k",
+        "run_manifest.json": {
+          "status": "PASS",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "llama3b",
+            "dataset": "geosignal_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "9c55d4253c11556b7b658da061d61f829d74b55232b405568633a4ae34bdf021",
+            "count": 5000,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "d2f3a1b0e2f9310274a07342eb619cc238047066564ae4c71d174b49163f0e49"
+          },
+          "stage": "complete",
+          "metrics": {
+            "n": 5000,
+            "metric": "rougeLsum",
+            "value_0_to_1": 0.2931859894090292,
+            "generated_tokens": 594552,
+            "hit_generation_limit_rate": 0.054,
+            "unique_answers": 4771,
+            "predictions_sha256": "71a0b7269573a0b2a3a5a7eb14451a1c29154050d4b3d95fa5b09ebc5ae8d77e"
+          },
+          "peak_allocated_mib": 8193.27685546875
+        },
+        "quality_latest.json": {
+          "status": "PASS",
+          "window_start": 4900,
+          "n": 100,
+          "tlm": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "source": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "excess_rate_threshold": 0.05,
+          "alerts": [],
+          "dominant_answer": {
+            "tlm_count": 2,
+            "source_count": 1,
+            "text": "a",
+            "share_threshold": 0.5,
+            "excess_rate_threshold": 0.1
+          }
+        },
+        "metrics.json": {
+          "n": 5000,
+          "metric": "rougeLsum",
+          "value_0_to_1": 0.2931859894090292,
+          "generated_tokens": 594552,
+          "hit_generation_limit_rate": 0.054,
+          "unique_answers": 4771,
+          "predictions_sha256": "71a0b7269573a0b2a3a5a7eb14451a1c29154050d4b3d95fa5b09ebc5ae8d77e"
+        },
+        "prediction_count": 5000
+      },
+      {
+        "model": "llama3b",
+        "dataset": "dolly_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k",
+        "run_manifest.json": {
+          "status": "PASS",
+          "stage": "complete",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "llama3b",
+            "dataset": "dolly_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "1267654773a17e9843faaca78aaf69ed422922ea8bf3e3a0374a6834148a83f8",
+            "count": 5000,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "6def3df40633cb9e82363a64153597924cfbb844710467f225d267d4f2292160"
+          },
+          "metrics": {
+            "n": 5000,
+            "metric": "rougeLsum",
+            "value_0_to_1": 0.24070134864742418,
+            "generated_tokens": 615846,
+            "hit_generation_limit_rate": 0.09,
+            "unique_answers": 4606,
+            "predictions_sha256": "d7d4ff47bfe1c5dbabcea05bfe732a461414602a62031d8383154ce22d721a97"
+          },
+          "evaluation_policy": "record_quality_alerts_continue",
+          "quality_alert_windows": 39,
+          "quality_healthy": false
+        },
+        "evaluation_policy.json": {
+          "quality_alerts": "record_and_continue",
+          "all_predictions_retained": true,
+          "training_unchanged": true,
+          "audit": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k/evaluation_resume_20261026_053006",
+          "requested_at": "2026-10-26 user requested paper reproduction and full six-group evaluation"
+        },
+        "quality_latest.json": {
+          "status": "PASS",
+          "window_start": 4900,
+          "n": 100,
+          "tlm": {
+            "empty": 0,
+            "repetition": 6
+          },
+          "source": {
+            "empty": 0,
+            "repetition": 1
+          },
+          "excess_rate_threshold": 0.05,
+          "alerts": [],
+          "dominant_answer": {
+            "tlm_count": 4,
+            "source_count": 0,
+            "text": "### response:",
+            "share_threshold": 0.5,
+            "excess_rate_threshold": 0.1
+          }
+        },
+        "metrics.json": {
+          "n": 5000,
+          "metric": "rougeLsum",
+          "value_0_to_1": 0.24070134864742418,
+          "generated_tokens": 615846,
+          "hit_generation_limit_rate": 0.09,
+          "unique_answers": 4606,
+          "predictions_sha256": "d7d4ff47bfe1c5dbabcea05bfe732a461414602a62031d8383154ce22d721a97"
+        },
+        "prediction_count": 5000,
+        "resume_verification": {
+          "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+          "evaluation_driver_sha256": "bb8abbebd9d32428122f4667efd061b580340cd0e0c44ac4abbb4994a3cd64cf",
+          "policy": "Record quality alerts and evaluate every input; user requested original reproduction without tuning",
+          "optimizer_steps": 0,
+          "training_performed": false,
+          "final_adapter_sha256": "a97f2946f187221a245ddff108755a9b5f4da62b7e19cfc8bf7ff79824da5cb6",
+          "saved_prefix_rows": 100,
+          "saved_prefix_sha256": "99d009610fc91d95cb8155502e78981c8845d0338cbc16a86321935ca8492b7e",
+          "incomplete_tail_bytes_preserved": 0,
+          "replay": [
+            {
+              "source_index": 0,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 99,
+              "generated_ids_exact": true
+            }
+          ],
+          "decoder_autocast_values": [
+            false
+          ]
+        },
+        "continuation_log_tail": "leted\": 4450, \"total\": 5000, \"seconds\": 41511.74991670251}\n{\"phase\": \"evaluation\", \"completed\": 4475, \"total\": 5000, \"seconds\": 41764.41476178169}\n{\"phase\": \"evaluation\", \"completed\": 4500, \"total\": 5000, \"seconds\": 41928.99900199473}\n{\"phase\": \"evaluation\", \"completed\": 4525, \"total\": 5000, \"seconds\": 42173.207790121436}\n{\"phase\": \"evaluation\", \"completed\": 4550, \"total\": 5000, \"seconds\": 42377.84296528995}\n{\"phase\": \"evaluation\", \"completed\": 4575, \"total\": 5000, \"seconds\": 42567.91361485422}\n{\"phase\": \"evaluation\", \"completed\": 4600, \"total\": 5000, \"seconds\": 42868.37866182625}\n{\"phase\": \"evaluation\", \"completed\": 4625, \"total\": 5000, \"seconds\": 43090.91261716187}\n{\"phase\": \"evaluation\", \"completed\": 4650, \"total\": 5000, \"seconds\": 43520.80419455469}\n{\"phase\": \"evaluation\", \"completed\": 4675, \"total\": 5000, \"seconds\": 43823.094659373164}\n{\"phase\": \"evaluation\", \"completed\": 4700, \"total\": 5000, \"seconds\": 44026.08934557438}\n{\"phase\": \"evaluation\", \"completed\": 4725, \"total\": 5000, \"seconds\": 44353.884993970394}\n{\"phase\": \"evaluation\", \"completed\": 4750, \"total\": 5000, \"seconds\": 44568.9028647542}\n{\"phase\": \"evaluation\", \"completed\": 4775, \"total\": 5000, \"seconds\": 44909.80615332723}\n{\"phase\": \"evaluation\", \"completed\": 4800, \"total\": 5000, \"seconds\": 45088.77143031359}\n{\"phase\": \"evaluation\", \"completed\": 4825, \"total\": 5000, \"seconds\": 45306.329947680235}\n{\"phase\": \"evaluation\", \"completed\": 4850, \"total\": 5000, \"seconds\": 45520.17212024331}\n{\"phase\": \"evaluation\", \"completed\": 4875, \"total\": 5000, \"seconds\": 45763.36085443199}\n{\"phase\": \"evaluation\", \"completed\": 4900, \"total\": 5000, \"seconds\": 46065.14361742139}\n{\"phase\": \"evaluation\", \"completed\": 4925, \"total\": 5000, \"seconds\": 46382.22404880822}\n{\"phase\": \"evaluation\", \"completed\": 4950, \"total\": 5000, \"seconds\": 46560.887469664216}\n{\"phase\": \"evaluation\", \"completed\": 4975, \"total\": 5000, \"seconds\": 46742.18393678963}\n{\"phase\": \"evaluation\", \"completed\": 5000, \"total\": 5000, \"seconds\": 46927.097201019526}\n"
+      },
+      {
+        "model": "llama3b",
+        "dataset": "gsm8k_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__gsm8k_5k",
+        "run_manifest.json": {
+          "status": "PASS",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "llama3b",
+            "dataset": "gsm8k_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "40df0e26530dfcd44acffe93d94ae8a8193187f05e0f6070350efe8594a70f93",
+            "count": 5000,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "580e9a31a80a8573915ab54175f63f0c4acbf17bc1bd12c8276b0ed61b9cf4e0"
+          },
+          "stage": "complete",
+          "metrics": {
+            "n": 5000,
+            "metric": "exact_match",
+            "value_0_to_1": 0.7798,
+            "generated_tokens": 925237,
+            "hit_generation_limit_rate": 0.0064,
+            "unique_answers": 4651,
+            "predictions_sha256": "5287f9330deffe20dc4efe9b027779ddf9e5ee7d88e6c8de8ab20adc3e8e4025"
+          },
+          "peak_allocated_mib": 6577.07861328125
+        },
+        "quality_latest.json": {
+          "status": "PASS",
+          "window_start": 4900,
+          "n": 100,
+          "tlm": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "source": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "excess_rate_threshold": 0.05,
+          "alerts": [],
+          "dominant_answer": {
+            "tlm_count": 5,
+            "source_count": 0,
+            "text": "let's think step by step.",
+            "share_threshold": 0.5,
+            "excess_rate_threshold": 0.1
+          }
+        },
+        "metrics.json": {
+          "n": 5000,
+          "metric": "exact_match",
+          "value_0_to_1": 0.7798,
+          "generated_tokens": 925237,
+          "hit_generation_limit_rate": 0.0064,
+          "unique_answers": 4651,
+          "predictions_sha256": "5287f9330deffe20dc4efe9b027779ddf9e5ee7d88e6c8de8ab20adc3e8e4025"
+        },
+        "prediction_count": 5000
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "geosignal_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__geosignal_5k",
+        "run_manifest.json": {
+          "status": "PASS",
+          "stage": "complete",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "qwen3b",
+            "dataset": "geosignal_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "9c55d4253c11556b7b658da061d61f829d74b55232b405568633a4ae34bdf021",
+            "count": 5000,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "b519f124736419e5d4de0165a8e389a2e94c64e7743a22f186afec8af95eb548"
+          },
+          "metrics": {
+            "n": 5000,
+            "metric": "rougeLsum",
+            "value_0_to_1": 0.29640733712903217,
+            "generated_tokens": 537686,
+            "hit_generation_limit_rate": 0.0536,
+            "unique_answers": 4774,
+            "predictions_sha256": "4ca3a866978f11e5492b3c043f68872f1bfed6bae193be117c8413209f60c99a"
+          },
+          "evaluation_policy": "record_quality_alerts_continue",
+          "quality_alert_windows": 2,
+          "quality_healthy": false
+        },
+        "evaluation_policy.json": {
+          "quality_alerts": "record_and_continue",
+          "all_predictions_retained": true,
+          "training_unchanged": true,
+          "audit": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__geosignal_5k/evaluation_resume_20261026_144156",
+          "requested_at": "2026-10-26 user requested paper reproduction and full six-group evaluation"
+        },
+        "quality_latest.json": {
+          "status": "PASS",
+          "window_start": 4900,
+          "n": 100,
+          "tlm": {
+            "empty": 0,
+            "repetition": 3
+          },
+          "source": {
+            "empty": 0,
+            "repetition": 1
+          },
+          "excess_rate_threshold": 0.05,
+          "alerts": [],
+          "dominant_answer": {
+            "tlm_count": 3,
+            "source_count": 2,
+            "text": "b",
+            "share_threshold": 0.5,
+            "excess_rate_threshold": 0.1
+          }
+        },
+        "metrics.json": {
+          "n": 5000,
+          "metric": "rougeLsum",
+          "value_0_to_1": 0.29640733712903217,
+          "generated_tokens": 537686,
+          "hit_generation_limit_rate": 0.0536,
+          "unique_answers": 4774,
+          "predictions_sha256": "4ca3a866978f11e5492b3c043f68872f1bfed6bae193be117c8413209f60c99a"
+        },
+        "prediction_count": 5000,
+        "resume_verification": {
+          "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+          "evaluation_driver_sha256": "bb8abbebd9d32428122f4667efd061b580340cd0e0c44ac4abbb4994a3cd64cf",
+          "policy": "Record quality alerts and evaluate every input; user requested original reproduction without tuning",
+          "optimizer_steps": 0,
+          "training_performed": false,
+          "final_adapter_sha256": "bb78e8545d851b1db83dd245d50de3051a13cb4df142099fba577c4f20192712",
+          "saved_prefix_rows": 4200,
+          "saved_prefix_sha256": "6b6a2331211432ce758f764760690e1e1247fcf7fc0d1d8949886f9c2a3c9824",
+          "incomplete_tail_bytes_preserved": 0,
+          "replay": [
+            {
+              "source_index": 0,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 4199,
+              "generated_ids_exact": true
+            }
+          ],
+          "decoder_autocast_values": [
+            false
+          ]
+        },
+        "continuation_log_tail": "completed\": 4450, \"total\": 5000, \"seconds\": 2991.5252804607153}\n{\"phase\": \"evaluation\", \"completed\": 4475, \"total\": 5000, \"seconds\": 3272.154570579529}\n{\"phase\": \"evaluation\", \"completed\": 4500, \"total\": 5000, \"seconds\": 3537.853157684207}\n{\"phase\": \"evaluation\", \"completed\": 4525, \"total\": 5000, \"seconds\": 3710.7274450063705}\n{\"phase\": \"evaluation\", \"completed\": 4550, \"total\": 5000, \"seconds\": 4110.520658016205}\n{\"phase\": \"evaluation\", \"completed\": 4575, \"total\": 5000, \"seconds\": 4449.315748378634}\n{\"phase\": \"evaluation\", \"completed\": 4600, \"total\": 5000, \"seconds\": 4729.142461210489}\n{\"phase\": \"evaluation\", \"completed\": 4625, \"total\": 5000, \"seconds\": 5045.39331625402}\n{\"phase\": \"evaluation\", \"completed\": 4650, \"total\": 5000, \"seconds\": 5329.007911935449}\n{\"phase\": \"evaluation\", \"completed\": 4675, \"total\": 5000, \"seconds\": 5591.572245284915}\n{\"phase\": \"evaluation\", \"completed\": 4700, \"total\": 5000, \"seconds\": 5842.629750788212}\n{\"phase\": \"evaluation\", \"completed\": 4725, \"total\": 5000, \"seconds\": 6242.686252385378}\n{\"phase\": \"evaluation\", \"completed\": 4750, \"total\": 5000, \"seconds\": 6400.5275212824345}\n{\"phase\": \"evaluation\", \"completed\": 4775, \"total\": 5000, \"seconds\": 6674.797589763999}\n{\"phase\": \"evaluation\", \"completed\": 4800, \"total\": 5000, \"seconds\": 6909.132645428181}\n{\"phase\": \"evaluation\", \"completed\": 4825, \"total\": 5000, \"seconds\": 7093.412971526384}\n{\"phase\": \"evaluation\", \"completed\": 4850, \"total\": 5000, \"seconds\": 7371.699090346694}\n{\"phase\": \"evaluation\", \"completed\": 4875, \"total\": 5000, \"seconds\": 7690.481476247311}\n{\"phase\": \"evaluation\", \"completed\": 4900, \"total\": 5000, \"seconds\": 7946.840429499745}\n{\"phase\": \"evaluation\", \"completed\": 4925, \"total\": 5000, \"seconds\": 8200.179845929146}\n{\"phase\": \"evaluation\", \"completed\": 4950, \"total\": 5000, \"seconds\": 8460.86040405929}\n{\"phase\": \"evaluation\", \"completed\": 4975, \"total\": 5000, \"seconds\": 8676.803967058659}\n{\"phase\": \"evaluation\", \"completed\": 5000, \"total\": 5000, \"seconds\": 8910.633030176163}\n"
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "dolly_5k",
+        "run": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k",
+        "run_manifest.json": {
+          "status": "PASS",
+          "stage": "complete",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "qwen3b",
+            "dataset": "dolly_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "1267654773a17e9843faaca78aaf69ed422922ea8bf3e3a0374a6834148a83f8",
+            "count": 5000,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "021ceb35178ceb1d0c1f5bec5f17286e4c39e7be1f78e71c96f75ed537ca8689"
+          },
+          "metrics": {
+            "n": 5000,
+            "metric": "rougeLsum",
+            "value_0_to_1": 0.2568545232014724,
+            "generated_tokens": 925005,
+            "hit_generation_limit_rate": 0.111,
+            "unique_answers": 4445,
+            "predictions_sha256": "1eefda0e82960a6452441e8d6a53bf3bcec01231ed69cc3c4d3461cb2dbf6e93"
+          },
+          "evaluation_policy": "record_quality_alerts_continue",
+          "quality_alert_windows": 50,
+          "quality_healthy": false
+        },
+        "evaluation_policy.json": {
+          "quality_alerts": "record_and_continue",
+          "all_predictions_retained": true,
+          "training_unchanged": true,
+          "audit": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k/evaluation_resume_20261026_053016",
+          "requested_at": "2026-10-26 user requested paper reproduction and full six-group evaluation"
+        },
+        "quality_latest.json": {
+          "status": "ALERT",
+          "window_start": 4900,
+          "n": 100,
+          "tlm": {
+            "empty": 10,
+            "repetition": 8
+          },
+          "source": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "excess_rate_threshold": 0.05,
+          "alerts": [
+            "empty",
+            "repetition"
+          ],
+          "dominant_answer": {
+            "tlm_count": 1,
+            "source_count": 0,
+            "text": "input: #### response: anandapuram mandal is a mandal in the visakhapatnam district of the indian state of andhra pradesh. it is under the administration of visakhapatnam revenue di",
+            "share_threshold": 0.5,
+            "excess_rate_threshold": 0.1
+          }
+        },
+        "metrics.json": {
+          "n": 5000,
+          "metric": "rougeLsum",
+          "value_0_to_1": 0.2568545232014724,
+          "generated_tokens": 925005,
+          "hit_generation_limit_rate": 0.111,
+          "unique_answers": 4445,
+          "predictions_sha256": "1eefda0e82960a6452441e8d6a53bf3bcec01231ed69cc3c4d3461cb2dbf6e93"
+        },
+        "prediction_count": 5000,
+        "resume_verification": {
+          "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+          "evaluation_driver_sha256": "bb8abbebd9d32428122f4667efd061b580340cd0e0c44ac4abbb4994a3cd64cf",
+          "policy": "Record quality alerts and evaluate every input; user requested original reproduction without tuning",
+          "optimizer_steps": 0,
+          "training_performed": false,
+          "final_adapter_sha256": "6b21cafb589aee8195c93032356c3b725cc2b28bfbc4b1264a87ce744a864918",
+          "saved_prefix_rows": 100,
+          "saved_prefix_sha256": "1d1168eeae064e3a33915562ef26d676406b36f02b90187717173b01a37e6eaa",
+          "incomplete_tail_bytes_preserved": 0,
+          "replay": [
+            {
+              "source_index": 0,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 99,
+              "generated_ids_exact": true
+            }
+          ],
+          "decoder_autocast_values": [
+            false
+          ]
+        },
+        "continuation_log_tail": "\", \"completed\": 4450, \"total\": 5000, \"seconds\": 84602.50609572232}\n{\"phase\": \"evaluation\", \"completed\": 4475, \"total\": 5000, \"seconds\": 85153.62099602818}\n{\"phase\": \"evaluation\", \"completed\": 4500, \"total\": 5000, \"seconds\": 85720.94128453732}\n{\"phase\": \"evaluation\", \"completed\": 4525, \"total\": 5000, \"seconds\": 86285.51948316395}\n{\"phase\": \"evaluation\", \"completed\": 4550, \"total\": 5000, \"seconds\": 86713.94054825604}\n{\"phase\": \"evaluation\", \"completed\": 4575, \"total\": 5000, \"seconds\": 87198.92124380171}\n{\"phase\": \"evaluation\", \"completed\": 4600, \"total\": 5000, \"seconds\": 87578.3243021518}\n{\"phase\": \"evaluation\", \"completed\": 4625, \"total\": 5000, \"seconds\": 88108.55691701174}\n{\"phase\": \"evaluation\", \"completed\": 4650, \"total\": 5000, \"seconds\": 88629.46616372466}\n{\"phase\": \"evaluation\", \"completed\": 4675, \"total\": 5000, \"seconds\": 89161.34891940653}\n{\"phase\": \"evaluation\", \"completed\": 4700, \"total\": 5000, \"seconds\": 89661.92861485481}\n{\"phase\": \"evaluation\", \"completed\": 4725, \"total\": 5000, \"seconds\": 90437.61179940403}\n{\"phase\": \"evaluation\", \"completed\": 4750, \"total\": 5000, \"seconds\": 90877.31459337473}\n{\"phase\": \"evaluation\", \"completed\": 4775, \"total\": 5000, \"seconds\": 91387.9001763612}\n{\"phase\": \"evaluation\", \"completed\": 4800, \"total\": 5000, \"seconds\": 91755.22971180081}\n{\"phase\": \"evaluation\", \"completed\": 4825, \"total\": 5000, \"seconds\": 92142.60670502484}\n{\"phase\": \"evaluation\", \"completed\": 4850, \"total\": 5000, \"seconds\": 92510.21080717444}\n{\"phase\": \"evaluation\", \"completed\": 4875, \"total\": 5000, \"seconds\": 92972.9100793302}\n{\"phase\": \"evaluation\", \"completed\": 4900, \"total\": 5000, \"seconds\": 93420.88881798089}\n{\"phase\": \"evaluation\", \"completed\": 4925, \"total\": 5000, \"seconds\": 93889.62088315189}\n{\"phase\": \"evaluation\", \"completed\": 4950, \"total\": 5000, \"seconds\": 94270.30608557165}\n{\"phase\": \"evaluation\", \"completed\": 4975, \"total\": 5000, \"seconds\": 94753.98082774878}\n{\"phase\": \"evaluation\", \"completed\": 5000, \"total\": 5000, \"seconds\": 95161.53803832829}\n"
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "gsm8k_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__gsm8k_5k",
+        "run_manifest.json": {
+          "status": "RUNNING",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "qwen3b",
+            "dataset": "gsm8k_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "40df0e26530dfcd44acffe93d94ae8a8193187f05e0f6070350efe8594a70f93",
+            "count": 5000,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "45c6f4d662b50eaa8bbee9d52ffcd665a26e5f5985849598410042910e1b7bf5"
+          },
+          "stage": "evaluation"
+        },
+        "quality_latest.json": {
+          "status": "PASS",
+          "window_start": 4600,
+          "n": 100,
+          "tlm": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "source": {
+            "empty": 0,
+            "repetition": 0
+          },
+          "excess_rate_threshold": 0.05,
+          "alerts": [],
+          "dominant_answer": {
+            "tlm_count": 1,
+            "source_count": 0,
+            "text": "certainly! let's break down the costs for both offers and then find the difference. ### step 1: calculate the total cost for furniture united's offer - advance payment: $1,350 - mo",
+            "share_threshold": 0.5,
+            "excess_rate_threshold": 0.1
+          }
+        },
+        "prediction_count": 4725
+      },
+      {
+        "gpu": "0, 7163, 25\n1, 7161, 26\n2, 7161, 25\n3, 7161, 25\n4, 10305, 23\n5, 7759, 21\n6, 1, 0\n7, 1, 0\n"
+      }
+    ],
+    "exit_status": 0
+  },
+  "locations": {
+    "read_only": true,
+    "checks": [
+      {
+        "time_utc": "2026-10-27T13:26:09.838295+00:00",
+        "read_only": true,
+        "gpu_used": false
+      },
+      {
+        "kind": "main_location",
+        "model": "llama3b",
+        "dataset": "geosignal_5k",
+        "root": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__geosignal_5k",
+        "existing_files": {
+          "metrics.json": true,
+          "tlm.jsonl": true,
+          "training_complete.json": true,
+          "adaptation.json": true,
+          "input_tokens.json": true,
+          "model_contract.json": true,
+          "run_manifest.json": true,
+          "final_adapter/adapter_model.safetensors": true,
+          "trainer/checkpoint-5000/commit.json": true,
+          "source_reuse.json": true
+        },
+        "training": {
+          "n": 5000,
+          "seconds": 2583.297759488225,
+          "selected": 4267,
+          "global_step": 5000,
+          "frozen_base_unchanged": true,
+          "successful_optimizer_steps": 4996,
+          "skipped_optimizer_steps": 4,
+          "adapter_parameters_finite": true,
+          "optimizer_state_finite": true
+        },
+        "source_path": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/llama3b__geosignal_5k/source.jsonl",
+        "source_exists": true
+      },
+      {
+        "kind": "main_location",
+        "model": "llama3b",
+        "dataset": "dolly_5k",
+        "root": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k",
+        "existing_files": {
+          "metrics.json": true,
+          "tlm.jsonl": true,
+          "training_complete.json": true,
+          "adaptation.json": true,
+          "input_tokens.json": true,
+          "model_contract.json": true,
+          "run_manifest.json": true,
+          "final_adapter/adapter_model.safetensors": true,
+          "trainer/checkpoint-5000/commit.json": true,
+          "source_reuse.json": true
+        },
+        "training": {
+          "n": 5000,
+          "seconds": 2713.938829153776,
+          "selected": 3825,
+          "global_step": 5000,
+          "frozen_base_unchanged": true,
+          "successful_optimizer_steps": 4997,
+          "skipped_optimizer_steps": 3,
+          "adapter_parameters_finite": true,
+          "optimizer_state_finite": true
+        },
+        "source_path": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/llama3b__dolly_5k/source.jsonl",
+        "source_exists": true
+      },
+      {
+        "kind": "main_location",
+        "model": "llama3b",
+        "dataset": "gsm8k_5k",
+        "root": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__gsm8k_5k",
+        "existing_files": {
+          "metrics.json": true,
+          "tlm.jsonl": true,
+          "training_complete.json": true,
+          "adaptation.json": true,
+          "input_tokens.json": true,
+          "model_contract.json": true,
+          "run_manifest.json": true,
+          "final_adapter/adapter_model.safetensors": true,
+          "trainer/checkpoint-5000/commit.json": true,
+          "source_reuse.json": true
+        },
+        "training": {
+          "n": 5000,
+          "seconds": 2625.743323996663,
+          "selected": 2567,
+          "global_step": 5000,
+          "frozen_base_unchanged": true,
+          "successful_optimizer_steps": 5000,
+          "skipped_optimizer_steps": 0,
+          "adapter_parameters_finite": true,
+          "optimizer_state_finite": true
+        },
+        "source_path": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/llama3b__gsm8k_5k/source.jsonl",
+        "source_exists": true
+      },
+      {
+        "kind": "main_location",
+        "model": "qwen3b",
+        "dataset": "geosignal_5k",
+        "root": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__geosignal_5k",
+        "existing_files": {
+          "metrics.json": true,
+          "tlm.jsonl": true,
+          "training_complete.json": true,
+          "adaptation.json": true,
+          "input_tokens.json": true,
+          "model_contract.json": true,
+          "run_manifest.json": true,
+          "final_adapter/adapter_model.safetensors": true,
+          "trainer/checkpoint-5000/commit.json": true,
+          "source_reuse.json": true
+        },
+        "training": {
+          "n": 5000,
+          "seconds": 3599.845226973295,
+          "selected": 4502,
+          "global_step": 5000,
+          "frozen_base_unchanged": true,
+          "successful_optimizer_steps": 4994,
+          "skipped_optimizer_steps": 6,
+          "adapter_parameters_finite": true,
+          "optimizer_state_finite": true
+        },
+        "source_path": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/qwen3b__geosignal_5k/source.jsonl",
+        "source_exists": true
+      },
+      {
+        "kind": "main_location",
+        "model": "qwen3b",
+        "dataset": "dolly_5k",
+        "root": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k",
+        "existing_files": {
+          "metrics.json": true,
+          "tlm.jsonl": true,
+          "training_complete.json": true,
+          "adaptation.json": true,
+          "input_tokens.json": true,
+          "model_contract.json": true,
+          "run_manifest.json": true,
+          "final_adapter/adapter_model.safetensors": true,
+          "trainer/checkpoint-5000/commit.json": true,
+          "source_reuse.json": true
+        },
+        "training": {
+          "n": 5000,
+          "seconds": 3547.278118774295,
+          "selected": 3998,
+          "global_step": 5000,
+          "frozen_base_unchanged": true,
+          "successful_optimizer_steps": 4995,
+          "skipped_optimizer_steps": 5,
+          "adapter_parameters_finite": true,
+          "optimizer_state_finite": true
+        },
+        "source_path": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/qwen3b__dolly_5k/source.jsonl",
+        "source_exists": true
+      },
+      {
+        "kind": "main_location",
+        "model": "qwen3b",
+        "dataset": "gsm8k_5k",
+        "root": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__gsm8k_5k",
+        "existing_files": {
+          "metrics.json": false,
+          "tlm.jsonl": true,
+          "training_complete.json": true,
+          "adaptation.json": true,
+          "input_tokens.json": true,
+          "model_contract.json": true,
+          "run_manifest.json": true,
+          "final_adapter/adapter_model.safetensors": true,
+          "trainer/checkpoint-5000/commit.json": true,
+          "source_reuse.json": true
+        },
+        "training": {
+          "n": 5000,
+          "seconds": 3588.018936216831,
+          "selected": 2569,
+          "global_step": 5000,
+          "frozen_base_unchanged": true,
+          "successful_optimizer_steps": 4997,
+          "skipped_optimizer_steps": 3,
+          "adapter_parameters_finite": true,
+          "optimizer_state_finite": true
+        },
+        "source_path": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/qwen3b__gsm8k_5k/source.jsonl",
+        "source_exists": true
+      },
+      {
+        "kind": "tent_location",
+        "root": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/llama3b__dolly_5k",
+        "model": "llama3b",
+        "dataset": "dolly_5k",
+        "status": "PASS",
+        "complete": true,
+        "source_metrics.json": {
+          "dataset": "dolly_5k",
+          "n": 5000,
+          "metric": "rougeLsum",
+          "value_0_to_1": 0.333260145383858,
+          "truncated_inputs": 1,
+          "generation_limit_hits": 195,
+          "empty_predictions": 0
+        },
+        "metrics.json": {
+          "source": {
+            "dataset": "dolly_5k",
+            "n": 5000,
+            "metric": "rougeLsum",
+            "value_0_to_1": 0.333260145383858,
+            "truncated_inputs": 1,
+            "generation_limit_hits": 195,
+            "empty_predictions": 0
+          },
+          "tent": {
+            "dataset": "dolly_5k",
+            "n": 5000,
+            "metric": "rougeLsum",
+            "value_0_to_1": 0.0004524541537108905,
+            "truncated_inputs": 1,
+            "generation_limit_hits": 5000,
+            "empty_predictions": 0
+          },
+          "adaptation": {
+            "processed": 5000,
+            "optimizer_steps": 5000,
+            "zero_updates": 0,
+            "resumed_from": 0
+          },
+          "frozen_base_sha256_before": "c80d597af8e0f5bb8e99a6545680edb580ed2fe59c9cba4af0f39b568c15be77",
+          "frozen_base_sha256_after": "c80d597af8e0f5bb8e99a6545680edb580ed2fe59c9cba4af0f39b568c15be77",
+          "frozen_base_unchanged": true,
+          "source_sha256": "344fd458dba6f577c58fd2823b53d3a5c13d66a7c3a2a9a3614247fafeaef189",
+          "tent_sha256": "2b62010c442441f5bd9d6d87e55e5d45736dcbff1605ef60fccdee7ce27ac94d"
+        },
+        "source_exists": true,
+        "tent_exists": true
+      },
+      {
+        "kind": "tent_location",
+        "root": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/llama3b__geosignal_5k",
+        "model": "llama3b",
+        "dataset": "geosignal_5k",
+        "status": "PASS",
+        "complete": true,
+        "source_metrics.json": {
+          "dataset": "geosignal_5k",
+          "n": 5000,
+          "metric": "rougeLsum",
+          "value_0_to_1": 0.23975979866168595,
+          "truncated_inputs": 1,
+          "generation_limit_hits": 1059,
+          "empty_predictions": 0
+        },
+        "metrics.json": {
+          "source": {
+            "dataset": "geosignal_5k",
+            "n": 5000,
+            "metric": "rougeLsum",
+            "value_0_to_1": 0.23975979866168595,
+            "truncated_inputs": 1,
+            "generation_limit_hits": 1059,
+            "empty_predictions": 0
+          },
+          "tent": {
+            "dataset": "geosignal_5k",
+            "n": 5000,
+            "metric": "rougeLsum",
+            "value_0_to_1": 0.012137427224587105,
+            "truncated_inputs": 1,
+            "generation_limit_hits": 5000,
+            "empty_predictions": 0
+          },
+          "adaptation": {
+            "processed": 5000,
+            "optimizer_steps": 5000,
+            "zero_updates": 0,
+            "resumed_from": 0
+          },
+          "frozen_base_sha256_before": "c80d597af8e0f5bb8e99a6545680edb580ed2fe59c9cba4af0f39b568c15be77",
+          "frozen_base_sha256_after": "c80d597af8e0f5bb8e99a6545680edb580ed2fe59c9cba4af0f39b568c15be77",
+          "frozen_base_unchanged": true,
+          "source_sha256": "b62ce6ee1b73a065ea8ab3c45fb9635a83c10c7667705d7ed41bd21ab911493b",
+          "tent_sha256": "7f691a1d048eb33a6d8859feee00a690ea8787be1d8aeab4ea49b0230d56218a"
+        },
+        "source_exists": true,
+        "tent_exists": true
+      },
+      {
+        "kind": "tent_location",
+        "root": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/llama3b__gsm8k_5k",
+        "model": "llama3b",
+        "dataset": "gsm8k_5k",
+        "status": "PASS",
+        "complete": true,
+        "source_metrics.json": {
+          "dataset": "gsm8k_5k",
+          "n": 5000,
+          "metric": "exact_match",
+          "value_0_to_1": 0.776,
+          "truncated_inputs": 0,
+          "generation_limit_hits": 20,
+          "empty_predictions": 0
+        },
+        "metrics.json": {
+          "source": {
+            "dataset": "gsm8k_5k",
+            "n": 5000,
+            "metric": "exact_match",
+            "value_0_to_1": 0.776,
+            "truncated_inputs": 0,
+            "generation_limit_hits": 20,
+            "empty_predictions": 0
+          },
+          "tent": {
+            "dataset": "gsm8k_5k",
+            "n": 5000,
+            "metric": "exact_match",
+            "value_0_to_1": 0.7804,
+            "truncated_inputs": 0,
+            "generation_limit_hits": 18,
+            "empty_predictions": 0
+          },
+          "adaptation": {
+            "processed": 5000,
+            "optimizer_steps": 5000,
+            "zero_updates": 0,
+            "resumed_from": 0
+          },
+          "frozen_base_sha256_before": "c80d597af8e0f5bb8e99a6545680edb580ed2fe59c9cba4af0f39b568c15be77",
+          "frozen_base_sha256_after": "c80d597af8e0f5bb8e99a6545680edb580ed2fe59c9cba4af0f39b568c15be77",
+          "frozen_base_unchanged": true,
+          "source_sha256": "a3ab41913f5b1364fe2e5b717f86a797fb465bc052af265370b0c4ea8ae50a94",
+          "tent_sha256": "dc0400e59e1cd41d28886b660a356907101f0d4294f0327a697011afcbff9f1b"
+        },
+        "source_exists": true,
+        "tent_exists": true
+      },
+      {
+        "kind": "tent_location",
+        "root": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/qwen3b__dolly_5k",
+        "model": "qwen3b",
+        "dataset": "dolly_5k",
+        "status": "PASS",
+        "complete": true,
+        "source_metrics.json": {
+          "dataset": "dolly_5k",
+          "n": 5000,
+          "metric": "rougeLsum",
+          "value_0_to_1": 0.27646724647131915,
+          "truncated_inputs": 1,
+          "generation_limit_hits": 344,
+          "empty_predictions": 0
+        },
+        "metrics.json": {
+          "source": {
+            "dataset": "dolly_5k",
+            "n": 5000,
+            "metric": "rougeLsum",
+            "value_0_to_1": 0.27646724647131915,
+            "truncated_inputs": 1,
+            "generation_limit_hits": 344,
+            "empty_predictions": 0
+          },
+          "tent": {
+            "dataset": "dolly_5k",
+            "n": 5000,
+            "metric": "rougeLsum",
+            "value_0_to_1": 8.72907572637467e-05,
+            "truncated_inputs": 1,
+            "generation_limit_hits": 5000,
+            "empty_predictions": 0
+          },
+          "adaptation": {
+            "processed": 5000,
+            "optimizer_steps": 5000,
+            "zero_updates": 0,
+            "resumed_from": 0
+          },
+          "frozen_base_sha256_before": "644c521c2e650bb46c5bfcedea082bbc3a02b9a5c0f67297a44633cb035384bc",
+          "frozen_base_sha256_after": "644c521c2e650bb46c5bfcedea082bbc3a02b9a5c0f67297a44633cb035384bc",
+          "frozen_base_unchanged": true,
+          "source_sha256": "721a396fae0a2aeff70a8d4d474b058d516fb9a98c66923291f61ba7b7fbeccb",
+          "tent_sha256": "77a6822ea6c433ef2ccf50b1076f91e0e410deb7ab3397ed4fdc305d73576773"
+        },
+        "source_exists": true,
+        "tent_exists": true
+      },
+      {
+        "kind": "tent_location",
+        "root": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/qwen3b__geosignal_5k",
+        "model": "qwen3b",
+        "dataset": "geosignal_5k",
+        "status": "PASS",
+        "complete": true,
+        "source_metrics.json": {
+          "dataset": "geosignal_5k",
+          "n": 5000,
+          "metric": "rougeLsum",
+          "value_0_to_1": 0.24940172158770332,
+          "truncated_inputs": 2,
+          "generation_limit_hits": 1168,
+          "empty_predictions": 0
+        },
+        "metrics.json": {
+          "source": {
+            "dataset": "geosignal_5k",
+            "n": 5000,
+            "metric": "rougeLsum",
+            "value_0_to_1": 0.24940172158770332,
+            "truncated_inputs": 2,
+            "generation_limit_hits": 1168,
+            "empty_predictions": 0
+          },
+          "tent": {
+            "dataset": "geosignal_5k",
+            "n": 5000,
+            "metric": "rougeLsum",
+            "value_0_to_1": 0.008035232401634387,
+            "truncated_inputs": 2,
+            "generation_limit_hits": 5000,
+            "empty_predictions": 0
+          },
+          "adaptation": {
+            "processed": 5000,
+            "optimizer_steps": 5000,
+            "zero_updates": 0,
+            "resumed_from": 0
+          },
+          "frozen_base_sha256_before": "644c521c2e650bb46c5bfcedea082bbc3a02b9a5c0f67297a44633cb035384bc",
+          "frozen_base_sha256_after": "644c521c2e650bb46c5bfcedea082bbc3a02b9a5c0f67297a44633cb035384bc",
+          "frozen_base_unchanged": true,
+          "source_sha256": "587ca277edd1ee31a517bcfb0d8f7d5fcf0c0acf75afb3b61703113b9d24f853",
+          "tent_sha256": "6a4d9e371025b5344baf1e709d55ba7adf6645bb929619cacb5663e63ef8589d"
+        },
+        "source_exists": true,
+        "tent_exists": true
+      },
+      {
+        "kind": "tent_location",
+        "root": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/qwen3b__gsm8k_5k",
+        "model": "qwen3b",
+        "dataset": "gsm8k_5k",
+        "status": "PASS",
+        "complete": true,
+        "source_metrics.json": {
+          "dataset": "gsm8k_5k",
+          "n": 5000,
+          "metric": "exact_match",
+          "value_0_to_1": 0.8008,
+          "truncated_inputs": 0,
+          "generation_limit_hits": 93,
+          "empty_predictions": 0
+        },
+        "metrics.json": {
+          "source": {
+            "dataset": "gsm8k_5k",
+            "n": 5000,
+            "metric": "exact_match",
+            "value_0_to_1": 0.8008,
+            "truncated_inputs": 0,
+            "generation_limit_hits": 93,
+            "empty_predictions": 0
+          },
+          "tent": {
+            "dataset": "gsm8k_5k",
+            "n": 5000,
+            "metric": "exact_match",
+            "value_0_to_1": 0.8362,
+            "truncated_inputs": 0,
+            "generation_limit_hits": 57,
+            "empty_predictions": 0
+          },
+          "adaptation": {
+            "processed": 5000,
+            "optimizer_steps": 5000,
+            "zero_updates": 0,
+            "resumed_from": 0
+          },
+          "frozen_base_sha256_before": "644c521c2e650bb46c5bfcedea082bbc3a02b9a5c0f67297a44633cb035384bc",
+          "frozen_base_sha256_after": "644c521c2e650bb46c5bfcedea082bbc3a02b9a5c0f67297a44633cb035384bc",
+          "frozen_base_unchanged": true,
+          "source_sha256": "8ee5ef7e2c66d225d16469e9fe95c8990c4150e0dca5df0f1c82c2c3340d0800",
+          "tent_sha256": "d30f06b9705519de586b88028dcd258e6db5b582dfb3157735b6be2e8e9a8cfc"
+        },
+        "source_exists": true,
+        "tent_exists": true
+      }
+    ],
+    "exit_status": 0
+  },
+  "completed_diagnostics": {
+    "read_only": true,
+    "checks": [
+      {
+        "time_utc": "2026-10-27T13:26:09.885754+00:00"
+      },
+      {
+        "kind": "dolly",
+        "task": "llama3b__all",
+        "state": "COMPLETE",
+        "replay.json": {
+          "sample_order_exact": true,
+          "max_base_ce_difference": 0.0,
+          "max_weight_difference": 0.0,
+          "learning_rates_exact": true,
+          "max_loss_difference": 0.0,
+          "step100_adapter_exact": true,
+          "max_step100_adapter_difference": 0.0
+        },
+        "summary.json": {
+          "status": "COMPLETE",
+          "diagnostic_only": true,
+          "mode": "all",
+          "steps": 1000,
+          "model": "llama3b",
+          "original": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k",
+          "replay": {
+            "sample_order_exact": true,
+            "max_base_ce_difference": 0.0,
+            "max_weight_difference": 0.0,
+            "learning_rates_exact": true,
+            "max_loss_difference": 0.0,
+            "step100_adapter_exact": true,
+            "max_step100_adapter_difference": 0.0
+          },
+          "optimizer": {
+            "successful_optimizer_steps": 999,
+            "skipped_optimizer_steps": 1,
+            "adapter_parameters_finite": true,
+            "optimizer_state_finite": true
+          },
+          "probe_n": 100,
+          "next_token_hash_count": 84,
+          "next_token_stop_argmax_count": 0,
+          "mean_p_stop": 2.940639537620804e-05,
+          "answer_n": 8,
+          "base_next_token_hash_count": 0,
+          "base_next_token_stop_argmax_count": 0,
+          "answer_empty": 0,
+          "answer_title_only": 0,
+          "answer_repetition": 0,
+          "dominant_answer_count": 1,
+          "source_small_set_mean_score": 0.4770623407119154,
+          "small_set_mean_score": 0.32192640538712525,
+          "seconds": 29550.995267927647,
+          "not_a_full_score": true,
+          "original_runs_unchanged": true
+        },
+        "first_token_probe": {
+          "n": 100,
+          "hash": 84,
+          "stop": 0
+        },
+        "step": 1000
+      },
+      {
+        "kind": "dolly",
+        "task": "llama3b__role_masked",
+        "state": "FAILED",
+        "failure.json": {
+          "type": "ValueError",
+          "error": "Original trajectory controls differ: {'sample_order_exact': True, 'max_base_ce_difference': 0.0, 'max_weight_difference': 0.0, 'learning_rates_exact': False}",
+          "seconds": 584.2415475398302
+        },
+        "step": 1000
+      },
+      {
+        "kind": "dolly",
+        "task": "llama3b__wrapper_masked",
+        "state": "COMPLETE",
+        "replay.json": {
+          "sample_order_exact": true,
+          "max_base_ce_difference": 0.0,
+          "max_weight_difference": 0.0,
+          "learning_rates_exact": true
+        },
+        "summary.json": {
+          "status": "COMPLETE",
+          "diagnostic_only": true,
+          "mode": "wrapper_masked",
+          "steps": 1000,
+          "model": "llama3b",
+          "original": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k",
+          "replay": {
+            "sample_order_exact": true,
+            "max_base_ce_difference": 0.0,
+            "max_weight_difference": 0.0,
+            "learning_rates_exact": true
+          },
+          "optimizer": {
+            "successful_optimizer_steps": 999,
+            "skipped_optimizer_steps": 1,
+            "adapter_parameters_finite": true,
+            "optimizer_state_finite": true
+          },
+          "probe_n": 100,
+          "next_token_hash_count": 0,
+          "next_token_stop_argmax_count": 0,
+          "mean_p_stop": 0.0003474012492269196,
+          "answer_n": 8,
+          "base_next_token_hash_count": 0,
+          "base_next_token_stop_argmax_count": 0,
+          "answer_empty": 0,
+          "answer_title_only": 0,
+          "answer_repetition": 1,
+          "dominant_answer_count": 1,
+          "source_small_set_mean_score": 0.4770623407119154,
+          "small_set_mean_score": 0.3723374617752131,
+          "seconds": 734.3978408426046,
+          "not_a_full_score": true,
+          "original_runs_unchanged": true
+        },
+        "first_token_probe": {
+          "n": 100,
+          "hash": 0,
+          "stop": 0
+        },
+        "step": 1000
+      },
+      {
+        "kind": "dolly",
+        "task": "llama3b__both_masked",
+        "state": "FAILED",
+        "failure.json": {
+          "type": "ValueError",
+          "error": "Original trajectory controls differ: {'sample_order_exact': True, 'max_base_ce_difference': 0.0, 'max_weight_difference': 0.0, 'learning_rates_exact': False}",
+          "seconds": 592.1281419545412
+        },
+        "step": 1000
+      },
+      {
+        "kind": "dolly",
+        "task": "qwen3b__all",
+        "state": "COMPLETE",
+        "replay.json": {
+          "sample_order_exact": true,
+          "max_base_ce_difference": 0.0,
+          "max_weight_difference": 0.0,
+          "learning_rates_exact": true,
+          "max_loss_difference": 0.0,
+          "step100_adapter_exact": true,
+          "max_step100_adapter_difference": 0.0
+        },
+        "summary.json": {
+          "status": "COMPLETE",
+          "diagnostic_only": true,
+          "mode": "all",
+          "steps": 1000,
+          "model": "qwen3b",
+          "original": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k",
+          "replay": {
+            "sample_order_exact": true,
+            "max_base_ce_difference": 0.0,
+            "max_weight_difference": 0.0,
+            "learning_rates_exact": true,
+            "max_loss_difference": 0.0,
+            "step100_adapter_exact": true,
+            "max_step100_adapter_difference": 0.0
+          },
+          "optimizer": {
+            "successful_optimizer_steps": 996,
+            "skipped_optimizer_steps": 4,
+            "adapter_parameters_finite": true,
+            "optimizer_state_finite": true
+          },
+          "probe_n": 100,
+          "next_token_hash_count": 3,
+          "next_token_stop_argmax_count": 40,
+          "mean_p_stop": 0.33009680518546747,
+          "answer_n": 8,
+          "base_next_token_hash_count": 1,
+          "base_next_token_stop_argmax_count": 0,
+          "answer_empty": 2,
+          "answer_title_only": 0,
+          "answer_repetition": 0,
+          "dominant_answer_count": 2,
+          "source_small_set_mean_score": 0.29839156429125974,
+          "small_set_mean_score": 0.21445427713730086,
+          "seconds": 29859.96635954082,
+          "not_a_full_score": true,
+          "original_runs_unchanged": true
+        },
+        "first_token_probe": {
+          "n": 100,
+          "hash": 3,
+          "stop": 40
+        },
+        "step": 1000
+      },
+      {
+        "kind": "dolly",
+        "task": "qwen3b__role_masked",
+        "state": "FAILED",
+        "failure.json": {
+          "type": "ValueError",
+          "error": "Original trajectory controls differ: {'sample_order_exact': True, 'max_base_ce_difference': 0.0, 'max_weight_difference': 0.0, 'learning_rates_exact': False}",
+          "seconds": 806.6496096104383
+        },
+        "step": 1000
+      },
+      {
+        "kind": "dolly",
+        "task": "qwen3b__wrapper_masked",
+        "state": "FAILED",
+        "failure.json": {
+          "type": "ValueError",
+          "error": "Original trajectory controls differ: {'sample_order_exact': True, 'max_base_ce_difference': 0.0, 'max_weight_difference': 0.0, 'learning_rates_exact': False}",
+          "seconds": 833.8230414539576
+        },
+        "step": 1000
+      },
+      {
+        "kind": "dolly",
+        "task": "qwen3b__both_masked",
+        "state": "FAILED",
+        "failure.json": {
+          "type": "ValueError",
+          "error": "Original trajectory controls differ: {'sample_order_exact': True, 'max_base_ce_difference': 0.0, 'max_weight_difference': 0.0, 'learning_rates_exact': False}",
+          "seconds": 810.4146007150412
+        },
+        "step": 1000
+      },
+      {
+        "kind": "gsm",
+        "root": "/data/chuwenjing/results/tlm_gsm_milestones/run_20261027_001700_8aff5a",
+        "status.json": {
+          "status": "COMPLETE",
+          "training_performed": false
+        },
+        "replay.json": {
+          "final_adapter_sha256": "01c9dabc1294cc723ed579680ee65e85eba3db0166c19c2f0b5f04ba3b89ffa4",
+          "replay": [
+            {
+              "source_index": 0,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 99,
+              "generated_ids_exact": true
+            }
+          ],
+          "training_performed": false
+        },
+        "milestones.json": [
+          {
+            "stage": 0,
+            "adapter_sha256": null,
+            "probe_n": 100,
+            "direct_stop_argmax_n": 0,
+            "after_forced_stub_stop_argmax_n": 0,
+            "mean_p_stop_after_forced_stub": 0.0059084964756038975,
+            "answer_n": 4,
+            "answer_stub_only_n": 0,
+            "small_set_em": 0.75,
+            "small_set_source_em": 0.75,
+            "not_a_full_score": true
+          },
+          {
+            "stage": 1000,
+            "adapter_sha256": "bf4d83454cbc6df37622a1a5265e5bc914bf071955362740a9510039d78c5d5a",
+            "probe_n": 100,
+            "direct_stop_argmax_n": 0,
+            "after_forced_stub_stop_argmax_n": 4,
+            "mean_p_stop_after_forced_stub": 0.06959639437729492,
+            "answer_n": 4,
+            "answer_stub_only_n": 0,
+            "small_set_em": 1.0,
+            "small_set_source_em": 0.75,
+            "not_a_full_score": true
+          },
+          {
+            "stage": 2500,
+            "adapter_sha256": "3d0fc755e80442d9bce47647eee0fe1c3646784dac499ef88f98f93586b84162",
+            "probe_n": 100,
+            "direct_stop_argmax_n": 0,
+            "after_forced_stub_stop_argmax_n": 14,
+            "mean_p_stop_after_forced_stub": 0.1829746549279662,
+            "answer_n": 4,
+            "answer_stub_only_n": 0,
+            "small_set_em": 1.0,
+            "small_set_source_em": 0.75,
+            "not_a_full_score": true
+          },
+          {
+            "stage": 5000,
+            "adapter_sha256": "01c9dabc1294cc723ed579680ee65e85eba3db0166c19c2f0b5f04ba3b89ffa4",
+            "probe_n": 100,
+            "direct_stop_argmax_n": 0,
+            "after_forced_stub_stop_argmax_n": 24,
+            "mean_p_stop_after_forced_stub": 0.23874189054011366,
+            "answer_n": 4,
+            "answer_stub_only_n": 0,
+            "small_set_em": 1.0,
+            "small_set_source_em": 0.75,
+            "not_a_full_score": true
+          }
+        ],
+        "summary.json": {
+          "status": "COMPLETE",
+          "training_performed": false,
+          "optimizer_created": false,
+          "original_runs_modified": false,
+          "replay": [
+            {
+              "source_index": 0,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 99,
+              "generated_ids_exact": true
+            }
+          ],
+          "milestones": [
+            {
+              "stage": 0,
+              "adapter_sha256": null,
+              "probe_n": 100,
+              "direct_stop_argmax_n": 0,
+              "after_forced_stub_stop_argmax_n": 0,
+              "mean_p_stop_after_forced_stub": 0.0059084964756038975,
+              "answer_n": 4,
+              "answer_stub_only_n": 0,
+              "small_set_em": 0.75,
+              "small_set_source_em": 0.75,
+              "not_a_full_score": true
+            },
+            {
+              "stage": 1000,
+              "adapter_sha256": "bf4d83454cbc6df37622a1a5265e5bc914bf071955362740a9510039d78c5d5a",
+              "probe_n": 100,
+              "direct_stop_argmax_n": 0,
+              "after_forced_stub_stop_argmax_n": 4,
+              "mean_p_stop_after_forced_stub": 0.06959639437729492,
+              "answer_n": 4,
+              "answer_stub_only_n": 0,
+              "small_set_em": 1.0,
+              "small_set_source_em": 0.75,
+              "not_a_full_score": true
+            },
+            {
+              "stage": 2500,
+              "adapter_sha256": "3d0fc755e80442d9bce47647eee0fe1c3646784dac499ef88f98f93586b84162",
+              "probe_n": 100,
+              "direct_stop_argmax_n": 0,
+              "after_forced_stub_stop_argmax_n": 14,
+              "mean_p_stop_after_forced_stub": 0.1829746549279662,
+              "answer_n": 4,
+              "answer_stub_only_n": 0,
+              "small_set_em": 1.0,
+              "small_set_source_em": 0.75,
+              "not_a_full_score": true
+            },
+            {
+              "stage": 5000,
+              "adapter_sha256": "01c9dabc1294cc723ed579680ee65e85eba3db0166c19c2f0b5f04ba3b89ffa4",
+              "probe_n": 100,
+              "direct_stop_argmax_n": 0,
+              "after_forced_stub_stop_argmax_n": 24,
+              "mean_p_stop_after_forced_stub": 0.23874189054011366,
+              "answer_n": 4,
+              "answer_stub_only_n": 0,
+              "small_set_em": 1.0,
+              "small_set_source_em": 0.75,
+              "not_a_full_score": true
+            }
+          ],
+          "seconds": 385.378397166729
+        },
+        "log_tail": "6\n}\n\n[INFO|hub.py:363] 2026-10-27 00:21:59,804 >> Offline mode: forcing local_files_only=True\n[INFO|configuration_utils.py:677] 2026-10-27 00:21:59,805 >> loading configuration file /data/chuwenjing/models/Llama-3.2-3B-Instruct/config.json\n[INFO|configuration_utils.py:746] 2026-10-27 00:21:59,805 >> Model config LlamaConfig {\n  \"architectures\": [\n    \"LlamaForCausalLM\"\n  ],\n  \"attention_bias\": false,\n  \"attention_dropout\": 0.0,\n  \"bos_token_id\": 128000,\n  \"eos_token_id\": [\n    128001,\n    128008,\n    128009\n  ],\n  \"head_dim\": 128,\n  \"hidden_act\": \"silu\",\n  \"hidden_size\": 3072,\n  \"initializer_range\": 0.02,\n  \"intermediate_size\": 8192,\n  \"max_position_embeddings\": 131072,\n  \"mlp_bias\": false,\n  \"model_type\": \"llama\",\n  \"num_attention_heads\": 24,\n  \"num_hidden_layers\": 28,\n  \"num_key_value_heads\": 8,\n  \"pretraining_tp\": 1,\n  \"rms_norm_eps\": 1e-05,\n  \"rope_scaling\": {\n    \"factor\": 32.0,\n    \"high_freq_factor\": 4.0,\n    \"low_freq_factor\": 1.0,\n    \"original_max_position_embeddings\": 8192,\n    \"rope_type\": \"llama3\"\n  },\n  \"rope_theta\": 500000.0,\n  \"tie_word_embeddings\": true,\n  \"torch_dtype\": \"bfloat16\",\n  \"transformers_version\": \"4.46.1\",\n  \"use_cache\": true,\n  \"vocab_size\": 128256\n}\n\n"
+      },
+      {
+        "kind": "gsm_control",
+        "mode": "hint_masked",
+        "manifest.json": {
+          "status": "TRAINING",
+          "diagnostic_only": true,
+          "mode": "hint_masked",
+          "steps": 2500,
+          "schedule_steps": 5000,
+          "lr": 1e-06,
+          "original": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__gsm8k_5k",
+          "baseline_kind": "original_saved_step2500",
+          "baseline_sha256": "3d0fc755e80442d9bce47647eee0fe1c3646784dac499ef88f98f93586b84162",
+          "independent_baseline_retrained": false,
+          "fresh_initial_adapter_exact": true,
+          "final_inference_replay": [
+            {
+              "source_index": 0,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 99,
+              "generated_ids_exact": true
+            }
+          ]
+        },
+        "controls.json": {
+          "sample_order_exact": true,
+          "learning_rates_exact": true,
+          "max_base_ce_difference": 0.0,
+          "max_weight_difference": 0.0
+        },
+        "status.json": {
+          "status": "EVALUATING",
+          "label": "transition_control",
+          "mode": "hint_masked"
+        },
+        "comparisons.json": [
+          {
+            "label": "original_step2500",
+            "n": 100,
+            "stop_after_forced_stub": 14,
+            "mean_p_stop_after_forced_stub": 0.1829746549279662,
+            "generated_n": 8,
+            "stub_only_n": 0,
+            "small_set_em": 1.0,
+            "not_a_full_score": true
+          },
+          {
+            "label": "transition_control",
+            "n": 100,
+            "stop_after_forced_stub": 2,
+            "mean_p_stop_after_forced_stub": 0.06143351880484261,
+            "generated_n": 8,
+            "stub_only_n": 0,
+            "small_set_em": 1.0,
+            "not_a_full_score": true
+          }
+        ],
+        "summary.json": {
+          "status": "COMPLETE",
+          "mode": "hint_masked",
+          "diagnostic_only": true,
+          "steps": 2500,
+          "lr": 1e-06,
+          "controls": {
+            "sample_order_exact": true,
+            "learning_rates_exact": true,
+            "max_base_ce_difference": 0.0,
+            "max_weight_difference": 0.0
+          },
+          "optimizer": {
+            "successful_optimizer_steps": 2500,
+            "skipped_optimizer_steps": 0,
+            "adapter_parameters_finite": true,
+            "optimizer_state_finite": true
+          },
+          "final_inference_replay": [
+            {
+              "source_index": 0,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 99,
+              "generated_ids_exact": true
+            }
+          ],
+          "comparisons": [
+            {
+              "label": "original_step2500",
+              "n": 100,
+              "stop_after_forced_stub": 14,
+              "mean_p_stop_after_forced_stub": 0.1829746549279662,
+              "generated_n": 8,
+              "stub_only_n": 0,
+              "small_set_em": 1.0,
+              "not_a_full_score": true
+            },
+            {
+              "label": "transition_control",
+              "n": 100,
+              "stop_after_forced_stub": 2,
+              "mean_p_stop_after_forced_stub": 0.06143351880484261,
+              "generated_n": 8,
+              "stub_only_n": 0,
+              "small_set_em": 1.0,
+              "not_a_full_score": true
+            }
+          ],
+          "original_runs_modified": false,
+          "seconds": 1773.994040325284
+        },
+        "step": 2500,
+        "tail": "odels/Llama-3.2-3B-Instruct/config.json\n[INFO|configuration_utils.py:746] 2026-10-27 00:59:43,976 >> Model config LlamaConfig {\n  \"architectures\": [\n    \"LlamaForCausalLM\"\n  ],\n  \"attention_bias\": false,\n  \"attention_dropout\": 0.0,\n  \"bos_token_id\": 128000,\n  \"eos_token_id\": [\n    128001,\n    128008,\n    128009\n  ],\n  \"head_dim\": 128,\n  \"hidden_act\": \"silu\",\n  \"hidden_size\": 3072,\n  \"initializer_range\": 0.02,\n  \"intermediate_size\": 8192,\n  \"max_position_embeddings\": 131072,\n  \"mlp_bias\": false,\n  \"model_type\": \"llama\",\n  \"num_attention_heads\": 24,\n  \"num_hidden_layers\": 28,\n  \"num_key_value_heads\": 8,\n  \"pretraining_tp\": 1,\n  \"rms_norm_eps\": 1e-05,\n  \"rope_scaling\": {\n    \"factor\": 32.0,\n    \"high_freq_factor\": 4.0,\n    \"low_freq_factor\": 1.0,\n    \"original_max_position_embeddings\": 8192,\n    \"rope_type\": \"llama3\"\n  },\n  \"rope_theta\": 500000.0,\n  \"tie_word_embeddings\": true,\n  \"torch_dtype\": \"bfloat16\",\n  \"transformers_version\": \"4.46.1\",\n  \"use_cache\": true,\n  \"vocab_size\": 128256\n}\n\n"
+      },
+      {
+        "kind": "gsm_control",
+        "mode": "eot_masked",
+        "manifest.json": {
+          "status": "TRAINING",
+          "diagnostic_only": true,
+          "mode": "eot_masked",
+          "steps": 2500,
+          "schedule_steps": 5000,
+          "lr": 1e-06,
+          "original": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__gsm8k_5k",
+          "baseline_kind": "original_saved_step2500",
+          "baseline_sha256": "3d0fc755e80442d9bce47647eee0fe1c3646784dac499ef88f98f93586b84162",
+          "independent_baseline_retrained": false,
+          "fresh_initial_adapter_exact": true,
+          "final_inference_replay": [
+            {
+              "source_index": 0,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 99,
+              "generated_ids_exact": true
+            }
+          ]
+        },
+        "controls.json": {
+          "sample_order_exact": true,
+          "learning_rates_exact": true,
+          "max_base_ce_difference": 0.0,
+          "max_weight_difference": 0.0
+        },
+        "status.json": {
+          "status": "EVALUATING",
+          "label": "transition_control",
+          "mode": "eot_masked"
+        },
+        "comparisons.json": [
+          {
+            "label": "original_step2500",
+            "n": 100,
+            "stop_after_forced_stub": 14,
+            "mean_p_stop_after_forced_stub": 0.1829746549279662,
+            "generated_n": 8,
+            "stub_only_n": 0,
+            "small_set_em": 1.0,
+            "not_a_full_score": true
+          },
+          {
+            "label": "transition_control",
+            "n": 100,
+            "stop_after_forced_stub": 0,
+            "mean_p_stop_after_forced_stub": 0.016891979805041046,
+            "generated_n": 8,
+            "stub_only_n": 0,
+            "small_set_em": 0.875,
+            "not_a_full_score": true
+          }
+        ],
+        "summary.json": {
+          "status": "COMPLETE",
+          "mode": "eot_masked",
+          "diagnostic_only": true,
+          "steps": 2500,
+          "lr": 1e-06,
+          "controls": {
+            "sample_order_exact": true,
+            "learning_rates_exact": true,
+            "max_base_ce_difference": 0.0,
+            "max_weight_difference": 0.0
+          },
+          "optimizer": {
+            "successful_optimizer_steps": 2500,
+            "skipped_optimizer_steps": 0,
+            "adapter_parameters_finite": true,
+            "optimizer_state_finite": true
+          },
+          "final_inference_replay": [
+            {
+              "source_index": 0,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 99,
+              "generated_ids_exact": true
+            }
+          ],
+          "comparisons": [
+            {
+              "label": "original_step2500",
+              "n": 100,
+              "stop_after_forced_stub": 14,
+              "mean_p_stop_after_forced_stub": 0.1829746549279662,
+              "generated_n": 8,
+              "stub_only_n": 0,
+              "small_set_em": 1.0,
+              "not_a_full_score": true
+            },
+            {
+              "label": "transition_control",
+              "n": 100,
+              "stop_after_forced_stub": 0,
+              "mean_p_stop_after_forced_stub": 0.016891979805041046,
+              "generated_n": 8,
+              "stub_only_n": 0,
+              "small_set_em": 0.875,
+              "not_a_full_score": true
+            }
+          ],
+          "original_runs_modified": false,
+          "seconds": 1800.9608516693115
+        },
+        "step": 2500,
+        "tail": "odels/Llama-3.2-3B-Instruct/config.json\n[INFO|configuration_utils.py:746] 2026-10-27 01:00:07,919 >> Model config LlamaConfig {\n  \"architectures\": [\n    \"LlamaForCausalLM\"\n  ],\n  \"attention_bias\": false,\n  \"attention_dropout\": 0.0,\n  \"bos_token_id\": 128000,\n  \"eos_token_id\": [\n    128001,\n    128008,\n    128009\n  ],\n  \"head_dim\": 128,\n  \"hidden_act\": \"silu\",\n  \"hidden_size\": 3072,\n  \"initializer_range\": 0.02,\n  \"intermediate_size\": 8192,\n  \"max_position_embeddings\": 131072,\n  \"mlp_bias\": false,\n  \"model_type\": \"llama\",\n  \"num_attention_heads\": 24,\n  \"num_hidden_layers\": 28,\n  \"num_key_value_heads\": 8,\n  \"pretraining_tp\": 1,\n  \"rms_norm_eps\": 1e-05,\n  \"rope_scaling\": {\n    \"factor\": 32.0,\n    \"high_freq_factor\": 4.0,\n    \"low_freq_factor\": 1.0,\n    \"original_max_position_embeddings\": 8192,\n    \"rope_type\": \"llama3\"\n  },\n  \"rope_theta\": 500000.0,\n  \"tie_word_embeddings\": true,\n  \"torch_dtype\": \"bfloat16\",\n  \"transformers_version\": \"4.46.1\",\n  \"use_cache\": true,\n  \"vocab_size\": 128256\n}\n\n"
+      },
+      {
+        "kind": "gsm_control",
+        "mode": "both_masked",
+        "manifest.json": {
+          "status": "TRAINING",
+          "diagnostic_only": true,
+          "mode": "both_masked",
+          "steps": 2500,
+          "schedule_steps": 5000,
+          "lr": 1e-06,
+          "original": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__gsm8k_5k",
+          "baseline_kind": "original_saved_step2500",
+          "baseline_sha256": "3d0fc755e80442d9bce47647eee0fe1c3646784dac499ef88f98f93586b84162",
+          "independent_baseline_retrained": false,
+          "fresh_initial_adapter_exact": true,
+          "final_inference_replay": [
+            {
+              "source_index": 0,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 99,
+              "generated_ids_exact": true
+            }
+          ]
+        },
+        "controls.json": {
+          "sample_order_exact": true,
+          "learning_rates_exact": true,
+          "max_base_ce_difference": 0.0,
+          "max_weight_difference": 0.0
+        },
+        "status.json": {
+          "status": "EVALUATING",
+          "label": "transition_control",
+          "mode": "both_masked"
+        },
+        "comparisons.json": [
+          {
+            "label": "original_step2500",
+            "n": 100,
+            "stop_after_forced_stub": 14,
+            "mean_p_stop_after_forced_stub": 0.1829746549279662,
+            "generated_n": 8,
+            "stub_only_n": 0,
+            "small_set_em": 1.0,
+            "not_a_full_score": true
+          },
+          {
+            "label": "transition_control",
+            "n": 100,
+            "stop_after_forced_stub": 0,
+            "mean_p_stop_after_forced_stub": 0.0035976972351636507,
+            "generated_n": 8,
+            "stub_only_n": 0,
+            "small_set_em": 0.75,
+            "not_a_full_score": true
+          }
+        ],
+        "summary.json": {
+          "status": "COMPLETE",
+          "mode": "both_masked",
+          "diagnostic_only": true,
+          "steps": 2500,
+          "lr": 1e-06,
+          "controls": {
+            "sample_order_exact": true,
+            "learning_rates_exact": true,
+            "max_base_ce_difference": 0.0,
+            "max_weight_difference": 0.0
+          },
+          "optimizer": {
+            "successful_optimizer_steps": 2500,
+            "skipped_optimizer_steps": 0,
+            "adapter_parameters_finite": true,
+            "optimizer_state_finite": true
+          },
+          "final_inference_replay": [
+            {
+              "source_index": 0,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 99,
+              "generated_ids_exact": true
+            }
+          ],
+          "comparisons": [
+            {
+              "label": "original_step2500",
+              "n": 100,
+              "stop_after_forced_stub": 14,
+              "mean_p_stop_after_forced_stub": 0.1829746549279662,
+              "generated_n": 8,
+              "stub_only_n": 0,
+              "small_set_em": 1.0,
+              "not_a_full_score": true
+            },
+            {
+              "label": "transition_control",
+              "n": 100,
+              "stop_after_forced_stub": 0,
+              "mean_p_stop_after_forced_stub": 0.0035976972351636507,
+              "generated_n": 8,
+              "stub_only_n": 0,
+              "small_set_em": 0.75,
+              "not_a_full_score": true
+            }
+          ],
+          "original_runs_modified": false,
+          "seconds": 1767.133690416813
+        },
+        "step": 2500,
+        "tail": "odels/Llama-3.2-3B-Instruct/config.json\n[INFO|configuration_utils.py:746] 2026-10-27 00:59:34,876 >> Model config LlamaConfig {\n  \"architectures\": [\n    \"LlamaForCausalLM\"\n  ],\n  \"attention_bias\": false,\n  \"attention_dropout\": 0.0,\n  \"bos_token_id\": 128000,\n  \"eos_token_id\": [\n    128001,\n    128008,\n    128009\n  ],\n  \"head_dim\": 128,\n  \"hidden_act\": \"silu\",\n  \"hidden_size\": 3072,\n  \"initializer_range\": 0.02,\n  \"intermediate_size\": 8192,\n  \"max_position_embeddings\": 131072,\n  \"mlp_bias\": false,\n  \"model_type\": \"llama\",\n  \"num_attention_heads\": 24,\n  \"num_hidden_layers\": 28,\n  \"num_key_value_heads\": 8,\n  \"pretraining_tp\": 1,\n  \"rms_norm_eps\": 1e-05,\n  \"rope_scaling\": {\n    \"factor\": 32.0,\n    \"high_freq_factor\": 4.0,\n    \"low_freq_factor\": 1.0,\n    \"original_max_position_embeddings\": 8192,\n    \"rope_type\": \"llama3\"\n  },\n  \"rope_theta\": 500000.0,\n  \"tie_word_embeddings\": true,\n  \"torch_dtype\": \"bfloat16\",\n  \"transformers_version\": \"4.46.1\",\n  \"use_cache\": true,\n  \"vocab_size\": 128256\n}\n\n"
+      },
+      {
+        "kind": "recovered_control",
+        "task": "llama3b__both_masked",
+        "summary": {
+          "status": "COMPLETE",
+          "model": "llama3b",
+          "mode": "both_masked",
+          "steps": 1000,
+          "training_performed": false,
+          "original_rejected_diagnostic": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/llama3b__both_masked",
+          "baseline_replay": [
+            {
+              "source_index": 42,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 171,
+              "generated_ids_exact": true
+            }
+          ],
+          "schedule_proof": {
+            "per_visit_learning_rates_exact": false,
+            "max_absolute_lr_difference": 1.0000000000000243e-07,
+            "mismatched_visits": 982,
+            "baseline_optimizer": {
+              "successful_optimizer_steps": 999,
+              "skipped_optimizer_steps": 1,
+              "adapter_parameters_finite": true,
+              "optimizer_state_finite": true
+            },
+            "control_actual_schedule": {
+              "successful_optimizer_steps": 999,
+              "skipped_optimizer_steps": 1,
+              "skipped_visits": [
+                994
+              ],
+              "same_schedule_definition_verified": true,
+              "recorded_trace_explained": true
+            },
+            "interpretation": "Loss masks also change gradient/clipping/AMP behavior; semantic effects are not isolated from these effects."
+          },
+          "next_token_hash_count": 0,
+          "next_token_stop_argmax_count": 0,
+          "probe_n": 100,
+          "answer_n": 8,
+          "answer_empty": 0,
+          "answer_title_only": 0,
+          "answer_repetition": 0,
+          "small_set_mean_score": 0.37724316447790385,
+          "not_a_full_score": true,
+          "original_failure_record_preserved": true,
+          "seconds": 181.88288383185863
+        }
+      },
+      {
+        "kind": "recovered_control",
+        "task": "llama3b__role_masked",
+        "summary": {
+          "status": "COMPLETE",
+          "model": "llama3b",
+          "mode": "role_masked",
+          "steps": 1000,
+          "training_performed": false,
+          "original_rejected_diagnostic": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/llama3b__role_masked",
+          "baseline_replay": [
+            {
+              "source_index": 42,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 171,
+              "generated_ids_exact": true
+            }
+          ],
+          "schedule_proof": {
+            "per_visit_learning_rates_exact": false,
+            "max_absolute_lr_difference": 1.0000000000000031e-07,
+            "mismatched_visits": 21,
+            "baseline_optimizer": {
+              "successful_optimizer_steps": 999,
+              "skipped_optimizer_steps": 1,
+              "adapter_parameters_finite": true,
+              "optimizer_state_finite": true
+            },
+            "control_actual_schedule": {
+              "successful_optimizer_steps": 999,
+              "skipped_optimizer_steps": 1,
+              "skipped_visits": [
+                33
+              ],
+              "same_schedule_definition_verified": true,
+              "recorded_trace_explained": true
+            },
+            "interpretation": "Loss masks also change gradient/clipping/AMP behavior; semantic effects are not isolated from these effects."
+          },
+          "next_token_hash_count": 0,
+          "next_token_stop_argmax_count": 0,
+          "probe_n": 100,
+          "answer_n": 8,
+          "answer_empty": 0,
+          "answer_title_only": 0,
+          "answer_repetition": 0,
+          "small_set_mean_score": 0.34801624026000993,
+          "not_a_full_score": true,
+          "original_failure_record_preserved": true,
+          "seconds": 157.51731097698212
+        }
+      },
+      {
+        "kind": "recovered_control",
+        "task": "qwen3b__both_masked",
+        "summary": {
+          "status": "COMPLETE",
+          "model": "qwen3b",
+          "mode": "both_masked",
+          "steps": 1000,
+          "training_performed": false,
+          "original_rejected_diagnostic": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/qwen3b__both_masked",
+          "baseline_replay": [
+            {
+              "source_index": 42,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 171,
+              "generated_ids_exact": true
+            }
+          ],
+          "schedule_proof": {
+            "per_visit_learning_rates_exact": false,
+            "max_absolute_lr_difference": 4.000000000000001e-07,
+            "mismatched_visits": 999,
+            "baseline_optimizer": {
+              "successful_optimizer_steps": 996,
+              "skipped_optimizer_steps": 4,
+              "adapter_parameters_finite": true,
+              "optimizer_state_finite": true
+            },
+            "control_actual_schedule": {
+              "successful_optimizer_steps": 998,
+              "skipped_optimizer_steps": 2,
+              "skipped_visits": [
+                14,
+                968
+              ],
+              "same_schedule_definition_verified": true,
+              "recorded_trace_explained": true
+            },
+            "interpretation": "Loss masks also change gradient/clipping/AMP behavior; semantic effects are not isolated from these effects."
+          },
+          "next_token_hash_count": 0,
+          "next_token_stop_argmax_count": 0,
+          "probe_n": 100,
+          "answer_n": 8,
+          "answer_empty": 0,
+          "answer_title_only": 0,
+          "answer_repetition": 0,
+          "small_set_mean_score": 0.40755632252029755,
+          "not_a_full_score": true,
+          "original_failure_record_preserved": true,
+          "seconds": 185.5951367765665
+        }
+      },
+      {
+        "kind": "recovered_control",
+        "task": "qwen3b__role_masked",
+        "summary": {
+          "status": "COMPLETE",
+          "model": "qwen3b",
+          "mode": "role_masked",
+          "steps": 1000,
+          "training_performed": false,
+          "original_rejected_diagnostic": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/qwen3b__role_masked",
+          "baseline_replay": [
+            {
+              "source_index": 42,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 171,
+              "generated_ids_exact": true
+            }
+          ],
+          "schedule_proof": {
+            "per_visit_learning_rates_exact": false,
+            "max_absolute_lr_difference": 1.0000000000000243e-07,
+            "mismatched_visits": 998,
+            "baseline_optimizer": {
+              "successful_optimizer_steps": 996,
+              "skipped_optimizer_steps": 4,
+              "adapter_parameters_finite": true,
+              "optimizer_state_finite": true
+            },
+            "control_actual_schedule": {
+              "successful_optimizer_steps": 997,
+              "skipped_optimizer_steps": 3,
+              "skipped_visits": [
+                1,
+                4,
+                12
+              ],
+              "same_schedule_definition_verified": true,
+              "recorded_trace_explained": true
+            },
+            "interpretation": "Loss masks also change gradient/clipping/AMP behavior; semantic effects are not isolated from these effects."
+          },
+          "next_token_hash_count": 0,
+          "next_token_stop_argmax_count": 0,
+          "probe_n": 100,
+          "answer_n": 8,
+          "answer_empty": 0,
+          "answer_title_only": 0,
+          "answer_repetition": 1,
+          "small_set_mean_score": 0.4045776870124171,
+          "not_a_full_score": true,
+          "original_failure_record_preserved": true,
+          "seconds": 254.93508964776993
+        }
+      },
+      {
+        "kind": "recovered_control",
+        "task": "qwen3b__wrapper_masked",
+        "summary": {
+          "status": "COMPLETE",
+          "model": "qwen3b",
+          "mode": "wrapper_masked",
+          "steps": 1000,
+          "training_performed": false,
+          "original_rejected_diagnostic": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/qwen3b__wrapper_masked",
+          "baseline_replay": [
+            {
+              "source_index": 42,
+              "generated_ids_exact": true
+            },
+            {
+              "source_index": 171,
+              "generated_ids_exact": true
+            }
+          ],
+          "schedule_proof": {
+            "per_visit_learning_rates_exact": false,
+            "max_absolute_lr_difference": 1.0000000000000021e-07,
+            "mismatched_visits": 11,
+            "baseline_optimizer": {
+              "successful_optimizer_steps": 996,
+              "skipped_optimizer_steps": 4,
+              "adapter_parameters_finite": true,
+              "optimizer_state_finite": true
+            },
+            "control_actual_schedule": {
+              "successful_optimizer_steps": 996,
+              "skipped_optimizer_steps": 4,
+              "skipped_visits": [
+                1,
+                2,
+                4,
+                23
+              ],
+              "same_schedule_definition_verified": true,
+              "recorded_trace_explained": true
+            },
+            "interpretation": "Loss masks also change gradient/clipping/AMP behavior; semantic effects are not isolated from these effects."
+          },
+          "next_token_hash_count": 0,
+          "next_token_stop_argmax_count": 0,
+          "probe_n": 100,
+          "answer_n": 8,
+          "answer_empty": 0,
+          "answer_title_only": 0,
+          "answer_repetition": 0,
+          "small_set_mean_score": 0.3056059542633113,
+          "not_a_full_score": true,
+          "original_failure_record_preserved": true,
+          "seconds": 255.9364548176527
+        }
+      },
+      {
+        "kind": "recovery",
+        "root": "/data/chuwenjing/results/tlm_template_eval_recovery/run_20261027_004343_f67018",
+        "status": {
+          "status": "COMPLETE",
+          "jobs": [
+            {
+              "key": "llama3b__role_masked",
+              "model": "llama3b",
+              "mode": "role_masked",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "original": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k",
+              "state": "COMPLETE",
+              "output": "/data/chuwenjing/results/tlm_template_eval_recovery/run_20261027_004343_f67018/llama3b__role_masked",
+              "gpu": 0,
+              "pid": 12397,
+              "log": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/llama3b__role_masked.log",
+              "exit_code": 1,
+              "failure": {
+                "type": "ValueError",
+                "error": "Original trajectory controls differ: {'sample_order_exact': True, 'max_base_ce_difference': 0.0, 'max_weight_difference': 0.0, 'learning_rates_exact': False}",
+                "seconds": 584.2415475398302
+              },
+              "failed_output": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/llama3b__role_masked",
+              "summary": {
+                "status": "COMPLETE",
+                "model": "llama3b",
+                "mode": "role_masked",
+                "steps": 1000,
+                "training_performed": false,
+                "original_rejected_diagnostic": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/llama3b__role_masked",
+                "baseline_replay": [
+                  {
+                    "source_index": 42,
+                    "generated_ids_exact": true
+                  },
+                  {
+                    "source_index": 171,
+                    "generated_ids_exact": true
+                  }
+                ],
+                "schedule_proof": {
+                  "per_visit_learning_rates_exact": false,
+                  "max_absolute_lr_difference": 1.0000000000000031e-07,
+                  "mismatched_visits": 21,
+                  "baseline_optimizer": {
+                    "successful_optimizer_steps": 999,
+                    "skipped_optimizer_steps": 1,
+                    "adapter_parameters_finite": true,
+                    "optimizer_state_finite": true
+                  },
+                  "control_actual_schedule": {
+                    "successful_optimizer_steps": 999,
+                    "skipped_optimizer_steps": 1,
+                    "skipped_visits": [
+                      33
+                    ],
+                    "same_schedule_definition_verified": true,
+                    "recorded_trace_explained": true
+                  },
+                  "interpretation": "Loss masks also change gradient/clipping/AMP behavior; semantic effects are not isolated from these effects."
+                },
+                "next_token_hash_count": 0,
+                "next_token_stop_argmax_count": 0,
+                "probe_n": 100,
+                "answer_n": 8,
+                "answer_empty": 0,
+                "answer_title_only": 0,
+                "answer_repetition": 0,
+                "small_set_mean_score": 0.34801624026000993,
+                "not_a_full_score": true,
+                "original_failure_record_preserved": true,
+                "seconds": 157.51731097698212
+              }
+            },
+            {
+              "key": "llama3b__both_masked",
+              "model": "llama3b",
+              "mode": "both_masked",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "original": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k",
+              "state": "COMPLETE",
+              "output": "/data/chuwenjing/results/tlm_template_eval_recovery/run_20261027_004343_f67018/llama3b__both_masked",
+              "gpu": 4,
+              "pid": 12398,
+              "log": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/llama3b__both_masked.log",
+              "exit_code": 1,
+              "failure": {
+                "type": "ValueError",
+                "error": "Original trajectory controls differ: {'sample_order_exact': True, 'max_base_ce_difference': 0.0, 'max_weight_difference': 0.0, 'learning_rates_exact': False}",
+                "seconds": 592.1281419545412
+              },
+              "failed_output": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/llama3b__both_masked",
+              "summary": {
+                "status": "COMPLETE",
+                "model": "llama3b",
+                "mode": "both_masked",
+                "steps": 1000,
+                "training_performed": false,
+                "original_rejected_diagnostic": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/llama3b__both_masked",
+                "baseline_replay": [
+                  {
+                    "source_index": 42,
+                    "generated_ids_exact": true
+                  },
+                  {
+                    "source_index": 171,
+                    "generated_ids_exact": true
+                  }
+                ],
+                "schedule_proof": {
+                  "per_visit_learning_rates_exact": false,
+                  "max_absolute_lr_difference": 1.0000000000000243e-07,
+                  "mismatched_visits": 982,
+                  "baseline_optimizer": {
+                    "successful_optimizer_steps": 999,
+                    "skipped_optimizer_steps": 1,
+                    "adapter_parameters_finite": true,
+                    "optimizer_state_finite": true
+                  },
+                  "control_actual_schedule": {
+                    "successful_optimizer_steps": 999,
+                    "skipped_optimizer_steps": 1,
+                    "skipped_visits": [
+                      994
+                    ],
+                    "same_schedule_definition_verified": true,
+                    "recorded_trace_explained": true
+                  },
+                  "interpretation": "Loss masks also change gradient/clipping/AMP behavior; semantic effects are not isolated from these effects."
+                },
+                "next_token_hash_count": 0,
+                "next_token_stop_argmax_count": 0,
+                "probe_n": 100,
+                "answer_n": 8,
+                "answer_empty": 0,
+                "answer_title_only": 0,
+                "answer_repetition": 0,
+                "small_set_mean_score": 0.37724316447790385,
+                "not_a_full_score": true,
+                "original_failure_record_preserved": true,
+                "seconds": 181.88288383185863
+              }
+            },
+            {
+              "key": "qwen3b__role_masked",
+              "model": "qwen3b",
+              "mode": "role_masked",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "original": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k",
+              "state": "COMPLETE",
+              "output": "/data/chuwenjing/results/tlm_template_eval_recovery/run_20261027_004343_f67018/qwen3b__role_masked",
+              "gpu": 7,
+              "pid": 12399,
+              "log": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/qwen3b__role_masked.log",
+              "exit_code": 1,
+              "failure": {
+                "type": "ValueError",
+                "error": "Original trajectory controls differ: {'sample_order_exact': True, 'max_base_ce_difference': 0.0, 'max_weight_difference': 0.0, 'learning_rates_exact': False}",
+                "seconds": 806.6496096104383
+              },
+              "failed_output": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/qwen3b__role_masked",
+              "summary": {
+                "status": "COMPLETE",
+                "model": "qwen3b",
+                "mode": "role_masked",
+                "steps": 1000,
+                "training_performed": false,
+                "original_rejected_diagnostic": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/qwen3b__role_masked",
+                "baseline_replay": [
+                  {
+                    "source_index": 42,
+                    "generated_ids_exact": true
+                  },
+                  {
+                    "source_index": 171,
+                    "generated_ids_exact": true
+                  }
+                ],
+                "schedule_proof": {
+                  "per_visit_learning_rates_exact": false,
+                  "max_absolute_lr_difference": 1.0000000000000243e-07,
+                  "mismatched_visits": 998,
+                  "baseline_optimizer": {
+                    "successful_optimizer_steps": 996,
+                    "skipped_optimizer_steps": 4,
+                    "adapter_parameters_finite": true,
+                    "optimizer_state_finite": true
+                  },
+                  "control_actual_schedule": {
+                    "successful_optimizer_steps": 997,
+                    "skipped_optimizer_steps": 3,
+                    "skipped_visits": [
+                      1,
+                      4,
+                      12
+                    ],
+                    "same_schedule_definition_verified": true,
+                    "recorded_trace_explained": true
+                  },
+                  "interpretation": "Loss masks also change gradient/clipping/AMP behavior; semantic effects are not isolated from these effects."
+                },
+                "next_token_hash_count": 0,
+                "next_token_stop_argmax_count": 0,
+                "probe_n": 100,
+                "answer_n": 8,
+                "answer_empty": 0,
+                "answer_title_only": 0,
+                "answer_repetition": 1,
+                "small_set_mean_score": 0.4045776870124171,
+                "not_a_full_score": true,
+                "original_failure_record_preserved": true,
+                "seconds": 254.93508964776993
+              }
+            },
+            {
+              "key": "qwen3b__wrapper_masked",
+              "model": "qwen3b",
+              "mode": "wrapper_masked",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "original": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k",
+              "state": "COMPLETE",
+              "output": "/data/chuwenjing/results/tlm_template_eval_recovery/run_20261027_004343_f67018/qwen3b__wrapper_masked",
+              "gpu": 0,
+              "pid": 13158,
+              "log": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/qwen3b__wrapper_masked.log",
+              "exit_code": 1,
+              "failure": {
+                "type": "ValueError",
+                "error": "Original trajectory controls differ: {'sample_order_exact': True, 'max_base_ce_difference': 0.0, 'max_weight_difference': 0.0, 'learning_rates_exact': False}",
+                "seconds": 833.8230414539576
+              },
+              "failed_output": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/qwen3b__wrapper_masked",
+              "summary": {
+                "status": "COMPLETE",
+                "model": "qwen3b",
+                "mode": "wrapper_masked",
+                "steps": 1000,
+                "training_performed": false,
+                "original_rejected_diagnostic": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/qwen3b__wrapper_masked",
+                "baseline_replay": [
+                  {
+                    "source_index": 42,
+                    "generated_ids_exact": true
+                  },
+                  {
+                    "source_index": 171,
+                    "generated_ids_exact": true
+                  }
+                ],
+                "schedule_proof": {
+                  "per_visit_learning_rates_exact": false,
+                  "max_absolute_lr_difference": 1.0000000000000021e-07,
+                  "mismatched_visits": 11,
+                  "baseline_optimizer": {
+                    "successful_optimizer_steps": 996,
+                    "skipped_optimizer_steps": 4,
+                    "adapter_parameters_finite": true,
+                    "optimizer_state_finite": true
+                  },
+                  "control_actual_schedule": {
+                    "successful_optimizer_steps": 996,
+                    "skipped_optimizer_steps": 4,
+                    "skipped_visits": [
+                      1,
+                      2,
+                      4,
+                      23
+                    ],
+                    "same_schedule_definition_verified": true,
+                    "recorded_trace_explained": true
+                  },
+                  "interpretation": "Loss masks also change gradient/clipping/AMP behavior; semantic effects are not isolated from these effects."
+                },
+                "next_token_hash_count": 0,
+                "next_token_stop_argmax_count": 0,
+                "probe_n": 100,
+                "answer_n": 8,
+                "answer_empty": 0,
+                "answer_title_only": 0,
+                "answer_repetition": 0,
+                "small_set_mean_score": 0.3056059542633113,
+                "not_a_full_score": true,
+                "original_failure_record_preserved": true,
+                "seconds": 255.9364548176527
+              }
+            },
+            {
+              "key": "qwen3b__both_masked",
+              "model": "qwen3b",
+              "mode": "both_masked",
+              "runtime": "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_b6da067b55f5",
+              "original": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k",
+              "state": "COMPLETE",
+              "output": "/data/chuwenjing/results/tlm_template_eval_recovery/run_20261027_004343_f67018/qwen3b__both_masked",
+              "gpu": 4,
+              "pid": 13280,
+              "log": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/qwen3b__both_masked.log",
+              "exit_code": 1,
+              "failure": {
+                "type": "ValueError",
+                "error": "Original trajectory controls differ: {'sample_order_exact': True, 'max_base_ce_difference': 0.0, 'max_weight_difference': 0.0, 'learning_rates_exact': False}",
+                "seconds": 810.4146007150412
+              },
+              "failed_output": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/qwen3b__both_masked",
+              "summary": {
+                "status": "COMPLETE",
+                "model": "qwen3b",
+                "mode": "both_masked",
+                "steps": 1000,
+                "training_performed": false,
+                "original_rejected_diagnostic": "/data/chuwenjing/results/tlm_template_matrix/run_20261026_160452_836775/qwen3b__both_masked",
+                "baseline_replay": [
+                  {
+                    "source_index": 42,
+                    "generated_ids_exact": true
+                  },
+                  {
+                    "source_index": 171,
+                    "generated_ids_exact": true
+                  }
+                ],
+                "schedule_proof": {
+                  "per_visit_learning_rates_exact": false,
+                  "max_absolute_lr_difference": 4.000000000000001e-07,
+                  "mismatched_visits": 999,
+                  "baseline_optimizer": {
+                    "successful_optimizer_steps": 996,
+                    "skipped_optimizer_steps": 4,
+                    "adapter_parameters_finite": true,
+                    "optimizer_state_finite": true
+                  },
+                  "control_actual_schedule": {
+                    "successful_optimizer_steps": 998,
+                    "skipped_optimizer_steps": 2,
+                    "skipped_visits": [
+                      14,
+                      968
+                    ],
+                    "same_schedule_definition_verified": true,
+                    "recorded_trace_explained": true
+                  },
+                  "interpretation": "Loss masks also change gradient/clipping/AMP behavior; semantic effects are not isolated from these effects."
+                },
+                "next_token_hash_count": 0,
+                "next_token_stop_argmax_count": 0,
+                "probe_n": 100,
+                "answer_n": 8,
+                "answer_empty": 0,
+                "answer_title_only": 0,
+                "answer_repetition": 0,
+                "small_set_mean_score": 0.40755632252029755,
+                "not_a_full_score": true,
+                "original_failure_record_preserved": true,
+                "seconds": 185.5951367765665
+              }
+            }
+          ],
+          "excluded_failures": [],
+          "training_performed": false,
+          "source_matrix_modified": false,
+          "time": 1793062525.4782546
+        }
+      },
+      {
+        "kind": "gsm_failure_replay",
+        "mode": "original_step2500",
+        "root": "/data/chuwenjing/results/tlm_gsm_failure_replay/run_20261027_074127_85f7d3/original_step2500",
+        "selection.json": {
+          "indices": [
+            274,
+            762,
+            876,
+            1174,
+            1288,
+            1363,
+            1443,
+            1814,
+            1924,
+            2116,
+            2126,
+            3665,
+            4233,
+            4262,
+            4461,
+            4509
+          ],
+          "selection_seed": 314159,
+          "population_n": 350,
+          "selection_basis": "previously observed original step5000 reasoning-stub-only failures; no gold consulted",
+          "not_an_unbiased_accuracy_sample": true
+        },
+        "status.json": {
+          "status": "COMPLETE",
+          "mode": "original_step2500"
+        },
+        "original_failure_replay.json": {
+          "generated_ids_and_text_exact": true,
+          "indices": [
+            274,
+            762,
+            876,
+            1174,
+            1288,
+            1363,
+            1443,
+            1814,
+            1924,
+            2116,
+            2126,
+            3665,
+            4233,
+            4262,
+            4461,
+            4509
+          ]
+        },
+        "summary.json": {
+          "status": "COMPLETE",
+          "mode": "original_step2500",
+          "n": 16,
+          "stub_only": 5,
+          "empty": 0,
+          "correct": 8.0,
+          "source_correct": 13.0,
+          "hit_limit": 0,
+          "original_step5000_stub_only": 16,
+          "exact_original_failure_replay": true,
+          "adapter_sha256": "3d0fc755e80442d9bce47647eee0fe1c3646784dac499ef88f98f93586b84162",
+          "training_performed": false,
+          "optimizer_created": false,
+          "not_an_unbiased_accuracy_sample": true,
+          "original_runs_modified": false,
+          "seconds": 251.11808896064758
+        },
+        "answers_completed": 16,
+        "partial_actual_counts": {
+          "stub_only": 5,
+          "correct": 8.0
+        }
+      },
+      {
+        "kind": "gsm_failure_replay",
+        "mode": "hint_masked",
+        "root": "/data/chuwenjing/results/tlm_gsm_failure_replay/run_20261027_074127_85f7d3/hint_masked",
+        "selection.json": {
+          "indices": [
+            274,
+            762,
+            876,
+            1174,
+            1288,
+            1363,
+            1443,
+            1814,
+            1924,
+            2116,
+            2126,
+            3665,
+            4233,
+            4262,
+            4461,
+            4509
+          ],
+          "selection_seed": 314159,
+          "population_n": 350,
+          "selection_basis": "previously observed original step5000 reasoning-stub-only failures; no gold consulted",
+          "not_an_unbiased_accuracy_sample": true
+        },
+        "status.json": {
+          "status": "COMPLETE",
+          "mode": "hint_masked"
+        },
+        "original_failure_replay.json": {
+          "generated_ids_and_text_exact": true,
+          "indices": [
+            274,
+            762,
+            876,
+            1174,
+            1288,
+            1363,
+            1443,
+            1814,
+            1924,
+            2116,
+            2126,
+            3665,
+            4233,
+            4262,
+            4461,
+            4509
+          ]
+        },
+        "summary.json": {
+          "status": "COMPLETE",
+          "mode": "hint_masked",
+          "n": 16,
+          "stub_only": 0,
+          "empty": 0,
+          "correct": 14.0,
+          "source_correct": 13.0,
+          "hit_limit": 0,
+          "original_step5000_stub_only": 16,
+          "exact_original_failure_replay": true,
+          "adapter_sha256": "fc87c4353f0f076c22f3eb1c2d8ab9d02c6b2ba128a861599cb539064c93c304",
+          "training_performed": false,
+          "optimizer_created": false,
+          "not_an_unbiased_accuracy_sample": true,
+          "original_runs_modified": false,
+          "seconds": 305.0878675431013
+        },
+        "answers_completed": 16,
+        "partial_actual_counts": {
+          "stub_only": 0,
+          "correct": 14.0
+        }
+      },
+      {
+        "kind": "gsm_failure_replay",
+        "mode": "eot_masked",
+        "root": "/data/chuwenjing/results/tlm_gsm_failure_replay/run_20261027_074127_85f7d3/eot_masked",
+        "selection.json": {
+          "indices": [
+            274,
+            762,
+            876,
+            1174,
+            1288,
+            1363,
+            1443,
+            1814,
+            1924,
+            2116,
+            2126,
+            3665,
+            4233,
+            4262,
+            4461,
+            4509
+          ],
+          "selection_seed": 314159,
+          "population_n": 350,
+          "selection_basis": "previously observed original step5000 reasoning-stub-only failures; no gold consulted",
+          "not_an_unbiased_accuracy_sample": true
+        },
+        "status.json": {
+          "status": "COMPLETE",
+          "mode": "eot_masked"
+        },
+        "original_failure_replay.json": {
+          "generated_ids_and_text_exact": true,
+          "indices": [
+            274,
+            762,
+            876,
+            1174,
+            1288,
+            1363,
+            1443,
+            1814,
+            1924,
+            2116,
+            2126,
+            3665,
+            4233,
+            4262,
+            4461,
+            4509
+          ]
+        },
+        "summary.json": {
+          "status": "COMPLETE",
+          "mode": "eot_masked",
+          "n": 16,
+          "stub_only": 0,
+          "empty": 0,
+          "correct": 13.0,
+          "source_correct": 13.0,
+          "hit_limit": 0,
+          "original_step5000_stub_only": 16,
+          "exact_original_failure_replay": true,
+          "adapter_sha256": "8810d26ca78766be2594253aa375fab2902d353acda7eebdd21f01fd9a0986ae",
+          "training_performed": false,
+          "optimizer_created": false,
+          "not_an_unbiased_accuracy_sample": true,
+          "original_runs_modified": false,
+          "seconds": 292.36903665959835
+        },
+        "answers_completed": 16,
+        "partial_actual_counts": {
+          "stub_only": 0,
+          "correct": 13.0
+        }
+      },
+      {
+        "kind": "gsm_failure_replay",
+        "mode": "both_masked",
+        "root": "/data/chuwenjing/results/tlm_gsm_failure_replay/run_20261027_074127_85f7d3/both_masked",
+        "selection.json": {
+          "indices": [
+            274,
+            762,
+            876,
+            1174,
+            1288,
+            1363,
+            1443,
+            1814,
+            1924,
+            2116,
+            2126,
+            3665,
+            4233,
+            4262,
+            4461,
+            4509
+          ],
+          "selection_seed": 314159,
+          "population_n": 350,
+          "selection_basis": "previously observed original step5000 reasoning-stub-only failures; no gold consulted",
+          "not_an_unbiased_accuracy_sample": true
+        },
+        "status.json": {
+          "status": "COMPLETE",
+          "mode": "both_masked"
+        },
+        "original_failure_replay.json": {
+          "generated_ids_and_text_exact": true,
+          "indices": [
+            274,
+            762,
+            876,
+            1174,
+            1288,
+            1363,
+            1443,
+            1814,
+            1924,
+            2116,
+            2126,
+            3665,
+            4233,
+            4262,
+            4461,
+            4509
+          ]
+        },
+        "summary.json": {
+          "status": "COMPLETE",
+          "mode": "both_masked",
+          "n": 16,
+          "stub_only": 0,
+          "empty": 0,
+          "correct": 14.0,
+          "source_correct": 13.0,
+          "hit_limit": 0,
+          "original_step5000_stub_only": 16,
+          "exact_original_failure_replay": true,
+          "adapter_sha256": "71806639825909a49e53e2591898fca1e7270dc4c02cbe3d2dd4c187f5ed8e24",
+          "training_performed": false,
+          "optimizer_created": false,
+          "not_an_unbiased_accuracy_sample": true,
+          "original_runs_modified": false,
+          "seconds": 302.1424364000559
+        },
+        "answers_completed": 16,
+        "partial_actual_counts": {
+          "stub_only": 0,
+          "correct": 14.0
+        }
+      }
+    ],
+    "exit_status": 0
+  },
+  "paired_validation": {
+    "read_only": true,
+    "checks": [
+      {
+        "time_utc": "2026-10-27T13:24:06.192825+00:00",
+        "read_only": true
+      },
+      {
+        "mode": "original_step2500",
+        "gpu": 0,
+        "pid": 29803,
+        "expected_process_alive": true,
+        "status.json": {
+          "status": "EVALUATING",
+          "mode": "original_step2500",
+          "completed": 112,
+          "n": 200,
+          "elapsed_seconds": 1821.6526249796152,
+          "training_performed": false
+        },
+        "replay.json": {
+          "original_step5000": [
+            {
+              "source_index": 23,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 68,
+              "generated_ids_and_text_exact": true
+            }
+          ],
+          "target_step2500": [
+            {
+              "source_index": 274,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 762,
+              "generated_ids_and_text_exact": true
+            }
+          ]
+        },
+        "selection.json": {
+          "seed": 20261027,
+          "registration_sha256": "0460a809b56aa8e43620442e165306a2311577883e846a1d35f5ab0d4ae7a2ae",
+          "same_adaptation_population": true,
+          "not_a_full_score": true
+        },
+        "completed": 112
+      },
+      {
+        "mode": "hint_masked",
+        "gpu": 1,
+        "pid": 29810,
+        "expected_process_alive": true,
+        "status.json": {
+          "status": "EVALUATING",
+          "mode": "hint_masked",
+          "completed": 106,
+          "n": 200,
+          "elapsed_seconds": 1808.4281693398952,
+          "training_performed": false
+        },
+        "replay.json": {
+          "original_step5000": [
+            {
+              "source_index": 23,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 68,
+              "generated_ids_and_text_exact": true
+            }
+          ],
+          "target_step2500": [
+            {
+              "source_index": 274,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 762,
+              "generated_ids_and_text_exact": true
+            }
+          ]
+        },
+        "selection.json": {
+          "seed": 20261027,
+          "registration_sha256": "0460a809b56aa8e43620442e165306a2311577883e846a1d35f5ab0d4ae7a2ae",
+          "same_adaptation_population": true,
+          "not_a_full_score": true
+        },
+        "completed": 106
+      },
+      {
+        "mode": "eot_masked",
+        "gpu": 2,
+        "pid": 29817,
+        "expected_process_alive": true,
+        "status.json": {
+          "status": "EVALUATING",
+          "mode": "eot_masked",
+          "completed": 121,
+          "n": 200,
+          "elapsed_seconds": 1817.118745610118,
+          "training_performed": false
+        },
+        "replay.json": {
+          "original_step5000": [
+            {
+              "source_index": 23,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 68,
+              "generated_ids_and_text_exact": true
+            }
+          ],
+          "target_step2500": [
+            {
+              "source_index": 274,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 762,
+              "generated_ids_and_text_exact": true
+            }
+          ]
+        },
+        "selection.json": {
+          "seed": 20261027,
+          "registration_sha256": "0460a809b56aa8e43620442e165306a2311577883e846a1d35f5ab0d4ae7a2ae",
+          "same_adaptation_population": true,
+          "not_a_full_score": true
+        },
+        "completed": 121
+      },
+      {
+        "mode": "both_masked",
+        "gpu": 3,
+        "pid": 29825,
+        "expected_process_alive": true,
+        "status.json": {
+          "status": "EVALUATING",
+          "mode": "both_masked",
+          "completed": 117,
+          "n": 200,
+          "elapsed_seconds": 1816.13064353168,
+          "training_performed": false
+        },
+        "replay.json": {
+          "original_step5000": [
+            {
+              "source_index": 23,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 68,
+              "generated_ids_and_text_exact": true
+            }
+          ],
+          "target_step2500": [
+            {
+              "source_index": 274,
+              "generated_ids_and_text_exact": true
+            },
+            {
+              "source_index": 762,
+              "generated_ids_and_text_exact": true
+            }
+          ]
+        },
+        "selection.json": {
+          "seed": 20261027,
+          "registration_sha256": "0460a809b56aa8e43620442e165306a2311577883e846a1d35f5ab0d4ae7a2ae",
+          "same_adaptation_population": true,
+          "not_a_full_score": true
+        },
+        "completed": 117
+      }
+    ],
+    "exit_status": 0
+  }
+}

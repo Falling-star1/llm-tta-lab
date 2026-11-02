@@ -1,0 +1,1986 @@
+{
+  "checked_at_beijing": "2026-10-25 23:13",
+  "run_root": "/data/chuwenjing/results/tlm_scaled_precision/run_20261025_151015",
+  "delivery_sha256": "3fe59f2d1af0800c9d22b8ce93d33f721025919d09f2a154a696b059302ac556",
+  "checks": [
+    {
+      "time_utc": "2026-10-25T15:13:22.958870+00:00"
+    },
+    {
+      "gpu": "0, 9189, 24\n1, 9083, 0\n2, 7689, 22\n3, 8645, 20\n4, 8709, 0\n5, 7577, 20\n6, 1, 0\n7, 1, 0\n"
+    },
+    {
+      "diagnostic_processes": []
+    },
+    {
+      "runs": [
+        "/data/chuwenjing/results/tlm_scaled_precision/run_20261025_151015"
+      ]
+    },
+    {
+      "summary": "/data/chuwenjing/results/tlm_scaled_precision/run_20261025_151015/llama/run_summary.json",
+      "result": {
+        "model": "llama3b",
+        "seed": 42,
+        "lora_init": "gaussian",
+        "v3_code_id": "267c3593e1d2c62f7d741168dcfd82ff76dc60f5458a06e481beca570997915d",
+        "scaled_diagnostic_delivery": "3fe59f2d1af0800c9d22b8ce93d33f721025919d09f2a154a696b059302ac556",
+        "diagnostic_status": "RECORDED",
+        "scaled_pair_status": "MISMATCH",
+        "trajectory_status": "RECORDED",
+        "base_unchanged": true,
+        "original_adapter_restored": true,
+        "nonzero_engineering_updates": true,
+        "same_input_order": true,
+        "same_step_count": true,
+        "all_parameter_states_finite": true,
+        "full_training_started": false,
+        "ready_for_full_training": false,
+        "features": [
+          {
+            "source_index": 1404,
+            "tokens": 258,
+            "tokens_sha256": "51c6d693aae30b78ef344f8a9b2287c12ffc8d0e2e85244740b92710be8ca67a"
+          },
+          {
+            "source_index": 3485,
+            "tokens": 258,
+            "tokens_sha256": "14e59664ddbbcdfac44fd608f63f9a25999a151bc57ed286bbc94de96294c2db"
+          },
+          {
+            "source_index": 4691,
+            "tokens": 258,
+            "tokens_sha256": "ada2ca79bc53e6fd718306d6b2f34086f4bcabb475d78227ea1739408ca366ff"
+          },
+          {
+            "source_index": 1275,
+            "tokens": 258,
+            "tokens_sha256": "df8132e1c128b61d1b559a49640476c6e94f42180ac39d7a862717ea3894a8ca"
+          }
+        ],
+        "initial_scaler_state": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        }
+      }
+    },
+    {
+      "scaled_report": "/data/chuwenjing/results/tlm_scaled_precision/run_20261025_151015/llama/scaled_report.json",
+      "status": "MISMATCH"
+    },
+    {
+      "model": "llama",
+      "state": "initial_zero_B",
+      "status": "MISMATCH",
+      "finite_scale": 65536.0,
+      "attempts": [
+        {
+          "scale": 65536.0,
+          "full": {
+            "scale_used": 65536.0,
+            "next_scale": 65536.0,
+            "finite": true
+          },
+          "trainer_multi": {
+            "scale_used": 65536.0,
+            "next_scale": 65536.0,
+            "finite": true
+          }
+        }
+      ],
+      "reference_factor_norms": {
+        "lora_A": 0.0,
+        "lora_B": 0.7523113940610603
+      },
+      "checkpoint_control_status": "MISMATCH"
+    },
+    {
+      "model": "llama",
+      "state": "initial_zero_B",
+      "path": "full",
+      "strict_match": true,
+      "finite": true,
+      "scale_used": 65536.0,
+      "gradient_summary": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0
+      },
+      "max_parameter_relative_l2": 0.0,
+      "worst_parameters": [
+        {
+          "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+          "rel_l2": 0.0,
+          "abs": 0.0,
+          "pointwise_close": true
+        },
+        {
+          "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+          "rel_l2": 0.0,
+          "abs": 0.0,
+          "pointwise_close": true
+        }
+      ],
+      "hidden_gradient": {
+        "finite": true,
+        "pointwise_close": true,
+        "max_absolute_difference": 0.0,
+        "relative_l2": 0.0
+      },
+      "weighted_loss": 0.2809564471244812
+    },
+    {
+      "model": "llama",
+      "state": "initial_zero_B",
+      "path": "trainer_multi",
+      "strict_match": false,
+      "finite": true,
+      "scale_used": 65536.0,
+      "gradient_summary": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 15,
+        "global_relative_l2": 0.0018598946980760494,
+        "global_cosine": 0.9999983083758243,
+        "max_absolute_difference": 0.00011444091796875
+      },
+      "max_parameter_relative_l2": 0.0023499163509000357,
+      "worst_parameters": [
+        {
+          "name": "base_model.model.model.layers.0.self_attn.v_proj.lora_B.default.weight",
+          "rel_l2": 0.0023499163509000357,
+          "abs": 0.00011444091796875,
+          "pointwise_close": false
+        },
+        {
+          "name": "base_model.model.model.layers.3.self_attn.q_proj.lora_B.default.weight",
+          "rel_l2": 0.0023260287596162913,
+          "abs": 1.71661376953125e-05,
+          "pointwise_close": false
+        }
+      ],
+      "hidden_gradient": {
+        "finite": true,
+        "pointwise_close": true,
+        "max_absolute_difference": 8.940696716308594e-08,
+        "relative_l2": 0.0007292538470505814
+      },
+      "weighted_loss": 0.28095653653144836
+    },
+    {
+      "model": "llama",
+      "state": "initial_zero_B",
+      "path": "trainer_multi_no_checkpoint",
+      "strict_match": false,
+      "finite": true,
+      "scale_used": 65536.0,
+      "gradient_summary": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 15,
+        "global_relative_l2": 0.0018598946980760494,
+        "global_cosine": 0.9999983083758243,
+        "max_absolute_difference": 0.00011444091796875
+      },
+      "max_parameter_relative_l2": 0.0023499163509000357,
+      "worst_parameters": [
+        {
+          "name": "base_model.model.model.layers.0.self_attn.v_proj.lora_B.default.weight",
+          "rel_l2": 0.0023499163509000357,
+          "abs": 0.00011444091796875,
+          "pointwise_close": false
+        },
+        {
+          "name": "base_model.model.model.layers.3.self_attn.q_proj.lora_B.default.weight",
+          "rel_l2": 0.0023260287596162913,
+          "abs": 1.71661376953125e-05,
+          "pointwise_close": false
+        }
+      ],
+      "hidden_gradient": {
+        "finite": true,
+        "pointwise_close": true,
+        "max_absolute_difference": 8.940696716308594e-08,
+        "relative_l2": 0.0007292538470505814
+      },
+      "weighted_loss": 0.28095653653144836
+    },
+    {
+      "model": "llama",
+      "state": "nonzero_B",
+      "status": "MISMATCH",
+      "finite_scale": 65536.0,
+      "attempts": [
+        {
+          "scale": 65536.0,
+          "full": {
+            "scale_used": 65536.0,
+            "next_scale": 65536.0,
+            "finite": true
+          },
+          "trainer_multi": {
+            "scale_used": 65536.0,
+            "next_scale": 65536.0,
+            "finite": true
+          }
+        }
+      ],
+      "reference_factor_norms": {
+        "lora_A": 0.0052808359102357715,
+        "lora_B": 0.7463271544504422
+      },
+      "checkpoint_control_status": "MISMATCH"
+    },
+    {
+      "model": "llama",
+      "state": "nonzero_B",
+      "path": "full",
+      "strict_match": true,
+      "finite": true,
+      "scale_used": 65536.0,
+      "gradient_summary": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0
+      },
+      "max_parameter_relative_l2": 0.0,
+      "worst_parameters": [
+        {
+          "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+          "rel_l2": 0.0,
+          "abs": 0.0,
+          "pointwise_close": true
+        },
+        {
+          "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+          "rel_l2": 0.0,
+          "abs": 0.0,
+          "pointwise_close": true
+        }
+      ],
+      "hidden_gradient": {
+        "finite": true,
+        "pointwise_close": true,
+        "max_absolute_difference": 0.0,
+        "relative_l2": 0.0
+      },
+      "weighted_loss": 0.28076663613319397
+    },
+    {
+      "model": "llama",
+      "state": "nonzero_B",
+      "path": "trainer_multi",
+      "strict_match": false,
+      "finite": true,
+      "scale_used": 65536.0,
+      "gradient_summary": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 13,
+        "global_relative_l2": 0.0017620793567365068,
+        "global_cosine": 0.999998452561404,
+        "max_absolute_difference": 6.103515625e-05
+      },
+      "max_parameter_relative_l2": 0.008767088254624269,
+      "worst_parameters": [
+        {
+          "name": "base_model.model.model.layers.0.self_attn.v_proj.lora_A.default.weight",
+          "rel_l2": 0.008767088254624269,
+          "abs": 2.4586915969848633e-06,
+          "pointwise_close": true
+        },
+        {
+          "name": "base_model.model.model.layers.9.self_attn.v_proj.lora_A.default.weight",
+          "rel_l2": 0.005103659824327639,
+          "abs": 4.6193599700927734e-07,
+          "pointwise_close": true
+        }
+      ],
+      "hidden_gradient": {
+        "finite": true,
+        "pointwise_close": true,
+        "max_absolute_difference": 1.1920928955078125e-07,
+        "relative_l2": 0.0007330566155842571
+      },
+      "weighted_loss": 0.28076669573783875
+    },
+    {
+      "model": "llama",
+      "state": "nonzero_B",
+      "path": "trainer_multi_no_checkpoint",
+      "strict_match": false,
+      "finite": true,
+      "scale_used": 65536.0,
+      "gradient_summary": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 13,
+        "global_relative_l2": 0.0017620793567365068,
+        "global_cosine": 0.999998452561404,
+        "max_absolute_difference": 6.103515625e-05
+      },
+      "max_parameter_relative_l2": 0.008767088254624269,
+      "worst_parameters": [
+        {
+          "name": "base_model.model.model.layers.0.self_attn.v_proj.lora_A.default.weight",
+          "rel_l2": 0.008767088254624269,
+          "abs": 2.4586915969848633e-06,
+          "pointwise_close": true
+        },
+        {
+          "name": "base_model.model.model.layers.9.self_attn.v_proj.lora_A.default.weight",
+          "rel_l2": 0.005103659824327639,
+          "abs": 4.6193599700927734e-07,
+          "pointwise_close": true
+        }
+      ],
+      "hidden_gradient": {
+        "finite": true,
+        "pointwise_close": true,
+        "max_absolute_difference": 1.1920928955078125e-07,
+        "relative_l2": 0.0007330566155842571
+      },
+      "weighted_loss": 0.28076669573783875
+    },
+    {
+      "trajectory_report": "/data/chuwenjing/results/tlm_scaled_precision/run_20261025_151015/llama/trajectory_report.json",
+      "status": "RECORDED",
+      "progress": {
+        "full": 16,
+        "chunk": 16
+      },
+      "steps_per_path": 16,
+      "nonzero_updates": true,
+      "same_input_order": true,
+      "same_step_count": true,
+      "all_parameters_finite": true,
+      "all_states_bitwise_equal": false,
+      "full_source_order": [
+        4691,
+        1275,
+        1404,
+        3485,
+        1404,
+        3485,
+        1275,
+        4691,
+        1404,
+        1275,
+        3485,
+        4691,
+        1275,
+        1404,
+        3485,
+        4691
+      ],
+      "chunk_source_order": [
+        4691,
+        1275,
+        1404,
+        3485,
+        1404,
+        3485,
+        1275,
+        4691,
+        1404,
+        1275,
+        3485,
+        4691,
+        1275,
+        1404,
+        3485,
+        4691
+      ],
+      "paths": {
+        "full": {
+          "scaler_enabled": true,
+          "global_steps": 16,
+          "optimizer_state_step_counts": [
+            16
+          ],
+          "nonzero_update": true
+        },
+        "chunk": {
+          "scaler_enabled": true,
+          "global_steps": 16,
+          "optimizer_state_step_counts": [
+            16
+          ],
+          "nonzero_update": true
+        }
+      }
+    },
+    {
+      "model": "llama",
+      "step": 1,
+      "full": {
+        "step": 1,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 5e-07
+      },
+      "chunk": {
+        "step": 1,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 5e-07
+      },
+      "parameters_bitwise_equal": true,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": null,
+        "max_absolute_difference": 0.0
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 0.9999999999999998,
+        "max_absolute_difference": 0.0
+      }
+    },
+    {
+      "model": "llama",
+      "step": 2,
+      "full": {
+        "step": 2,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1e-06
+      },
+      "chunk": {
+        "step": 2,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1e-06
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 56,
+        "global_relative_l2": 0.003693219817260458,
+        "global_cosine": 0.9999931800993672,
+        "max_absolute_difference": 2.652955117810052e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 9.171833320858503e-09,
+        "global_cosine": 0.9999999999999998,
+        "max_absolute_difference": 2.652955117810052e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 3,
+      "full": {
+        "step": 3,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 9.874639560909118e-07
+      },
+      "chunk": {
+        "step": 3,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 9.874639560909118e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.005849151387907725,
+        "global_cosine": 0.999982894057932,
+        "max_absolute_difference": 5.308543506998831e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 3.732163370009024e-08,
+        "global_cosine": 0.9999999999999991,
+        "max_absolute_difference": 5.308543506998831e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 4,
+      "full": {
+        "step": 4,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 9.504844339512094e-07
+      },
+      "chunk": {
+        "step": 4,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 9.504844339512094e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.005607500522805429,
+        "global_cosine": 0.9999842786485259,
+        "max_absolute_difference": 5.395353355197585e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 5.696196946897142e-08,
+        "global_cosine": 0.9999999999999973,
+        "max_absolute_difference": 5.395353355197585e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 5,
+      "full": {
+        "step": 5,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 8.909157412340149e-07
+      },
+      "chunk": {
+        "step": 5,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 8.909157412340149e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.004956369114702353,
+        "global_cosine": 0.9999877189114401,
+        "max_absolute_difference": 5.512631560122827e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 7.177169991542933e-08,
+        "global_cosine": 0.9999999999999978,
+        "max_absolute_difference": 5.512631560122827e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 6,
+      "full": {
+        "step": 6,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 8.117449009293668e-07
+      },
+      "chunk": {
+        "step": 6,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 8.117449009293668e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.004609601092511677,
+        "global_cosine": 0.9999893773430942,
+        "max_absolute_difference": 5.576067678703112e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 8.603736964437139e-08,
+        "global_cosine": 0.9999999999999959,
+        "max_absolute_difference": 5.576067678703112e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 7,
+      "full": {
+        "step": 7,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 7.16941869558779e-07
+      },
+      "chunk": {
+        "step": 7,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 7.16941869558779e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.004351878489534269,
+        "global_cosine": 0.9999905318811865,
+        "max_absolute_difference": 5.62045102014963e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 9.831675280639025e-08,
+        "global_cosine": 0.9999999999999951,
+        "max_absolute_difference": 5.62045102014963e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 8,
+      "full": {
+        "step": 8,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 6.112604669781572e-07
+      },
+      "chunk": {
+        "step": 8,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 6.112604669781572e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.004175976605585494,
+        "global_cosine": 0.9999912816928981,
+        "max_absolute_difference": 6.145486395325861e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 1.0850681333927174e-07,
+        "global_cosine": 0.9999999999999939,
+        "max_absolute_difference": 6.145486395325861e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 9,
+      "full": {
+        "step": 9,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 5e-07
+      },
+      "chunk": {
+        "step": 9,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 5e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.003999847279150058,
+        "global_cosine": 0.9999920016265238,
+        "max_absolute_difference": 6.292293619480915e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 1.1663971823467526e-07,
+        "global_cosine": 0.9999999999999932,
+        "max_absolute_difference": 6.292293619480915e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 10,
+      "full": {
+        "step": 10,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 3.8873953302184283e-07
+      },
+      "chunk": {
+        "step": 10,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 3.8873953302184283e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.0038702551093661333,
+        "global_cosine": 0.9999925115135117,
+        "max_absolute_difference": 6.514364940812811e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 1.2301751081460034e-07,
+        "global_cosine": 0.9999999999999919,
+        "max_absolute_difference": 6.514364940812811e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 11,
+      "full": {
+        "step": 11,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 2.8305813044122093e-07
+      },
+      "chunk": {
+        "step": 11,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 2.8305813044122093e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.00377178502173174,
+        "global_cosine": 0.9999928877399331,
+        "max_absolute_difference": 6.986085736571113e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 1.277188086118238e-07,
+        "global_cosine": 0.9999999999999912,
+        "max_absolute_difference": 6.986085736571113e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 12,
+      "full": {
+        "step": 12,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1.8825509907063326e-07
+      },
+      "chunk": {
+        "step": 12,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1.8825509907063326e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.003705452644680733,
+        "global_cosine": 0.999993135727952,
+        "max_absolute_difference": 7.46947989682667e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 1.3090223462280598e-07,
+        "global_cosine": 0.9999999999999907,
+        "max_absolute_difference": 7.46947989682667e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 13,
+      "full": {
+        "step": 13,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1.090842587659851e-07
+      },
+      "chunk": {
+        "step": 13,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1.090842587659851e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.0036573044580190768,
+        "global_cosine": 0.9999933129242435,
+        "max_absolute_difference": 7.635726433363743e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 1.3280779757843492e-07,
+        "global_cosine": 0.9999999999999909,
+        "max_absolute_difference": 7.635726433363743e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 14,
+      "full": {
+        "step": 14,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 4.951556604879048e-08
+      },
+      "chunk": {
+        "step": 14,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 4.951556604879048e-08
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.003622311421450702,
+        "global_cosine": 0.9999934403250931,
+        "max_absolute_difference": 7.682549494347768e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 1.3376438449184032e-07,
+        "global_cosine": 0.9999999999999916,
+        "max_absolute_difference": 7.682549494347768e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 15,
+      "full": {
+        "step": 15,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1.253604390908819e-08
+      },
+      "chunk": {
+        "step": 15,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1.253604390908819e-08
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.0036056980205217337,
+        "global_cosine": 0.9999935003704018,
+        "max_absolute_difference": 7.70416818340891e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 1.3416324465233689e-07,
+        "global_cosine": 0.9999999999999909,
+        "max_absolute_difference": 7.70416818340891e-07
+      }
+    },
+    {
+      "model": "llama",
+      "step": 16,
+      "full": {
+        "step": 16,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 0.0
+      },
+      "chunk": {
+        "step": 16,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 0.0
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 112,
+        "global_relative_l2": 0.0036014212015306286,
+        "global_cosine": 0.9999935157822812,
+        "max_absolute_difference": 7.707003533141688e-07
+      },
+      "parameter_values": {
+        "parameters": 112,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 1.3424923394608106e-07,
+        "global_cosine": 0.9999999999999909,
+        "max_absolute_difference": 7.707003533141688e-07
+      }
+    },
+    {
+      "log": "/data/chuwenjing/results/tlm_scaled_precision/run_20261025_151015/llama.log",
+      "tail": [
+        "[INFO|trainer.py:2584] 2026-10-25 15:11:52,495 >> ",
+        "",
+        "Training completed. Do not forget to share your model on huggingface.co/models =)",
+        "",
+        "",
+        "{'train_runtime': 12.948, 'train_samples_per_second': 1.236, 'train_steps_per_second': 1.236, 'train_loss': 0.17822328209877014, 'epoch': 4.0}",
+        "{\"phase\": \"update_trajectory\", \"status\": \"RECORDED\", \"progress\": {\"full\": 16, \"chunk\": 16}}",
+        "{\"phase\": \"update_trajectory\", \"status\": \"RECORDED\", \"progress\": {\"full\": 16, \"chunk\": 16}}",
+        "SUMMARY=/data/chuwenjing/results/tlm_scaled_precision/run_20261025_151015/llama/run_summary.json"
+      ]
+    },
+    {
+      "summary": "/data/chuwenjing/results/tlm_scaled_precision/run_20261025_151015/qwen/run_summary.json",
+      "result": {
+        "model": "qwen3b",
+        "seed": 42,
+        "lora_init": "gaussian",
+        "v3_code_id": "267c3593e1d2c62f7d741168dcfd82ff76dc60f5458a06e481beca570997915d",
+        "scaled_diagnostic_delivery": "3fe59f2d1af0800c9d22b8ce93d33f721025919d09f2a154a696b059302ac556",
+        "diagnostic_status": "RECORDED",
+        "scaled_pair_status": "MISMATCH",
+        "trajectory_status": "RECORDED",
+        "base_unchanged": true,
+        "original_adapter_restored": true,
+        "nonzero_engineering_updates": true,
+        "same_input_order": true,
+        "same_step_count": true,
+        "all_parameter_states_finite": true,
+        "full_training_started": false,
+        "ready_for_full_training": false,
+        "features": [
+          {
+            "source_index": 1404,
+            "tokens": 258,
+            "tokens_sha256": "150b7e0ad960bf51a0722da70c049328f312d70a9b55ea88f5736962987ca601"
+          },
+          {
+            "source_index": 3485,
+            "tokens": 258,
+            "tokens_sha256": "4d4587bcdb7f2155df6581e2fc872d4fb3dd87df61ba901b1eda228514f491be"
+          },
+          {
+            "source_index": 4691,
+            "tokens": 258,
+            "tokens_sha256": "e50e201aebdb014574237146a65c93fd4c1e488bfdc8aa973017e23d14c93cb6"
+          },
+          {
+            "source_index": 1275,
+            "tokens": 258,
+            "tokens_sha256": "48b0168bd66f7391f7e74f6ccfe52e7d28015650a0bf88338beec43b06083663"
+          }
+        ],
+        "initial_scaler_state": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        }
+      }
+    },
+    {
+      "scaled_report": "/data/chuwenjing/results/tlm_scaled_precision/run_20261025_151015/qwen/scaled_report.json",
+      "status": "MISMATCH"
+    },
+    {
+      "model": "qwen",
+      "state": "initial_zero_B",
+      "status": "MISMATCH",
+      "finite_scale": 65536.0,
+      "attempts": [
+        {
+          "scale": 65536.0,
+          "full": {
+            "scale_used": 65536.0,
+            "next_scale": 65536.0,
+            "finite": true
+          },
+          "trainer_multi": {
+            "scale_used": 65536.0,
+            "next_scale": 65536.0,
+            "finite": true
+          }
+        }
+      ],
+      "reference_factor_norms": {
+        "lora_A": 0.0,
+        "lora_B": 1.8876461495841608
+      },
+      "checkpoint_control_status": "MISMATCH"
+    },
+    {
+      "model": "qwen",
+      "state": "initial_zero_B",
+      "path": "full",
+      "strict_match": true,
+      "finite": true,
+      "scale_used": 65536.0,
+      "gradient_summary": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0
+      },
+      "max_parameter_relative_l2": 0.0,
+      "worst_parameters": [
+        {
+          "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+          "rel_l2": 0.0,
+          "abs": 0.0,
+          "pointwise_close": true
+        },
+        {
+          "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+          "rel_l2": 0.0,
+          "abs": 0.0,
+          "pointwise_close": true
+        }
+      ],
+      "hidden_gradient": {
+        "finite": true,
+        "pointwise_close": true,
+        "max_absolute_difference": 0.0,
+        "relative_l2": 0.0
+      },
+      "weighted_loss": 0.34434589743614197
+    },
+    {
+      "model": "qwen",
+      "state": "initial_zero_B",
+      "path": "trainer_multi",
+      "strict_match": false,
+      "finite": true,
+      "scale_used": 65536.0,
+      "gradient_summary": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 58,
+        "global_relative_l2": 0.002511043854833122,
+        "global_cosine": 0.9999968617434719,
+        "max_absolute_difference": 0.0002288818359375
+      },
+      "max_parameter_relative_l2": 0.005619152849060124,
+      "worst_parameters": [
+        {
+          "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+          "rel_l2": 0.005619152849060124,
+          "abs": 6.151199340820312e-05,
+          "pointwise_close": false
+        },
+        {
+          "name": "base_model.model.model.layers.1.self_attn.q_proj.lora_B.default.weight",
+          "rel_l2": 0.0038920733954516374,
+          "abs": 9.5367431640625e-06,
+          "pointwise_close": true
+        }
+      ],
+      "hidden_gradient": {
+        "finite": true,
+        "pointwise_close": true,
+        "max_absolute_difference": 1.4901161193847656e-08,
+        "relative_l2": 1.9325858508658575e-05
+      },
+      "weighted_loss": 0.3443460166454315
+    },
+    {
+      "model": "qwen",
+      "state": "initial_zero_B",
+      "path": "trainer_multi_no_checkpoint",
+      "strict_match": false,
+      "finite": true,
+      "scale_used": 65536.0,
+      "gradient_summary": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 58,
+        "global_relative_l2": 0.002511043854833122,
+        "global_cosine": 0.9999968617434719,
+        "max_absolute_difference": 0.0002288818359375
+      },
+      "max_parameter_relative_l2": 0.005619152849060124,
+      "worst_parameters": [
+        {
+          "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+          "rel_l2": 0.005619152849060124,
+          "abs": 6.151199340820312e-05,
+          "pointwise_close": false
+        },
+        {
+          "name": "base_model.model.model.layers.1.self_attn.q_proj.lora_B.default.weight",
+          "rel_l2": 0.0038920733954516374,
+          "abs": 9.5367431640625e-06,
+          "pointwise_close": true
+        }
+      ],
+      "hidden_gradient": {
+        "finite": true,
+        "pointwise_close": true,
+        "max_absolute_difference": 1.4901161193847656e-08,
+        "relative_l2": 1.9325858508658575e-05
+      },
+      "weighted_loss": 0.3443460166454315
+    },
+    {
+      "model": "qwen",
+      "state": "nonzero_B",
+      "status": "MISMATCH",
+      "finite_scale": 65536.0,
+      "attempts": [
+        {
+          "scale": 65536.0,
+          "full": {
+            "scale_used": 65536.0,
+            "next_scale": 65536.0,
+            "finite": true
+          },
+          "trainer_multi": {
+            "scale_used": 65536.0,
+            "next_scale": 65536.0,
+            "finite": true
+          }
+        }
+      ],
+      "reference_factor_norms": {
+        "lora_A": 0.01269087527446644,
+        "lora_B": 1.8804301446003018
+      },
+      "checkpoint_control_status": "MISMATCH"
+    },
+    {
+      "model": "qwen",
+      "state": "nonzero_B",
+      "path": "full",
+      "strict_match": true,
+      "finite": true,
+      "scale_used": 65536.0,
+      "gradient_summary": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 0.9999999999999998,
+        "max_absolute_difference": 0.0
+      },
+      "max_parameter_relative_l2": 0.0,
+      "worst_parameters": [
+        {
+          "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+          "rel_l2": 0.0,
+          "abs": 0.0,
+          "pointwise_close": true
+        },
+        {
+          "name": "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+          "rel_l2": 0.0,
+          "abs": 0.0,
+          "pointwise_close": true
+        }
+      ],
+      "hidden_gradient": {
+        "finite": true,
+        "pointwise_close": true,
+        "max_absolute_difference": 0.0,
+        "relative_l2": 0.0
+      },
+      "weighted_loss": 0.3442603051662445
+    },
+    {
+      "model": "qwen",
+      "state": "nonzero_B",
+      "path": "trainer_multi",
+      "strict_match": false,
+      "finite": true,
+      "scale_used": 65536.0,
+      "gradient_summary": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 54,
+        "global_relative_l2": 0.0023483975075334436,
+        "global_cosine": 0.9999972820535791,
+        "max_absolute_difference": 0.0001983642578125
+      },
+      "max_parameter_relative_l2": 0.006221107531839895,
+      "worst_parameters": [
+        {
+          "name": "base_model.model.model.layers.9.self_attn.v_proj.lora_A.default.weight",
+          "rel_l2": 0.006221107531839895,
+          "abs": 1.0132789611816406e-06,
+          "pointwise_close": true
+        },
+        {
+          "name": "base_model.model.model.layers.8.self_attn.q_proj.lora_A.default.weight",
+          "rel_l2": 0.0061299820004124235,
+          "abs": 4.76837158203125e-07,
+          "pointwise_close": true
+        }
+      ],
+      "hidden_gradient": {
+        "finite": true,
+        "pointwise_close": true,
+        "max_absolute_difference": 7.450580596923828e-09,
+        "relative_l2": 1.3446216140451096e-05
+      },
+      "weighted_loss": 0.3442603647708893
+    },
+    {
+      "model": "qwen",
+      "state": "nonzero_B",
+      "path": "trainer_multi_no_checkpoint",
+      "strict_match": false,
+      "finite": true,
+      "scale_used": 65536.0,
+      "gradient_summary": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 54,
+        "global_relative_l2": 0.0023483975075334436,
+        "global_cosine": 0.9999972820535791,
+        "max_absolute_difference": 0.0001983642578125
+      },
+      "max_parameter_relative_l2": 0.006221107531839895,
+      "worst_parameters": [
+        {
+          "name": "base_model.model.model.layers.9.self_attn.v_proj.lora_A.default.weight",
+          "rel_l2": 0.006221107531839895,
+          "abs": 1.0132789611816406e-06,
+          "pointwise_close": true
+        },
+        {
+          "name": "base_model.model.model.layers.8.self_attn.q_proj.lora_A.default.weight",
+          "rel_l2": 0.0061299820004124235,
+          "abs": 4.76837158203125e-07,
+          "pointwise_close": true
+        }
+      ],
+      "hidden_gradient": {
+        "finite": true,
+        "pointwise_close": true,
+        "max_absolute_difference": 7.450580596923828e-09,
+        "relative_l2": 1.3446216140451096e-05
+      },
+      "weighted_loss": 0.3442603647708893
+    },
+    {
+      "trajectory_report": "/data/chuwenjing/results/tlm_scaled_precision/run_20261025_151015/qwen/trajectory_report.json",
+      "status": "RECORDED",
+      "progress": {
+        "full": 16,
+        "chunk": 16
+      },
+      "steps_per_path": 16,
+      "nonzero_updates": true,
+      "same_input_order": true,
+      "same_step_count": true,
+      "all_parameters_finite": true,
+      "all_states_bitwise_equal": false,
+      "full_source_order": [
+        4691,
+        1275,
+        1404,
+        3485,
+        1404,
+        3485,
+        1275,
+        4691,
+        1404,
+        1275,
+        3485,
+        4691,
+        1275,
+        1404,
+        3485,
+        4691
+      ],
+      "chunk_source_order": [
+        4691,
+        1275,
+        1404,
+        3485,
+        1404,
+        3485,
+        1275,
+        4691,
+        1404,
+        1275,
+        3485,
+        4691,
+        1275,
+        1404,
+        3485,
+        4691
+      ],
+      "paths": {
+        "full": {
+          "scaler_enabled": true,
+          "global_steps": 16,
+          "optimizer_state_step_counts": [
+            16
+          ],
+          "nonzero_update": true
+        },
+        "chunk": {
+          "scaler_enabled": true,
+          "global_steps": 16,
+          "optimizer_state_step_counts": [
+            16
+          ],
+          "nonzero_update": true
+        }
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 1,
+      "full": {
+        "step": 1,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 5e-07
+      },
+      "chunk": {
+        "step": 1,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 5e-07
+      },
+      "parameters_bitwise_equal": true,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": null,
+        "max_absolute_difference": 0.0
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 0.0,
+        "global_cosine": 1.0,
+        "max_absolute_difference": 0.0
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 2,
+      "full": {
+        "step": 2,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1e-06
+      },
+      "chunk": {
+        "step": 2,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1e-06
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 69,
+        "global_relative_l2": 0.008338748366548823,
+        "global_cosine": 0.9999652321786123,
+        "max_absolute_difference": 9.178363882256235e-07
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 2.1981017342439825e-08,
+        "global_cosine": 0.9999999999999998,
+        "max_absolute_difference": 9.178363882256235e-07
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 3,
+      "full": {
+        "step": 3,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 9.874639560909118e-07
+      },
+      "chunk": {
+        "step": 3,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 9.874639560909118e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.012192872362585658,
+        "global_cosine": 0.9999256933007401,
+        "max_absolute_difference": 1.1749122279525182e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 9.410104061732953e-08,
+        "global_cosine": 0.999999999999995,
+        "max_absolute_difference": 1.1749122279525182e-06
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 4,
+      "full": {
+        "step": 4,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 9.504844339512094e-07
+      },
+      "chunk": {
+        "step": 4,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 9.504844339512094e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.011735726249254086,
+        "global_cosine": 0.9999311795352455,
+        "max_absolute_difference": 1.8352138226873649e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 1.545298347747081e-07,
+        "global_cosine": 0.9999999999999879,
+        "max_absolute_difference": 1.8352138226873649e-06
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 5,
+      "full": {
+        "step": 5,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 8.909157412340149e-07
+      },
+      "chunk": {
+        "step": 5,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 8.909157412340149e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.011718087582781188,
+        "global_cosine": 0.9999313898175631,
+        "max_absolute_difference": 2.3275696321434225e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 2.2133179154135217e-07,
+        "global_cosine": 0.9999999999999757,
+        "max_absolute_difference": 2.3275696321434225e-06
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 6,
+      "full": {
+        "step": 6,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 8.117449009293668e-07
+      },
+      "chunk": {
+        "step": 6,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 8.117449009293668e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.011121593483806879,
+        "global_cosine": 0.9999381911838229,
+        "max_absolute_difference": 2.692125511849497e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 2.7360960172680505e-07,
+        "global_cosine": 0.9999999999999628,
+        "max_absolute_difference": 2.692125511849497e-06
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 7,
+      "full": {
+        "step": 7,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 7.16941869558779e-07
+      },
+      "chunk": {
+        "step": 7,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 7.16941869558779e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.010534414417267827,
+        "global_cosine": 0.9999445334289552,
+        "max_absolute_difference": 2.8808436240979063e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 3.168035723447429e-07,
+        "global_cosine": 0.9999999999999494,
+        "max_absolute_difference": 2.8808436240979063e-06
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 8,
+      "full": {
+        "step": 8,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 6.112604669781572e-07
+      },
+      "chunk": {
+        "step": 8,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 6.112604669781572e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.010106625244206968,
+        "global_cosine": 0.9999489435453619,
+        "max_absolute_difference": 2.9959965104353614e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 3.529992772882871e-07,
+        "global_cosine": 0.9999999999999375,
+        "max_absolute_difference": 2.9959965104353614e-06
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 9,
+      "full": {
+        "step": 9,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 5e-07
+      },
+      "chunk": {
+        "step": 9,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 5e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.009906141394194217,
+        "global_cosine": 0.9999509435843675,
+        "max_absolute_difference": 3.0636283554486e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 3.8869326248071814e-07,
+        "global_cosine": 0.9999999999999247,
+        "max_absolute_difference": 3.0636283554486e-06
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 10,
+      "full": {
+        "step": 10,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 3.8873953302184283e-07
+      },
+      "chunk": {
+        "step": 10,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 3.8873953302184283e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.009722181023844154,
+        "global_cosine": 0.9999527471366896,
+        "max_absolute_difference": 3.105408268311294e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 4.1688397452092317e-07,
+        "global_cosine": 0.9999999999999132,
+        "max_absolute_difference": 3.105408268311294e-06
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 11,
+      "full": {
+        "step": 11,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 2.8305813044122093e-07
+      },
+      "chunk": {
+        "step": 11,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 2.8305813044122093e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.00954651948406028,
+        "global_cosine": 0.9999544384864089,
+        "max_absolute_difference": 3.130199047518545e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 4.3715540667136963e-07,
+        "global_cosine": 0.9999999999999043,
+        "max_absolute_difference": 3.130199047518545e-06
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 12,
+      "full": {
+        "step": 12,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1.8825509907063326e-07
+      },
+      "chunk": {
+        "step": 12,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1.8825509907063326e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.009413653110799523,
+        "global_cosine": 0.9999556973603788,
+        "max_absolute_difference": 3.1458553166885395e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 4.508289213615439e-07,
+        "global_cosine": 0.999999999999898,
+        "max_absolute_difference": 3.1458553166885395e-06
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 13,
+      "full": {
+        "step": 13,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1.090842587659851e-07
+      },
+      "chunk": {
+        "step": 13,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1.090842587659851e-07
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.009275583452829545,
+        "global_cosine": 0.9999569877787206,
+        "max_absolute_difference": 3.151469854856259e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 4.574967423536139e-07,
+        "global_cosine": 0.9999999999998959,
+        "max_absolute_difference": 3.151469854856259e-06
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 14,
+      "full": {
+        "step": 14,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 4.951556604879048e-08
+      },
+      "chunk": {
+        "step": 14,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 4.951556604879048e-08
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.009199110016754325,
+        "global_cosine": 0.999957694391272,
+        "max_absolute_difference": 3.1539980227535125e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 4.61524112790983e-07,
+        "global_cosine": 0.9999999999998944,
+        "max_absolute_difference": 3.1539980227535125e-06
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 15,
+      "full": {
+        "step": 15,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1.253604390908819e-08
+      },
+      "chunk": {
+        "step": 15,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 1.253604390908819e-08
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.009160931453578542,
+        "global_cosine": 0.9999580450403958,
+        "max_absolute_difference": 3.1547772323392564e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 4.631894798009293e-07,
+        "global_cosine": 0.9999999999998924,
+        "max_absolute_difference": 3.1547772323392564e-06
+      }
+    },
+    {
+      "model": "qwen",
+      "step": 16,
+      "full": {
+        "step": 16,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 0.0
+      },
+      "chunk": {
+        "step": 16,
+        "parameters_finite": true,
+        "optimizer_step_skipped": false,
+        "scale": 65536.0,
+        "learning_rate_after_step": 0.0
+      },
+      "parameters_bitwise_equal": false,
+      "parameter_changes": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 144,
+        "global_relative_l2": 0.00915132773686055,
+        "global_cosine": 0.9999581330646241,
+        "max_absolute_difference": 3.1551487609249307e-06
+      },
+      "parameter_values": {
+        "parameters": 144,
+        "nonfinite_or_missing": 0,
+        "pointwise_failed_parameters": 0,
+        "global_relative_l2": 4.6361448422594267e-07,
+        "global_cosine": 0.9999999999998923,
+        "max_absolute_difference": 3.1551487609249307e-06
+      }
+    },
+    {
+      "log": "/data/chuwenjing/results/tlm_scaled_precision/run_20261025_151015/qwen.log",
+      "tail": [
+        "[INFO|trainer.py:2584] 2026-10-25 15:11:57,564 >> ",
+        "",
+        "Training completed. Do not forget to share your model on huggingface.co/models =)",
+        "",
+        "",
+        "{'train_runtime': 14.2924, 'train_samples_per_second': 1.119, 'train_steps_per_second': 1.119, 'train_loss': 0.1767643541097641, 'epoch': 4.0}",
+        "{\"phase\": \"update_trajectory\", \"status\": \"RECORDED\", \"progress\": {\"full\": 16, \"chunk\": 16}}",
+        "{\"phase\": \"update_trajectory\", \"status\": \"RECORDED\", \"progress\": {\"full\": 16, \"chunk\": 16}}",
+        "SUMMARY=/data/chuwenjing/results/tlm_scaled_precision/run_20261025_151015/qwen/run_summary.json"
+      ]
+    },
+    {
+      "uploaded_scaled_delivery_sha256": "3fe59f2d1af0800c9d22b8ce93d33f721025919d09f2a154a696b059302ac556"
+    }
+  ],
+  "conclusion": "Actual scaling reduces gradient discrepancies; original pointwise gate still fails; all four 16-step Trainer trajectories completed with 16 successful optimizer calls",
+  "checkpoint_control": "Turning projection checkpoint off did not improve the reported gradient error statistics",
+  "important_scope": "Four real 258-token prefixes, engineering lr1e-6 and forced-selection compensation; not formal Dolly lr5e-5 or a 5000-row experiment",
+  "next_hypotheses": [
+    "Projection matrix shapes for the final one-token block",
+    "FP32 token-loss reduction grouping between full and chunk paths"
+  ],
+  "formal_preflight_passed": false,
+  "full_training_started": false,
+  "dolly_fixed": "NOT_ESTABLISHED"
+}

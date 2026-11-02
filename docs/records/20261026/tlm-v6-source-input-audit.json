@@ -1,0 +1,128 @@
+{
+  "read_only": true,
+  "checks": [
+    {
+      "started_at_utc": "2026-10-26T00:14:16.840992+00:00",
+      "audit": "CPU-only full token/Source identity",
+      "expected_groups": 6
+    },
+    {
+      "model": "qwen3b",
+      "dataset": "geosignal_5k",
+      "status": "PASS",
+      "matched_inputs": 5000,
+      "token_ids_equal_frozen_encoder": true,
+      "all_source_prompt_metadata_equal": true,
+      "token_hashes_digest": "d16fa2cab58b7b8afb63532d4b1aa6f3021657c5c5f21bb4ff516b69f19d23f9",
+      "truncated_inputs": 2,
+      "source_sha256": "587ca277edd1ee31a517bcfb0d8f7d5fcf0c0acf75afb3b61703113b9d24f853",
+      "pilot_prefix": {
+        "n": 9,
+        "empty": 0,
+        "repetition": 0
+      },
+      "input_sha256": "9c55d4253c11556b7b658da061d61f829d74b55232b405568633a4ae34bdf021"
+    },
+    {
+      "model": "qwen3b",
+      "dataset": "dolly_5k",
+      "status": "PASS",
+      "matched_inputs": 5000,
+      "token_ids_equal_frozen_encoder": true,
+      "all_source_prompt_metadata_equal": true,
+      "token_hashes_digest": "73b0a47a121d057312fe8bbf48ab489014b25833409fe19dc645930cc6592558",
+      "truncated_inputs": 1,
+      "source_sha256": "721a396fae0a2aeff70a8d4d474b058d516fb9a98c66923291f61ba7b7fbeccb",
+      "pilot_prefix": {
+        "n": 15,
+        "empty": 0,
+        "repetition": 0
+      },
+      "input_sha256": "1267654773a17e9843faaca78aaf69ed422922ea8bf3e3a0374a6834148a83f8"
+    },
+    {
+      "model": "qwen3b",
+      "dataset": "gsm8k_5k",
+      "status": "PASS",
+      "matched_inputs": 5000,
+      "token_ids_equal_frozen_encoder": true,
+      "all_source_prompt_metadata_equal": true,
+      "token_hashes_digest": "55ddb296abbd33490d37adca12243bda566b59eb54ad506194d41fbf505b7e14",
+      "truncated_inputs": 0,
+      "source_sha256": "8ee5ef7e2c66d225d16469e9fe95c8990c4150e0dca5df0f1c82c2c3340d0800",
+      "pilot_prefix": {
+        "n": 11,
+        "empty": 0,
+        "repetition": 0
+      },
+      "input_sha256": "40df0e26530dfcd44acffe93d94ae8a8193187f05e0f6070350efe8594a70f93"
+    },
+    {
+      "model": "llama3b",
+      "dataset": "geosignal_5k",
+      "status": "PASS",
+      "matched_inputs": 5000,
+      "token_ids_equal_frozen_encoder": true,
+      "all_source_prompt_metadata_equal": true,
+      "token_hashes_digest": "5f6621f2bb5b4bcc26fa7dfe16bfc8687d0e44ec3d7e3860ef10e670d657bddf",
+      "truncated_inputs": 1,
+      "source_sha256": "b62ce6ee1b73a065ea8ab3c45fb9635a83c10c7667705d7ed41bd21ab911493b",
+      "pilot_prefix": {
+        "n": 16,
+        "empty": 0,
+        "repetition": 0
+      },
+      "input_sha256": "9c55d4253c11556b7b658da061d61f829d74b55232b405568633a4ae34bdf021"
+    },
+    {
+      "model": "llama3b",
+      "dataset": "dolly_5k",
+      "status": "PASS",
+      "matched_inputs": 5000,
+      "token_ids_equal_frozen_encoder": true,
+      "all_source_prompt_metadata_equal": true,
+      "token_hashes_digest": "3067ac8fcc8e886a917383392d7fa87e3422336e1e59f5dd7fddb2ae2bbb9a77",
+      "truncated_inputs": 1,
+      "source_sha256": "344fd458dba6f577c58fd2823b53d3a5c13d66a7c3a2a9a3614247fafeaef189",
+      "pilot_prefix": {
+        "n": 53,
+        "empty": 0,
+        "repetition": 0
+      },
+      "input_sha256": "1267654773a17e9843faaca78aaf69ed422922ea8bf3e3a0374a6834148a83f8"
+    },
+    {
+      "model": "llama3b",
+      "dataset": "gsm8k_5k",
+      "status": "PASS",
+      "matched_inputs": 5000,
+      "token_ids_equal_frozen_encoder": true,
+      "all_source_prompt_metadata_equal": true,
+      "token_hashes_digest": "baaf01474113a01b1ca904ef94f3e8afc2984d002ab567d557b09a750e042232",
+      "truncated_inputs": 0,
+      "source_sha256": "a3ab41913f5b1364fe2e5b717f86a797fb465bc052af265370b0c4ea8ae50a94",
+      "pilot_prefix": {
+        "n": 20,
+        "empty": 0,
+        "repetition": 0
+      },
+      "input_sha256": "40df0e26530dfcd44acffe93d94ae8a8193187f05e0f6070350efe8594a70f93"
+    },
+    {
+      "status": "PASS",
+      "matched_inputs_total": 30000,
+      "groups": 6,
+      "completed_at_utc": "2026-10-26T00:14:52.874091+00:00",
+      "versions": {
+        "torch": "2.5.1+cu118",
+        "transformers": "4.46.1",
+        "peft": "0.12.0",
+        "accelerate": "1.0.1",
+        "datasets": "3.1.0",
+        "numpy": "1.26.4"
+      },
+      "no_gpu_model_loaded": true
+    }
+  ],
+  "exit_status": 0
+}
