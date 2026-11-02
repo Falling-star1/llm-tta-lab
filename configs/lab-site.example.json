@@ -1,0 +1,14 @@
+{
+  "root": "/data/chuwenjing/lab",
+  "python": "/data/chuwenjing/conda-envs/tta-llm/bin/python",
+  "code_roots": ["/data/chuwenjing/lab/releases", "/home/chuwenjing/TTA_LLM/TLM/local_repro"],
+  "input_roots": ["/data/chuwenjing"],
+  "gpu_ids": [0, 1, 2, 3, 4, 5, 6, 7],
+  "max_idle_memory_mib": 128,
+  "poll_seconds": 5,
+  "tracking_uri": "http://127.0.0.1:5000",
+  "legacy_lock_paths": [
+    "/data/chuwenjing/tta_offline/tlm_gpu_locks/gpu-{gpu}/.run.lock",
+    "/data/chuwenjing/tta_offline/tent_taskqueue_locks_v1/gpu_{gpu}"
+  ]
+}

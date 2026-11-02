@@ -1,0 +1,30 @@
+name: 协作任务 / 实验申请
+description: 三人及 agent 共用的任务交接单
+title: '[任务] '
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: 目标与验收
+      description: 具体解决什么；完成后用什么命令或证据验收。
+    validations:
+      required: true
+  - type: textarea
+    id: ownership
+    attributes:
+      label: 负责人、评审者与修改范围
+      placeholder: 'owner：待认领；reviewer：待认领；允许文件：；禁止修改：；其他任务依赖：'
+    validations:
+      required: true
+  - type: textarea
+    id: resources
+    attributes:
+      label: 实验协议与资源
+      description: 纯文档或代码任务填写无 GPU；训练需填写 protocol_id、方法/模型/数据、seed、commit、输入指纹、GPU 数、最长运行/排队时间及授权范围。
+    validations:
+      required: true
+  - type: textarea
+    id: handoff
+    attributes:
+      label: 交接记录
+      placeholder: 'PR/commit：；已验证：；产物路径/MLflow run：；异常与下一步：'

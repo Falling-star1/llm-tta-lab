@@ -23,7 +23,8 @@ Qwen2.5-7B 全量不排入计划（2026-11-01 决定）：现有正式结果全�
 
 - [TLM 原版结果与官方核对](docs/records/20261028/TLM原版复现与官方实现对照.md)：六组完整分数、实现差异与复现限制。
 - [TLM 复现实验方案](docs/TLM复现实验方案.md)：固定设置、历史阶段记录和队友接手说明。
-- [项目看板](项目看板.md)：任务、状态、负责人（唯一看板）。
+- [团队看板](https://github.com/users/Falling-star1/projects/1)：任务、状态和负责人；[仓库索引](项目看板.md) 保留历史里程碑。
+- [三人协作快速开始](docs/team-workflow.md)：认领任务、agent 分工、PR 评审、实验运行与交接。
 - [实验记录](docs/实验记录.md)：结果数字与结论。
 - [复现协议](docs/复现协议.md)：冻结口径——两种适配面、80/512 token 预算、各方法超参、与论文的已知偏离。
 - [文献与方法核对](docs/文献与方法核对.md)：论文 → 官方代码 → 我们的实现三方对照。
@@ -55,4 +56,10 @@ python scripts/verify_repository.py   # 只用标准库，校验仓库完整性�
 python scripts/run_cpu_tests.py       # 需要 torch / transformers 4.46.1 / peft 0.12.0 / numpy
 ```
 
+协作启动器另有不依赖训练框架的 CPU 检查：`python -m unittest discover -s tests -p test_labctl.py`。
+
 本仓库不会自动启动 GPU 实验。历史版本与回溯方式见[归档说明](archive/README.md)。
+
+## 三人协作入口
+
+[团队看板](https://github.com/users/Falling-star1/projects/1) · [快速开始](docs/team-workflow.md) · [Agent 约定](AGENTS.md)。新任务通过 Issue 分工，以 PR 交接；新实验用统一入口关联 MLflow，现有实验沿用原运行路径。
