@@ -1,0 +1,594 @@
+{
+  "checked_at_beijing": "2026-10-26 08:10:29",
+  "deployment": {
+    "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+    "controller": "/data/chuwenjing/tta_offline/tlm_full_gate_3a4699e14dfd",
+    "controller_hashes": {
+      "gate.py": "6899118e59c9f8f3a2deee4c6b4c633db4e46d8b00038e9c4b692e19cb9b853b",
+      "README.md": "48181584a4d7bc43e6fc1ff9542e5e8c1595fcb54d3c77d89fccba4ddc1281e4",
+      "tests/test_gate.py": "5003eeb0ea2b7eb5aeb0351887a8217c37a4f99fe7145f189136d0bd1266abcd",
+      "SHA256SUMS": "24105d73c7438d755446e3220f934e4dfd395ff62e41158257e437ab6d09632c"
+    },
+    "controller_pid": 30904,
+    "preflight_root": "/data/chuwenjing/results/tlm_offline_v6_preflight/run_20261026_000126_db1eb7",
+    "run_root": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d",
+    "controller_log": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d.log",
+    "server_controller_tests": "13 PASS",
+    "auto_formal_only_after_all_gates": true,
+    "started_at": 1792973083.7185283
+  },
+  "snapshot": [
+    {
+      "time_utc": "2026-10-26T00:08:36.869065+00:00",
+      "run_root": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d",
+      "controller_status": {
+        "status": "RUNNING",
+        "stage": "pilot",
+        "time": 1792973224.3037717
+      },
+      "ready_for_formal": false
+    },
+    {
+      "task": "llama3b__geosignal_5k",
+      "preflight": "PASS",
+      "preflight_summary": {
+        "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+        "status": "PASS",
+        "precision_checks": 6,
+        "all_precision_pass": true,
+        "max_gradient_abs": 0.0,
+        "all_dlogits_exact": true,
+        "checkpoint_continuation": "EXACT_MATCH",
+        "source_sample_match": true,
+        "longest": {
+          "status": "PASS",
+          "source_index": 3396,
+          "tokens": 4096,
+          "steps": 16,
+          "successful_optimizer_steps": 16,
+          "parameters_finite": true,
+          "optimizer_finite": true,
+          "history_finite": true,
+          "adapter_changed": true,
+          "learning_rate": 5e-05,
+          "seconds": 78.37865282595158,
+          "peak_allocated_mib": 8210.77880859375,
+          "peak_reserved_mib": 8728.0,
+          "adapter_restored": true
+        },
+        "peak_reserved_mib": 8728.0
+      },
+      "pilot": {
+        "path": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/pilot/llama3b__geosignal_5k",
+        "run_manifest.json": {
+          "status": "RUNNING",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "llama3b",
+            "dataset": "geosignal_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "9c55d4253c11556b7b658da061d61f829d74b55232b405568633a4ae34bdf021",
+            "count": 100,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "d2f3a1b0e2f9310274a07342eb619cc238047066564ae4c71d174b49163f0e49"
+          },
+          "stage": "initializing"
+        }
+      }
+    },
+    {
+      "task": "llama3b__dolly_5k",
+      "preflight": "PASS",
+      "preflight_summary": {
+        "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+        "status": "PASS",
+        "precision_checks": 6,
+        "all_precision_pass": true,
+        "max_gradient_abs": 0.0,
+        "all_dlogits_exact": true,
+        "checkpoint_continuation": "EXACT_MATCH",
+        "source_sample_match": true,
+        "longest": {
+          "status": "PASS",
+          "source_index": 1404,
+          "tokens": 4096,
+          "steps": 16,
+          "successful_optimizer_steps": 16,
+          "parameters_finite": true,
+          "optimizer_finite": true,
+          "history_finite": true,
+          "adapter_changed": true,
+          "learning_rate": 5e-05,
+          "seconds": 76.00333525240421,
+          "peak_allocated_mib": 8210.77880859375,
+          "peak_reserved_mib": 8772.0,
+          "adapter_restored": true
+        },
+        "peak_reserved_mib": 8772.0
+      },
+      "pilot": {
+        "path": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/pilot/llama3b__dolly_5k",
+        "run_manifest.json": {
+          "status": "RUNNING",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "llama3b",
+            "dataset": "dolly_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "1267654773a17e9843faaca78aaf69ed422922ea8bf3e3a0374a6834148a83f8",
+            "count": 100,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "6def3df40633cb9e82363a64153597924cfbb844710467f225d267d4f2292160"
+          },
+          "stage": "initializing"
+        }
+      }
+    },
+    {
+      "task": "llama3b__gsm8k_5k",
+      "preflight": "PASS",
+      "preflight_summary": {
+        "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+        "status": "PASS",
+        "precision_checks": 4,
+        "all_precision_pass": true,
+        "max_gradient_abs": 0.0,
+        "all_dlogits_exact": true,
+        "checkpoint_continuation": "EXACT_MATCH",
+        "source_sample_match": true,
+        "longest": {
+          "status": "PASS",
+          "source_index": 1445,
+          "tokens": 226,
+          "steps": 16,
+          "successful_optimizer_steps": 16,
+          "parameters_finite": true,
+          "optimizer_finite": true,
+          "history_finite": true,
+          "adapter_changed": true,
+          "learning_rate": 1e-06,
+          "seconds": 8.90657103061676,
+          "peak_allocated_mib": 6633.00439453125,
+          "peak_reserved_mib": 7096.0,
+          "adapter_restored": true
+        },
+        "peak_reserved_mib": 7096.0
+      },
+      "pilot": {
+        "path": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/pilot/llama3b__gsm8k_5k",
+        "run_manifest.json": {
+          "status": "RUNNING",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "llama3b",
+            "dataset": "gsm8k_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "40df0e26530dfcd44acffe93d94ae8a8193187f05e0f6070350efe8594a70f93",
+            "count": 100,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "580e9a31a80a8573915ab54175f63f0c4acbf17bc1bd12c8276b0ed61b9cf4e0"
+          },
+          "stage": "initializing"
+        }
+      }
+    },
+    {
+      "task": "qwen3b__geosignal_5k",
+      "preflight": "PASS",
+      "preflight_summary": {
+        "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+        "status": "PASS",
+        "precision_checks": 6,
+        "all_precision_pass": true,
+        "max_gradient_abs": 0.0,
+        "all_dlogits_exact": true,
+        "checkpoint_continuation": "EXACT_MATCH",
+        "source_sample_match": true,
+        "longest": {
+          "status": "PASS",
+          "source_index": 3131,
+          "tokens": 4096,
+          "steps": 16,
+          "successful_optimizer_steps": 16,
+          "parameters_finite": true,
+          "optimizer_finite": true,
+          "history_finite": true,
+          "adapter_changed": true,
+          "learning_rate": 5e-05,
+          "seconds": 83.03725384175777,
+          "peak_allocated_mib": 8188.56591796875,
+          "peak_reserved_mib": 9096.0,
+          "adapter_restored": true
+        },
+        "peak_reserved_mib": 9096.0
+      },
+      "pilot": {
+        "path": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/pilot/qwen3b__geosignal_5k",
+        "run_manifest.json": {
+          "status": "RUNNING",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "qwen3b",
+            "dataset": "geosignal_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "9c55d4253c11556b7b658da061d61f829d74b55232b405568633a4ae34bdf021",
+            "count": 100,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "b519f124736419e5d4de0165a8e389a2e94c64e7743a22f186afec8af95eb548"
+          },
+          "stage": "initializing"
+        }
+      }
+    },
+    {
+      "task": "qwen3b__dolly_5k",
+      "preflight": "PASS",
+      "preflight_summary": {
+        "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+        "status": "PASS",
+        "precision_checks": 6,
+        "all_precision_pass": true,
+        "max_gradient_abs": 0.0,
+        "all_dlogits_exact": true,
+        "checkpoint_continuation": "EXACT_MATCH",
+        "source_sample_match": true,
+        "longest": {
+          "status": "PASS",
+          "source_index": 1404,
+          "tokens": 4096,
+          "steps": 16,
+          "successful_optimizer_steps": 16,
+          "parameters_finite": true,
+          "optimizer_finite": true,
+          "history_finite": true,
+          "adapter_changed": true,
+          "learning_rate": 5e-05,
+          "seconds": 84.65728217363358,
+          "peak_allocated_mib": 8188.56591796875,
+          "peak_reserved_mib": 9090.0,
+          "adapter_restored": true
+        },
+        "peak_reserved_mib": 9090.0
+      },
+      "pilot": {
+        "path": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/pilot/qwen3b__dolly_5k",
+        "run_manifest.json": {
+          "status": "RUNNING",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "qwen3b",
+            "dataset": "dolly_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "1267654773a17e9843faaca78aaf69ed422922ea8bf3e3a0374a6834148a83f8",
+            "count": 100,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "09c6fdce32787e879a19c72ce525143abeaa21404f8ece3d21345e72cec64189"
+          },
+          "stage": "initializing"
+        }
+      }
+    },
+    {
+      "task": "qwen3b__gsm8k_5k",
+      "preflight": "PASS",
+      "preflight_summary": {
+        "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+        "status": "PASS",
+        "precision_checks": 4,
+        "all_precision_pass": true,
+        "max_gradient_abs": 0.0,
+        "all_dlogits_exact": true,
+        "checkpoint_continuation": "EXACT_MATCH",
+        "source_sample_match": true,
+        "longest": {
+          "status": "PASS",
+          "source_index": 1445,
+          "tokens": 248,
+          "steps": 16,
+          "successful_optimizer_steps": 16,
+          "parameters_finite": true,
+          "optimizer_finite": true,
+          "history_finite": true,
+          "adapter_changed": true,
+          "learning_rate": 1e-06,
+          "seconds": 11.390235856175423,
+          "peak_allocated_mib": 6587.2763671875,
+          "peak_reserved_mib": 7256.0,
+          "adapter_restored": true
+        },
+        "peak_reserved_mib": 7256.0
+      },
+      "pilot": {
+        "path": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/pilot/qwen3b__gsm8k_5k",
+        "run_manifest.json": {
+          "status": "RUNNING",
+          "config": {
+            "code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999",
+            "model": "qwen3b",
+            "dataset": "gsm8k_5k",
+            "lora_init": "gaussian",
+            "seed": 42,
+            "chunk_size": 128,
+            "input_sha256": "40df0e26530dfcd44acffe93d94ae8a8193187f05e0f6070350efe8594a70f93",
+            "count": 100,
+            "protocol": "A",
+            "initialized_from": "base",
+            "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+            "preflight_sha256": "45c6f4d662b50eaa8bbee9d52ffcd665a26e5f5985849598410042910e1b7bf5"
+          },
+          "stage": "initializing"
+        }
+      }
+    },
+    {
+      "controller_log_tail": ""
+    },
+    {
+      "gpu": "0, 7803, 21\n1, 7815, 58\n2, 7939, 28\n3, 7973, 41\n4, 8085, 25\n5, 7625, 22\n6, 1, 0\n7, 1, 0\n"
+    }
+  ],
+  "legacy_retention": {
+    "time_utc": "2026-10-26T00:02:54.455209+00:00",
+    "active_legacy_processes": [],
+    "retained": [
+      {
+        "model": "llama3b",
+        "dataset": "geosignal_5k",
+        "root": "/data/chuwenjing/results/tlm_offline_v2/run_20261025_063426/formal/llama3b__geosignal_5k",
+        "manifest_status": "RUNNING",
+        "code_id": "8d3e5a79cf6ecc54ccc59bdb8c9392e5f3b8df31df899d43d8c4bad79c89fa0d",
+        "training": {
+          "n": 5000,
+          "seconds": 2385.727649703622,
+          "selected": 4267,
+          "global_step": 5000,
+          "frozen_base_unchanged": true
+        },
+        "adapter_sha256": "98b3542bf9b76624ab55ee067ddee1d92cbe1265e72e8cdf3fe5a9a10fcc90ce",
+        "adapter_bytes": 9189792,
+        "predictions_complete_rows": 3959,
+        "prediction_file_sha256": "de376149004ee8bac3f5e85106eee945b0b4b98a1aa848e2df6d15763aa91d8c",
+        "incomplete_tail_preserved_bytes": 0,
+        "excluded_from_new_gaussian_main_experiment": true
+      },
+      {
+        "model": "llama3b",
+        "dataset": "dolly_5k",
+        "root": "/data/chuwenjing/results/tlm_offline_v2/run_20261025_063426/formal/llama3b__dolly_5k",
+        "manifest_status": "RUNNING",
+        "code_id": "8d3e5a79cf6ecc54ccc59bdb8c9392e5f3b8df31df899d43d8c4bad79c89fa0d",
+        "training": {
+          "n": 5000,
+          "seconds": 2435.72197252512,
+          "selected": 3825,
+          "global_step": 5000,
+          "frozen_base_unchanged": true
+        },
+        "adapter_sha256": "20088050c18514b4e93b660443e363f1029cf2c2d8d9238816e55ad0f1a0549d",
+        "adapter_bytes": 9189792,
+        "predictions_complete_rows": 557,
+        "prediction_file_sha256": "69d315ece2885ffc0ad69502664b7028821e102b8953ab1e5d2a95a2c32739da",
+        "incomplete_tail_preserved_bytes": 0,
+        "excluded_from_new_gaussian_main_experiment": true
+      },
+      {
+        "model": "llama3b",
+        "dataset": "gsm8k_5k",
+        "root": "/data/chuwenjing/results/tlm_offline_v1/run_20261025_032853/formal/llama3b__gsm8k_5k",
+        "manifest_status": "RUNNING",
+        "code_id": "04c4e9cc515f8f71da571e47b90f5a3551eaa84ad61b62f3412e19b3eaa26bc9",
+        "training": {
+          "n": 5000,
+          "seconds": 2279.222895935178,
+          "selected": 2567,
+          "global_step": 5000,
+          "frozen_base_unchanged": true
+        },
+        "adapter_sha256": "accacfa7588c92f6236acb3a693e3248e27d0c87293423755ba197f236a0c2e5",
+        "adapter_bytes": 9189792,
+        "predictions_complete_rows": 2614,
+        "prediction_file_sha256": "a3c53fc72283f8f23b37feb03d30324b45043e93c9ba7a09162918f2d6c3b06c",
+        "incomplete_tail_preserved_bytes": 0,
+        "excluded_from_new_gaussian_main_experiment": true
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "geosignal_5k",
+        "root": "/data/chuwenjing/results/tlm_offline_v2/run_20261025_063426/formal/qwen3b__geosignal_5k",
+        "manifest_status": "RUNNING",
+        "code_id": "8d3e5a79cf6ecc54ccc59bdb8c9392e5f3b8df31df899d43d8c4bad79c89fa0d",
+        "training": {
+          "n": 5000,
+          "seconds": 3358.647930622101,
+          "selected": 4502,
+          "global_step": 5000,
+          "frozen_base_unchanged": true
+        },
+        "adapter_sha256": "d758363b7f233b277c9b65e04e668c0c3df63b8238631e156703b63fe05f58cc",
+        "adapter_bytes": 7391728,
+        "predictions_complete_rows": 2184,
+        "prediction_file_sha256": "8b82ed278b429c730fb9752c04d33dbd15be06651ed800374bf33d272ad98633",
+        "incomplete_tail_preserved_bytes": 0,
+        "excluded_from_new_gaussian_main_experiment": true
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "dolly_5k",
+        "root": "/data/chuwenjing/results/tlm_offline_v2/run_20261025_063426/formal/qwen3b__dolly_5k",
+        "manifest_status": "RUNNING",
+        "code_id": "8d3e5a79cf6ecc54ccc59bdb8c9392e5f3b8df31df899d43d8c4bad79c89fa0d",
+        "training": {
+          "n": 5000,
+          "seconds": 3363.9824118614197,
+          "selected": 3998,
+          "global_step": 5000,
+          "frozen_base_unchanged": true
+        },
+        "adapter_sha256": "dc15397431b8ce924029a2980af4dc0aada4c934d01a1225cf0e1dd2c28a288f",
+        "adapter_bytes": 7391728,
+        "predictions_complete_rows": 501,
+        "prediction_file_sha256": "de86e8a4f18afff136f84ed2b9391968cd1878339a97948b2a4641569cc6dddb",
+        "incomplete_tail_preserved_bytes": 0,
+        "excluded_from_new_gaussian_main_experiment": true
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "gsm8k_5k",
+        "root": "/data/chuwenjing/results/tlm_offline_v2/run_20261025_063426/formal/qwen3b__gsm8k_5k",
+        "manifest_status": "RUNNING",
+        "code_id": "8d3e5a79cf6ecc54ccc59bdb8c9392e5f3b8df31df899d43d8c4bad79c89fa0d",
+        "training": {
+          "n": 5000,
+          "seconds": 3261.9122205227613,
+          "selected": 2569,
+          "global_step": 5000,
+          "frozen_base_unchanged": true
+        },
+        "adapter_sha256": "7d64833894b4681a010c3f974156a1cea6861cc46b0162aa6d04b5acdcf8688b",
+        "adapter_bytes": 7391728,
+        "predictions_complete_rows": 1240,
+        "prediction_file_sha256": "62c211a3ada4ec1bd35698b5834bfc0c891c23da947331b58fda5547e3cd0c82",
+        "incomplete_tail_preserved_bytes": 0,
+        "excluded_from_new_gaussian_main_experiment": true
+      }
+    ]
+  },
+  "legacy_retirement": {
+    "audit": "/data/chuwenjing/results/tlm_legacy_retired_20261026_000539_65c3ad.json",
+    "metadata_files_updated": 12,
+    "active_legacy_processes": [],
+    "artifact_files_modified": 0
+  },
+  "qwen_v4_completed_pilot": {
+    "run": "/data/chuwenjing/results/tlm_offline_v4_pilot/qwen_dolly_100_20261025_170101",
+    "run_manifest.json": {
+      "status": "PASS",
+      "config": {
+        "code_id": "f1b5c7026a9429c4008b923a42b459ae47070585d51ec28b70498806a85a459b",
+        "model": "qwen3b",
+        "dataset": "dolly_5k",
+        "lora_init": "gaussian",
+        "seed": 42,
+        "chunk_size": 128,
+        "input_sha256": "1267654773a17e9843faaca78aaf69ed422922ea8bf3e3a0374a6834148a83f8",
+        "count": 100,
+        "protocol": "A",
+        "initialized_from": "base",
+        "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+        "preflight_sha256": "b0f2c5720cd40b2f606b26290f4f0356c6353e039bec701bb7ae865c7837664e"
+      },
+      "stage": "complete",
+      "metrics": {
+        "n": 100,
+        "metric": "rougeLsum",
+        "value_0_to_1": 0.2705420169633605,
+        "generated_tokens": 21886,
+        "hit_generation_limit_rate": 0.16,
+        "unique_answers": 100,
+        "predictions_sha256": "fb1bf1fec793dcb37f34350c85e1b131713dafe8cb513b6caea75a584a8c276a"
+      },
+      "peak_allocated_mib": 6483.06787109375
+    },
+    "training_complete.json": {
+      "n": 100,
+      "seconds": 87.3001887947321,
+      "selected": 81,
+      "global_step": 100,
+      "frozen_base_unchanged": true
+    },
+    "metrics.json": {
+      "n": 100,
+      "metric": "rougeLsum",
+      "value_0_to_1": 0.2705420169633605,
+      "generated_tokens": 21886,
+      "hit_generation_limit_rate": 0.16,
+      "unique_answers": 100,
+      "predictions_sha256": "fb1bf1fec793dcb37f34350c85e1b131713dafe8cb513b6caea75a584a8c276a"
+    },
+    "quality_latest.json": {
+      "status": "PASS",
+      "window_start": 0,
+      "n": 100,
+      "tlm": {
+        "empty": 0,
+        "repetition": 2
+      },
+      "source": {
+        "empty": 0,
+        "repetition": 0
+      },
+      "excess_rate_threshold": 0.05,
+      "alerts": [],
+      "dominant_answer": {
+        "tlm_count": 1,
+        "source_count": 0,
+        "text": "françois-marie arouet, better known by his pen name voltaire, wrote \"democracy in america\" (originally titled \"histoire des americains\"). however, it's important to note that this ",
+        "share_threshold": 0.5,
+        "excess_rate_threshold": 0.1
+      }
+    },
+    "source_reuse.json": {
+      "path": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089/qwen3b__dolly_5k/source.jsonl",
+      "sha256": "721a396fae0a2aeff70a8d4d474b058d516fb9a98c66923291f61ba7b7fbeccb",
+      "matched_input_records": 100,
+      "original_records": 5000,
+      "sample_generation_match": true
+    },
+    "adaptation_summary": {
+      "rows": 100,
+      "unique_indexes": 100,
+      "selected": 81,
+      "all_finite": true
+    },
+    "prediction_count": 100,
+    "prediction_prefix_quality": {
+      "empty": 0,
+      "high_repeat": 2,
+      "at_generation_limit": 16
+    },
+    "latest_prediction": {
+      "index": 99,
+      "generated_tokens": 480,
+      "text_head": "Summarizing a story involves condensing the essential elements of a narrative into a concise version that retains the ke"
+    },
+    "source_prefix_quality": {
+      "empty": 0,
+      "high_repeat": 0
+    },
+    "paired_prefix_scores": {
+      "n": 100,
+      "source": 0.28007428114368327,
+      "tlm": 0.2705420169633605
+    },
+    "log_tail": [
+      "",
+      "",
+      "{'train_runtime': 67.4065, 'train_samples_per_second': 1.484, 'train_steps_per_second': 1.484, 'train_loss': 0.8894255113601685, 'epoch': 1.0}",
+      "{\"phase\": \"evaluation\", \"completed\": 25, \"total\": 100, \"seconds\": 521.8012509793043}",
+      "{\"phase\": \"evaluation\", \"completed\": 50, \"total\": 100, \"seconds\": 1014.1763961613178}",
+      "{\"phase\": \"evaluation\", \"completed\": 75, \"total\": 100, \"seconds\": 1606.200163424015}",
+      "{\"phase\": \"evaluation\", \"completed\": 100, \"total\": 100, \"seconds\": 2152.366495832801}",
+      "{\"phase\": \"complete\", \"model\": \"qwen3b\", \"dataset\": \"dolly_5k\", \"n\": 100, \"metric\": \"rougeLsum\", \"value_0_to_1\": 0.2705420169633605, \"generated_tokens\": 21886, \"hit_generation_limit_rate\": 0.16, \"unique_answers\": 100, \"predictions_sha256\": \"fb1bf1fec793dcb37f34350c85e1b131713dafe8cb513b6caea75a584a8c276a\"}"
+    ]
+  }
+}

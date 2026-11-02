@@ -11,7 +11,7 @@
 | 模型与数据 | 已就绪：Llama-3.2-3B-Instruct、Qwen2.5-3B-Instruct；三套数据各 5000 条，SHA256 已核 |
 | Tent（`norm_gamma_only`） | **六组 5000 条完成**（两模型 × 三数据集），全部 `PASS` |
 | EATA（`lora_qv`） | **三组完成**（llama/dolly、llama/gsm8k、qwen/gsm8k）；**四组评测中** |
-| TLM 官方方法 | v6 五组 + Qwen/Dolly 补救 + v7 content（llama/Dolly 0.3393） |
+| TLM 方法复现 | Gaussian v6 六组各 5000 条适应和评测已完成；正式结果及与官方实现的差异见[核对记录](docs/records/20261028/TLM原版复现与官方实现对照.md)。v7 等修订只作独立诊断，不替换原版结果 |
 | SAR / DeYO | 待开展：文本适配方案未定 |
 | OPUS proxy pool | 待核定：池来源、划分与候选流 disjoint 规则未定 |
 
@@ -21,6 +21,8 @@ Qwen2.5-7B 全量不排入计划（2026-11-01 决定）：现有正式结果全�
 
 ## 从这里开始
 
+- [TLM 原版结果与官方核对](docs/records/20261028/TLM原版复现与官方实现对照.md)：六组完整分数、实现差异与复现限制。
+- [TLM 复现实验方案](docs/TLM复现实验方案.md)：固定设置、历史阶段记录和队友接手说明。
 - [项目看板](项目看板.md)：任务、状态、负责人（唯一看板）。
 - [实验记录](docs/实验记录.md)：结果数字与结论。
 - [复现协议](docs/复现协议.md)：冻结口径——两种适配面、80/512 token 预算、各方法超参、与论文的已知偏离。
@@ -35,7 +37,7 @@ Qwen2.5-7B 全量不排入计划（2026-11-01 决定）：现有正式结果全�
 ```text
 local_repro/     自建方法代码（Tent / EATA 的只读快照，含哈希清单）
 docs/            协议、实验记录、原始记录、环境说明
-offline_tta/     2026-10-18 交付的离线包，SHA256SUMS 保持原样
+offline_tta/     各阶段冻结离线包与 TLM 诊断代码，SHA256SUMS 保持原样
 scripts/         仓库完整性检查与 CPU 测试入口
 archive/         原 GitHub 主线、旧交接文档
 ```

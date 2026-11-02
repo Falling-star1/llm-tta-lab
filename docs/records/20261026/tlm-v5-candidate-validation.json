@@ -1,0 +1,44 @@
+{
+  "date_beijing": "2026-10-26",
+  "candidate": "v5",
+  "code_id": "52b767f0fb91518710f9d756e07d4c41d3393dc10d5935a9b22d0e7c90f8e920",
+  "delivery_sha256": "19ba9782867964961d74fb964971922a944abf0cbe74d9b2dcc8d6ddf8ef1a26",
+  "changed_files_from_v4": [
+    "precision.py",
+    "README.md",
+    "runtime.py",
+    "tests/test_runtime.py"
+  ],
+  "motivation": "Llama v4 still fails original pointwise tolerance; test reduced-precision GEMM accumulation as a single backend policy change",
+  "primary_documentation": "https://raw.githubusercontent.com/pytorch/pytorch/v2.5.1/docs/source/notes/numerical_accuracy.rst",
+  "training_allow_fp16_reduced_precision_reduction": false,
+  "generation_allow_fp16_reduced_precision_reduction": true,
+  "generation_finally_restores_training_value": true,
+  "unchanged": [
+    "TLM objective and real causal targets",
+    "Gaussian",
+    "learning rates",
+    "threshold",
+    "gradient tolerances",
+    "model parameter dtype",
+    "v4 tail/global reduction fixes"
+  ],
+  "cpu_validation": {
+    "status": "PASS",
+    "exit_code": 0,
+    "tests": 69,
+    "new_tests": 2,
+    "torch": "2.14.0+cu126",
+    "transformers": "4.46.1",
+    "peft": "0.12.0",
+    "accelerate": "1.0.1"
+  },
+  "regression_evidence": "Both new policy tests failed against v4 before implementation, then passed with the full suite",
+  "independent_review": "No issues found; forward/backward/recompute remain in training mode, generation restores prior mode on exception",
+  "real_gpu_v5_preflight": "NOT_RUN",
+  "full_training_started": false,
+  "agent_started_gpu_jobs": false,
+  "existing_v4_bundle_or_jobs_modified": false,
+  "scope": "Engineering backend precision policy, not a paper-mandated hyperparameter; not exact original conditions",
+  "llama_fixed": "NOT_ESTABLISHED"
+}

@@ -1,0 +1,310 @@
+{
+  "checked_at_beijing": "2026-10-26 00:10-00:14",
+  "run_root": "/data/chuwenjing/results/tlm_offline_v4_preflight/run_20261025_160256",
+  "code_id": "f1b5c7026a9429c4008b923a42b459ae47070585d51ec28b70498806a85a459b",
+  "tasks": {
+    "llama": {
+      "run": "/data/chuwenjing/results/tlm_offline_v4_preflight/run_20261025_160256",
+      "task": "llama",
+      "failure": {
+        "type": "AssertionError",
+        "message": "Scaled full/chunk comparison failed; parameters=13; report=/data/chuwenjing/results/tlm_offline_v4_preflight/run_20261025_160256/llama/resume_probe/full/trainer/precision_path_check.json"
+      },
+      "precision_report": {
+        "all_decoder_calls_under_autocast": true,
+        "attempts": [
+          {
+            "chunk_finite": true,
+            "reference_finite": true,
+            "scale": 65536.0
+          }
+        ],
+        "backward_mode": "gradscaler",
+        "chunk_loss": 0.28076663613319397,
+        "compared_parameters": 112,
+        "device": "cuda",
+        "failed_parameters": [
+          "base_model.model.model.layers.0.self_attn.v_proj.lora_B.default.weight",
+          "base_model.model.model.layers.1.self_attn.v_proj.lora_B.default.weight",
+          "base_model.model.model.layers.2.self_attn.q_proj.lora_B.default.weight",
+          "base_model.model.model.layers.2.self_attn.v_proj.lora_B.default.weight",
+          "base_model.model.model.layers.3.self_attn.v_proj.lora_B.default.weight",
+          "base_model.model.model.layers.4.self_attn.q_proj.lora_B.default.weight",
+          "base_model.model.model.layers.4.self_attn.v_proj.lora_B.default.weight",
+          "base_model.model.model.layers.5.self_attn.v_proj.lora_B.default.weight",
+          "base_model.model.model.layers.6.self_attn.v_proj.lora_B.default.weight",
+          "base_model.model.model.layers.7.self_attn.v_proj.lora_B.default.weight",
+          "base_model.model.model.layers.9.self_attn.v_proj.lora_B.default.weight",
+          "base_model.model.model.layers.11.self_attn.v_proj.lora_B.default.weight",
+          "base_model.model.model.layers.25.self_attn.q_proj.lora_B.default.weight"
+        ],
+        "gradient_atol": 1e-05,
+        "gradient_relative_l2_limit": 0.01,
+        "gradient_rtol": 0.01,
+        "max_gradient_absolute_difference": 6.866455078125e-05,
+        "max_gradient_relative_l2_difference": 0.007797495870359875,
+        "nonzero_gradient_factors": [
+          "lora_A",
+          "lora_B"
+        ],
+        "note": "No optimizer steps; actual Trainer disk continuation is checked next",
+        "probe_adapter_state": "temporary B=1e-3; original A/B restored",
+        "projection_chunks": 3,
+        "projection_policy": "padded-tail-tiles; concatenate-token-losses; single-fp32-sum",
+        "reference_loss": 0.28076663613319397,
+        "report_path": "/data/chuwenjing/results/tlm_offline_v4_preflight/run_20261025_160256/llama/resume_probe/full/trainer/precision_path_check.json",
+        "scale_used": 65536.0,
+        "scaler_source": "actual_trainer",
+        "status": "FAIL",
+        "tokens": 258
+      },
+      "precision_report_path": "/data/chuwenjing/results/tlm_offline_v4_preflight/run_20261025_160256/llama/resume_probe/full/trainer/precision_path_check.json",
+      "bad_parameter_count": 13,
+      "bad_parameters": [
+        {
+          "name": "base_model.model.model.layers.0.self_attn.v_proj.lora_B.default.weight",
+          "elements": 8192,
+          "max_absolute_difference": 6.866455078125e-05,
+          "outside_tolerance": 60,
+          "reference_l2": 0.23390758623728755,
+          "relative_l2": 0.0024762993237002705,
+          "relative_l2_within_limit": true
+        },
+        {
+          "name": "base_model.model.model.layers.1.self_attn.v_proj.lora_B.default.weight",
+          "elements": 8192,
+          "max_absolute_difference": 3.24249267578125e-05,
+          "outside_tolerance": 51,
+          "reference_l2": 0.19930427319022684,
+          "relative_l2": 0.0024750773596195434,
+          "relative_l2_within_limit": true
+        },
+        {
+          "name": "base_model.model.model.layers.11.self_attn.v_proj.lora_B.default.weight",
+          "elements": 8192,
+          "max_absolute_difference": 2.1696090698242188e-05,
+          "outside_tolerance": 2,
+          "reference_l2": 0.1565672316924369,
+          "relative_l2": 0.0013722902560796182,
+          "relative_l2_within_limit": true
+        },
+        {
+          "name": "base_model.model.model.layers.2.self_attn.q_proj.lora_B.default.weight",
+          "elements": 24576,
+          "max_absolute_difference": 2.288818359375e-05,
+          "outside_tolerance": 1,
+          "reference_l2": 0.05380620918635127,
+          "relative_l2": 0.002153412543394955,
+          "relative_l2_within_limit": true
+        },
+        {
+          "name": "base_model.model.model.layers.2.self_attn.v_proj.lora_B.default.weight",
+          "elements": 8192,
+          "max_absolute_difference": 6.866455078125e-05,
+          "outside_tolerance": 77,
+          "reference_l2": 0.24586814556989778,
+          "relative_l2": 0.002303853214609368,
+          "relative_l2_within_limit": true
+        },
+        {
+          "name": "base_model.model.model.layers.25.self_attn.q_proj.lora_B.default.weight",
+          "elements": 24576,
+          "max_absolute_difference": 1.52587890625e-05,
+          "outside_tolerance": 1,
+          "reference_l2": 0.04851364302242163,
+          "relative_l2": 0.0013079184157923803,
+          "relative_l2_within_limit": true
+        },
+        {
+          "name": "base_model.model.model.layers.3.self_attn.v_proj.lora_B.default.weight",
+          "elements": 8192,
+          "max_absolute_difference": 3.0517578125e-05,
+          "outside_tolerance": 38,
+          "reference_l2": 0.2241868484177027,
+          "relative_l2": 0.00207972588788032,
+          "relative_l2_within_limit": true
+        },
+        {
+          "name": "base_model.model.model.layers.4.self_attn.q_proj.lora_B.default.weight",
+          "elements": 24576,
+          "max_absolute_difference": 2.193450927734375e-05,
+          "outside_tolerance": 1,
+          "reference_l2": 0.06128661126370045,
+          "relative_l2": 0.0019478166551897937,
+          "relative_l2_within_limit": true
+        }
+      ],
+      "checkpoints": [],
+      "log_tail": [
+        "Traceback (most recent call last):",
+        "  File \"/data/chuwenjing/tta_offline/tlm_offline_v4_bundle/run.py\", line 449, in <module>",
+        "    main()",
+        "  File \"/data/chuwenjing/tta_offline/tlm_offline_v4_bundle/run.py\", line 436, in main",
+        "    preflight(args,rows,prepared)",
+        "  File \"/data/chuwenjing/tta_offline/tlm_offline_v4_bundle/run.py\", line 241, in preflight",
+        "    trainer_probe=probe_trainer_resume(loaded,encoded,initial,args)",
+        "  File \"/data/chuwenjing/tta_offline/tlm_offline_v4_bundle/run.py\", line 117, in probe_trainer_resume",
+        "    precision_report=compare_precision_paths(full,precision_feature(encoded,args.chunk_size))",
+        "  File \"/data/chuwenjing/tta_offline/tlm_offline_v4_bundle/precision.py\", line 165, in compare_precision_paths",
+        "    raise AssertionError('Scaled full/chunk comparison failed; parameters=%d; report=%s' % (len(failures), report_path))",
+        "AssertionError: Scaled full/chunk comparison failed; parameters=13; report=/data/chuwenjing/results/tlm_offline_v4_preflight/run_20261025_160256/llama/resume_probe/full/trainer/precision_path_check.json"
+      ]
+    },
+    "qwen": {
+      "run": "/data/chuwenjing/results/tlm_offline_v4_preflight/run_20261025_160256",
+      "task": "qwen",
+      "receipt": {
+        "status": "PASS",
+        "code_id": "f1b5c7026a9429c4008b923a42b459ae47070585d51ec28b70498806a85a459b",
+        "model": "qwen3b",
+        "dataset": "dolly_5k",
+        "seed": 42,
+        "lora_init": "gaussian",
+        "chunk_size": 128,
+        "frozen_base_unchanged": true,
+        "checkpoint_continuation": "EXACT_MATCH",
+        "source_sample_match": true,
+        "peak_allocated_mib": 7396.232421875,
+        "peak_reserved_mib": 8152.0
+      },
+      "precision_in_receipt": {
+        "status": "PASS",
+        "device": "cuda",
+        "tokens": 258,
+        "backward_mode": "gradscaler",
+        "scale_used": 65536.0,
+        "attempts": [
+          {
+            "scale": 65536.0,
+            "reference_finite": true,
+            "chunk_finite": true
+          }
+        ],
+        "scaler_source": "actual_trainer",
+        "projection_chunks": 3,
+        "projection_policy": "padded-tail-tiles; concatenate-token-losses; single-fp32-sum",
+        "probe_adapter_state": "temporary B=1e-3; original A/B restored",
+        "nonzero_gradient_factors": [
+          "lora_A",
+          "lora_B"
+        ],
+        "reference_loss": 0.3442603051662445,
+        "chunk_loss": 0.3442603051662445,
+        "compared_parameters": 144,
+        "failed_parameters": [],
+        "max_gradient_absolute_difference": 0.0,
+        "max_gradient_relative_l2_difference": 0.0,
+        "all_decoder_calls_under_autocast": true,
+        "gradient_atol": 1e-05,
+        "gradient_rtol": 0.01,
+        "gradient_relative_l2_limit": 0.01,
+        "report_path": "/data/chuwenjing/results/tlm_offline_v4_preflight/run_20261025_160256/qwen/resume_probe/full/trainer/precision_path_check.json",
+        "note": "No optimizer steps; actual Trainer disk continuation is checked next"
+      },
+      "trainer_resume": {
+        "status": "EXACT_MATCH",
+        "steps": 16,
+        "interrupted_at": 8,
+        "successful_optimizer_steps": 13,
+        "skipped_optimizer_steps": 3,
+        "forced_selection_lambda": 0.004978706836786395,
+        "state_files": [
+          "optimizer.pt",
+          "scheduler.pt",
+          "rng_state.pth",
+          "scaler.pt"
+        ],
+        "full_commit_sha256": "278144e2104001fb2d3a099ef063cc5925e5b47208c1d68829a6c0b5dc6b05d5",
+        "resume_commit_sha256": "6cdc05670fc2ae2d2afa3605e099632226b1f80b12df31686041f69445ab8616"
+      },
+      "precision_report": {
+        "all_decoder_calls_under_autocast": true,
+        "attempts": [
+          {
+            "chunk_finite": true,
+            "reference_finite": true,
+            "scale": 65536.0
+          }
+        ],
+        "backward_mode": "gradscaler",
+        "chunk_loss": 0.3442603051662445,
+        "compared_parameters": 144,
+        "device": "cuda",
+        "failed_parameters": [],
+        "gradient_atol": 1e-05,
+        "gradient_relative_l2_limit": 0.01,
+        "gradient_rtol": 0.01,
+        "max_gradient_absolute_difference": 0.0,
+        "max_gradient_relative_l2_difference": 0.0,
+        "nonzero_gradient_factors": [
+          "lora_A",
+          "lora_B"
+        ],
+        "note": "No optimizer steps; actual Trainer disk continuation is checked next",
+        "probe_adapter_state": "temporary B=1e-3; original A/B restored",
+        "projection_chunks": 3,
+        "projection_policy": "padded-tail-tiles; concatenate-token-losses; single-fp32-sum",
+        "reference_loss": 0.3442603051662445,
+        "report_path": "/data/chuwenjing/results/tlm_offline_v4_preflight/run_20261025_160256/qwen/resume_probe/full/trainer/precision_path_check.json",
+        "scale_used": 65536.0,
+        "scaler_source": "actual_trainer",
+        "status": "PASS",
+        "tokens": 258
+      },
+      "precision_report_path": "/data/chuwenjing/results/tlm_offline_v4_preflight/run_20261025_160256/qwen/resume_probe/full/trainer/precision_path_check.json",
+      "bad_parameter_count": 0,
+      "bad_parameters": [],
+      "checkpoints": [
+        {
+          "path": "resume_probe/full/trainer/checkpoint-16",
+          "global_step": 16,
+          "committed": true
+        },
+        {
+          "path": "resume_probe/full/trainer/checkpoint-8",
+          "global_step": 8,
+          "committed": true
+        },
+        {
+          "path": "resume_probe/partial/trainer/checkpoint-16",
+          "global_step": 16,
+          "committed": true
+        },
+        {
+          "path": "resume_probe/partial/trainer/checkpoint-8",
+          "global_step": 8,
+          "committed": true
+        }
+      ],
+      "log_tail": [
+        "[long receipt JSON omitted; see receipt.json]"
+      ]
+    }
+  },
+  "qwen_checkpoint_hash_audit": [
+    {
+      "role": "full",
+      "files_checked": 10,
+      "mismatches": [],
+      "commit_sha_matches_receipt": true,
+      "has_scaler": true,
+      "global_step": 16,
+      "history_length": 16
+    },
+    {
+      "role": "partial",
+      "files_checked": 10,
+      "mismatches": [],
+      "commit_sha_matches_receipt": true,
+      "has_scaler": true,
+      "global_step": 16,
+      "history_length": 16
+    }
+  ],
+  "qwen_next_stage": "100-row pilot with formal Dolly lr5e-5 and output quality window; no automatic formal run",
+  "llama_next_stage": "Numerical implementation still needs repair; keep original tolerances",
+  "full_training_started": false,
+  "agent_started_gpu_jobs": false,
+  "v4_bundle_modified_after_receipt": false,
+  "dolly_degradation_fixed": "NOT_ESTABLISHED"
+}

@@ -1,0 +1,57 @@
+{
+  "record_date_beijing": "2026-10-25",
+  "purpose": "Make paper Gaussian initialization the main protocol and remove stale v2 launch instructions",
+  "bundle_code_id": "267c3593e1d2c62f7d741168dcfd82ff76dc60f5458a06e481beca570997915d",
+  "checked_defaults": {
+    "train_core.build_lora.initialization": "gaussian",
+    "runtime.LoadedModel.initialization": "gaussian",
+    "launch.execute_job.lora_init": "gaussian",
+    "run.--lora-init": "gaussian",
+    "launch.--lora-init": "gaussian"
+  },
+  "main_experiment": {
+    "lora_A": "gaussian",
+    "lora_B": "zero",
+    "rank": 8,
+    "alpha": 16,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ],
+    "seed": 42,
+    "requires_fresh_base_and_adapter": true
+  },
+  "legacy_v1_v2_results": "engineering controls; do not relabel as Gaussian",
+  "runner_allows_explicit_kaiming_controls": true,
+  "classification_is_documented_policy_not_a_new_runner_restriction": true,
+  "fresh_cpu_verification": {
+    "tests": 60,
+    "status": "PASS",
+    "exit_code": 0,
+    "torch": "2.14.0+cu126",
+    "transformers": "4.46.1",
+    "peft": "0.12.0",
+    "accelerate": "1.0.1"
+  },
+  "last_real_gpu_verification": {
+    "checked_at_beijing": "2026-10-25 17:33",
+    "status": "FAIL_GRADIENT_ALIGNMENT",
+    "models": [
+      "llama3b",
+      "qwen3b"
+    ],
+    "dataset": "dolly_5k",
+    "resume_probe": "NOT_REACHED"
+  },
+  "new_gpu_jobs_started_in_this_revision": false,
+  "frozen_bundle_changed_in_this_revision": false,
+  "dolly_fixed": "NOT_ESTABLISHED",
+  "gaussian_full_training_ready": false,
+  "next_required_work": "Collect complete gradient statistics and isolate full/chunk FP16 differences",
+  "remaining_paper_differences": [
+    "FP16 rather than BF16",
+    "Qwen3B rather than Qwen7B",
+    "answer-independent input truncation",
+    "chunked projection numerical equivalence not accepted on GPU"
+  ]
+}

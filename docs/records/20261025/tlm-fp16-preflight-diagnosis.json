@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-25",
+  "run": "/data/chuwenjing/results/tlm_offline_v1/run_20261025_032853",
+  "evidence": "read-only server checkpoint and log inspection at 14:14 Beijing time",
+  "tasks": [
+    {
+      "task": "llama3b__dolly_5k",
+      "final_scaler": 4096.0,
+      "optimizer_steps": [],
+      "lora_B_nonzero": 0,
+      "nonfinite_gradient_log": true
+    },
+    {
+      "task": "llama3b__geosignal_5k",
+      "final_scaler": 8192.0,
+      "optimizer_steps": [
+        1.0
+      ],
+      "lora_B_nonzero": 0,
+      "nonfinite_gradient_log": true
+    },
+    {
+      "task": "llama3b__gsm8k_5k",
+      "final_scaler": 32768.0,
+      "optimizer_steps": [
+        3.0
+      ],
+      "lora_B_nonzero": 917504,
+      "nonfinite_gradient_log": true
+    },
+    {
+      "task": "qwen3b__dolly_5k",
+      "final_scaler": 4096.0,
+      "optimizer_steps": [],
+      "lora_B_nonzero": 0,
+      "nonfinite_gradient_log": true
+    },
+    {
+      "task": "qwen3b__geosignal_5k",
+      "final_scaler": 4096.0,
+      "optimizer_steps": [],
+      "lora_B_nonzero": 0,
+      "nonfinite_gradient_log": true
+    },
+    {
+      "task": "qwen3b__gsm8k_5k",
+      "final_scaler": 4096.0,
+      "optimizer_steps": [],
+      "lora_B_nonzero": 0,
+      "nonfinite_gradient_log": true
+    }
+  ],
+  "root_cause": [
+    "forced threshold=0 inflated probe weights by exp(3)",
+    "four-step budget consumed by initial FP16 scaler backoff and zero-lr warmup"
+  ],
+  "v2": {
+    "code_id": "8d3e5a79cf6ecc54ccc59bdb8c9392e5f3b8df31df899d43d8c4bad79c89fa0d",
+    "cpu_tests": 50,
+    "cpu_status": "PASS",
+    "accelerate": "1.0.1",
+    "local_torch": "2.14.0+cu126",
+    "server_preflight": "NOT_RUN",
+    "formal_training_functions_unchanged": true,
+    "server_gpu_jobs_started_by_assistant": 0
+  }
+}

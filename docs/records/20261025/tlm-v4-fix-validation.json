@@ -1,0 +1,58 @@
+{
+  "date_beijing": "2026-10-25",
+  "version": "v4",
+  "code_id": "f1b5c7026a9429c4008b923a42b459ae47070585d51ec28b70498806a85a459b",
+  "delivery_sha256": "e930299af39bc9bea42f50795fae54e167b5615f20273b7be6f83b5fd78a5db7",
+  "changed_files_from_v3": [
+    "check.py",
+    "precision.py",
+    "README.md",
+    "run.py",
+    "runtime.py",
+    "tests/test_commands.py",
+    "tests/test_loss.py",
+    "tests/test_training.py",
+    "tlm_loss.py"
+  ],
+  "actual_training_changes": [
+    "Pad partial head tiles using zero hidden and ignored targets",
+    "Concatenate per-token CE, then one FP32 sum in full-path order"
+  ],
+  "unchanged_protocol": [
+    "Gaussian A, zero B",
+    "all real causal targets and valid-token denominator",
+    "threshold3 and lambda0.1",
+    "learning rates, optimizer, seed, input and generation settings"
+  ],
+  "preflight_changes": [
+    "Actual GradScaler backward and unscale, joint overflow-only backoff",
+    "Unchanged atol1e-5 rtol1e-2 and per-parameter relativeL2 limit1percent",
+    "Bind chunk_size in receipt identity",
+    "Save complete parameter statistics on mismatch, missing gradient or exhausted overflow"
+  ],
+  "cpu_validation": {
+    "status": "PASS",
+    "exit_code": 0,
+    "test_count": 67,
+    "new_tests": 7,
+    "torch": "2.14.0+cu126",
+    "transformers": "4.46.1",
+    "peft": "0.12.0",
+    "accelerate": "1.0.1"
+  },
+  "regression_evidence": [
+    "Old head call sizes2,2,1 failed expected2,2,2",
+    "Real FP32 CE stress case full sum100000304 vs grouped sum100000360 failed exact comparison",
+    "Old identity did not distinguish chunk sizes",
+    "Old precision check did not use actual scaler",
+    "Missing gradient and exhausted overflow failed diagnostic completeness tests before fix"
+  ],
+  "independent_review": "No remaining issues after missing-gradient immediate failure and complete JSON-safe overflow statistics",
+  "real_gpu_v4_preflight": "NOT_RUN",
+  "new_gpu_jobs_started_by_agent": false,
+  "previous_real_gpu_scaled_comparison": "MISMATCH in v3; unchanged historical evidence",
+  "old_bundles_or_results_modified": false,
+  "full_training_started": false,
+  "dolly_fixed": "NOT_ESTABLISHED",
+  "reproduction_scope": "TLM method reproduction under 3B/FP16 conditions, not exact original hardware/model conditions"
+}

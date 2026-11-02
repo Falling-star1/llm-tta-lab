@@ -1,0 +1,526 @@
+{
+  "date": "2026-10-25",
+  "audit": "read-only CPU evidence, followed by explicitly authorized Dolly pause",
+  "training_and_output_audit": [
+    {
+      "task": "llama3b__dolly_5k",
+      "training": {
+        "n": 5000,
+        "seconds": 2435.72197252512,
+        "selected": 3825,
+        "global_step": 5000,
+        "frozen_base_unchanged": true
+      },
+      "code_identity_matches": true,
+      "delivery_hashes_match": true,
+      "configuration": {
+        "learning_rate": 5e-05,
+        "num_train_epochs": 1.0,
+        "per_device_train_batch_size": 1,
+        "gradient_accumulation_steps": 1,
+        "lr_scheduler_type": "cosine",
+        "warmup_ratio": 0.1,
+        "optim": "adamw_torch",
+        "weight_decay": 0.0,
+        "max_grad_norm": 1.0,
+        "seed": 42,
+        "data_seed": null,
+        "fp16": true,
+        "bf16": false
+      },
+      "history_count": 5000,
+      "all_indices_once": true,
+      "finite_history": true,
+      "selection_errors": 0,
+      "weight_errors": 0,
+      "loss_errors": 0,
+      "checkpoint_hashes_match": true,
+      "actual_optimizer_step_values": [
+        4998.0
+      ],
+      "skipped_optimizer_steps": 2.0,
+      "optimizer_finite": true,
+      "adapter_finite": true,
+      "final_adapter_matches_checkpoint": true,
+      "answer_free_input_schema": true,
+      "input_hash_matches": true,
+      "recomputed_score_sample_n": 35,
+      "recomputed_score_errors": 0,
+      "source_recomputed_score_errors": 0,
+      "prediction_prefix": {
+        "task": "llama3b__dolly_5k",
+        "n": 267,
+        "source_file_hash_matches": true,
+        "source_input_metadata_matches": true,
+        "stop_ids": [
+          128008,
+          128009
+        ],
+        "empty_count": 0,
+        "empty_ids_common": [],
+        "empty_all_single_stop": false,
+        "source_mean_score": 0.32418799390166286,
+        "tlm_mean_score": 0.26840978060726206,
+        "source_word_repeat_ge_0_5": 0,
+        "tlm_word_repeat_ge_0_5": 35,
+        "empty_first_last_half": [
+          0,
+          0
+        ],
+        "lora_init": true,
+        "receipt_checkpoint_resume": "EXACT_MATCH"
+      }
+    },
+    {
+      "task": "llama3b__geosignal_5k",
+      "training": {
+        "n": 5000,
+        "seconds": 2385.727649703622,
+        "selected": 4267,
+        "global_step": 5000,
+        "frozen_base_unchanged": true
+      },
+      "code_identity_matches": true,
+      "delivery_hashes_match": true,
+      "configuration": {
+        "learning_rate": 5e-05,
+        "num_train_epochs": 1.0,
+        "per_device_train_batch_size": 1,
+        "gradient_accumulation_steps": 1,
+        "lr_scheduler_type": "cosine",
+        "warmup_ratio": 0.1,
+        "optim": "adamw_torch",
+        "weight_decay": 0.0,
+        "max_grad_norm": 1.0,
+        "seed": 42,
+        "data_seed": null,
+        "fp16": true,
+        "bf16": false
+      },
+      "history_count": 5000,
+      "all_indices_once": true,
+      "finite_history": true,
+      "selection_errors": 0,
+      "weight_errors": 0,
+      "loss_errors": 0,
+      "checkpoint_hashes_match": true,
+      "actual_optimizer_step_values": [
+        4996.0
+      ],
+      "skipped_optimizer_steps": 4.0,
+      "optimizer_finite": true,
+      "adapter_finite": true,
+      "final_adapter_matches_checkpoint": true,
+      "answer_free_input_schema": true,
+      "input_hash_matches": true,
+      "recomputed_score_sample_n": 33,
+      "recomputed_score_errors": 0,
+      "source_recomputed_score_errors": 0,
+      "prediction_prefix": {
+        "task": "llama3b__geosignal_5k",
+        "n": 412,
+        "source_file_hash_matches": true,
+        "source_input_metadata_matches": true,
+        "stop_ids": [
+          128008,
+          128009
+        ],
+        "empty_count": 0,
+        "empty_ids_common": [],
+        "empty_all_single_stop": false,
+        "source_mean_score": 0.24703979438851242,
+        "tlm_mean_score": 0.2746081017887807,
+        "source_word_repeat_ge_0_5": 0,
+        "tlm_word_repeat_ge_0_5": 3,
+        "empty_first_last_half": [
+          0,
+          0
+        ],
+        "lora_init": true,
+        "receipt_checkpoint_resume": "EXACT_MATCH"
+      }
+    },
+    {
+      "task": "llama3b__gsm8k_5k",
+      "training": {
+        "n": 5000,
+        "seconds": 2279.222895935178,
+        "selected": 2567,
+        "global_step": 5000,
+        "frozen_base_unchanged": true
+      },
+      "code_identity_matches": true,
+      "delivery_hashes_match": true,
+      "configuration": {
+        "learning_rate": 1e-06,
+        "num_train_epochs": 1.0,
+        "per_device_train_batch_size": 1,
+        "gradient_accumulation_steps": 1,
+        "lr_scheduler_type": "cosine",
+        "warmup_ratio": 0.1,
+        "optim": "adamw_torch",
+        "weight_decay": 0.0,
+        "max_grad_norm": 1.0,
+        "seed": 42,
+        "data_seed": null,
+        "fp16": true,
+        "bf16": false
+      },
+      "history_count": 5000,
+      "all_indices_once": true,
+      "finite_history": true,
+      "selection_errors": 0,
+      "weight_errors": 0,
+      "loss_errors": 0,
+      "checkpoint_hashes_match": true,
+      "actual_optimizer_step_values": [
+        5000.0
+      ],
+      "skipped_optimizer_steps": 0.0,
+      "optimizer_finite": true,
+      "adapter_finite": true,
+      "final_adapter_matches_checkpoint": true,
+      "answer_free_input_schema": true,
+      "input_hash_matches": true,
+      "recomputed_score_sample_n": 32,
+      "recomputed_score_errors": 0,
+      "source_recomputed_score_errors": 0,
+      "prediction_prefix": {
+        "task": "llama3b__gsm8k_5k",
+        "n": 871,
+        "source_file_hash_matches": true,
+        "source_input_metadata_matches": true,
+        "stop_ids": [
+          128008,
+          128009
+        ],
+        "empty_count": 0,
+        "empty_ids_common": [],
+        "empty_all_single_stop": false,
+        "source_mean_score": 0.7887485648679678,
+        "tlm_mean_score": 0.9196326061997704,
+        "source_word_repeat_ge_0_5": 0,
+        "tlm_word_repeat_ge_0_5": 0,
+        "empty_first_last_half": [
+          0,
+          0
+        ],
+        "lora_init": true,
+        "receipt_checkpoint_resume": "EXACT_MATCH"
+      }
+    },
+    {
+      "task": "qwen3b__dolly_5k",
+      "training": {
+        "n": 5000,
+        "seconds": 3363.9824118614197,
+        "selected": 3998,
+        "global_step": 5000,
+        "frozen_base_unchanged": true
+      },
+      "code_identity_matches": true,
+      "delivery_hashes_match": true,
+      "configuration": {
+        "learning_rate": 5e-05,
+        "num_train_epochs": 1.0,
+        "per_device_train_batch_size": 1,
+        "gradient_accumulation_steps": 1,
+        "lr_scheduler_type": "cosine",
+        "warmup_ratio": 0.1,
+        "optim": "adamw_torch",
+        "weight_decay": 0.0,
+        "max_grad_norm": 1.0,
+        "seed": 42,
+        "data_seed": null,
+        "fp16": true,
+        "bf16": false
+      },
+      "history_count": 5000,
+      "all_indices_once": true,
+      "finite_history": true,
+      "selection_errors": 0,
+      "weight_errors": 0,
+      "loss_errors": 0,
+      "checkpoint_hashes_match": true,
+      "actual_optimizer_step_values": [
+        4995.0
+      ],
+      "skipped_optimizer_steps": 5.0,
+      "optimizer_finite": true,
+      "adapter_finite": true,
+      "final_adapter_matches_checkpoint": true,
+      "answer_free_input_schema": true,
+      "input_hash_matches": true,
+      "recomputed_score_sample_n": 37,
+      "recomputed_score_errors": 0,
+      "source_recomputed_score_errors": 0,
+      "prediction_prefix": {
+        "task": "qwen3b__dolly_5k",
+        "n": 179,
+        "source_file_hash_matches": true,
+        "source_input_metadata_matches": true,
+        "stop_ids": [
+          151645
+        ],
+        "empty_count": 84,
+        "empty_ids_common": [
+          {
+            "ids": [
+              151645
+            ],
+            "count": 84
+          }
+        ],
+        "empty_all_single_stop": true,
+        "source_mean_score": 0.2774607909526583,
+        "tlm_mean_score": 0.15894737724960747,
+        "source_word_repeat_ge_0_5": 0,
+        "tlm_word_repeat_ge_0_5": 0,
+        "empty_first_last_half": [
+          44,
+          40
+        ],
+        "lora_init": true,
+        "receipt_checkpoint_resume": "EXACT_MATCH",
+        "empty_example_indexes": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          7,
+          9
+        ]
+      }
+    },
+    {
+      "task": "qwen3b__geosignal_5k",
+      "training": {
+        "n": 5000,
+        "seconds": 3358.647930622101,
+        "selected": 4502,
+        "global_step": 5000,
+        "frozen_base_unchanged": true
+      },
+      "code_identity_matches": true,
+      "delivery_hashes_match": true,
+      "configuration": {
+        "learning_rate": 5e-05,
+        "num_train_epochs": 1.0,
+        "per_device_train_batch_size": 1,
+        "gradient_accumulation_steps": 1,
+        "lr_scheduler_type": "cosine",
+        "warmup_ratio": 0.1,
+        "optim": "adamw_torch",
+        "weight_decay": 0.0,
+        "max_grad_norm": 1.0,
+        "seed": 42,
+        "data_seed": null,
+        "fp16": true,
+        "bf16": false
+      },
+      "history_count": 5000,
+      "all_indices_once": true,
+      "finite_history": true,
+      "selection_errors": 0,
+      "weight_errors": 0,
+      "loss_errors": 0,
+      "checkpoint_hashes_match": true,
+      "actual_optimizer_step_values": [
+        4995.0
+      ],
+      "skipped_optimizer_steps": 5.0,
+      "optimizer_finite": true,
+      "adapter_finite": true,
+      "final_adapter_matches_checkpoint": true,
+      "answer_free_input_schema": true,
+      "input_hash_matches": true,
+      "recomputed_score_sample_n": 34,
+      "recomputed_score_errors": 0,
+      "source_recomputed_score_errors": 0,
+      "prediction_prefix": {
+        "task": "qwen3b__geosignal_5k",
+        "n": 129,
+        "source_file_hash_matches": true,
+        "source_input_metadata_matches": true,
+        "stop_ids": [
+          151645
+        ],
+        "empty_count": 0,
+        "empty_ids_common": [],
+        "empty_all_single_stop": false,
+        "source_mean_score": 0.2608039547074233,
+        "tlm_mean_score": 0.2928796110565213,
+        "source_word_repeat_ge_0_5": 0,
+        "tlm_word_repeat_ge_0_5": 1,
+        "empty_first_last_half": [
+          0,
+          0
+        ],
+        "lora_init": true,
+        "receipt_checkpoint_resume": "EXACT_MATCH"
+      }
+    },
+    {
+      "task": "qwen3b__gsm8k_5k",
+      "training": {
+        "n": 5000,
+        "seconds": 3261.9122205227613,
+        "selected": 2569,
+        "global_step": 5000,
+        "frozen_base_unchanged": true
+      },
+      "code_identity_matches": true,
+      "delivery_hashes_match": true,
+      "configuration": {
+        "learning_rate": 1e-06,
+        "num_train_epochs": 1.0,
+        "per_device_train_batch_size": 1,
+        "gradient_accumulation_steps": 1,
+        "lr_scheduler_type": "cosine",
+        "warmup_ratio": 0.1,
+        "optim": "adamw_torch",
+        "weight_decay": 0.0,
+        "max_grad_norm": 1.0,
+        "seed": 42,
+        "data_seed": null,
+        "fp16": true,
+        "bf16": false
+      },
+      "history_count": 5000,
+      "all_indices_once": true,
+      "finite_history": true,
+      "selection_errors": 0,
+      "weight_errors": 0,
+      "loss_errors": 0,
+      "checkpoint_hashes_match": true,
+      "actual_optimizer_step_values": [
+        4997.0
+      ],
+      "skipped_optimizer_steps": 3.0,
+      "optimizer_finite": true,
+      "adapter_finite": true,
+      "final_adapter_matches_checkpoint": true,
+      "answer_free_input_schema": true,
+      "input_hash_matches": true,
+      "recomputed_score_sample_n": 33,
+      "recomputed_score_errors": 0,
+      "source_recomputed_score_errors": 0,
+      "prediction_prefix": {
+        "task": "qwen3b__gsm8k_5k",
+        "n": 95,
+        "source_file_hash_matches": true,
+        "source_input_metadata_matches": true,
+        "stop_ids": [
+          151645
+        ],
+        "empty_count": 0,
+        "empty_ids_common": [],
+        "empty_all_single_stop": false,
+        "source_mean_score": 0.7894736842105263,
+        "tlm_mean_score": 0.8105263157894737,
+        "source_word_repeat_ge_0_5": 0,
+        "tlm_word_repeat_ge_0_5": 0,
+        "empty_first_last_half": [
+          0,
+          0
+        ],
+        "lora_init": true,
+        "receipt_checkpoint_resume": "EXACT_MATCH"
+      }
+    }
+  ],
+  "datasets": [
+    {
+      "dataset": "geosignal_5k",
+      "raw_hash_matches": true,
+      "prepared_hashes_match": true,
+      "inputs_match_raw": true,
+      "references_match_raw": true
+    },
+    {
+      "dataset": "dolly_5k",
+      "raw_hash_matches": true,
+      "prepared_hashes_match": true,
+      "inputs_match_raw": true,
+      "references_match_raw": true
+    },
+    {
+      "dataset": "gsm8k_5k",
+      "raw_hash_matches": true,
+      "prepared_hashes_match": true,
+      "inputs_match_raw": true,
+      "references_match_raw": true
+    }
+  ],
+  "pause": [
+    {
+      "pause_record": "/data/chuwenjing/results/tlm_offline_v2/run_20261025_063426/audit_dolly_pause_20261025_081934.json",
+      "time_utc": "2026-10-25T08:19:34.770448+00:00",
+      "authorization": "user explicitly requested pausing both Dolly evaluations",
+      "signal": "SIGSTOP",
+      "targets": [
+        {
+          "pid": 17071,
+          "model": "llama3b",
+          "output": "/data/chuwenjing/results/tlm_offline_v2/run_20261025_063426/formal/llama3b__dolly_5k",
+          "command": [
+            "/data/chuwenjing/conda-envs/tta-llm/bin/python",
+            "-B",
+            "-u",
+            "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_8d3e5a79cf6e/run.py",
+            "formal",
+            "--model",
+            "llama3b",
+            "--dataset",
+            "dolly_5k",
+            "--inputs",
+            "/data/chuwenjing/tta_offline/tlm_inputs_v1/dolly_5k",
+            "--output",
+            "/data/chuwenjing/results/tlm_offline_v2/run_20261025_063426/formal/llama3b__dolly_5k",
+            "--receipt",
+            "/data/chuwenjing/results/tlm_offline_v2/run_20261025_063426/preflight/llama3b__dolly_5k/receipt.json"
+          ],
+          "process_state": "State:\tT (stopped)",
+          "saved_prediction_lines": 267,
+          "resume_command": "kill -CONT 17071"
+        },
+        {
+          "pid": 17129,
+          "model": "qwen3b",
+          "output": "/data/chuwenjing/results/tlm_offline_v2/run_20261025_063426/formal/qwen3b__dolly_5k",
+          "command": [
+            "/data/chuwenjing/conda-envs/tta-llm/bin/python",
+            "-B",
+            "-u",
+            "/home/chuwenjing/TTA_LLM/TLM/local_repro/tlm_offline_8d3e5a79cf6e/run.py",
+            "formal",
+            "--model",
+            "qwen3b",
+            "--dataset",
+            "dolly_5k",
+            "--inputs",
+            "/data/chuwenjing/tta_offline/tlm_inputs_v1/dolly_5k",
+            "--output",
+            "/data/chuwenjing/results/tlm_offline_v2/run_20261025_063426/formal/qwen3b__dolly_5k",
+            "--receipt",
+            "/data/chuwenjing/results/tlm_offline_v2/run_20261025_063426/preflight/qwen3b__dolly_5k/receipt.json"
+          ],
+          "process_state": "State:\tT (stopped)",
+          "saved_prediction_lines": 179,
+          "resume_command": "kill -CONT 17129"
+        }
+      ],
+      "other_jobs": "not signaled",
+      "note": "SIGSTOP retains GPU memory; launcher status files remain RUNNING"
+    }
+  ],
+  "quality_gate": "DOLLY_FAILED; four other groups continue; final full results pending",
+  "paper_alignment": "fixed-code FP16 engineering reproduction; Gaussian initialization, Qwen model size, precision and preprocessing differ",
+  "score_recheck_at_1614": {
+    "paired_indexes": 209,
+    "score_comparisons": 418,
+    "errors": 0
+  }
+}

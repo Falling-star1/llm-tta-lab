@@ -1,0 +1,49 @@
+{
+  "checked_at_beijing": "2026-10-26 01:11",
+  "run": "/data/chuwenjing/results/tlm_offline_v4_pilot/qwen_dolly_100_20261025_170101",
+  "manifest": {
+    "status": "RUNNING",
+    "config": {
+      "code_id": "f1b5c7026a9429c4008b923a42b459ae47070585d51ec28b70498806a85a459b",
+      "model": "qwen3b",
+      "dataset": "dolly_5k",
+      "lora_init": "gaussian",
+      "seed": 42,
+      "chunk_size": 128,
+      "input_sha256": "1267654773a17e9843faaca78aaf69ed422922ea8bf3e3a0374a6834148a83f8",
+      "count": 100,
+      "protocol": "A",
+      "initialized_from": "base",
+      "source_run": "/data/chuwenjing/results/tent_formal_v3_6gpu/run_20261020_001210_900089",
+      "preflight_sha256": "b0f2c5720cd40b2f606b26290f4f0356c6353e039bec701bb7ae865c7837664e"
+    },
+    "stage": "evaluation"
+  },
+  "training_complete": {
+    "n": 100,
+    "seconds": 87.3001887947321,
+    "selected": 81,
+    "global_step": 100,
+    "frozen_base_unchanged": true
+  },
+  "adaptation_summary": {
+    "rows": 100,
+    "unique_indexes": 100,
+    "selected": 81,
+    "all_finite": true
+  },
+  "prediction_count": 23,
+  "prediction_prefix_quality": {
+    "empty": 0,
+    "high_repeat": 0,
+    "at_generation_limit": 4
+  },
+  "paired_prefix_scores": {
+    "n": 23,
+    "source": 0.2982467218975818,
+    "tlm": 0.28529355774180815
+  },
+  "quality_window_complete": false,
+  "prefix_results_are_provisional": true,
+  "full_training_started": false
+}

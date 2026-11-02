@@ -1,0 +1,4110 @@
+{
+  "live_audit": {
+    "read_only": true,
+    "checks": [
+      {
+        "time_utc": "2026-10-26T10:56:54.861801+00:00",
+        "read_only": true,
+        "gpu_used": false,
+        "runtime_code_id": "b6da067b55f5c65241ae6fbd8c706b88523f64b27dd9568ad5661255b89d7999"
+      },
+      {
+        "model": "llama3b",
+        "dataset": "geosignal_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__geosignal_5k",
+        "training_complete": {
+          "n": 5000,
+          "seconds": 2583.297759488225,
+          "selected": 4267,
+          "global_step": 5000,
+          "frozen_base_unchanged": true,
+          "successful_optimizer_steps": 4996,
+          "skipped_optimizer_steps": 4,
+          "adapter_parameters_finite": true,
+          "optimizer_state_finite": true
+        },
+        "configuration": {
+          "learning_rate": 5e-05,
+          "num_train_epochs": 1.0,
+          "per_device_train_batch_size": 1,
+          "gradient_accumulation_steps": 1,
+          "lr_scheduler_type": "cosine",
+          "warmup_ratio": 0.1,
+          "optim": "adamw_torch",
+          "weight_decay": 0.0,
+          "max_grad_norm": 1.0,
+          "seed": 42,
+          "fp16": true,
+          "bf16": false,
+          "adam_beta1": 0.9,
+          "adam_beta2": 0.999,
+          "adam_epsilon": 1e-08
+        },
+        "contract": {
+          "init_lora_weights": "gaussian",
+          "trainable_parameters": 2293760,
+          "stop_ids": [
+            128008,
+            128009
+          ],
+          "pad_id": 128009,
+          "system": null,
+          "frozen_sha256": "c80d597af8e0f5bb8e99a6545680edb580ed2fe59c9cba4af0f39b568c15be77",
+          "template": "llama3"
+        },
+        "canonical_base_identity": true,
+        "history_count": 5000,
+        "unique_training_indexes": 5000,
+        "all_training_indexes_once": true,
+        "history_finite": true,
+        "selection_errors": 0,
+        "weight_errors": 0,
+        "loss_errors": 0,
+        "checkpoint_hashes_match": true,
+        "adapter_finite": true,
+        "optimizer_finite": true,
+        "adapter_matches_final_checkpoint": true,
+        "optimizer_steps": [
+          4996.0
+        ],
+        "truncated_input_count": 1,
+        "longest_input": 4096,
+        "prediction_indexes_contiguous": true,
+        "source_sha_unchanged": true,
+        "tlm_prefix": {
+          "n": 3603,
+          "mean_score": 0.29534373821617366,
+          "empty": 0,
+          "repetition": 46,
+          "hit_generation_limit": 193,
+          "mean_generated_tokens": 119.07771301693033
+        },
+        "source_same_prefix": {
+          "n": 3603,
+          "mean_score": 0.24006041944953135,
+          "empty": 0,
+          "repetition": 8,
+          "hit_generation_limit": 774,
+          "mean_generated_tokens": 260.1606994171524
+        },
+        "source_full": {
+          "n": 5000,
+          "mean_score": 0.23975979866168567,
+          "empty": 0,
+          "repetition": 12,
+          "hit_generation_limit": 1059,
+          "mean_generated_tokens": 258.5584
+        },
+        "score_sample_n": 32,
+        "score_errors": 0,
+        "source_score_errors": 0,
+        "special_tokens": [
+          [
+            128000,
+            "<|begin_of_text|>"
+          ],
+          [
+            128001,
+            "<|end_of_text|>"
+          ],
+          [
+            128002,
+            "<|reserved_special_token_0|>"
+          ],
+          [
+            128003,
+            "<|reserved_special_token_1|>"
+          ],
+          [
+            128004,
+            "<|finetune_right_pad_id|>"
+          ],
+          [
+            128005,
+            "<|reserved_special_token_2|>"
+          ],
+          [
+            128006,
+            "<|start_header_id|>"
+          ],
+          [
+            128007,
+            "<|end_header_id|>"
+          ],
+          [
+            128008,
+            "<|eom_id|>"
+          ],
+          [
+            128009,
+            "<|eot_id|>"
+          ],
+          [
+            128010,
+            "<|python_tag|>"
+          ],
+          [
+            128011,
+            "<|reserved_special_token_3|>"
+          ],
+          [
+            128012,
+            "<|reserved_special_token_4|>"
+          ],
+          [
+            128013,
+            "<|reserved_special_token_5|>"
+          ],
+          [
+            128014,
+            "<|reserved_special_token_6|>"
+          ],
+          [
+            128015,
+            "<|reserved_special_token_7|>"
+          ],
+          [
+            128016,
+            "<|reserved_special_token_8|>"
+          ],
+          [
+            128017,
+            "<|reserved_special_token_9|>"
+          ],
+          [
+            128018,
+            "<|reserved_special_token_10|>"
+          ],
+          [
+            128019,
+            "<|reserved_special_token_11|>"
+          ],
+          [
+            128020,
+            "<|reserved_special_token_12|>"
+          ],
+          [
+            128021,
+            "<|reserved_special_token_13|>"
+          ],
+          [
+            128022,
+            "<|reserved_special_token_14|>"
+          ],
+          [
+            128023,
+            "<|reserved_special_token_15|>"
+          ],
+          [
+            128024,
+            "<|reserved_special_token_16|>"
+          ],
+          [
+            128025,
+            "<|reserved_special_token_17|>"
+          ],
+          [
+            128026,
+            "<|reserved_special_token_18|>"
+          ],
+          [
+            128027,
+            "<|reserved_special_token_19|>"
+          ],
+          [
+            128028,
+            "<|reserved_special_token_20|>"
+          ],
+          [
+            128029,
+            "<|reserved_special_token_21|>"
+          ],
+          [
+            128030,
+            "<|reserved_special_token_22|>"
+          ],
+          [
+            128031,
+            "<|reserved_special_token_23|>"
+          ],
+          [
+            128032,
+            "<|reserved_special_token_24|>"
+          ],
+          [
+            128033,
+            "<|reserved_special_token_25|>"
+          ],
+          [
+            128034,
+            "<|reserved_special_token_26|>"
+          ],
+          [
+            128035,
+            "<|reserved_special_token_27|>"
+          ],
+          [
+            128036,
+            "<|reserved_special_token_28|>"
+          ],
+          [
+            128037,
+            "<|reserved_special_token_29|>"
+          ],
+          [
+            128038,
+            "<|reserved_special_token_30|>"
+          ],
+          [
+            128039,
+            "<|reserved_special_token_31|>"
+          ],
+          [
+            128040,
+            "<|reserved_special_token_32|>"
+          ],
+          [
+            128041,
+            "<|reserved_special_token_33|>"
+          ],
+          [
+            128042,
+            "<|reserved_special_token_34|>"
+          ],
+          [
+            128043,
+            "<|reserved_special_token_35|>"
+          ],
+          [
+            128044,
+            "<|reserved_special_token_36|>"
+          ],
+          [
+            128045,
+            "<|reserved_special_token_37|>"
+          ],
+          [
+            128046,
+            "<|reserved_special_token_38|>"
+          ],
+          [
+            128047,
+            "<|reserved_special_token_39|>"
+          ],
+          [
+            128048,
+            "<|reserved_special_token_40|>"
+          ],
+          [
+            128049,
+            "<|reserved_special_token_41|>"
+          ],
+          [
+            128050,
+            "<|reserved_special_token_42|>"
+          ],
+          [
+            128051,
+            "<|reserved_special_token_43|>"
+          ],
+          [
+            128052,
+            "<|reserved_special_token_44|>"
+          ],
+          [
+            128053,
+            "<|reserved_special_token_45|>"
+          ],
+          [
+            128054,
+            "<|reserved_special_token_46|>"
+          ],
+          [
+            128055,
+            "<|reserved_special_token_47|>"
+          ],
+          [
+            128056,
+            "<|reserved_special_token_48|>"
+          ],
+          [
+            128057,
+            "<|reserved_special_token_49|>"
+          ],
+          [
+            128058,
+            "<|reserved_special_token_50|>"
+          ],
+          [
+            128059,
+            "<|reserved_special_token_51|>"
+          ],
+          [
+            128060,
+            "<|reserved_special_token_52|>"
+          ],
+          [
+            128061,
+            "<|reserved_special_token_53|>"
+          ],
+          [
+            128062,
+            "<|reserved_special_token_54|>"
+          ],
+          [
+            128063,
+            "<|reserved_special_token_55|>"
+          ],
+          [
+            128064,
+            "<|reserved_special_token_56|>"
+          ],
+          [
+            128065,
+            "<|reserved_special_token_57|>"
+          ],
+          [
+            128066,
+            "<|reserved_special_token_58|>"
+          ],
+          [
+            128067,
+            "<|reserved_special_token_59|>"
+          ],
+          [
+            128068,
+            "<|reserved_special_token_60|>"
+          ],
+          [
+            128069,
+            "<|reserved_special_token_61|>"
+          ],
+          [
+            128070,
+            "<|reserved_special_token_62|>"
+          ],
+          [
+            128071,
+            "<|reserved_special_token_63|>"
+          ],
+          [
+            128072,
+            "<|reserved_special_token_64|>"
+          ],
+          [
+            128073,
+            "<|reserved_special_token_65|>"
+          ],
+          [
+            128074,
+            "<|reserved_special_token_66|>"
+          ],
+          [
+            128075,
+            "<|reserved_special_token_67|>"
+          ],
+          [
+            128076,
+            "<|reserved_special_token_68|>"
+          ],
+          [
+            128077,
+            "<|reserved_special_token_69|>"
+          ],
+          [
+            128078,
+            "<|reserved_special_token_70|>"
+          ],
+          [
+            128079,
+            "<|reserved_special_token_71|>"
+          ],
+          [
+            128080,
+            "<|reserved_special_token_72|>"
+          ],
+          [
+            128081,
+            "<|reserved_special_token_73|>"
+          ],
+          [
+            128082,
+            "<|reserved_special_token_74|>"
+          ],
+          [
+            128083,
+            "<|reserved_special_token_75|>"
+          ],
+          [
+            128084,
+            "<|reserved_special_token_76|>"
+          ],
+          [
+            128085,
+            "<|reserved_special_token_77|>"
+          ],
+          [
+            128086,
+            "<|reserved_special_token_78|>"
+          ],
+          [
+            128087,
+            "<|reserved_special_token_79|>"
+          ],
+          [
+            128088,
+            "<|reserved_special_token_80|>"
+          ],
+          [
+            128089,
+            "<|reserved_special_token_81|>"
+          ],
+          [
+            128090,
+            "<|reserved_special_token_82|>"
+          ],
+          [
+            128091,
+            "<|reserved_special_token_83|>"
+          ],
+          [
+            128092,
+            "<|reserved_special_token_84|>"
+          ],
+          [
+            128093,
+            "<|reserved_special_token_85|>"
+          ],
+          [
+            128094,
+            "<|reserved_special_token_86|>"
+          ],
+          [
+            128095,
+            "<|reserved_special_token_87|>"
+          ],
+          [
+            128096,
+            "<|reserved_special_token_88|>"
+          ],
+          [
+            128097,
+            "<|reserved_special_token_89|>"
+          ],
+          [
+            128098,
+            "<|reserved_special_token_90|>"
+          ],
+          [
+            128099,
+            "<|reserved_special_token_91|>"
+          ],
+          [
+            128100,
+            "<|reserved_special_token_92|>"
+          ],
+          [
+            128101,
+            "<|reserved_special_token_93|>"
+          ],
+          [
+            128102,
+            "<|reserved_special_token_94|>"
+          ],
+          [
+            128103,
+            "<|reserved_special_token_95|>"
+          ],
+          [
+            128104,
+            "<|reserved_special_token_96|>"
+          ],
+          [
+            128105,
+            "<|reserved_special_token_97|>"
+          ],
+          [
+            128106,
+            "<|reserved_special_token_98|>"
+          ],
+          [
+            128107,
+            "<|reserved_special_token_99|>"
+          ],
+          [
+            128108,
+            "<|reserved_special_token_100|>"
+          ],
+          [
+            128109,
+            "<|reserved_special_token_101|>"
+          ],
+          [
+            128110,
+            "<|reserved_special_token_102|>"
+          ],
+          [
+            128111,
+            "<|reserved_special_token_103|>"
+          ],
+          [
+            128112,
+            "<|reserved_special_token_104|>"
+          ],
+          [
+            128113,
+            "<|reserved_special_token_105|>"
+          ],
+          [
+            128114,
+            "<|reserved_special_token_106|>"
+          ],
+          [
+            128115,
+            "<|reserved_special_token_107|>"
+          ],
+          [
+            128116,
+            "<|reserved_special_token_108|>"
+          ],
+          [
+            128117,
+            "<|reserved_special_token_109|>"
+          ],
+          [
+            128118,
+            "<|reserved_special_token_110|>"
+          ],
+          [
+            128119,
+            "<|reserved_special_token_111|>"
+          ],
+          [
+            128120,
+            "<|reserved_special_token_112|>"
+          ],
+          [
+            128121,
+            "<|reserved_special_token_113|>"
+          ],
+          [
+            128122,
+            "<|reserved_special_token_114|>"
+          ],
+          [
+            128123,
+            "<|reserved_special_token_115|>"
+          ],
+          [
+            128124,
+            "<|reserved_special_token_116|>"
+          ],
+          [
+            128125,
+            "<|reserved_special_token_117|>"
+          ],
+          [
+            128126,
+            "<|reserved_special_token_118|>"
+          ],
+          [
+            128127,
+            "<|reserved_special_token_119|>"
+          ],
+          [
+            128128,
+            "<|reserved_special_token_120|>"
+          ],
+          [
+            128129,
+            "<|reserved_special_token_121|>"
+          ],
+          [
+            128130,
+            "<|reserved_special_token_122|>"
+          ],
+          [
+            128131,
+            "<|reserved_special_token_123|>"
+          ],
+          [
+            128132,
+            "<|reserved_special_token_124|>"
+          ],
+          [
+            128133,
+            "<|reserved_special_token_125|>"
+          ],
+          [
+            128134,
+            "<|reserved_special_token_126|>"
+          ],
+          [
+            128135,
+            "<|reserved_special_token_127|>"
+          ],
+          [
+            128136,
+            "<|reserved_special_token_128|>"
+          ],
+          [
+            128137,
+            "<|reserved_special_token_129|>"
+          ],
+          [
+            128138,
+            "<|reserved_special_token_130|>"
+          ],
+          [
+            128139,
+            "<|reserved_special_token_131|>"
+          ],
+          [
+            128140,
+            "<|reserved_special_token_132|>"
+          ],
+          [
+            128141,
+            "<|reserved_special_token_133|>"
+          ],
+          [
+            128142,
+            "<|reserved_special_token_134|>"
+          ],
+          [
+            128143,
+            "<|reserved_special_token_135|>"
+          ],
+          [
+            128144,
+            "<|reserved_special_token_136|>"
+          ],
+          [
+            128145,
+            "<|reserved_special_token_137|>"
+          ],
+          [
+            128146,
+            "<|reserved_special_token_138|>"
+          ],
+          [
+            128147,
+            "<|reserved_special_token_139|>"
+          ],
+          [
+            128148,
+            "<|reserved_special_token_140|>"
+          ],
+          [
+            128149,
+            "<|reserved_special_token_141|>"
+          ],
+          [
+            128150,
+            "<|reserved_special_token_142|>"
+          ],
+          [
+            128151,
+            "<|reserved_special_token_143|>"
+          ],
+          [
+            128152,
+            "<|reserved_special_token_144|>"
+          ],
+          [
+            128153,
+            "<|reserved_special_token_145|>"
+          ],
+          [
+            128154,
+            "<|reserved_special_token_146|>"
+          ],
+          [
+            128155,
+            "<|reserved_special_token_147|>"
+          ],
+          [
+            128156,
+            "<|reserved_special_token_148|>"
+          ],
+          [
+            128157,
+            "<|reserved_special_token_149|>"
+          ],
+          [
+            128158,
+            "<|reserved_special_token_150|>"
+          ],
+          [
+            128159,
+            "<|reserved_special_token_151|>"
+          ],
+          [
+            128160,
+            "<|reserved_special_token_152|>"
+          ],
+          [
+            128161,
+            "<|reserved_special_token_153|>"
+          ],
+          [
+            128162,
+            "<|reserved_special_token_154|>"
+          ],
+          [
+            128163,
+            "<|reserved_special_token_155|>"
+          ],
+          [
+            128164,
+            "<|reserved_special_token_156|>"
+          ],
+          [
+            128165,
+            "<|reserved_special_token_157|>"
+          ],
+          [
+            128166,
+            "<|reserved_special_token_158|>"
+          ],
+          [
+            128167,
+            "<|reserved_special_token_159|>"
+          ],
+          [
+            128168,
+            "<|reserved_special_token_160|>"
+          ],
+          [
+            128169,
+            "<|reserved_special_token_161|>"
+          ],
+          [
+            128170,
+            "<|reserved_special_token_162|>"
+          ],
+          [
+            128171,
+            "<|reserved_special_token_163|>"
+          ],
+          [
+            128172,
+            "<|reserved_special_token_164|>"
+          ],
+          [
+            128173,
+            "<|reserved_special_token_165|>"
+          ],
+          [
+            128174,
+            "<|reserved_special_token_166|>"
+          ],
+          [
+            128175,
+            "<|reserved_special_token_167|>"
+          ],
+          [
+            128176,
+            "<|reserved_special_token_168|>"
+          ],
+          [
+            128177,
+            "<|reserved_special_token_169|>"
+          ],
+          [
+            128178,
+            "<|reserved_special_token_170|>"
+          ],
+          [
+            128179,
+            "<|reserved_special_token_171|>"
+          ],
+          [
+            128180,
+            "<|reserved_special_token_172|>"
+          ],
+          [
+            128181,
+            "<|reserved_special_token_173|>"
+          ],
+          [
+            128182,
+            "<|reserved_special_token_174|>"
+          ],
+          [
+            128183,
+            "<|reserved_special_token_175|>"
+          ],
+          [
+            128184,
+            "<|reserved_special_token_176|>"
+          ],
+          [
+            128185,
+            "<|reserved_special_token_177|>"
+          ],
+          [
+            128186,
+            "<|reserved_special_token_178|>"
+          ],
+          [
+            128187,
+            "<|reserved_special_token_179|>"
+          ],
+          [
+            128188,
+            "<|reserved_special_token_180|>"
+          ],
+          [
+            128189,
+            "<|reserved_special_token_181|>"
+          ],
+          [
+            128190,
+            "<|reserved_special_token_182|>"
+          ],
+          [
+            128191,
+            "<|reserved_special_token_183|>"
+          ],
+          [
+            128192,
+            "<|reserved_special_token_184|>"
+          ],
+          [
+            128193,
+            "<|reserved_special_token_185|>"
+          ],
+          [
+            128194,
+            "<|reserved_special_token_186|>"
+          ],
+          [
+            128195,
+            "<|reserved_special_token_187|>"
+          ],
+          [
+            128196,
+            "<|reserved_special_token_188|>"
+          ],
+          [
+            128197,
+            "<|reserved_special_token_189|>"
+          ],
+          [
+            128198,
+            "<|reserved_special_token_190|>"
+          ],
+          [
+            128199,
+            "<|reserved_special_token_191|>"
+          ],
+          [
+            128200,
+            "<|reserved_special_token_192|>"
+          ],
+          [
+            128201,
+            "<|reserved_special_token_193|>"
+          ],
+          [
+            128202,
+            "<|reserved_special_token_194|>"
+          ],
+          [
+            128203,
+            "<|reserved_special_token_195|>"
+          ],
+          [
+            128204,
+            "<|reserved_special_token_196|>"
+          ],
+          [
+            128205,
+            "<|reserved_special_token_197|>"
+          ],
+          [
+            128206,
+            "<|reserved_special_token_198|>"
+          ],
+          [
+            128207,
+            "<|reserved_special_token_199|>"
+          ],
+          [
+            128208,
+            "<|reserved_special_token_200|>"
+          ],
+          [
+            128209,
+            "<|reserved_special_token_201|>"
+          ],
+          [
+            128210,
+            "<|reserved_special_token_202|>"
+          ],
+          [
+            128211,
+            "<|reserved_special_token_203|>"
+          ],
+          [
+            128212,
+            "<|reserved_special_token_204|>"
+          ],
+          [
+            128213,
+            "<|reserved_special_token_205|>"
+          ],
+          [
+            128214,
+            "<|reserved_special_token_206|>"
+          ],
+          [
+            128215,
+            "<|reserved_special_token_207|>"
+          ],
+          [
+            128216,
+            "<|reserved_special_token_208|>"
+          ],
+          [
+            128217,
+            "<|reserved_special_token_209|>"
+          ],
+          [
+            128218,
+            "<|reserved_special_token_210|>"
+          ],
+          [
+            128219,
+            "<|reserved_special_token_211|>"
+          ],
+          [
+            128220,
+            "<|reserved_special_token_212|>"
+          ],
+          [
+            128221,
+            "<|reserved_special_token_213|>"
+          ],
+          [
+            128222,
+            "<|reserved_special_token_214|>"
+          ],
+          [
+            128223,
+            "<|reserved_special_token_215|>"
+          ],
+          [
+            128224,
+            "<|reserved_special_token_216|>"
+          ],
+          [
+            128225,
+            "<|reserved_special_token_217|>"
+          ],
+          [
+            128226,
+            "<|reserved_special_token_218|>"
+          ],
+          [
+            128227,
+            "<|reserved_special_token_219|>"
+          ],
+          [
+            128228,
+            "<|reserved_special_token_220|>"
+          ],
+          [
+            128229,
+            "<|reserved_special_token_221|>"
+          ],
+          [
+            128230,
+            "<|reserved_special_token_222|>"
+          ],
+          [
+            128231,
+            "<|reserved_special_token_223|>"
+          ],
+          [
+            128232,
+            "<|reserved_special_token_224|>"
+          ],
+          [
+            128233,
+            "<|reserved_special_token_225|>"
+          ],
+          [
+            128234,
+            "<|reserved_special_token_226|>"
+          ],
+          [
+            128235,
+            "<|reserved_special_token_227|>"
+          ],
+          [
+            128236,
+            "<|reserved_special_token_228|>"
+          ],
+          [
+            128237,
+            "<|reserved_special_token_229|>"
+          ],
+          [
+            128238,
+            "<|reserved_special_token_230|>"
+          ],
+          [
+            128239,
+            "<|reserved_special_token_231|>"
+          ],
+          [
+            128240,
+            "<|reserved_special_token_232|>"
+          ],
+          [
+            128241,
+            "<|reserved_special_token_233|>"
+          ],
+          [
+            128242,
+            "<|reserved_special_token_234|>"
+          ],
+          [
+            128243,
+            "<|reserved_special_token_235|>"
+          ],
+          [
+            128244,
+            "<|reserved_special_token_236|>"
+          ],
+          [
+            128245,
+            "<|reserved_special_token_237|>"
+          ],
+          [
+            128246,
+            "<|reserved_special_token_238|>"
+          ],
+          [
+            128247,
+            "<|reserved_special_token_239|>"
+          ],
+          [
+            128248,
+            "<|reserved_special_token_240|>"
+          ],
+          [
+            128249,
+            "<|reserved_special_token_241|>"
+          ],
+          [
+            128250,
+            "<|reserved_special_token_242|>"
+          ],
+          [
+            128251,
+            "<|reserved_special_token_243|>"
+          ],
+          [
+            128252,
+            "<|reserved_special_token_244|>"
+          ],
+          [
+            128253,
+            "<|reserved_special_token_245|>"
+          ],
+          [
+            128254,
+            "<|reserved_special_token_246|>"
+          ],
+          [
+            128255,
+            "<|reserved_special_token_247|>"
+          ]
+        ],
+        "adapter_config": {
+          "alpha_pattern": {},
+          "auto_mapping": null,
+          "base_model_name_or_path": "/data/chuwenjing/models/Llama-3.2-3B-Instruct",
+          "bias": "none",
+          "fan_in_fan_out": false,
+          "inference_mode": true,
+          "init_lora_weights": "gaussian",
+          "layer_replication": null,
+          "layers_pattern": null,
+          "layers_to_transform": null,
+          "loftq_config": {},
+          "lora_alpha": 16,
+          "lora_dropout": 0.0,
+          "megatron_config": null,
+          "megatron_core": "megatron.core",
+          "modules_to_save": null,
+          "peft_type": "LORA",
+          "r": 8,
+          "rank_pattern": {},
+          "revision": null,
+          "target_modules": [
+            "v_proj",
+            "q_proj"
+          ],
+          "task_type": "CAUSAL_LM",
+          "use_dora": false,
+          "use_rslora": false
+        }
+      },
+      {
+        "model": "llama3b",
+        "dataset": "dolly_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__dolly_5k",
+        "training_complete": {
+          "n": 5000,
+          "seconds": 2713.938829153776,
+          "selected": 3825,
+          "global_step": 5000,
+          "frozen_base_unchanged": true,
+          "successful_optimizer_steps": 4997,
+          "skipped_optimizer_steps": 3,
+          "adapter_parameters_finite": true,
+          "optimizer_state_finite": true
+        },
+        "configuration": {
+          "learning_rate": 5e-05,
+          "num_train_epochs": 1.0,
+          "per_device_train_batch_size": 1,
+          "gradient_accumulation_steps": 1,
+          "lr_scheduler_type": "cosine",
+          "warmup_ratio": 0.1,
+          "optim": "adamw_torch",
+          "weight_decay": 0.0,
+          "max_grad_norm": 1.0,
+          "seed": 42,
+          "fp16": true,
+          "bf16": false,
+          "adam_beta1": 0.9,
+          "adam_beta2": 0.999,
+          "adam_epsilon": 1e-08
+        },
+        "contract": {
+          "init_lora_weights": "gaussian",
+          "trainable_parameters": 2293760,
+          "stop_ids": [
+            128008,
+            128009
+          ],
+          "pad_id": 128009,
+          "system": null,
+          "frozen_sha256": "c80d597af8e0f5bb8e99a6545680edb580ed2fe59c9cba4af0f39b568c15be77",
+          "template": "llama3"
+        },
+        "canonical_base_identity": true,
+        "history_count": 5000,
+        "unique_training_indexes": 5000,
+        "all_training_indexes_once": true,
+        "history_finite": true,
+        "selection_errors": 0,
+        "weight_errors": 0,
+        "loss_errors": 0,
+        "checkpoint_hashes_match": true,
+        "adapter_finite": true,
+        "optimizer_finite": true,
+        "adapter_matches_final_checkpoint": true,
+        "optimizer_steps": [
+          4997.0
+        ],
+        "truncated_input_count": 1,
+        "longest_input": 4096,
+        "prediction_indexes_contiguous": true,
+        "source_sha_unchanged": true,
+        "tlm_prefix": {
+          "n": 2151,
+          "mean_score": 0.23611503748473428,
+          "empty": 0,
+          "repetition": 161,
+          "hit_generation_limit": 193,
+          "mean_generated_tokens": 123.30962343096235
+        },
+        "source_same_prefix": {
+          "n": 2151,
+          "mean_score": 0.328601416570173,
+          "empty": 0,
+          "repetition": 0,
+          "hit_generation_limit": 85,
+          "mean_generated_tokens": 160.35983263598325
+        },
+        "source_full": {
+          "n": 5000,
+          "mean_score": 0.3332601453838585,
+          "empty": 0,
+          "repetition": 4,
+          "hit_generation_limit": 195,
+          "mean_generated_tokens": 159.3906
+        },
+        "score_sample_n": 32,
+        "score_errors": 0,
+        "source_score_errors": 0,
+        "special_tokens": [
+          [
+            128000,
+            "<|begin_of_text|>"
+          ],
+          [
+            128001,
+            "<|end_of_text|>"
+          ],
+          [
+            128002,
+            "<|reserved_special_token_0|>"
+          ],
+          [
+            128003,
+            "<|reserved_special_token_1|>"
+          ],
+          [
+            128004,
+            "<|finetune_right_pad_id|>"
+          ],
+          [
+            128005,
+            "<|reserved_special_token_2|>"
+          ],
+          [
+            128006,
+            "<|start_header_id|>"
+          ],
+          [
+            128007,
+            "<|end_header_id|>"
+          ],
+          [
+            128008,
+            "<|eom_id|>"
+          ],
+          [
+            128009,
+            "<|eot_id|>"
+          ],
+          [
+            128010,
+            "<|python_tag|>"
+          ],
+          [
+            128011,
+            "<|reserved_special_token_3|>"
+          ],
+          [
+            128012,
+            "<|reserved_special_token_4|>"
+          ],
+          [
+            128013,
+            "<|reserved_special_token_5|>"
+          ],
+          [
+            128014,
+            "<|reserved_special_token_6|>"
+          ],
+          [
+            128015,
+            "<|reserved_special_token_7|>"
+          ],
+          [
+            128016,
+            "<|reserved_special_token_8|>"
+          ],
+          [
+            128017,
+            "<|reserved_special_token_9|>"
+          ],
+          [
+            128018,
+            "<|reserved_special_token_10|>"
+          ],
+          [
+            128019,
+            "<|reserved_special_token_11|>"
+          ],
+          [
+            128020,
+            "<|reserved_special_token_12|>"
+          ],
+          [
+            128021,
+            "<|reserved_special_token_13|>"
+          ],
+          [
+            128022,
+            "<|reserved_special_token_14|>"
+          ],
+          [
+            128023,
+            "<|reserved_special_token_15|>"
+          ],
+          [
+            128024,
+            "<|reserved_special_token_16|>"
+          ],
+          [
+            128025,
+            "<|reserved_special_token_17|>"
+          ],
+          [
+            128026,
+            "<|reserved_special_token_18|>"
+          ],
+          [
+            128027,
+            "<|reserved_special_token_19|>"
+          ],
+          [
+            128028,
+            "<|reserved_special_token_20|>"
+          ],
+          [
+            128029,
+            "<|reserved_special_token_21|>"
+          ],
+          [
+            128030,
+            "<|reserved_special_token_22|>"
+          ],
+          [
+            128031,
+            "<|reserved_special_token_23|>"
+          ],
+          [
+            128032,
+            "<|reserved_special_token_24|>"
+          ],
+          [
+            128033,
+            "<|reserved_special_token_25|>"
+          ],
+          [
+            128034,
+            "<|reserved_special_token_26|>"
+          ],
+          [
+            128035,
+            "<|reserved_special_token_27|>"
+          ],
+          [
+            128036,
+            "<|reserved_special_token_28|>"
+          ],
+          [
+            128037,
+            "<|reserved_special_token_29|>"
+          ],
+          [
+            128038,
+            "<|reserved_special_token_30|>"
+          ],
+          [
+            128039,
+            "<|reserved_special_token_31|>"
+          ],
+          [
+            128040,
+            "<|reserved_special_token_32|>"
+          ],
+          [
+            128041,
+            "<|reserved_special_token_33|>"
+          ],
+          [
+            128042,
+            "<|reserved_special_token_34|>"
+          ],
+          [
+            128043,
+            "<|reserved_special_token_35|>"
+          ],
+          [
+            128044,
+            "<|reserved_special_token_36|>"
+          ],
+          [
+            128045,
+            "<|reserved_special_token_37|>"
+          ],
+          [
+            128046,
+            "<|reserved_special_token_38|>"
+          ],
+          [
+            128047,
+            "<|reserved_special_token_39|>"
+          ],
+          [
+            128048,
+            "<|reserved_special_token_40|>"
+          ],
+          [
+            128049,
+            "<|reserved_special_token_41|>"
+          ],
+          [
+            128050,
+            "<|reserved_special_token_42|>"
+          ],
+          [
+            128051,
+            "<|reserved_special_token_43|>"
+          ],
+          [
+            128052,
+            "<|reserved_special_token_44|>"
+          ],
+          [
+            128053,
+            "<|reserved_special_token_45|>"
+          ],
+          [
+            128054,
+            "<|reserved_special_token_46|>"
+          ],
+          [
+            128055,
+            "<|reserved_special_token_47|>"
+          ],
+          [
+            128056,
+            "<|reserved_special_token_48|>"
+          ],
+          [
+            128057,
+            "<|reserved_special_token_49|>"
+          ],
+          [
+            128058,
+            "<|reserved_special_token_50|>"
+          ],
+          [
+            128059,
+            "<|reserved_special_token_51|>"
+          ],
+          [
+            128060,
+            "<|reserved_special_token_52|>"
+          ],
+          [
+            128061,
+            "<|reserved_special_token_53|>"
+          ],
+          [
+            128062,
+            "<|reserved_special_token_54|>"
+          ],
+          [
+            128063,
+            "<|reserved_special_token_55|>"
+          ],
+          [
+            128064,
+            "<|reserved_special_token_56|>"
+          ],
+          [
+            128065,
+            "<|reserved_special_token_57|>"
+          ],
+          [
+            128066,
+            "<|reserved_special_token_58|>"
+          ],
+          [
+            128067,
+            "<|reserved_special_token_59|>"
+          ],
+          [
+            128068,
+            "<|reserved_special_token_60|>"
+          ],
+          [
+            128069,
+            "<|reserved_special_token_61|>"
+          ],
+          [
+            128070,
+            "<|reserved_special_token_62|>"
+          ],
+          [
+            128071,
+            "<|reserved_special_token_63|>"
+          ],
+          [
+            128072,
+            "<|reserved_special_token_64|>"
+          ],
+          [
+            128073,
+            "<|reserved_special_token_65|>"
+          ],
+          [
+            128074,
+            "<|reserved_special_token_66|>"
+          ],
+          [
+            128075,
+            "<|reserved_special_token_67|>"
+          ],
+          [
+            128076,
+            "<|reserved_special_token_68|>"
+          ],
+          [
+            128077,
+            "<|reserved_special_token_69|>"
+          ],
+          [
+            128078,
+            "<|reserved_special_token_70|>"
+          ],
+          [
+            128079,
+            "<|reserved_special_token_71|>"
+          ],
+          [
+            128080,
+            "<|reserved_special_token_72|>"
+          ],
+          [
+            128081,
+            "<|reserved_special_token_73|>"
+          ],
+          [
+            128082,
+            "<|reserved_special_token_74|>"
+          ],
+          [
+            128083,
+            "<|reserved_special_token_75|>"
+          ],
+          [
+            128084,
+            "<|reserved_special_token_76|>"
+          ],
+          [
+            128085,
+            "<|reserved_special_token_77|>"
+          ],
+          [
+            128086,
+            "<|reserved_special_token_78|>"
+          ],
+          [
+            128087,
+            "<|reserved_special_token_79|>"
+          ],
+          [
+            128088,
+            "<|reserved_special_token_80|>"
+          ],
+          [
+            128089,
+            "<|reserved_special_token_81|>"
+          ],
+          [
+            128090,
+            "<|reserved_special_token_82|>"
+          ],
+          [
+            128091,
+            "<|reserved_special_token_83|>"
+          ],
+          [
+            128092,
+            "<|reserved_special_token_84|>"
+          ],
+          [
+            128093,
+            "<|reserved_special_token_85|>"
+          ],
+          [
+            128094,
+            "<|reserved_special_token_86|>"
+          ],
+          [
+            128095,
+            "<|reserved_special_token_87|>"
+          ],
+          [
+            128096,
+            "<|reserved_special_token_88|>"
+          ],
+          [
+            128097,
+            "<|reserved_special_token_89|>"
+          ],
+          [
+            128098,
+            "<|reserved_special_token_90|>"
+          ],
+          [
+            128099,
+            "<|reserved_special_token_91|>"
+          ],
+          [
+            128100,
+            "<|reserved_special_token_92|>"
+          ],
+          [
+            128101,
+            "<|reserved_special_token_93|>"
+          ],
+          [
+            128102,
+            "<|reserved_special_token_94|>"
+          ],
+          [
+            128103,
+            "<|reserved_special_token_95|>"
+          ],
+          [
+            128104,
+            "<|reserved_special_token_96|>"
+          ],
+          [
+            128105,
+            "<|reserved_special_token_97|>"
+          ],
+          [
+            128106,
+            "<|reserved_special_token_98|>"
+          ],
+          [
+            128107,
+            "<|reserved_special_token_99|>"
+          ],
+          [
+            128108,
+            "<|reserved_special_token_100|>"
+          ],
+          [
+            128109,
+            "<|reserved_special_token_101|>"
+          ],
+          [
+            128110,
+            "<|reserved_special_token_102|>"
+          ],
+          [
+            128111,
+            "<|reserved_special_token_103|>"
+          ],
+          [
+            128112,
+            "<|reserved_special_token_104|>"
+          ],
+          [
+            128113,
+            "<|reserved_special_token_105|>"
+          ],
+          [
+            128114,
+            "<|reserved_special_token_106|>"
+          ],
+          [
+            128115,
+            "<|reserved_special_token_107|>"
+          ],
+          [
+            128116,
+            "<|reserved_special_token_108|>"
+          ],
+          [
+            128117,
+            "<|reserved_special_token_109|>"
+          ],
+          [
+            128118,
+            "<|reserved_special_token_110|>"
+          ],
+          [
+            128119,
+            "<|reserved_special_token_111|>"
+          ],
+          [
+            128120,
+            "<|reserved_special_token_112|>"
+          ],
+          [
+            128121,
+            "<|reserved_special_token_113|>"
+          ],
+          [
+            128122,
+            "<|reserved_special_token_114|>"
+          ],
+          [
+            128123,
+            "<|reserved_special_token_115|>"
+          ],
+          [
+            128124,
+            "<|reserved_special_token_116|>"
+          ],
+          [
+            128125,
+            "<|reserved_special_token_117|>"
+          ],
+          [
+            128126,
+            "<|reserved_special_token_118|>"
+          ],
+          [
+            128127,
+            "<|reserved_special_token_119|>"
+          ],
+          [
+            128128,
+            "<|reserved_special_token_120|>"
+          ],
+          [
+            128129,
+            "<|reserved_special_token_121|>"
+          ],
+          [
+            128130,
+            "<|reserved_special_token_122|>"
+          ],
+          [
+            128131,
+            "<|reserved_special_token_123|>"
+          ],
+          [
+            128132,
+            "<|reserved_special_token_124|>"
+          ],
+          [
+            128133,
+            "<|reserved_special_token_125|>"
+          ],
+          [
+            128134,
+            "<|reserved_special_token_126|>"
+          ],
+          [
+            128135,
+            "<|reserved_special_token_127|>"
+          ],
+          [
+            128136,
+            "<|reserved_special_token_128|>"
+          ],
+          [
+            128137,
+            "<|reserved_special_token_129|>"
+          ],
+          [
+            128138,
+            "<|reserved_special_token_130|>"
+          ],
+          [
+            128139,
+            "<|reserved_special_token_131|>"
+          ],
+          [
+            128140,
+            "<|reserved_special_token_132|>"
+          ],
+          [
+            128141,
+            "<|reserved_special_token_133|>"
+          ],
+          [
+            128142,
+            "<|reserved_special_token_134|>"
+          ],
+          [
+            128143,
+            "<|reserved_special_token_135|>"
+          ],
+          [
+            128144,
+            "<|reserved_special_token_136|>"
+          ],
+          [
+            128145,
+            "<|reserved_special_token_137|>"
+          ],
+          [
+            128146,
+            "<|reserved_special_token_138|>"
+          ],
+          [
+            128147,
+            "<|reserved_special_token_139|>"
+          ],
+          [
+            128148,
+            "<|reserved_special_token_140|>"
+          ],
+          [
+            128149,
+            "<|reserved_special_token_141|>"
+          ],
+          [
+            128150,
+            "<|reserved_special_token_142|>"
+          ],
+          [
+            128151,
+            "<|reserved_special_token_143|>"
+          ],
+          [
+            128152,
+            "<|reserved_special_token_144|>"
+          ],
+          [
+            128153,
+            "<|reserved_special_token_145|>"
+          ],
+          [
+            128154,
+            "<|reserved_special_token_146|>"
+          ],
+          [
+            128155,
+            "<|reserved_special_token_147|>"
+          ],
+          [
+            128156,
+            "<|reserved_special_token_148|>"
+          ],
+          [
+            128157,
+            "<|reserved_special_token_149|>"
+          ],
+          [
+            128158,
+            "<|reserved_special_token_150|>"
+          ],
+          [
+            128159,
+            "<|reserved_special_token_151|>"
+          ],
+          [
+            128160,
+            "<|reserved_special_token_152|>"
+          ],
+          [
+            128161,
+            "<|reserved_special_token_153|>"
+          ],
+          [
+            128162,
+            "<|reserved_special_token_154|>"
+          ],
+          [
+            128163,
+            "<|reserved_special_token_155|>"
+          ],
+          [
+            128164,
+            "<|reserved_special_token_156|>"
+          ],
+          [
+            128165,
+            "<|reserved_special_token_157|>"
+          ],
+          [
+            128166,
+            "<|reserved_special_token_158|>"
+          ],
+          [
+            128167,
+            "<|reserved_special_token_159|>"
+          ],
+          [
+            128168,
+            "<|reserved_special_token_160|>"
+          ],
+          [
+            128169,
+            "<|reserved_special_token_161|>"
+          ],
+          [
+            128170,
+            "<|reserved_special_token_162|>"
+          ],
+          [
+            128171,
+            "<|reserved_special_token_163|>"
+          ],
+          [
+            128172,
+            "<|reserved_special_token_164|>"
+          ],
+          [
+            128173,
+            "<|reserved_special_token_165|>"
+          ],
+          [
+            128174,
+            "<|reserved_special_token_166|>"
+          ],
+          [
+            128175,
+            "<|reserved_special_token_167|>"
+          ],
+          [
+            128176,
+            "<|reserved_special_token_168|>"
+          ],
+          [
+            128177,
+            "<|reserved_special_token_169|>"
+          ],
+          [
+            128178,
+            "<|reserved_special_token_170|>"
+          ],
+          [
+            128179,
+            "<|reserved_special_token_171|>"
+          ],
+          [
+            128180,
+            "<|reserved_special_token_172|>"
+          ],
+          [
+            128181,
+            "<|reserved_special_token_173|>"
+          ],
+          [
+            128182,
+            "<|reserved_special_token_174|>"
+          ],
+          [
+            128183,
+            "<|reserved_special_token_175|>"
+          ],
+          [
+            128184,
+            "<|reserved_special_token_176|>"
+          ],
+          [
+            128185,
+            "<|reserved_special_token_177|>"
+          ],
+          [
+            128186,
+            "<|reserved_special_token_178|>"
+          ],
+          [
+            128187,
+            "<|reserved_special_token_179|>"
+          ],
+          [
+            128188,
+            "<|reserved_special_token_180|>"
+          ],
+          [
+            128189,
+            "<|reserved_special_token_181|>"
+          ],
+          [
+            128190,
+            "<|reserved_special_token_182|>"
+          ],
+          [
+            128191,
+            "<|reserved_special_token_183|>"
+          ],
+          [
+            128192,
+            "<|reserved_special_token_184|>"
+          ],
+          [
+            128193,
+            "<|reserved_special_token_185|>"
+          ],
+          [
+            128194,
+            "<|reserved_special_token_186|>"
+          ],
+          [
+            128195,
+            "<|reserved_special_token_187|>"
+          ],
+          [
+            128196,
+            "<|reserved_special_token_188|>"
+          ],
+          [
+            128197,
+            "<|reserved_special_token_189|>"
+          ],
+          [
+            128198,
+            "<|reserved_special_token_190|>"
+          ],
+          [
+            128199,
+            "<|reserved_special_token_191|>"
+          ],
+          [
+            128200,
+            "<|reserved_special_token_192|>"
+          ],
+          [
+            128201,
+            "<|reserved_special_token_193|>"
+          ],
+          [
+            128202,
+            "<|reserved_special_token_194|>"
+          ],
+          [
+            128203,
+            "<|reserved_special_token_195|>"
+          ],
+          [
+            128204,
+            "<|reserved_special_token_196|>"
+          ],
+          [
+            128205,
+            "<|reserved_special_token_197|>"
+          ],
+          [
+            128206,
+            "<|reserved_special_token_198|>"
+          ],
+          [
+            128207,
+            "<|reserved_special_token_199|>"
+          ],
+          [
+            128208,
+            "<|reserved_special_token_200|>"
+          ],
+          [
+            128209,
+            "<|reserved_special_token_201|>"
+          ],
+          [
+            128210,
+            "<|reserved_special_token_202|>"
+          ],
+          [
+            128211,
+            "<|reserved_special_token_203|>"
+          ],
+          [
+            128212,
+            "<|reserved_special_token_204|>"
+          ],
+          [
+            128213,
+            "<|reserved_special_token_205|>"
+          ],
+          [
+            128214,
+            "<|reserved_special_token_206|>"
+          ],
+          [
+            128215,
+            "<|reserved_special_token_207|>"
+          ],
+          [
+            128216,
+            "<|reserved_special_token_208|>"
+          ],
+          [
+            128217,
+            "<|reserved_special_token_209|>"
+          ],
+          [
+            128218,
+            "<|reserved_special_token_210|>"
+          ],
+          [
+            128219,
+            "<|reserved_special_token_211|>"
+          ],
+          [
+            128220,
+            "<|reserved_special_token_212|>"
+          ],
+          [
+            128221,
+            "<|reserved_special_token_213|>"
+          ],
+          [
+            128222,
+            "<|reserved_special_token_214|>"
+          ],
+          [
+            128223,
+            "<|reserved_special_token_215|>"
+          ],
+          [
+            128224,
+            "<|reserved_special_token_216|>"
+          ],
+          [
+            128225,
+            "<|reserved_special_token_217|>"
+          ],
+          [
+            128226,
+            "<|reserved_special_token_218|>"
+          ],
+          [
+            128227,
+            "<|reserved_special_token_219|>"
+          ],
+          [
+            128228,
+            "<|reserved_special_token_220|>"
+          ],
+          [
+            128229,
+            "<|reserved_special_token_221|>"
+          ],
+          [
+            128230,
+            "<|reserved_special_token_222|>"
+          ],
+          [
+            128231,
+            "<|reserved_special_token_223|>"
+          ],
+          [
+            128232,
+            "<|reserved_special_token_224|>"
+          ],
+          [
+            128233,
+            "<|reserved_special_token_225|>"
+          ],
+          [
+            128234,
+            "<|reserved_special_token_226|>"
+          ],
+          [
+            128235,
+            "<|reserved_special_token_227|>"
+          ],
+          [
+            128236,
+            "<|reserved_special_token_228|>"
+          ],
+          [
+            128237,
+            "<|reserved_special_token_229|>"
+          ],
+          [
+            128238,
+            "<|reserved_special_token_230|>"
+          ],
+          [
+            128239,
+            "<|reserved_special_token_231|>"
+          ],
+          [
+            128240,
+            "<|reserved_special_token_232|>"
+          ],
+          [
+            128241,
+            "<|reserved_special_token_233|>"
+          ],
+          [
+            128242,
+            "<|reserved_special_token_234|>"
+          ],
+          [
+            128243,
+            "<|reserved_special_token_235|>"
+          ],
+          [
+            128244,
+            "<|reserved_special_token_236|>"
+          ],
+          [
+            128245,
+            "<|reserved_special_token_237|>"
+          ],
+          [
+            128246,
+            "<|reserved_special_token_238|>"
+          ],
+          [
+            128247,
+            "<|reserved_special_token_239|>"
+          ],
+          [
+            128248,
+            "<|reserved_special_token_240|>"
+          ],
+          [
+            128249,
+            "<|reserved_special_token_241|>"
+          ],
+          [
+            128250,
+            "<|reserved_special_token_242|>"
+          ],
+          [
+            128251,
+            "<|reserved_special_token_243|>"
+          ],
+          [
+            128252,
+            "<|reserved_special_token_244|>"
+          ],
+          [
+            128253,
+            "<|reserved_special_token_245|>"
+          ],
+          [
+            128254,
+            "<|reserved_special_token_246|>"
+          ],
+          [
+            128255,
+            "<|reserved_special_token_247|>"
+          ]
+        ],
+        "adapter_config": {
+          "alpha_pattern": {},
+          "auto_mapping": null,
+          "base_model_name_or_path": "/data/chuwenjing/models/Llama-3.2-3B-Instruct",
+          "bias": "none",
+          "fan_in_fan_out": false,
+          "inference_mode": true,
+          "init_lora_weights": "gaussian",
+          "layer_replication": null,
+          "layers_pattern": null,
+          "layers_to_transform": null,
+          "loftq_config": {},
+          "lora_alpha": 16,
+          "lora_dropout": 0.0,
+          "megatron_config": null,
+          "megatron_core": "megatron.core",
+          "modules_to_save": null,
+          "peft_type": "LORA",
+          "r": 8,
+          "rank_pattern": {},
+          "revision": null,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "task_type": "CAUSAL_LM",
+          "use_dora": false,
+          "use_rslora": false
+        }
+      },
+      {
+        "model": "llama3b",
+        "dataset": "gsm8k_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/llama3b__gsm8k_5k",
+        "training_complete": {
+          "n": 5000,
+          "seconds": 2625.743323996663,
+          "selected": 2567,
+          "global_step": 5000,
+          "frozen_base_unchanged": true,
+          "successful_optimizer_steps": 5000,
+          "skipped_optimizer_steps": 0,
+          "adapter_parameters_finite": true,
+          "optimizer_state_finite": true
+        },
+        "configuration": {
+          "learning_rate": 1e-06,
+          "num_train_epochs": 1.0,
+          "per_device_train_batch_size": 1,
+          "gradient_accumulation_steps": 1,
+          "lr_scheduler_type": "cosine",
+          "warmup_ratio": 0.1,
+          "optim": "adamw_torch",
+          "weight_decay": 0.0,
+          "max_grad_norm": 1.0,
+          "seed": 42,
+          "fp16": true,
+          "bf16": false,
+          "adam_beta1": 0.9,
+          "adam_beta2": 0.999,
+          "adam_epsilon": 1e-08
+        },
+        "contract": {
+          "init_lora_weights": "gaussian",
+          "trainable_parameters": 2293760,
+          "stop_ids": [
+            128008,
+            128009
+          ],
+          "pad_id": 128009,
+          "system": null,
+          "frozen_sha256": "c80d597af8e0f5bb8e99a6545680edb580ed2fe59c9cba4af0f39b568c15be77",
+          "template": "llama3"
+        },
+        "canonical_base_identity": true,
+        "history_count": 5000,
+        "unique_training_indexes": 5000,
+        "all_training_indexes_once": true,
+        "history_finite": true,
+        "selection_errors": 0,
+        "weight_errors": 0,
+        "loss_errors": 0,
+        "checkpoint_hashes_match": true,
+        "adapter_finite": true,
+        "optimizer_finite": true,
+        "adapter_matches_final_checkpoint": true,
+        "optimizer_steps": [
+          5000.0
+        ],
+        "truncated_input_count": 0,
+        "longest_input": 226,
+        "prediction_indexes_contiguous": true,
+        "source_sha_unchanged": true,
+        "tlm_prefix": {
+          "n": 2342,
+          "mean_score": 0.7745516652433817,
+          "empty": 0,
+          "repetition": 3,
+          "hit_generation_limit": 13,
+          "mean_generated_tokens": 185.04269854824935
+        },
+        "source_same_prefix": {
+          "n": 2342,
+          "mean_score": 0.7664389410760034,
+          "empty": 0,
+          "repetition": 1,
+          "hit_generation_limit": 6,
+          "mean_generated_tokens": 198.2728437233134
+        },
+        "source_full": {
+          "n": 5000,
+          "mean_score": 0.776,
+          "empty": 0,
+          "repetition": 2,
+          "hit_generation_limit": 20,
+          "mean_generated_tokens": 198.8994
+        },
+        "score_sample_n": 32,
+        "score_errors": 0,
+        "source_score_errors": 0,
+        "special_tokens": [
+          [
+            128000,
+            "<|begin_of_text|>"
+          ],
+          [
+            128001,
+            "<|end_of_text|>"
+          ],
+          [
+            128002,
+            "<|reserved_special_token_0|>"
+          ],
+          [
+            128003,
+            "<|reserved_special_token_1|>"
+          ],
+          [
+            128004,
+            "<|finetune_right_pad_id|>"
+          ],
+          [
+            128005,
+            "<|reserved_special_token_2|>"
+          ],
+          [
+            128006,
+            "<|start_header_id|>"
+          ],
+          [
+            128007,
+            "<|end_header_id|>"
+          ],
+          [
+            128008,
+            "<|eom_id|>"
+          ],
+          [
+            128009,
+            "<|eot_id|>"
+          ],
+          [
+            128010,
+            "<|python_tag|>"
+          ],
+          [
+            128011,
+            "<|reserved_special_token_3|>"
+          ],
+          [
+            128012,
+            "<|reserved_special_token_4|>"
+          ],
+          [
+            128013,
+            "<|reserved_special_token_5|>"
+          ],
+          [
+            128014,
+            "<|reserved_special_token_6|>"
+          ],
+          [
+            128015,
+            "<|reserved_special_token_7|>"
+          ],
+          [
+            128016,
+            "<|reserved_special_token_8|>"
+          ],
+          [
+            128017,
+            "<|reserved_special_token_9|>"
+          ],
+          [
+            128018,
+            "<|reserved_special_token_10|>"
+          ],
+          [
+            128019,
+            "<|reserved_special_token_11|>"
+          ],
+          [
+            128020,
+            "<|reserved_special_token_12|>"
+          ],
+          [
+            128021,
+            "<|reserved_special_token_13|>"
+          ],
+          [
+            128022,
+            "<|reserved_special_token_14|>"
+          ],
+          [
+            128023,
+            "<|reserved_special_token_15|>"
+          ],
+          [
+            128024,
+            "<|reserved_special_token_16|>"
+          ],
+          [
+            128025,
+            "<|reserved_special_token_17|>"
+          ],
+          [
+            128026,
+            "<|reserved_special_token_18|>"
+          ],
+          [
+            128027,
+            "<|reserved_special_token_19|>"
+          ],
+          [
+            128028,
+            "<|reserved_special_token_20|>"
+          ],
+          [
+            128029,
+            "<|reserved_special_token_21|>"
+          ],
+          [
+            128030,
+            "<|reserved_special_token_22|>"
+          ],
+          [
+            128031,
+            "<|reserved_special_token_23|>"
+          ],
+          [
+            128032,
+            "<|reserved_special_token_24|>"
+          ],
+          [
+            128033,
+            "<|reserved_special_token_25|>"
+          ],
+          [
+            128034,
+            "<|reserved_special_token_26|>"
+          ],
+          [
+            128035,
+            "<|reserved_special_token_27|>"
+          ],
+          [
+            128036,
+            "<|reserved_special_token_28|>"
+          ],
+          [
+            128037,
+            "<|reserved_special_token_29|>"
+          ],
+          [
+            128038,
+            "<|reserved_special_token_30|>"
+          ],
+          [
+            128039,
+            "<|reserved_special_token_31|>"
+          ],
+          [
+            128040,
+            "<|reserved_special_token_32|>"
+          ],
+          [
+            128041,
+            "<|reserved_special_token_33|>"
+          ],
+          [
+            128042,
+            "<|reserved_special_token_34|>"
+          ],
+          [
+            128043,
+            "<|reserved_special_token_35|>"
+          ],
+          [
+            128044,
+            "<|reserved_special_token_36|>"
+          ],
+          [
+            128045,
+            "<|reserved_special_token_37|>"
+          ],
+          [
+            128046,
+            "<|reserved_special_token_38|>"
+          ],
+          [
+            128047,
+            "<|reserved_special_token_39|>"
+          ],
+          [
+            128048,
+            "<|reserved_special_token_40|>"
+          ],
+          [
+            128049,
+            "<|reserved_special_token_41|>"
+          ],
+          [
+            128050,
+            "<|reserved_special_token_42|>"
+          ],
+          [
+            128051,
+            "<|reserved_special_token_43|>"
+          ],
+          [
+            128052,
+            "<|reserved_special_token_44|>"
+          ],
+          [
+            128053,
+            "<|reserved_special_token_45|>"
+          ],
+          [
+            128054,
+            "<|reserved_special_token_46|>"
+          ],
+          [
+            128055,
+            "<|reserved_special_token_47|>"
+          ],
+          [
+            128056,
+            "<|reserved_special_token_48|>"
+          ],
+          [
+            128057,
+            "<|reserved_special_token_49|>"
+          ],
+          [
+            128058,
+            "<|reserved_special_token_50|>"
+          ],
+          [
+            128059,
+            "<|reserved_special_token_51|>"
+          ],
+          [
+            128060,
+            "<|reserved_special_token_52|>"
+          ],
+          [
+            128061,
+            "<|reserved_special_token_53|>"
+          ],
+          [
+            128062,
+            "<|reserved_special_token_54|>"
+          ],
+          [
+            128063,
+            "<|reserved_special_token_55|>"
+          ],
+          [
+            128064,
+            "<|reserved_special_token_56|>"
+          ],
+          [
+            128065,
+            "<|reserved_special_token_57|>"
+          ],
+          [
+            128066,
+            "<|reserved_special_token_58|>"
+          ],
+          [
+            128067,
+            "<|reserved_special_token_59|>"
+          ],
+          [
+            128068,
+            "<|reserved_special_token_60|>"
+          ],
+          [
+            128069,
+            "<|reserved_special_token_61|>"
+          ],
+          [
+            128070,
+            "<|reserved_special_token_62|>"
+          ],
+          [
+            128071,
+            "<|reserved_special_token_63|>"
+          ],
+          [
+            128072,
+            "<|reserved_special_token_64|>"
+          ],
+          [
+            128073,
+            "<|reserved_special_token_65|>"
+          ],
+          [
+            128074,
+            "<|reserved_special_token_66|>"
+          ],
+          [
+            128075,
+            "<|reserved_special_token_67|>"
+          ],
+          [
+            128076,
+            "<|reserved_special_token_68|>"
+          ],
+          [
+            128077,
+            "<|reserved_special_token_69|>"
+          ],
+          [
+            128078,
+            "<|reserved_special_token_70|>"
+          ],
+          [
+            128079,
+            "<|reserved_special_token_71|>"
+          ],
+          [
+            128080,
+            "<|reserved_special_token_72|>"
+          ],
+          [
+            128081,
+            "<|reserved_special_token_73|>"
+          ],
+          [
+            128082,
+            "<|reserved_special_token_74|>"
+          ],
+          [
+            128083,
+            "<|reserved_special_token_75|>"
+          ],
+          [
+            128084,
+            "<|reserved_special_token_76|>"
+          ],
+          [
+            128085,
+            "<|reserved_special_token_77|>"
+          ],
+          [
+            128086,
+            "<|reserved_special_token_78|>"
+          ],
+          [
+            128087,
+            "<|reserved_special_token_79|>"
+          ],
+          [
+            128088,
+            "<|reserved_special_token_80|>"
+          ],
+          [
+            128089,
+            "<|reserved_special_token_81|>"
+          ],
+          [
+            128090,
+            "<|reserved_special_token_82|>"
+          ],
+          [
+            128091,
+            "<|reserved_special_token_83|>"
+          ],
+          [
+            128092,
+            "<|reserved_special_token_84|>"
+          ],
+          [
+            128093,
+            "<|reserved_special_token_85|>"
+          ],
+          [
+            128094,
+            "<|reserved_special_token_86|>"
+          ],
+          [
+            128095,
+            "<|reserved_special_token_87|>"
+          ],
+          [
+            128096,
+            "<|reserved_special_token_88|>"
+          ],
+          [
+            128097,
+            "<|reserved_special_token_89|>"
+          ],
+          [
+            128098,
+            "<|reserved_special_token_90|>"
+          ],
+          [
+            128099,
+            "<|reserved_special_token_91|>"
+          ],
+          [
+            128100,
+            "<|reserved_special_token_92|>"
+          ],
+          [
+            128101,
+            "<|reserved_special_token_93|>"
+          ],
+          [
+            128102,
+            "<|reserved_special_token_94|>"
+          ],
+          [
+            128103,
+            "<|reserved_special_token_95|>"
+          ],
+          [
+            128104,
+            "<|reserved_special_token_96|>"
+          ],
+          [
+            128105,
+            "<|reserved_special_token_97|>"
+          ],
+          [
+            128106,
+            "<|reserved_special_token_98|>"
+          ],
+          [
+            128107,
+            "<|reserved_special_token_99|>"
+          ],
+          [
+            128108,
+            "<|reserved_special_token_100|>"
+          ],
+          [
+            128109,
+            "<|reserved_special_token_101|>"
+          ],
+          [
+            128110,
+            "<|reserved_special_token_102|>"
+          ],
+          [
+            128111,
+            "<|reserved_special_token_103|>"
+          ],
+          [
+            128112,
+            "<|reserved_special_token_104|>"
+          ],
+          [
+            128113,
+            "<|reserved_special_token_105|>"
+          ],
+          [
+            128114,
+            "<|reserved_special_token_106|>"
+          ],
+          [
+            128115,
+            "<|reserved_special_token_107|>"
+          ],
+          [
+            128116,
+            "<|reserved_special_token_108|>"
+          ],
+          [
+            128117,
+            "<|reserved_special_token_109|>"
+          ],
+          [
+            128118,
+            "<|reserved_special_token_110|>"
+          ],
+          [
+            128119,
+            "<|reserved_special_token_111|>"
+          ],
+          [
+            128120,
+            "<|reserved_special_token_112|>"
+          ],
+          [
+            128121,
+            "<|reserved_special_token_113|>"
+          ],
+          [
+            128122,
+            "<|reserved_special_token_114|>"
+          ],
+          [
+            128123,
+            "<|reserved_special_token_115|>"
+          ],
+          [
+            128124,
+            "<|reserved_special_token_116|>"
+          ],
+          [
+            128125,
+            "<|reserved_special_token_117|>"
+          ],
+          [
+            128126,
+            "<|reserved_special_token_118|>"
+          ],
+          [
+            128127,
+            "<|reserved_special_token_119|>"
+          ],
+          [
+            128128,
+            "<|reserved_special_token_120|>"
+          ],
+          [
+            128129,
+            "<|reserved_special_token_121|>"
+          ],
+          [
+            128130,
+            "<|reserved_special_token_122|>"
+          ],
+          [
+            128131,
+            "<|reserved_special_token_123|>"
+          ],
+          [
+            128132,
+            "<|reserved_special_token_124|>"
+          ],
+          [
+            128133,
+            "<|reserved_special_token_125|>"
+          ],
+          [
+            128134,
+            "<|reserved_special_token_126|>"
+          ],
+          [
+            128135,
+            "<|reserved_special_token_127|>"
+          ],
+          [
+            128136,
+            "<|reserved_special_token_128|>"
+          ],
+          [
+            128137,
+            "<|reserved_special_token_129|>"
+          ],
+          [
+            128138,
+            "<|reserved_special_token_130|>"
+          ],
+          [
+            128139,
+            "<|reserved_special_token_131|>"
+          ],
+          [
+            128140,
+            "<|reserved_special_token_132|>"
+          ],
+          [
+            128141,
+            "<|reserved_special_token_133|>"
+          ],
+          [
+            128142,
+            "<|reserved_special_token_134|>"
+          ],
+          [
+            128143,
+            "<|reserved_special_token_135|>"
+          ],
+          [
+            128144,
+            "<|reserved_special_token_136|>"
+          ],
+          [
+            128145,
+            "<|reserved_special_token_137|>"
+          ],
+          [
+            128146,
+            "<|reserved_special_token_138|>"
+          ],
+          [
+            128147,
+            "<|reserved_special_token_139|>"
+          ],
+          [
+            128148,
+            "<|reserved_special_token_140|>"
+          ],
+          [
+            128149,
+            "<|reserved_special_token_141|>"
+          ],
+          [
+            128150,
+            "<|reserved_special_token_142|>"
+          ],
+          [
+            128151,
+            "<|reserved_special_token_143|>"
+          ],
+          [
+            128152,
+            "<|reserved_special_token_144|>"
+          ],
+          [
+            128153,
+            "<|reserved_special_token_145|>"
+          ],
+          [
+            128154,
+            "<|reserved_special_token_146|>"
+          ],
+          [
+            128155,
+            "<|reserved_special_token_147|>"
+          ],
+          [
+            128156,
+            "<|reserved_special_token_148|>"
+          ],
+          [
+            128157,
+            "<|reserved_special_token_149|>"
+          ],
+          [
+            128158,
+            "<|reserved_special_token_150|>"
+          ],
+          [
+            128159,
+            "<|reserved_special_token_151|>"
+          ],
+          [
+            128160,
+            "<|reserved_special_token_152|>"
+          ],
+          [
+            128161,
+            "<|reserved_special_token_153|>"
+          ],
+          [
+            128162,
+            "<|reserved_special_token_154|>"
+          ],
+          [
+            128163,
+            "<|reserved_special_token_155|>"
+          ],
+          [
+            128164,
+            "<|reserved_special_token_156|>"
+          ],
+          [
+            128165,
+            "<|reserved_special_token_157|>"
+          ],
+          [
+            128166,
+            "<|reserved_special_token_158|>"
+          ],
+          [
+            128167,
+            "<|reserved_special_token_159|>"
+          ],
+          [
+            128168,
+            "<|reserved_special_token_160|>"
+          ],
+          [
+            128169,
+            "<|reserved_special_token_161|>"
+          ],
+          [
+            128170,
+            "<|reserved_special_token_162|>"
+          ],
+          [
+            128171,
+            "<|reserved_special_token_163|>"
+          ],
+          [
+            128172,
+            "<|reserved_special_token_164|>"
+          ],
+          [
+            128173,
+            "<|reserved_special_token_165|>"
+          ],
+          [
+            128174,
+            "<|reserved_special_token_166|>"
+          ],
+          [
+            128175,
+            "<|reserved_special_token_167|>"
+          ],
+          [
+            128176,
+            "<|reserved_special_token_168|>"
+          ],
+          [
+            128177,
+            "<|reserved_special_token_169|>"
+          ],
+          [
+            128178,
+            "<|reserved_special_token_170|>"
+          ],
+          [
+            128179,
+            "<|reserved_special_token_171|>"
+          ],
+          [
+            128180,
+            "<|reserved_special_token_172|>"
+          ],
+          [
+            128181,
+            "<|reserved_special_token_173|>"
+          ],
+          [
+            128182,
+            "<|reserved_special_token_174|>"
+          ],
+          [
+            128183,
+            "<|reserved_special_token_175|>"
+          ],
+          [
+            128184,
+            "<|reserved_special_token_176|>"
+          ],
+          [
+            128185,
+            "<|reserved_special_token_177|>"
+          ],
+          [
+            128186,
+            "<|reserved_special_token_178|>"
+          ],
+          [
+            128187,
+            "<|reserved_special_token_179|>"
+          ],
+          [
+            128188,
+            "<|reserved_special_token_180|>"
+          ],
+          [
+            128189,
+            "<|reserved_special_token_181|>"
+          ],
+          [
+            128190,
+            "<|reserved_special_token_182|>"
+          ],
+          [
+            128191,
+            "<|reserved_special_token_183|>"
+          ],
+          [
+            128192,
+            "<|reserved_special_token_184|>"
+          ],
+          [
+            128193,
+            "<|reserved_special_token_185|>"
+          ],
+          [
+            128194,
+            "<|reserved_special_token_186|>"
+          ],
+          [
+            128195,
+            "<|reserved_special_token_187|>"
+          ],
+          [
+            128196,
+            "<|reserved_special_token_188|>"
+          ],
+          [
+            128197,
+            "<|reserved_special_token_189|>"
+          ],
+          [
+            128198,
+            "<|reserved_special_token_190|>"
+          ],
+          [
+            128199,
+            "<|reserved_special_token_191|>"
+          ],
+          [
+            128200,
+            "<|reserved_special_token_192|>"
+          ],
+          [
+            128201,
+            "<|reserved_special_token_193|>"
+          ],
+          [
+            128202,
+            "<|reserved_special_token_194|>"
+          ],
+          [
+            128203,
+            "<|reserved_special_token_195|>"
+          ],
+          [
+            128204,
+            "<|reserved_special_token_196|>"
+          ],
+          [
+            128205,
+            "<|reserved_special_token_197|>"
+          ],
+          [
+            128206,
+            "<|reserved_special_token_198|>"
+          ],
+          [
+            128207,
+            "<|reserved_special_token_199|>"
+          ],
+          [
+            128208,
+            "<|reserved_special_token_200|>"
+          ],
+          [
+            128209,
+            "<|reserved_special_token_201|>"
+          ],
+          [
+            128210,
+            "<|reserved_special_token_202|>"
+          ],
+          [
+            128211,
+            "<|reserved_special_token_203|>"
+          ],
+          [
+            128212,
+            "<|reserved_special_token_204|>"
+          ],
+          [
+            128213,
+            "<|reserved_special_token_205|>"
+          ],
+          [
+            128214,
+            "<|reserved_special_token_206|>"
+          ],
+          [
+            128215,
+            "<|reserved_special_token_207|>"
+          ],
+          [
+            128216,
+            "<|reserved_special_token_208|>"
+          ],
+          [
+            128217,
+            "<|reserved_special_token_209|>"
+          ],
+          [
+            128218,
+            "<|reserved_special_token_210|>"
+          ],
+          [
+            128219,
+            "<|reserved_special_token_211|>"
+          ],
+          [
+            128220,
+            "<|reserved_special_token_212|>"
+          ],
+          [
+            128221,
+            "<|reserved_special_token_213|>"
+          ],
+          [
+            128222,
+            "<|reserved_special_token_214|>"
+          ],
+          [
+            128223,
+            "<|reserved_special_token_215|>"
+          ],
+          [
+            128224,
+            "<|reserved_special_token_216|>"
+          ],
+          [
+            128225,
+            "<|reserved_special_token_217|>"
+          ],
+          [
+            128226,
+            "<|reserved_special_token_218|>"
+          ],
+          [
+            128227,
+            "<|reserved_special_token_219|>"
+          ],
+          [
+            128228,
+            "<|reserved_special_token_220|>"
+          ],
+          [
+            128229,
+            "<|reserved_special_token_221|>"
+          ],
+          [
+            128230,
+            "<|reserved_special_token_222|>"
+          ],
+          [
+            128231,
+            "<|reserved_special_token_223|>"
+          ],
+          [
+            128232,
+            "<|reserved_special_token_224|>"
+          ],
+          [
+            128233,
+            "<|reserved_special_token_225|>"
+          ],
+          [
+            128234,
+            "<|reserved_special_token_226|>"
+          ],
+          [
+            128235,
+            "<|reserved_special_token_227|>"
+          ],
+          [
+            128236,
+            "<|reserved_special_token_228|>"
+          ],
+          [
+            128237,
+            "<|reserved_special_token_229|>"
+          ],
+          [
+            128238,
+            "<|reserved_special_token_230|>"
+          ],
+          [
+            128239,
+            "<|reserved_special_token_231|>"
+          ],
+          [
+            128240,
+            "<|reserved_special_token_232|>"
+          ],
+          [
+            128241,
+            "<|reserved_special_token_233|>"
+          ],
+          [
+            128242,
+            "<|reserved_special_token_234|>"
+          ],
+          [
+            128243,
+            "<|reserved_special_token_235|>"
+          ],
+          [
+            128244,
+            "<|reserved_special_token_236|>"
+          ],
+          [
+            128245,
+            "<|reserved_special_token_237|>"
+          ],
+          [
+            128246,
+            "<|reserved_special_token_238|>"
+          ],
+          [
+            128247,
+            "<|reserved_special_token_239|>"
+          ],
+          [
+            128248,
+            "<|reserved_special_token_240|>"
+          ],
+          [
+            128249,
+            "<|reserved_special_token_241|>"
+          ],
+          [
+            128250,
+            "<|reserved_special_token_242|>"
+          ],
+          [
+            128251,
+            "<|reserved_special_token_243|>"
+          ],
+          [
+            128252,
+            "<|reserved_special_token_244|>"
+          ],
+          [
+            128253,
+            "<|reserved_special_token_245|>"
+          ],
+          [
+            128254,
+            "<|reserved_special_token_246|>"
+          ],
+          [
+            128255,
+            "<|reserved_special_token_247|>"
+          ]
+        ],
+        "adapter_config": {
+          "alpha_pattern": {},
+          "auto_mapping": null,
+          "base_model_name_or_path": "/data/chuwenjing/models/Llama-3.2-3B-Instruct",
+          "bias": "none",
+          "fan_in_fan_out": false,
+          "inference_mode": true,
+          "init_lora_weights": "gaussian",
+          "layer_replication": null,
+          "layers_pattern": null,
+          "layers_to_transform": null,
+          "loftq_config": {},
+          "lora_alpha": 16,
+          "lora_dropout": 0.0,
+          "megatron_config": null,
+          "megatron_core": "megatron.core",
+          "modules_to_save": null,
+          "peft_type": "LORA",
+          "r": 8,
+          "rank_pattern": {},
+          "revision": null,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "task_type": "CAUSAL_LM",
+          "use_dora": false,
+          "use_rslora": false
+        }
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "geosignal_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__geosignal_5k",
+        "training_complete": {
+          "n": 5000,
+          "seconds": 3599.845226973295,
+          "selected": 4502,
+          "global_step": 5000,
+          "frozen_base_unchanged": true,
+          "successful_optimizer_steps": 4994,
+          "skipped_optimizer_steps": 6,
+          "adapter_parameters_finite": true,
+          "optimizer_state_finite": true
+        },
+        "configuration": {
+          "learning_rate": 5e-05,
+          "num_train_epochs": 1.0,
+          "per_device_train_batch_size": 1,
+          "gradient_accumulation_steps": 1,
+          "lr_scheduler_type": "cosine",
+          "warmup_ratio": 0.1,
+          "optim": "adamw_torch",
+          "weight_decay": 0.0,
+          "max_grad_norm": 1.0,
+          "seed": 42,
+          "fp16": true,
+          "bf16": false,
+          "adam_beta1": 0.9,
+          "adam_beta2": 0.999,
+          "adam_epsilon": 1e-08
+        },
+        "contract": {
+          "init_lora_weights": "gaussian",
+          "trainable_parameters": 1843200,
+          "stop_ids": [
+            151645
+          ],
+          "pad_id": 151643,
+          "system": null,
+          "frozen_sha256": "644c521c2e650bb46c5bfcedea082bbc3a02b9a5c0f67297a44633cb035384bc",
+          "template": "qwen"
+        },
+        "canonical_base_identity": true,
+        "history_count": 5000,
+        "unique_training_indexes": 5000,
+        "all_training_indexes_once": true,
+        "history_finite": true,
+        "selection_errors": 0,
+        "weight_errors": 0,
+        "loss_errors": 0,
+        "checkpoint_hashes_match": true,
+        "adapter_finite": true,
+        "optimizer_finite": true,
+        "adapter_matches_final_checkpoint": true,
+        "optimizer_steps": [
+          4994.0
+        ],
+        "truncated_input_count": 2,
+        "longest_input": 4096,
+        "prediction_indexes_contiguous": true,
+        "source_sha_unchanged": true,
+        "tlm_prefix": {
+          "n": 2933,
+          "mean_score": 0.2945935092274373,
+          "empty": 0,
+          "repetition": 63,
+          "hit_generation_limit": 160,
+          "mean_generated_tokens": 108.32969655642687
+        },
+        "source_same_prefix": {
+          "n": 2933,
+          "mean_score": 0.2509817508695413,
+          "empty": 0,
+          "repetition": 7,
+          "hit_generation_limit": 680,
+          "mean_generated_tokens": 267.14251619502215
+        },
+        "source_full": {
+          "n": 5000,
+          "mean_score": 0.249401721587703,
+          "empty": 0,
+          "repetition": 15,
+          "hit_generation_limit": 1168,
+          "mean_generated_tokens": 267.1108
+        },
+        "score_sample_n": 32,
+        "score_errors": 0,
+        "source_score_errors": 0,
+        "special_tokens": [
+          [
+            151643,
+            "<|endoftext|>"
+          ],
+          [
+            151644,
+            "<|im_start|>"
+          ],
+          [
+            151645,
+            "<|im_end|>"
+          ],
+          [
+            151646,
+            "<|object_ref_start|>"
+          ],
+          [
+            151647,
+            "<|object_ref_end|>"
+          ],
+          [
+            151648,
+            "<|box_start|>"
+          ],
+          [
+            151649,
+            "<|box_end|>"
+          ],
+          [
+            151650,
+            "<|quad_start|>"
+          ],
+          [
+            151651,
+            "<|quad_end|>"
+          ],
+          [
+            151652,
+            "<|vision_start|>"
+          ],
+          [
+            151653,
+            "<|vision_end|>"
+          ],
+          [
+            151654,
+            "<|vision_pad|>"
+          ],
+          [
+            151655,
+            "<|image_pad|>"
+          ],
+          [
+            151656,
+            "<|video_pad|>"
+          ]
+        ],
+        "adapter_config": {
+          "alpha_pattern": {},
+          "auto_mapping": null,
+          "base_model_name_or_path": "/data/chuwenjing/models/Qwen2.5-3B-Instruct",
+          "bias": "none",
+          "fan_in_fan_out": false,
+          "inference_mode": true,
+          "init_lora_weights": "gaussian",
+          "layer_replication": null,
+          "layers_pattern": null,
+          "layers_to_transform": null,
+          "loftq_config": {},
+          "lora_alpha": 16,
+          "lora_dropout": 0.0,
+          "megatron_config": null,
+          "megatron_core": "megatron.core",
+          "modules_to_save": null,
+          "peft_type": "LORA",
+          "r": 8,
+          "rank_pattern": {},
+          "revision": null,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "task_type": "CAUSAL_LM",
+          "use_dora": false,
+          "use_rslora": false
+        }
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "dolly_5k",
+        "run": "/data/chuwenjing/results/tlm_qwen_dolly_recovery_v6/run_20261026_014911_83ebf2/formal/qwen3b__dolly_5k",
+        "training_complete": {
+          "n": 5000,
+          "seconds": 3547.278118774295,
+          "selected": 3998,
+          "global_step": 5000,
+          "frozen_base_unchanged": true,
+          "successful_optimizer_steps": 4995,
+          "skipped_optimizer_steps": 5,
+          "adapter_parameters_finite": true,
+          "optimizer_state_finite": true
+        },
+        "configuration": {
+          "learning_rate": 5e-05,
+          "num_train_epochs": 1.0,
+          "per_device_train_batch_size": 1,
+          "gradient_accumulation_steps": 1,
+          "lr_scheduler_type": "cosine",
+          "warmup_ratio": 0.1,
+          "optim": "adamw_torch",
+          "weight_decay": 0.0,
+          "max_grad_norm": 1.0,
+          "seed": 42,
+          "fp16": true,
+          "bf16": false,
+          "adam_beta1": 0.9,
+          "adam_beta2": 0.999,
+          "adam_epsilon": 1e-08
+        },
+        "contract": {
+          "init_lora_weights": "gaussian",
+          "trainable_parameters": 1843200,
+          "stop_ids": [
+            151645
+          ],
+          "pad_id": 151643,
+          "system": null,
+          "frozen_sha256": "644c521c2e650bb46c5bfcedea082bbc3a02b9a5c0f67297a44633cb035384bc",
+          "template": "qwen"
+        },
+        "canonical_base_identity": true,
+        "history_count": 5000,
+        "unique_training_indexes": 5000,
+        "all_training_indexes_once": true,
+        "history_finite": true,
+        "selection_errors": 0,
+        "weight_errors": 0,
+        "loss_errors": 0,
+        "checkpoint_hashes_match": true,
+        "adapter_finite": true,
+        "optimizer_finite": true,
+        "adapter_matches_final_checkpoint": true,
+        "optimizer_steps": [
+          4995.0
+        ],
+        "truncated_input_count": 1,
+        "longest_input": 4096,
+        "prediction_indexes_contiguous": true,
+        "source_sha_unchanged": true,
+        "tlm_prefix": {
+          "n": 1104,
+          "mean_score": 0.24441044303836224,
+          "empty": 134,
+          "repetition": 58,
+          "hit_generation_limit": 131,
+          "mean_generated_tokens": 184.5108695652174
+        },
+        "source_same_prefix": {
+          "n": 1104,
+          "mean_score": 0.27002481027937353,
+          "empty": 0,
+          "repetition": 1,
+          "hit_generation_limit": 80,
+          "mean_generated_tokens": 214.8161231884058
+        },
+        "source_full": {
+          "n": 5000,
+          "mean_score": 0.2764672464713191,
+          "empty": 0,
+          "repetition": 8,
+          "hit_generation_limit": 344,
+          "mean_generated_tokens": 213.5254
+        },
+        "score_sample_n": 32,
+        "score_errors": 0,
+        "source_score_errors": 0,
+        "special_tokens": [
+          [
+            151643,
+            "<|endoftext|>"
+          ],
+          [
+            151644,
+            "<|im_start|>"
+          ],
+          [
+            151645,
+            "<|im_end|>"
+          ],
+          [
+            151646,
+            "<|object_ref_start|>"
+          ],
+          [
+            151647,
+            "<|object_ref_end|>"
+          ],
+          [
+            151648,
+            "<|box_start|>"
+          ],
+          [
+            151649,
+            "<|box_end|>"
+          ],
+          [
+            151650,
+            "<|quad_start|>"
+          ],
+          [
+            151651,
+            "<|quad_end|>"
+          ],
+          [
+            151652,
+            "<|vision_start|>"
+          ],
+          [
+            151653,
+            "<|vision_end|>"
+          ],
+          [
+            151654,
+            "<|vision_pad|>"
+          ],
+          [
+            151655,
+            "<|image_pad|>"
+          ],
+          [
+            151656,
+            "<|video_pad|>"
+          ]
+        ],
+        "adapter_config": {
+          "alpha_pattern": {},
+          "auto_mapping": null,
+          "base_model_name_or_path": "/data/chuwenjing/models/Qwen2.5-3B-Instruct",
+          "bias": "none",
+          "fan_in_fan_out": false,
+          "inference_mode": true,
+          "init_lora_weights": "gaussian",
+          "layer_replication": null,
+          "layers_pattern": null,
+          "layers_to_transform": null,
+          "loftq_config": {},
+          "lora_alpha": 16,
+          "lora_dropout": 0.0,
+          "megatron_config": null,
+          "megatron_core": "megatron.core",
+          "modules_to_save": null,
+          "peft_type": "LORA",
+          "r": 8,
+          "rank_pattern": {},
+          "revision": null,
+          "target_modules": [
+            "q_proj",
+            "v_proj"
+          ],
+          "task_type": "CAUSAL_LM",
+          "use_dora": false,
+          "use_rslora": false
+        }
+      },
+      {
+        "model": "qwen3b",
+        "dataset": "gsm8k_5k",
+        "run": "/data/chuwenjing/results/tlm_offline_v6_ready/run_20261026_000443_2ca89d/formal/qwen3b__gsm8k_5k",
+        "training_complete": {
+          "n": 5000,
+          "seconds": 3588.018936216831,
+          "selected": 2569,
+          "global_step": 5000,
+          "frozen_base_unchanged": true,
+          "successful_optimizer_steps": 4997,
+          "skipped_optimizer_steps": 3,
+          "adapter_parameters_finite": true,
+          "optimizer_state_finite": true
+        },
+        "configuration": {
+          "learning_rate": 1e-06,
+          "num_train_epochs": 1.0,
+          "per_device_train_batch_size": 1,
+          "gradient_accumulation_steps": 1,
+          "lr_scheduler_type": "cosine",
+          "warmup_ratio": 0.1,
+          "optim": "adamw_torch",
+          "weight_decay": 0.0,
+          "max_grad_norm": 1.0,
+          "seed": 42,
+          "fp16": true,
+          "bf16": false,
+          "adam_beta1": 0.9,
+          "adam_beta2": 0.999,
+          "adam_epsilon": 1e-08
+        },
+        "contract": {
+          "init_lora_weights": "gaussian",
+          "trainable_parameters": 1843200,
+          "stop_ids": [
+            151645
+          ],
+          "pad_id": 151643,
+          "system": null,
+          "frozen_sha256": "644c521c2e650bb46c5bfcedea082bbc3a02b9a5c0f67297a44633cb035384bc",
+          "template": "qwen"
+        },
+        "canonical_base_identity": true,
+        "history_count": 5000,
+        "unique_training_indexes": 5000,
+        "all_training_indexes_once": true,
+        "history_finite": true,
+        "selection_errors": 0,
+        "weight_errors": 0,
+        "loss_errors": 0,
+        "checkpoint_hashes_match": true,
+        "adapter_finite": true,
+        "optimizer_finite": true,
+        "adapter_matches_final_checkpoint": true,
+        "optimizer_steps": [
+          4997.0
+        ],
+        "truncated_input_count": 0,
+        "longest_input": 248,
+        "prediction_indexes_contiguous": true,
+        "source_sha_unchanged": true,
+        "tlm_prefix": {
+          "n": 1188,
+          "mean_score": 0.8131313131313131,
+          "empty": 0,
+          "repetition": 0,
+          "hit_generation_limit": 28,
+          "mean_generated_tokens": 284.5176767676768
+        },
+        "source_same_prefix": {
+          "n": 1188,
+          "mean_score": 0.8089225589225589,
+          "empty": 0,
+          "repetition": 1,
+          "hit_generation_limit": 18,
+          "mean_generated_tokens": 269.2676767676768
+        },
+        "source_full": {
+          "n": 5000,
+          "mean_score": 0.8008,
+          "empty": 0,
+          "repetition": 3,
+          "hit_generation_limit": 93,
+          "mean_generated_tokens": 271.3076
+        },
+        "score_sample_n": 32,
+        "score_errors": 0,
+        "source_score_errors": 0,
+        "special_tokens": [
+          [
+            151643,
+            "<|endoftext|>"
+          ],
+          [
+            151644,
+            "<|im_start|>"
+          ],
+          [
+            151645,
+            "<|im_end|>"
+          ],
+          [
+            151646,
+            "<|object_ref_start|>"
+          ],
+          [
+            151647,
+            "<|object_ref_end|>"
+          ],
+          [
+            151648,
+            "<|box_start|>"
+          ],
+          [
+            151649,
+            "<|box_end|>"
+          ],
+          [
+            151650,
+            "<|quad_start|>"
+          ],
+          [
+            151651,
+            "<|quad_end|>"
+          ],
+          [
+            151652,
+            "<|vision_start|>"
+          ],
+          [
+            151653,
+            "<|vision_end|>"
+          ],
+          [
+            151654,
+            "<|vision_pad|>"
+          ],
+          [
+            151655,
+            "<|image_pad|>"
+          ],
+          [
+            151656,
+            "<|video_pad|>"
+          ]
+        ],
+        "adapter_config": {
+          "alpha_pattern": {},
+          "auto_mapping": null,
+          "base_model_name_or_path": "/data/chuwenjing/models/Qwen2.5-3B-Instruct",
+          "bias": "none",
+          "fan_in_fan_out": false,
+          "inference_mode": true,
+          "init_lora_weights": "gaussian",
+          "layer_replication": null,
+          "layers_pattern": null,
+          "layers_to_transform": null,
+          "loftq_config": {},
+          "lora_alpha": 16,
+          "lora_dropout": 0.0,
+          "megatron_config": null,
+          "megatron_core": "megatron.core",
+          "modules_to_save": null,
+          "peft_type": "LORA",
+          "r": 8,
+          "rank_pattern": {},
+          "revision": null,
+          "target_modules": [
+            "v_proj",
+            "q_proj"
+          ],
+          "task_type": "CAUSAL_LM",
+          "use_dora": false,
+          "use_rslora": false
+        }
+      }
+    ],
+    "exit_status": 0
+  },
+  "official_stop_ids": [
+    {
+      "model": "Llama-3.2-3B-Instruct",
+      "template_stop_ids": [
+        128008,
+        128009
+      ],
+      "official_workflow_stop_ids": [
+        128009,
+        128009,
+        128008
+      ],
+      "eos_token_id": 128009,
+      "additional_special_tokens": [
+        "<|eot_id|>",
+        "<|eom_id|>"
+      ]
+    },
+    {
+      "model": "Qwen2.5-3B-Instruct",
+      "template_stop_ids": [
+        151645
+      ],
+      "official_workflow_stop_ids": [
+        151645,
+        151644,
+        151645,
+        151646,
+        151647,
+        151648,
+        151649,
+        151650,
+        151651,
+        151652,
+        151653,
+        151654,
+        151655,
+        151656
+      ],
+      "eos_token_id": 151645,
+      "additional_special_tokens": [
+        "<|im_start|>",
+        "<|im_end|>",
+        "<|object_ref_start|>",
+        "<|object_ref_end|>",
+        "<|box_start|>",
+        "<|box_end|>",
+        "<|quad_start|>",
+        "<|quad_end|>",
+        "<|vision_start|>",
+        "<|vision_end|>",
+        "<|vision_pad|>",
+        "<|image_pad|>",
+        "<|video_pad|>"
+      ]
+    }
+  ],
+  "stop_impact": [
+    {
+      "model": "qwen3b",
+      "dataset": "geosignal_5k",
+      "kind": "tlm",
+      "n": 2944,
+      "has_ids": true,
+      "affected_by_official_extra_stop": 0,
+      "first_extra_stop_token_counts": {},
+      "empty_first_ids": {},
+      "affected_first_indices": []
+    },
+    {
+      "model": "qwen3b",
+      "dataset": "geosignal_5k",
+      "kind": "source",
+      "n": 5000,
+      "has_ids": false,
+      "affected_by_official_extra_stop": 0,
+      "first_extra_stop_token_counts": {},
+      "empty_first_ids": {},
+      "affected_first_indices": []
+    },
+    {
+      "model": "qwen3b",
+      "dataset": "dolly_5k",
+      "kind": "tlm",
+      "n": 1113,
+      "has_ids": true,
+      "affected_by_official_extra_stop": 0,
+      "first_extra_stop_token_counts": {},
+      "empty_first_ids": {
+        "[151645]": 134
+      },
+      "affected_first_indices": []
+    },
+    {
+      "model": "qwen3b",
+      "dataset": "dolly_5k",
+      "kind": "source",
+      "n": 5000,
+      "has_ids": false,
+      "affected_by_official_extra_stop": 0,
+      "first_extra_stop_token_counts": {},
+      "empty_first_ids": {},
+      "affected_first_indices": []
+    },
+    {
+      "model": "qwen3b",
+      "dataset": "gsm8k_5k",
+      "kind": "tlm",
+      "n": 1195,
+      "has_ids": true,
+      "affected_by_official_extra_stop": 0,
+      "first_extra_stop_token_counts": {},
+      "empty_first_ids": {},
+      "affected_first_indices": []
+    },
+    {
+      "model": "qwen3b",
+      "dataset": "gsm8k_5k",
+      "kind": "source",
+      "n": 5000,
+      "has_ids": false,
+      "affected_by_official_extra_stop": 0,
+      "first_extra_stop_token_counts": {},
+      "empty_first_ids": {},
+      "affected_first_indices": []
+    }
+  ]
+}
