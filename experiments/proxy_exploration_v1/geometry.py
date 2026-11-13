@@ -10,6 +10,11 @@ def require_matrix(gradients):
     return gradients
 
 
+def orthonormalize(columns):
+    """Use FP64 for the tall QR, then store the parameter basis in FP32."""
+    return torch.linalg.qr(columns.double(),mode="reduced").Q.float().contiguous()
+
+
 def fit_basis(gradients, rank):
     gradients = require_matrix(gradients)
     if type(rank) is not int or not 1 <= rank <= min(gradients.shape):
@@ -27,7 +32,7 @@ def fit_basis(gradients, rank):
     if available < rank:
         raise ValueError(f"Requested rank {rank}, numerical rank {available}")
     basis = scaled.T @ (vectors[:, :rank] / values[:rank].sqrt()).float()
-    basis = torch.linalg.qr(basis, mode="reduced").Q.contiguous()
+    basis = orthonormalize(basis)
     energy = (values / values.sum()).cumsum(0).tolist()
     return basis, {"rank":rank, "numerical_rank":available,
                    "cumulative_energy":energy, "gradient_scale":scale}

@@ -1,10 +1,17 @@
 import unittest
 import torch
 
-from geometry import fit_basis, retention, structure, compare_quality
+from geometry import fit_basis, retention, structure, compare_quality, orthonormalize
 
 
 class GeometryTests(unittest.TestCase):
+    def test_large_parameter_basis_is_orthonormal_in_precise_arithmetic(self):
+        torch.set_num_threads(2)
+        columns=torch.randn(300000,5,generator=torch.Generator().manual_seed(42))
+        basis=orthonormalize(columns)
+        gram=basis.double().T@basis.double()
+        self.assertTrue(torch.allclose(gram,torch.eye(5,dtype=torch.float64),atol=1e-6,rtol=0))
+
     def test_basis_matches_exact_known_subspace_and_rejects_rank_shortfall(self):
         gradients = torch.tensor([[3., 0, 0], [2., 0, 0], [0, 1., 0]])
         basis, report = fit_basis(gradients, 2)
