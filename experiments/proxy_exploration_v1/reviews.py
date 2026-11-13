@@ -19,7 +19,8 @@ def export_reviews(config,name,output):
     ce = {i:r["base_ce"] for i,r in adaptation.items()}
     groups = quartiles(split["diagnostic"],ce)
     selection = [(i,level) for ids,level in ((groups[0],"low"),(groups[3],"high")) for i in ids]
-    random.Random(421116).shuffle(selection)
+    # Cell-specific reproducibility prevents blind IDs sharing a CE-group map.
+    random.Random(digest({"seed":421116,"cell":name})).shuffle(selection)
     output = Path(output)
     output.mkdir(parents=True,exist_ok=True)
     if (output/"blind.csv").exists() or (output/"private_key.json").exists():

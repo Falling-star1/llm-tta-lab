@@ -73,13 +73,13 @@ def generate(args):
             for file in ("complete.json","low_basis.pt","low_basis.json","random_basis.pt","random_basis.json"):
                 inputs["geometry_"+file.replace(".","_")]={"path":str(path/file),"sha256":sha(path/file)}
             if recovery:
-                previous=Path(recovery["outputs"][name]["updates"])
-                if read(previous/"identity.json")!={"identity":experiment_identity(config,name,"updates"),"stage":"updates"}:
+                recovery_output=Path(recovery["outputs"][name]["updates"])
+                if read(recovery_output/"identity.json")!={"identity":experiment_identity(config,name,"updates"),"stage":"updates"}:
                     raise ValueError("Recovery source belongs to a different protocol or code")
-                argv+=["--resume-from",str(previous)]
-                inputs["recovery_identity"]={"path":str(previous/"identity.json"),"sha256":sha(previous/"identity.json")}
+                argv+=["--resume-from",str(recovery_output)]
+                inputs["recovery_identity"]={"path":str(recovery_output/"identity.json"),"sha256":sha(recovery_output/"identity.json")}
                 for arm in ("low","plain","random","matched"):
-                    manifest=previous/arm/"checkpoint.json"
+                    manifest=recovery_output/arm/"checkpoint.json"
                     if not manifest.exists():
                         continue
                     file=(manifest.parent/read(manifest)["file"]).resolve()
@@ -91,9 +91,9 @@ def generate(args):
                         paths.append(journal)
                     for k,path in enumerate(paths):
                         inputs[f"recovery_{arm}_{k}"]={"path":str(path),"sha256":sha(path)}
-        protocols={"analyze":"proxy-e1-six-source-v1","preflight":"proxy-six-preflight-v1",
-                   "gradients":"proxy-e2-six-gradient-v2","updates":"proxy-e3-six-adam-step-v1",
-                   "cell":"proxy-e2-v2-e3-v1"}
+        protocols={"analyze":"proxy-e1-six-source-v1","preflight":"proxy-six-preflight-v2",
+                   "gradients":"proxy-e2-six-gradient-v2","updates":"proxy-e3-six-adam-step-v2",
+                   "cell":"proxy-e2-v2-e3-v2"}
         request={"schema_version":1,"experiment_id":job,"owner":args.owner,
                  "issue":"https://github.com/Falling-star1/llm-tta-lab/issues/14",
                  "method":"proxy-"+args.stage,"model":cell["model"] if cell else "llama-qwen-3b",

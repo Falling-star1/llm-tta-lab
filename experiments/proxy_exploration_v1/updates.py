@@ -171,7 +171,8 @@ def run_updates(backend, geometry_output, output, identity, geometry_identity,
                                   "amp_skips":sum(r["skipped"] for r in rows),
                                   "unmatched":sum(not r["matched"] for r in rows),
                                   "max_projection_residual":max((r["projection_residual"] or 0 for r in rows),default=0),
-                                  "max_norm_error":max((r.get("norm_error",0) for r in rows),default=0)}
+                                  "max_norm_error":max((r.get("norm_error",0) for r in rows),default=0),
+                                  "max_relative_norm_error":max((r.get("relative_norm_error",0) for r in rows),default=0)}
                          for arm,rows in traces.items()}}
     warnings = [arm+":zero_effective_updates" for arm,x in result["visits"].items() if x["nonzero"]==0]
     warnings += [arm+":unmatched_positions" for arm,x in result["visits"].items() if x["unmatched"]>0]

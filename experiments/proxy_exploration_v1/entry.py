@@ -94,33 +94,61 @@ def main():
 
 def preflight(backend,output,identity):
     import torch
-    from training import ProjectedAdamW, train_sequence
+    from training import ProjectedAdamW, train_sequence, flat
     backend.source_replay()
     longest=max(backend.split["history"]+backend.split["diagnostic"]+backend.split["adaptation"],
                 key=lambda i:len(backend.encoded[i][0]))
     gradient,metadata=backend.gradient(longest)
     if not torch.isfinite(gradient).all() or not float(gradient.norm())>0:
         raise ValueError("Longest input has no usable finite gradient")
-    backend.reset()
+    selected=[i for i in backend.split["adaptation"] if backend.adaptation[i]["base_ce"]>3]
+    if not selected:
+        raise ValueError("No adaptation input passes the registered CE gate")
+    weighted_index=max(selected,key=lambda i:backend.adaptation[i]["base_ce"])
+    # A full-sized rank-five numerical probe. This basis is discarded and never
+    # used as a scientific pool estimate. Coordinate columns ensure full rank.
+    columns=torch.zeros(gradient.numel(),5,dtype=torch.float32)
+    columns[:,0]=gradient/gradient.norm()
+    coordinates=gradient.abs().topk(4,largest=False).indices
+    columns[coordinates,torch.arange(1,5)]=1
+    basis=torch.linalg.qr(columns,mode="reduced").Q.to(backend.device)
     before=backend.initial.clone()
-    controller=ProjectedAdamW(backend.parameters,lr=1e-6,mode="plain")
-    visits=[longest]*16
-    scaler=torch.amp.GradScaler("cuda")
-    records=train_sequence(controller,lambda i:backend.loss(i,weighted=False),visits,
-                           Path(output)/"probe",identity,checkpoint_every=8,scaler=scaler)
-    from training import flat
-    if torch.equal(before,flat(backend.parameters).cpu()) or sum(r["applied_norm"]>0 for r in records)<2:
-        raise ValueError("Preflight did not make enough finite updates")
-    backend.verify_frozen()
-    backend.reset()
+    probes={}
+    projected_records=None
+    try:
+        for mode,count,index in (("plain",4,longest),("project",6,weighted_index),("matched",6,weighted_index)):
+            backend.reset()
+            lr=1e-6 if backend.cell["dataset"]=="gsm8k_5k" else 5e-5
+            controller=ProjectedAdamW(backend.parameters,lr=lr,mode=mode,
+                                      basis=basis if mode=="project" else None)
+            scaler=torch.amp.GradScaler("cuda") if backend.use_amp else None
+            targets=[r["applied_norm"] for r in projected_records] if mode=="matched" else None
+            records=train_sequence(controller,lambda i:backend.loss(i,weighted=mode!="plain"),
+                [index]*count,Path(output)/"probe"/mode,identity+":"+mode,
+                checkpoint_every=count,scaler=scaler,target_norms=targets)
+            probes[mode]={"visits":count,"weighted":mode!="plain","source_index":index,
+                "actual_updates":sum(r["applied_norm"]>0 for r in records),
+                "unmatched":sum(not r["matched"] for r in records),
+                "max_projection_residual":max((r["projection_residual"] or 0 for r in records)),
+                "max_relative_norm_error":max((r.get("relative_norm_error",0) for r in records))}
+            if probes[mode]["actual_updates"]<2:
+                raise ValueError("Preflight did not make enough finite updates: "+mode)
+            if probes[mode]["unmatched"] or probes[mode]["max_projection_residual"]>1e-3:
+                raise ValueError("Preflight displacement validation failed: "+mode)
+            if mode=="project":
+                projected_records=records
+            backend.verify_frozen()
+            del controller
+    finally:
+        backend.reset()
     if not torch.equal(before,flat(backend.parameters).cpu()):
         raise ValueError("Preflight failed to restore initial weights")
     save(Path(output)/"metrics.json",{"quality_status":"PREFLIGHT_COMPLETE",
           "identity":identity,
           "longest_source_index":longest,"tokens":len(backend.encoded[longest][0]),
           "backward_scale":metadata["backward_scale"],
-          "actual_updates":sum(r["applied_norm"]>0 for r in records),
-          "peak_memory_mib":torch.cuda.max_memory_allocated()/1024**2})
+          "actual_updates":sum(r["actual_updates"] for r in probes.values()),"probes":probes,
+          "peak_memory_mib":torch.cuda.max_memory_allocated()/1024**2 if backend.use_amp else None})
 
 
 if __name__=="__main__":

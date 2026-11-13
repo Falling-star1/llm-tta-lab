@@ -66,7 +66,17 @@ def compare_quality(ids, gradients, labels, rank=5, seed=42):
     rng = random.Random(seed)
     balanced = {name:sorted(rng.sample(groups[name],count)) for name in ("good","bad")}
     report = {"counts":{k:len(v) for k,v in groups.items()}, "balanced_n":count,
-              "balanced_ids":balanced, "full":{}, "balanced":{}}
+              "balanced_ids":balanced, "full":{}, "balanced":{}, "between":{}}
+    for scope,selection in (("full",groups),("balanced",balanced)):
+        units = {}
+        for name in ("good","bad"):
+            matrix = torch.stack([gradients[i] for i in selection[name]]) if selection[name] else None
+            if matrix is not None:
+                norms = matrix.norm(dim=1)
+                units[name] = matrix[norms>0]/norms[norms>0,None]
+        pairs = len(units.get("good",[]))*len(units.get("bad",[]))
+        mean = float((units["good"]@units["bad"].T).clamp(-1,1).mean()) if pairs else None
+        report["between"][scope] = {"mean_cosine":mean,"valid_pairs":pairs}
     for name in ("good","bad"):
         for source,output in ((groups,"full"),(balanced,"balanced")):
             chosen = source[name]

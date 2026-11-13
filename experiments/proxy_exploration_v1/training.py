@@ -10,6 +10,9 @@ import torch
 
 from analysis import save
 
+# Relative to the actual applied target, including sub-ULP positive targets.
+MATCH_RELATIVE_TOLERANCE = 1e-3
+
 
 def flat(parameters):
     return torch.cat([p.detach().reshape(-1) for p in parameters])
@@ -79,6 +82,12 @@ class ProjectedAdamW:
             row["projection_residual"] = float((actual-self.basis@(self.basis.T@actual)).norm())/max(row["applied_norm"],1e-30)
         if self.mode == "matched":
             row["norm_error"] = abs(row["applied_norm"]-target_norm)
+            row["relative_norm_error"] = row["norm_error"]/target_norm if target_norm else row["norm_error"]
+            row["matched"] = row["relative_norm_error"] <= MATCH_RELATIVE_TOLERANCE
+            row["match_failure"] = None
+            if not row["matched"]:
+                row["match_failure"] = ("zero_candidate" if row["candidate_norm"]==0 else
+                                        "rounded_to_zero" if row["applied_norm"]==0 else "norm_tolerance")
         return row
 
 
