@@ -29,7 +29,7 @@ def assign(parameters, vector):
 
 
 class ProjectedAdamW:
-    def __init__(self, parameters, lr, mode="plain", basis=None):
+    def __init__(self, parameters, lr, mode="plain", basis=None, frozen_indices=()):
         self.parameters = list(parameters)
         if not self.parameters or mode not in ("plain","project","matched"):
             raise ValueError("Unknown update mode or empty parameters")
@@ -38,6 +38,10 @@ class ProjectedAdamW:
         self.base_lr = lr
         self.mode = mode
         self.basis = basis
+        self.frozen_indices = tuple(frozen_indices)
+        if len(set(self.frozen_indices))!=len(self.frozen_indices) or any(
+                type(i) is not int or not 0<=i<len(self.parameters) for i in self.frozen_indices):
+            raise ValueError("Invalid frozen parameter indices")
         if mode == "project":
             if basis is None or basis.shape[0] != sum(p.numel() for p in self.parameters):
                 raise ValueError("Projection basis dimensions differ")
@@ -58,6 +62,11 @@ class ProjectedAdamW:
         candidate = flat(self.parameters)-before
         if not torch.isfinite(candidate).all():
             raise FloatingPointError("Nonfinite optimizer displacement")
+        offset = 0
+        for index,parameter in enumerate(self.parameters):
+            if index in self.frozen_indices:
+                candidate[offset:offset+parameter.numel()]=0
+            offset += parameter.numel()
         row = {"candidate_norm":float(candidate.norm()), "skipped":bool(
             scaler and scaler.get_scale()<scale_before), "matched":True}
         displacement = candidate
@@ -72,7 +81,13 @@ class ProjectedAdamW:
             elif target_norm>0:
                 row["matched"] = False
             row["target_norm"] = target_norm
-        if self.mode != "plain":
+        # Also remove numerical leakage introduced by a computed projection.
+        offset = 0
+        for index,parameter in enumerate(self.parameters):
+            if index in self.frozen_indices:
+                displacement[offset:offset+parameter.numel()]=0
+            offset += parameter.numel()
+        if self.mode != "plain" or self.frozen_indices:
             assign(self.parameters,before+displacement)
         actual = flat(self.parameters)-before
         row["applied_norm"] = float(actual.norm())
@@ -122,7 +137,8 @@ def checkpoint(path, controller, records, identity, scaler):
     state = {"identity":identity, "parameters":flat(controller.parameters).cpu(),
              "optimizer":controller.optimizer.state_dict(), "records":records, "rng":rng_state(),
              "scaler":scaler.state_dict() if scaler else None,
-             "mode":controller.mode, "base_lr":controller.base_lr}
+             "mode":controller.mode, "base_lr":controller.base_lr,
+             "frozen_indices":controller.frozen_indices}
     torch.save(state,temporary)
     os.replace(temporary,file)
     digest = hashlib.sha256(file.read_bytes()).hexdigest()
@@ -152,7 +168,8 @@ def train_sequence(controller, loss_fn, ids, output, identity, checkpoint_every=
     records = []
     if resume:
         if (resume["identity"]!=identity or resume["mode"]!=controller.mode
-                or resume["base_lr"]!=controller.base_lr):
+                or resume["base_lr"]!=controller.base_lr
+                or tuple(resume.get("frozen_indices",()))!=controller.frozen_indices):
             raise ValueError("Resume configuration mismatch")
         assign(controller.parameters,resume["parameters"].to(controller.parameters[0].device))
         controller.optimizer.load_state_dict(resume["optimizer"])

@@ -75,6 +75,8 @@ def quality_report(config,name,geometry_output,output,review_csv=None,key_path=N
     groups = quartiles(split["diagnostic"],ce)
     ids = groups[0]+groups[3]
     if cell["metric"]=="exact_match":
+        if any("extracted_answer" not in source[i] for i in ids):
+            raise ValueError("Frozen Source lacks GSM8K extraction records")
         if any(source[i]["score"] not in (0,1) for i in ids):
             raise ValueError("GSM8K scores must be binary")
         labels = {i:("good" if source[i]["score"]==1 else "bad") for i in ids}

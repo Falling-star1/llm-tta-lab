@@ -6,12 +6,16 @@ import torch
 from collect import collect
 from updates import run_updates, seed_resume
 from training import flat, assign
+from collect import put_artifact
+from analysis import save, read
+from common import sha
 
 
 class TinyBackend:
     """Actual small differentiable model for orchestration and recovery checks."""
     def __init__(self):
         self.parameters=[torch.nn.Parameter(torch.arange(6,dtype=torch.float32)*.01)]
+        self.names=["layer.lora_B.default.weight"]
         self.initial=flat(self.parameters).clone()
         self.device=torch.device("cpu")
         self.use_amp=False
@@ -65,7 +69,50 @@ class TinyBackend:
 
 
 class PipelineTests(unittest.TestCase):
-    def test_gradient_collection_and_all_four_update_arms_complete_and_resume(self):
+    def test_a_b_controls_and_cross_run_resume_keep_a_fixed(self):
+        class LoRABackend(TinyBackend):
+            def __init__(self):
+                super().__init__()
+                self.parameters=[torch.nn.Parameter(torch.ones(3)*.1),torch.nn.Parameter(torch.zeros(6))]
+                self.names=["layer.lora_A.default.weight","layer.lora_B.default.weight"]
+                self.initial=flat(self.parameters).clone()
+                self._source={i:dict(self.generate(i),score=float(self.generate(i)["predict"]==self.reference(i)))
+                              for i in self.split["evaluation"]}
+
+            def value(self,i):
+                a,b=self.parameters
+                return (1+a.sum())*b.dot(self.features(i))
+
+            def loss(self,i,weighted=False):
+                return (self.value(i)-(float(i%2)*2-1)).square()*(.1 if weighted else 1)
+
+            def generate(self,i):
+                if len(self.parameters)==1:
+                    return super().generate(i)
+                return {"predict":"one" if float(self.value(i).detach())>0 else "zero",
+                        "generated_tokens":1,"hit_generation_limit":False}
+
+        backend=LoRABackend()
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp)
+            basis=torch.zeros(9,5)
+            basis[3:8,:]=torch.eye(5)
+            geometry=root/"geometry"
+            for pool in ("low","random"):
+                put_artifact(geometry/(pool+"_basis.pt"),{"identity":"g","basis":basis})
+            save(geometry/"complete.json",{"identity":"g","low_basis_sha256":sha(geometry/"low_basis.pt"),
+                                          "random_basis_sha256":sha(geometry/"random_basis.pt")})
+            run_updates(backend,geometry,root/"first","u","g",stop_after=4)
+            seed_resume(root/"first",root/"resumed","u")
+            completed=run_updates(backend,geometry,root/"resumed","u","g",resume=True)
+            direct=run_updates(backend,geometry,root/"direct","u","g")
+            self.assertEqual(completed,direct)
+            for arm in ("low","random","plain_b","matched"):
+                self.assertEqual(read(root/"resumed"/arm/"complete.json")["a_displacement_norm"],0)
+            self.assertGreater(read(root/"resumed/plain/complete.json")["a_displacement_norm"],0)
+            self.assertIn("plain_b",completed["low_minus"])
+
+    def test_gradient_collection_and_all_five_update_arms_complete_and_resume(self):
         torch.set_num_threads(1)
         backend=TinyBackend()
         with tempfile.TemporaryDirectory() as temp:
@@ -75,7 +122,7 @@ class PipelineTests(unittest.TestCase):
             first=run_updates(backend,root/"gradients",root/"updates","update","geometry",stop_after=4)
             self.assertEqual(first["status"],"INTERRUPTED")
             completed=run_updates(backend,root/"gradients",root/"updates","update","geometry",resume=True)
-            self.assertEqual(set(completed["arms"]),{"low","plain","random","matched"})
+            self.assertEqual(set(completed["arms"]),{"low","plain","plain_b","random","matched"})
             self.assertEqual(completed["n"],4)
             self.assertTrue(all(x["n"]==8 for x in completed["visits"].values()))
             repeated=run_updates(backend,root/"gradients",root/"updates","update","geometry",resume=True)

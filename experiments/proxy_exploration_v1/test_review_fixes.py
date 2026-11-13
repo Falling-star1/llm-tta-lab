@@ -1,12 +1,14 @@
 """Regression checks for the five issues found in the execution review."""
 import tempfile
 import unittest
+import importlib.util
+import sys
 from pathlib import Path
 
 import torch
 
 from analysis import read, save
-from common import experiment_identity
+from common import experiment_identity, sha
 from entry import preflight
 from geometry import compare_quality
 from make_requests import generate
@@ -50,18 +52,61 @@ class ReviewFixTests(unittest.TestCase):
                 for file in ("low_basis.pt","low_basis.json","random_basis.pt","random_basis.json"):
                     (g/file).write_bytes(b"fixture")
                 save(r/"identity.json",{"identity":experiment_identity(config,name,"updates"),"stage":"updates"})
+                for arm in ("low","plain","plain_b","random","matched"):
+                    checkpoint=r/arm/"checkpoints/visit-00025.pt"
+                    checkpoint.parent.mkdir(parents=True)
+                    checkpoint.write_bytes(b"committed checkpoint fixture")
+                    save(r/arm/"checkpoint.json",{"file":"checkpoints/visit-00025.pt",
+                         "sha256":sha(checkpoint)})
+                    (r/arm/"predictions.jsonl").write_text('{"source_index":1}\n',encoding="utf-8")
                 for key,field,path in (("preflight","output",p),("geometry","geometry",g),("resume","updates",r)):
                     indices[key]["outputs"][name]={field:str(path)}
             for key,value in indices.items():
                 path=root/(key+".json")
                 save(path,value)
                 setattr(args,key+"_index",path)
+            # Exercise the real validator for GPU inputs and the release snapshot.
+            (args.code_root/"SHA256SUMS").write_text("release fingerprint\n",encoding="utf-8")
+            (args.code_root/".git").mkdir()
+            (args.code_root/".git/ignored.json").write_text("{}",encoding="utf-8")
+            module_path=Path(__file__).resolve().parents[2]/"scripts/labctl.py"
+            spec=importlib.util.spec_from_file_location("labctl_gpu_validation",module_path)
+            lab=importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(lab)
+            site={"python":sys.executable,"code_roots":[str(root)],"input_roots":[str(root)],
+                  "gpu_ids":list(range(8))}
             generate(args)
             index=read(args.output/"index.json")
             self.assertEqual(len(index["outputs"]),6)
             for name,item in index["outputs"].items():
                 argv=read(item["request"])["argv"]
                 self.assertEqual(argv[argv.index("--resume-from")+1],str(root/"resume"/name))
+                inputs=read(item["request"])["inputs"]
+                lab.validate(read(item["request"]),site)
+                for arm in ("low","plain","plain_b","random","matched"):
+                    self.assertEqual(inputs[f"recovery_{arm}_2"]["path"],
+                                     str(root/"resume"/name/arm/"predictions.jsonl"))
+            args.resume_index=None
+            for stage in ("preflight","gradients","cell"):
+                args.stage=stage
+                args.output=root/(stage+"-requests")
+                generate(args)
+                for item in read(args.output/"index.json")["outputs"].values():
+                    self.assertEqual(lab.validate(read(item["request"]),site)["request"]["gpu_count"],1)
+
+    def test_frozen_a_is_preserved_in_plain_and_matched_updates(self):
+        for mode in ("plain","matched"):
+            a=torch.nn.Parameter(torch.tensor([.5]))
+            b=torch.nn.Parameter(torch.zeros(2))
+            controller=ProjectedAdamW([a,b],lr=.01,mode=mode,frozen_indices=(0,))
+            for step in range(3):
+                a.grad=torch.ones_like(a)
+                b.grad=torch.tensor([1.,-1.])
+                row=controller.step(target_norm=.005 if mode=="matched" else None)
+                self.assertTrue(torch.equal(a.detach(),torch.tensor([.5])))
+                self.assertGreater(row["applied_norm"],0)
+                self.assertTrue(row["matched"])
+            self.assertFalse(torch.equal(b.detach(),torch.zeros(2)))
 
     def test_blind_positions_differ_by_cell_and_reproduce(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -90,11 +135,11 @@ class ReviewFixTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             preflight(backend,Path(temp),"probe")
             result=read(Path(temp)/"metrics.json")
-            self.assertEqual(set(result["probes"]),{"plain","project","matched"})
+            self.assertEqual(set(result["probes"]),{"plain","plain_b","project","matched"})
             self.assertGreater(result["probes"]["project"]["actual_updates"],0)
             self.assertEqual(result["probes"]["matched"]["unmatched"],0)
             # The initial gradient adds one unweighted call before the probes.
-            self.assertEqual(weighted_calls,[False]*5+[True]*12)
+            self.assertEqual(weighted_calls,[False]+[True]*16)
             self.assertTrue(torch.equal(backend.initial,backend.parameters[0].detach()))
 
 

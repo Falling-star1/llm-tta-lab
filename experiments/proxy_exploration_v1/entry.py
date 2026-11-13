@@ -87,7 +87,10 @@ def main():
                 seed_resume(args.resume_from,args.output/"updates",updates_id)
             result = run_updates(backend,geometry_output,args.output/"updates",updates_id,geometry_id,
                                  args.resume or bool(args.resume_from))
-        quality = read(args.output/"updates/metrics.json")["quality_status"] if result else "GRADIENTS_COMPLETE_QUALITY_LABELS_SEPARATE"
+        quality = "GRADIENTS_COMPLETE_QUALITY_LABELS_SEPARATE"
+        if result:
+            quality = ("INTERRUPTED" if result.get("status")=="INTERRUPTED" else
+                       read(args.output/"updates/metrics.json")["quality_status"])
         save(args.output/"metrics.json",{"quality_status":quality,
                                         "stage":args.stage,"cell":args.cell})
 
@@ -107,33 +110,48 @@ def preflight(backend,output,identity):
     weighted_index=max(selected,key=lambda i:backend.adaptation[i]["base_ce"])
     # A full-sized rank-five numerical probe. This basis is discarded and never
     # used as a scientific pool estimate. Coordinate columns ensure full rank.
+    a_indices=tuple(i for i,name in enumerate(backend.names) if "lora_A" in name)
+    b_coordinates=torch.ones(gradient.numel(),dtype=torch.bool)
+    offset=0
+    for index,parameter in enumerate(backend.parameters):
+        if index in a_indices:
+            b_coordinates[offset:offset+parameter.numel()]=False
+        offset+=parameter.numel()
+    gradient=gradient.clone()
+    gradient[~b_coordinates]=0
+    if int(b_coordinates.sum())<5 or not float(gradient.norm())>0:
+        raise ValueError("Preflight requires five B coordinates and a nonzero B gradient")
     columns=torch.zeros(gradient.numel(),5,dtype=torch.float32)
     columns[:,0]=gradient/gradient.norm()
-    coordinates=gradient.abs().topk(4,largest=False).indices
+    magnitudes=gradient.abs().masked_fill(~b_coordinates,float("inf"))
+    coordinates=magnitudes.topk(4,largest=False).indices
     columns[coordinates,torch.arange(1,5)]=1
     basis=torch.linalg.qr(columns,mode="reduced").Q.to(backend.device)
     before=backend.initial.clone()
     probes={}
     projected_records=None
     try:
-        for mode,count,index in (("plain",4,longest),("project",6,weighted_index),("matched",6,weighted_index)):
+        for arm in ("plain","plain_b","project","matched"):
+            mode="plain" if arm=="plain_b" else arm
+            count,index=4,weighted_index
             backend.reset()
             lr=1e-6 if backend.cell["dataset"]=="gsm8k_5k" else 5e-5
             controller=ProjectedAdamW(backend.parameters,lr=lr,mode=mode,
-                                      basis=basis if mode=="project" else None)
+                                      basis=basis if mode=="project" else None,
+                                      frozen_indices=a_indices if arm!="plain" else ())
             scaler=torch.amp.GradScaler("cuda") if backend.use_amp else None
             targets=[r["applied_norm"] for r in projected_records] if mode=="matched" else None
-            records=train_sequence(controller,lambda i:backend.loss(i,weighted=mode!="plain"),
-                [index]*count,Path(output)/"probe"/mode,identity+":"+mode,
+            records=train_sequence(controller,lambda i:backend.loss(i,weighted=True),
+                [index]*count,Path(output)/"probe"/arm,identity+":"+arm,
                 checkpoint_every=count,scaler=scaler,target_norms=targets)
-            probes[mode]={"visits":count,"weighted":mode!="plain","source_index":index,
+            probes[arm]={"visits":count,"weighted":True,"source_index":index,
                 "actual_updates":sum(r["applied_norm"]>0 for r in records),
                 "unmatched":sum(not r["matched"] for r in records),
                 "max_projection_residual":max((r["projection_residual"] or 0 for r in records)),
                 "max_relative_norm_error":max((r.get("relative_norm_error",0) for r in records))}
-            if probes[mode]["actual_updates"]<2:
+            if probes[arm]["actual_updates"]<2:
                 raise ValueError("Preflight did not make enough finite updates: "+mode)
-            if probes[mode]["unmatched"] or probes[mode]["max_projection_residual"]>1e-3:
+            if probes[arm]["unmatched"] or probes[arm]["max_projection_residual"]>1e-3:
                 raise ValueError("Preflight displacement validation failed: "+mode)
             if mode=="project":
                 projected_records=records

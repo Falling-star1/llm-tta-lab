@@ -1,4 +1,4 @@
-"""Five-condition experiment 3 with per-arm journals and resumable optimizer state."""
+"""Six-condition experiment 3 with per-arm journals and resumable optimizer state."""
 import hashlib
 import json
 import random
@@ -12,7 +12,7 @@ from common import sha, bind_output
 from collect import artifact
 from training import ProjectedAdamW, train_sequence, load_checkpoint, flat
 
-ARMS = ("low","plain","random","matched")
+ARMS = ("low","plain","plain_b","random","matched")
 
 
 def seed_resume(previous, output, identity):
@@ -131,6 +131,7 @@ def run_updates(backend, geometry_output, output, identity, geometry_identity,
     save(output/"source.json",{"identity":identity,"indices":backend.split["evaluation"],
                                "scores":baseline,"score_x100":score_mean(baseline)})
     traces, answers = {},{}
+    a_indices=tuple(i for i,name in enumerate(backend.names) if "lora_A" in name)
     for arm in ARMS:
         directory = output/arm
         directory.mkdir(exist_ok=True,parents=True)
@@ -139,7 +140,9 @@ def run_updates(backend, geometry_output, output, identity, geometry_identity,
         basis = bases["low" if arm=="low" else "random"].to(backend.device) if arm in ("low","random") else None
         mode = "project" if basis is not None else ("matched" if arm=="matched" else "plain")
         lr = 1e-6 if backend.cell["dataset"]=="gsm8k_5k" else 5e-5
-        controller = ProjectedAdamW(backend.parameters,lr=lr,mode=mode,basis=basis)
+        frozen_indices=a_indices if arm in ("low","plain_b","random","matched") else ()
+        controller = ProjectedAdamW(backend.parameters,lr=lr,mode=mode,basis=basis,
+                                    frozen_indices=frozen_indices)
         checkpoint = directory/"checkpoint.json"
         if checkpoint.exists() and not resume:
             raise ValueError("Checkpoint exists; use explicit --resume")
@@ -153,20 +156,33 @@ def run_updates(backend, geometry_output, output, identity, geometry_identity,
         save(directory/"visits.json",records)
         if len(records)<len(backend.split["adaptation"]):
             return {"status":"INTERRUPTED","arm":arm}
+        final=flat(backend.parameters).cpu()
+        offset=0
+        a_drift_squared=0.
+        for index,parameter in enumerate(backend.parameters):
+            if index in a_indices:
+                delta=final[offset:offset+parameter.numel()]-backend.initial[offset:offset+parameter.numel()]
+                a_drift_squared+=float(delta.square().sum())
+            offset+=parameter.numel()
+        if frozen_indices and a_drift_squared!=0:
+            raise ValueError("Frozen A changed in "+arm)
         backend.verify_frozen()
         answers[arm] = evaluate(backend,directory,arm_identity)
         save(directory/"complete.json",{"identity":arm_identity,"visits":len(records),
              "adapter_sha256":vector_digest(backend),"predictions_sha256":sha(directory/"predictions.jsonl"),
+             "a_displacement_norm":a_drift_squared**.5,
              "n":len(answers[arm]),"score_x100":score_mean([r["score"] for r in answers[arm]])})
         del controller
     low = [r["score"] for r in answers["low"]]
     comparisons = {arm:paired_difference(low,[r["score"] for r in answers[arm]])
-                   for arm in ("plain","random","matched")}
+                   for arm in ("plain","plain_b","random","matched")}
     comparisons["source"] = paired_difference(low,baseline)
     result = {"identity":identity,"n":len(baseline),"metric":backend.cell["metric"],
               "source":score_mean(baseline),
               "arms":{arm:score_mean([r["score"] for r in rows]) for arm,rows in answers.items()},
               "low_minus":comparisons,
+              "plain_b_minus_plain":paired_difference(
+                  [r["score"] for r in answers["plain_b"]],[r["score"] for r in answers["plain"]]),
               "visits":{arm:{"n":len(rows),"nonzero":sum(r["applied_norm"]>0 for r in rows),
                                   "amp_skips":sum(r["skipped"] for r in rows),
                                   "unmatched":sum(not r["matched"] for r in rows),

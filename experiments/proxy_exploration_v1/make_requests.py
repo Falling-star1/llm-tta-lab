@@ -8,9 +8,19 @@ from common import sha, validate_config, experiment_identity
 
 
 def code_snapshot(root):
-    return {p.relative_to(root).as_posix():sha(p) for p in sorted(root.rglob("*"))
-            if p.is_file() and "__pycache__" not in p.parts and p.suffix in (
-                ".py",".json",".yaml",".yml",".toml",".sh",".md")}
+    files={}
+    for path in sorted(root.rglob("*")):
+        relative=path.relative_to(root)
+        if any(part in {".git","__pycache__",".venv",".pytest_cache"} for part in relative.parts):
+            continue
+        if path.is_file() and (path.suffix in (".py",".json",".yaml",".yml",".toml",".sh",".md")
+                               or path.name=="SHA256SUMS"):
+            if path.is_symlink() or not path.resolve().is_relative_to(root.resolve()):
+                raise ValueError("Linked source file")
+            files[relative.as_posix()]=sha(path)
+            if len(files)>5000:
+                raise ValueError("Code snapshot too large")
+    return files
 
 
 def generate(args):
@@ -78,7 +88,7 @@ def generate(args):
                     raise ValueError("Recovery source belongs to a different protocol or code")
                 argv+=["--resume-from",str(recovery_output)]
                 inputs["recovery_identity"]={"path":str(recovery_output/"identity.json"),"sha256":sha(recovery_output/"identity.json")}
-                for arm in ("low","plain","random","matched"):
+                for arm in ("low","plain","plain_b","random","matched"):
                     manifest=recovery_output/arm/"checkpoint.json"
                     if not manifest.exists():
                         continue
@@ -86,14 +96,14 @@ def generate(args):
                     if not file.is_relative_to(manifest.parent.resolve()):
                         raise ValueError("Recovery checkpoint outside previous output")
                     paths=[manifest,file]
-                    journal=previous/arm/"predictions.jsonl"
+                    journal=recovery_output/arm/"predictions.jsonl"
                     if journal.exists():
                         paths.append(journal)
                     for k,path in enumerate(paths):
                         inputs[f"recovery_{arm}_{k}"]={"path":str(path),"sha256":sha(path)}
-        protocols={"analyze":"proxy-e1-six-source-v1","preflight":"proxy-six-preflight-v2",
-                   "gradients":"proxy-e2-six-gradient-v2","updates":"proxy-e3-six-adam-step-v2",
-                   "cell":"proxy-e2-v2-e3-v2"}
+        protocols={"analyze":"proxy-e1-six-source-v1","preflight":"proxy-six-preflight-v3",
+                   "gradients":"proxy-e2-six-gradient-v2","updates":"proxy-e3-six-adam-step-v3",
+                   "cell":"proxy-e2-v2-e3-v3"}
         request={"schema_version":1,"experiment_id":job,"owner":args.owner,
                  "issue":"https://github.com/Falling-star1/llm-tta-lab/issues/14",
                  "method":"proxy-"+args.stage,"model":cell["model"] if cell else "llama-qwen-3b",

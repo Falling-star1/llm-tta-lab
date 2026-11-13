@@ -72,6 +72,10 @@ def summarize(config, output):
         if manifest["model"] != cell["model"] or manifest["dataset"] != cell["dataset"]:
             raise ValueError("Cached model identity mismatch")
         for i in source:
+            required={"metric","original_prompt_sha256","original_prompt_tokens","used_prompt_tokens",
+                      "input_truncated","score","predict","hit_generation_limit"}
+            if not required.issubset(source[i]):
+                raise ValueError("Incomplete frozen Source schema in "+name+" at "+str(i))
             if source[i]["metric"] != cell["metric"]:
                 raise ValueError("Wrong metric in "+name)
             score_mean([source[i]["score"]])
@@ -102,7 +106,7 @@ def summarize(config, output):
         boot = sorted((sum(rng.choices(a,k=64))-sum(rng.choices(b,k=64)))/64 for _ in range(10000))
         result = dict(name=name, metric=cell["metric"], quartiles=descriptions,
                       delta=statistics.mean(a)-statistics.mean(b), interval=[boot[249],boot[9749]],
-                      interval_method="independent within-quartile bootstrap, seed 421114")
+                      interval_method="conditional on fixed quartile membership; independent within-quartile bootstrap, seed 421114")
         save(directory/"summary.json",result)
         save(directory/"rows.json",rows)
         summaries.append(result)
@@ -117,6 +121,7 @@ def summarize(config, output):
         values = "|".join(f'{q["score"]:.2f}' for q in r["quartiles"])
         lines.append(f'|{r["name"]}|{r["metric"]}|{values}|{r["delta"]:.2f}|{r["interval"][0]:.2f}, {r["interval"][1]:.2f}|')
     lines += ["", "分数均乘 100。各指标分别解释。四分位按各模型自己的底模输入 CE 排名。",
+              "区间以本次已固定的四分位成员为条件，不包含重新抽题并划分四分位的不确定性。",
               "这些结果估计冻结 Source 的指标关联。长度、上下文分布见各组 summary 和 rows，人工盲评另计。"]
     (output/"report.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
 
