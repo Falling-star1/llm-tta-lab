@@ -101,9 +101,9 @@ def generate(args):
                         paths.append(journal)
                     for k,path in enumerate(paths):
                         inputs[f"recovery_{arm}_{k}"]={"path":str(path),"sha256":sha(path)}
-        protocols={"analyze":"proxy-e1-six-source-v1","preflight":"proxy-six-preflight-v3",
-                   "gradients":"proxy-e2-six-gradient-v2","updates":"proxy-e3-six-adam-step-v3",
-                   "cell":"proxy-e2-v2-e3-v3"}
+        protocols={"analyze":"proxy-e1-six-source-v1","preflight":"proxy-six-preflight-v4",
+                   "gradients":"proxy-e2-six-gradient-v3","updates":"proxy-e3-six-adam-step-v3",
+                   "cell":"proxy-e2-v3-e3-v3"}
         request={"schema_version":1,"experiment_id":job,"owner":args.owner,
                  "issue":"https://github.com/Falling-star1/llm-tta-lab/issues/14",
                  "method":"proxy-"+args.stage,"model":cell["model"] if cell else "llama-qwen-3b",
@@ -115,7 +115,8 @@ def generate(args):
                  "queue_timeout_seconds":600,"legacy_lock_policy":"wrapper"}
         requests[job]=request
         outputs[name]={"request":str(args.output/(job+".json")),"output":str(output),
-                       "geometry":str(output/"gradients"),"updates":str(output/"updates")}
+                       "geometry":str(Path(geometry["outputs"][name]["geometry"])) if args.stage=="updates" else str(output/"gradients"),
+                       "updates":str(output/"updates")}
     args.output.mkdir(parents=True)
     for job,request in requests.items():
         save(args.output/(job+".json"),request)

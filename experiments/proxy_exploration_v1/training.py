@@ -45,8 +45,9 @@ class ProjectedAdamW:
         if mode == "project":
             if basis is None or basis.shape[0] != sum(p.numel() for p in self.parameters):
                 raise ValueError("Projection basis dimensions differ")
-            gram = basis.T @ basis
-            if not torch.allclose(gram,torch.eye(len(gram),device=gram.device),atol=1e-4,rtol=1e-4):
+            precise_basis = basis.double()
+            gram = precise_basis.T @ precise_basis
+            if not torch.allclose(gram,torch.eye(len(gram),device=gram.device,dtype=gram.dtype),atol=1e-4,rtol=1e-4):
                 raise ValueError("Basis is not orthonormal")
         self.optimizer = torch.optim.AdamW(self.parameters,lr=lr,betas=(.9,.999),
                                            eps=1e-8,weight_decay=0)

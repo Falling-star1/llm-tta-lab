@@ -98,6 +98,7 @@ def main():
 def preflight(backend,output,identity):
     import torch
     from training import ProjectedAdamW, train_sequence, flat
+    from geometry import orthonormalize
     backend.source_replay()
     longest=max(backend.split["history"]+backend.split["diagnostic"]+backend.split["adaptation"],
                 key=lambda i:len(backend.encoded[i][0]))
@@ -126,7 +127,7 @@ def preflight(backend,output,identity):
     magnitudes=gradient.abs().masked_fill(~b_coordinates,float("inf"))
     coordinates=magnitudes.topk(4,largest=False).indices
     columns[coordinates,torch.arange(1,5)]=1
-    basis=torch.linalg.qr(columns,mode="reduced").Q.to(backend.device)
+    basis=orthonormalize(columns).to(backend.device)
     before=backend.initial.clone()
     probes={}
     projected_records=None
@@ -139,7 +140,9 @@ def preflight(backend,output,identity):
             controller=ProjectedAdamW(backend.parameters,lr=lr,mode=mode,
                                       basis=basis if mode=="project" else None,
                                       frozen_indices=a_indices if arm!="plain" else ())
-            scaler=torch.amp.GradScaler("cuda") if backend.use_amp else None
+            # A four-visit numerical probe must start below the known FP16
+            # overflow range. Formal 500-visit arms retain their default scaler.
+            scaler=torch.amp.GradScaler("cuda",init_scale=1024.) if backend.use_amp else None
             targets=[r["applied_norm"] for r in projected_records] if mode=="matched" else None
             records=train_sequence(controller,lambda i:backend.loss(i,weighted=True),
                 [index]*count,Path(output)/"probe"/arm,identity+":"+arm,
@@ -148,7 +151,8 @@ def preflight(backend,output,identity):
                 "actual_updates":sum(r["applied_norm"]>0 for r in records),
                 "unmatched":sum(not r["matched"] for r in records),
                 "max_projection_residual":max((r["projection_residual"] or 0 for r in records)),
-                "max_relative_norm_error":max((r.get("relative_norm_error",0) for r in records))}
+                "max_relative_norm_error":max((r.get("relative_norm_error",0) for r in records)),
+                "initial_amp_scale":1024. if backend.use_amp else None}
             if probes[arm]["actual_updates"]<2:
                 raise ValueError("Preflight did not make enough finite updates: "+mode)
             if probes[arm]["unmatched"] or probes[arm]["max_projection_residual"]>1e-3:
