@@ -115,7 +115,8 @@ def generate(args):
                  "queue_timeout_seconds":600,"legacy_lock_policy":"wrapper"}
         requests[job]=request
         outputs[name]={"request":str(args.output/(job+".json")),"output":str(output),
-                       "geometry":str(output/"gradients"),"updates":str(output/"updates")}
+                       "geometry":str(Path(geometry["outputs"][name]["geometry"])) if args.stage=="updates" else str(output/"gradients"),
+                       "updates":str(output/"updates")}
     args.output.mkdir(parents=True)
     for job,request in requests.items():
         save(args.output/(job+".json"),request)

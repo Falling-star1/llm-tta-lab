@@ -45,7 +45,7 @@ def retention(basis, gradient):
 
 
 def structure(gradients, rank=5):
-    gradients = require_matrix(gradients)
+    gradients = require_matrix(gradients).double()
     norms = gradients.norm(dim=1)
     nonzero = gradients[norms > 0]
     report = {"n":len(gradients), "zero_count":int((norms==0).sum()),
@@ -75,7 +75,7 @@ def compare_quality(ids, gradients, labels, rank=5, seed=42):
     for scope,selection in (("full",groups),("balanced",balanced)):
         units = {}
         for name in ("good","bad"):
-            matrix = torch.stack([gradients[i] for i in selection[name]]) if selection[name] else None
+            matrix = torch.stack([gradients[i] for i in selection[name]]).double() if selection[name] else None
             if matrix is not None:
                 norms = matrix.norm(dim=1)
                 units[name] = matrix[norms>0]/norms[norms>0,None]

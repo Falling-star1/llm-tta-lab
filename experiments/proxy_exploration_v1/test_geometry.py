@@ -5,6 +5,15 @@ from geometry import fit_basis, retention, structure, compare_quality, orthonorm
 
 
 class GeometryTests(unittest.TestCase):
+    def test_long_vector_cosines_match_double_precision_reference(self):
+        generator=torch.Generator().manual_seed(42)
+        first=torch.randn(300000,generator=generator)
+        second=first+.1*torch.randn(300000,generator=generator)
+        expected=float(torch.nn.functional.cosine_similarity(first.double(),second.double(),dim=0))
+        self.assertAlmostEqual(structure(torch.stack([first,second]))["mean_cosine"],expected,places=7)
+        groups=compare_quality([0,1],{0:first,1:second},{0:"good",1:"bad"})
+        self.assertAlmostEqual(groups["between"]["full"]["mean_cosine"],expected,places=7)
+
     def test_large_parameter_basis_is_orthonormal_in_precise_arithmetic(self):
         torch.set_num_threads(2)
         columns=torch.randn(300000,5,generator=torch.Generator().manual_seed(42))
