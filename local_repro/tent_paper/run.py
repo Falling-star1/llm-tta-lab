@@ -23,10 +23,13 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import os
+import re
 import sys
 import time
 import contextlib
+from collections import Counter
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -34,6 +37,8 @@ HERE = Path(__file__).resolve().parent
 GRAD_CKPT = True
 DEBUG = False
 LOSS_SCALE = 1.0      # loss/K with lr*K: same maths, smaller fp16 backward intermediates
+SCHED = "cosine"      # official offline_ttl.yaml: cosine decay, warmup_ratio 0.1
+WARMUP_RATIO = 0.1
 TLM = Path("/home/chuwenjing/TTA_LLM/TLM")
 sys.path.insert(0, str(TLM / "src"))
 sys.path.insert(0, str(TLM / "scripts/eval"))
@@ -95,6 +100,56 @@ def read_jsonl(p):
             if line:
                 out.append(json.loads(line))
     return out
+
+
+def set_lr(opt, peak_lr, step, total_steps):
+    """Official offline_ttl.yaml schedule: linear warmup, then cosine decay to zero."""
+    if SCHED == "const" or total_steps <= 1:
+        lr = peak_lr
+    else:
+        warm = max(1, int(total_steps * WARMUP_RATIO))
+        if step < warm:
+            lr = peak_lr * step / warm
+        else:
+            prog = (step - warm) / max(1, total_steps - warm)
+            lr = peak_lr * 0.5 * (1.0 + math.cos(math.pi * prog))
+    for group in opt.param_groups:
+        group["lr"] = lr
+    return lr
+
+
+def repeated(text):
+    """Same 4-gram rule as the TLM pipeline's quality.py."""
+    tok = re.findall(r"\w+|[^\w\s]", (text or "").lower())
+    if len(tok) < 32:
+        return False
+    grams = [tuple(tok[i:i + 4]) for i in range(len(tok) - 3)]
+    return 1.0 - len(set(grams)) / len(grams) >= 0.5
+
+
+def output_quality(recs, baseline=()):
+    """Mode-collapse gate. Thresholds are engineering limits, not paper hyperparameters.
+
+    Calibrated on the archived runs: healthy groups stay at dominant share <=0.011 and
+    repetition excess <=0.001; every collapsed group exceeds one of the three limits.
+    """
+    n = max(1, len(recs))
+    texts = Counter(" ".join((r.get("predict") or "").lower().split()) for r in recs)
+    if not texts:
+        return {"n": 0, "unique_answers": 0, "dominant_answer_share": 1.0,
+                "dominant_answer": "", "repetition_rate": 1.0,
+                "source_repetition_rate": None, "collapsed": True, "status": "COLLAPSED"}
+    dominant, count = texts.most_common(1)[0]
+    rep = sum(repeated(r.get("predict")) for r in recs) / n
+    base = sum(repeated(r.get("predict")) for r in baseline) / max(1, len(baseline))
+    q = {"n": len(recs), "unique_answers": len(texts),
+         "dominant_answer_share": round(count / n, 4), "dominant_answer": dominant[:180],
+         "repetition_rate": round(rep, 4),
+         "source_repetition_rate": round(base, 4) if len(baseline) else None}
+    q["collapsed"] = bool(count / n >= 0.5 or len(texts) < 0.05 * n
+                          or (len(baseline) and rep - base > 0.05))
+    q["status"] = "COLLAPSED" if q["collapsed"] else "OK"
+    return q
 
 
 # --------------------------------------------------------------------------- #
@@ -296,11 +351,13 @@ def adapt_batches(task, rt, batch, lr, ckpt_every=25, resume=True):
     journal = task.journal("adaptation.jsonl")
     start = task.done_count("adaptation.jsonl") if resume else 0
     idx = list(range(len(task.rows)))
+    total_steps = len(range(0, len(idx), batch))
     steps = 0
     t0 = time.time()
     device = next(model.parameters()).device
     with open(journal, "a", encoding="utf-8") as f:
         for bstart in range(start, len(idx), batch):
+            lr_now = set_lr(opt, lr, bstart // batch, total_steps)
             chunk = idx[bstart:bstart + batch]
             prompts, conts, metas = [], [], []
             for j in chunk:
@@ -332,7 +389,7 @@ def adapt_batches(task, rt, batch, lr, ckpt_every=25, resume=True):
                    "entropy_after": after, "grad_norm": gnorm,
                    "mean_abs_gamma_delta": drift["mean_abs_delta"],
                    "max_abs_gamma_delta": drift["max_abs_delta"],
-                   "valid_tokens": sum(info["valid_tokens"]), "lr": lr,
+                   "valid_tokens": sum(info["valid_tokens"]), "lr": lr_now,
                    "wall_seconds": round(time.time() - t0, 1)}
             f.write(json.dumps(rec) + "\n")
             f.flush()
@@ -346,6 +403,7 @@ def adapt_batches(task, rt, batch, lr, ckpt_every=25, resume=True):
                     gamma_delta=round(drift["mean_abs_delta"], 6))
     recs = read_jsonl(journal)
     task.state["adaptation"] = {"steps": len(recs), "batch": batch, "lr": lr,
+                                "sched": SCHED, "warmup_ratio": WARMUP_RATIO,
                                 "entropy_first": recs[0]["entropy_before"] if recs else None,
                                 "entropy_last": recs[-1]["entropy_after"] if recs else None,
                                 "gamma_delta_last": recs[-1]["mean_abs_gamma_delta"] if recs else None,
@@ -375,13 +433,20 @@ def run_eval(task, rt):
             if (i + 1) % 100 == 0:
                 log("eval", done=i + 1, total=len(task.rows), secs=round(time.time() - t0, 1))
     recs = read_jsonl(path)
+    src_path = task.journal("source.jsonl")
+    baseline = read_jsonl(src_path) if src_path.exists() else []
+    quality = output_quality(recs, baseline)
     task.state["tent"] = {"n": len(recs), "value": sum(r["score"] for r in recs) / max(1, len(recs)),
                           "limit_hits": sum(r["hit_generation_limit"] for r in recs),
                           "wall_seconds": round(time.time() - t0, 1)}
+    task.state["quality"] = quality
     task.state["complete"] = True
-    task.state["status"] = "PASS"
+    task.state["status"] = "COLLAPSED" if quality["collapsed"] else "PASS"
     task._save_state()
-    log("eval_done", value=task.state["tent"]["value"])
+    log("eval_done", value=task.state["tent"]["value"], quality=quality["status"],
+        unique_answers=quality["unique_answers"],
+        dominant_share=quality["dominant_answer_share"],
+        repetition_rate=quality["repetition_rate"])
     return task.state["tent"]["value"]
 
 
@@ -535,13 +600,17 @@ def main():
         p.add_argument("--loss-scale", type=float, default=1.0)
         p.add_argument("--debug", action="store_true")
         p.add_argument("--reuse-source", default=None, help="dir containing source.jsonl to reuse")
+        p.add_argument("--sched", default="cosine", choices=["cosine", "const"])
+        p.add_argument("--warmup-ratio", type=float, default=0.1)
     a = ap.parse_args()
 
-    global MAX_INPUT, GRAD_CKPT, LOSS_SCALE, DEBUG
+    global MAX_INPUT, GRAD_CKPT, LOSS_SCALE, DEBUG, SCHED, WARMUP_RATIO
     MAX_INPUT = a.ctx
     GRAD_CKPT = (a.grad_ckpt == "on")
     LOSS_SCALE = float(a.loss_scale)
     DEBUG = bool(getattr(a, "debug", False))
+    SCHED = a.sched
+    WARMUP_RATIO = a.warmup_ratio
     torch.use_deterministic_algorithms(True, warn_only=False)
     os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
     torch.backends.cudnn.benchmark = False
@@ -563,6 +632,7 @@ def main():
     task = Task(a.model, a.dataset, a.out, a.limit, reuse_source=a.reuse_source)
     task.state.update({"lr": lr, "batch": batch, "ctx": MAX_INPUT,
                        "adapt_max_new": ADAPT_MAX_NEW, "eval_max_new": EVAL_MAX_NEW,
+                       "sched": SCHED, "warmup_ratio": WARMUP_RATIO,
                        "surface": "norm_gamma_only", "new_parameters": 0, "stats_mode": "rms_per_token"})
     task._save_state()
     rt = build_runtime(a.model, a.gpu)

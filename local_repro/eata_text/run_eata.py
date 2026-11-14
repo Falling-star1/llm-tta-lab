@@ -68,6 +68,7 @@ def adapt_eata(task, rt, batch, lr, opt_name, e_margin, d_margin,
         opt = torch.optim.SGD(params, lr=lr, momentum=0.9)
     else:
         opt = torch.optim.Adam(params, lr=lr, betas=(0.9, 0.999), eps=1e-8, weight_decay=0.0)
+    total_steps = len(range(0, len(task.rows), batch))
 
     fishers = {}
     if fisher_samples > 0:
@@ -106,6 +107,7 @@ def adapt_eata(task, rt, batch, lr, opt_name, e_margin, d_margin,
     t0 = time.time()
     with open(journal, "a", encoding="utf-8") as f:
         for bstart in range(start, len(idx), batch):
+            lr_now = tent_run.set_lr(opt, lr, bstart // batch, total_steps)
             chunk = idx[bstart:bstart + batch]
             prompts, conts, metas = [], [], []
             for j in chunk:
@@ -166,7 +168,7 @@ def adapt_eata(task, rt, batch, lr, opt_name, e_margin, d_margin,
                    "grad_norm": gnorm, "did_backward": bool(loss_value is not None),
                    "mean_abs_gamma_delta": drift["mean_abs_delta"],
                    "max_abs_gamma_delta": drift["max_abs_delta"],
-                   "lr": lr, "opt": opt_name,
+                   "lr": lr_now, "opt": opt_name,
                    "wall_seconds": round(time.time() - t0, 1)}
             rec.update({f"sel_{k}": v for k, v in sel_stats.items() if v is not None})
             f.write(json.dumps(rec) + "\n")
@@ -184,6 +186,7 @@ def adapt_eata(task, rt, batch, lr, opt_name, e_margin, d_margin,
     recs = read_jsonl(journal)
     task.state["adaptation"] = {
         "method": "eata", "steps": len(recs), "batch": batch, "lr": lr, "opt": opt_name,
+        "sched": tent_run.SCHED, "warmup_ratio": tent_run.WARMUP_RATIO,
         "e_margin": e_margin, "d_margin": d_margin, "fisher_samples": fisher_samples,
         "fisher_alpha": fisher_alpha,
         "backwards": backwards, "skipped_batches": skipped,
@@ -224,10 +227,14 @@ def main():
         p.add_argument("--reuse-source", default=None)
         p.add_argument("--reuse-adapt", default=None)
         p.add_argument("--no-resume", action="store_true")
+        p.add_argument("--sched", default="cosine", choices=["cosine", "const"])
+        p.add_argument("--warmup-ratio", type=float, default=0.1)
     a = ap.parse_args()
 
     tent_run.MAX_INPUT = a.ctx
     tent_run.GRAD_CKPT = (a.grad_ckpt == "on")
+    tent_run.SCHED = a.sched
+    tent_run.WARMUP_RATIO = a.warmup_ratio
     torch.use_deterministic_algorithms(True, warn_only=False)
     os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
     torch.backends.cudnn.benchmark = False
@@ -243,13 +250,14 @@ def main():
     e_margin = (a.e_margin if a.e_margin is not None
                 else (a.e0_ratio * math.log(V) if a.e0_mode == "ratio" else a.e0_ratio))
     log("eata_config", vocab=V, e_margin=e_margin, d_margin=a.d_margin,
-        lr=a.lr, opt=a.opt, batch=a.batch)
+        lr=a.lr, opt=a.opt, batch=a.batch, sched=a.sched, warmup_ratio=a.warmup_ratio)
 
     task.state.update({"method": "eata", "surface": "norm_gamma_only", "new_parameters": 0,
                        "stats_mode": "rms_per_token", "ctx": tent_run.MAX_INPUT,
                        "adapt_max_new": tent_run.ADAPT_MAX_NEW,
                        "eval_max_new": tent_run.EVAL_MAX_NEW,
                        "lr": a.lr, "batch": a.batch, "opt": a.opt,
+                       "sched": a.sched, "warmup_ratio": a.warmup_ratio,
                        "vocab": V, "e_margin": e_margin, "d_margin": a.d_margin})
     task._save_state()
 

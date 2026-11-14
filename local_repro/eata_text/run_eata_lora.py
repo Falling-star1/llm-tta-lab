@@ -131,10 +131,14 @@ def main():
         p.add_argument("--grad-ckpt", default="on", choices=["on", "off"])
         p.add_argument("--reuse-source", default=None)
         p.add_argument("--no-resume", action="store_true")
+        p.add_argument("--sched", default="cosine", choices=["cosine", "const"])
+        p.add_argument("--warmup-ratio", type=float, default=0.1)
     a = ap.parse_args()
 
     tent_run.MAX_INPUT = a.ctx
     tent_run.GRAD_CKPT = (a.grad_ckpt == "on")
+    tent_run.SCHED = a.sched
+    tent_run.WARMUP_RATIO = a.warmup_ratio
     torch.use_deterministic_algorithms(True, warn_only=False)
     os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
     torch.backends.cudnn.benchmark = False
@@ -153,7 +157,8 @@ def main():
     # --d-margin 0 => S_div fully disabled (None), not a huge finite threshold.
     d_margin = None if a.d_margin <= 0 else a.d_margin
     log("eata_lora_config", vocab=V, e_margin=e_margin, d_margin=d_margin,
-        lr=a.lr, opt=a.opt, batch=a.batch, targets=a.targets, r=a.lora_r)
+        lr=a.lr, opt=a.opt, batch=a.batch, targets=a.targets, r=a.lora_r,
+        sched=a.sched, warmup_ratio=a.warmup_ratio)
 
     task.state.update({"method": "eata", "surface": "lora_qv", "lora_r": a.lora_r,
                        "lora_alpha": a.lora_alpha, "targets": a.targets,
@@ -162,6 +167,7 @@ def main():
                        "adapt_max_new": tent_run.ADAPT_MAX_NEW,
                        "eval_max_new": tent_run.EVAL_MAX_NEW,
                        "lr": a.lr, "batch": a.batch, "opt": a.opt,
+                       "sched": a.sched, "warmup_ratio": a.warmup_ratio,
                        "vocab": V, "e_margin": e_margin, "d_margin": d_margin})
     task._save_state()
 
