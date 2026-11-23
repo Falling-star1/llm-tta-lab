@@ -79,6 +79,7 @@ class ReviewFixTests(unittest.TestCase):
             index=read(args.output/"index.json")
             self.assertEqual(len(index["outputs"]),6)
             for name,item in index["outputs"].items():
+                self.assertEqual(item["geometry"],indices["geometry"]["outputs"][name]["geometry"])
                 argv=read(item["request"])["argv"]
                 self.assertEqual(argv[argv.index("--resume-from")+1],str(root/"resume"/name))
                 inputs=read(item["request"])["inputs"]
