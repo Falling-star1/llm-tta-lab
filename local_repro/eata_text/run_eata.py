@@ -53,8 +53,67 @@ log = tent_run.log
 read_jsonl = tent_run.read_jsonl
 
 
+def calibrate_d_margin(task, rt, n_samples, batch, log_fn=None):
+    """Pick d_margin from the source model's own |cos| distribution.
+
+    Eqn. (5) filters a sample when |cos(p_i, m)| < d_margin, where m is the EMA of the
+    batch probability vectors.  The paper's 0.05 was tuned on a 1000-way classifier; on
+    next-token distributions the measured |cos| sits at 0.2-0.4, so 0.05 filters every
+    sample and the model never updates (2500 steps, 1-45 backwards).  Taking the median
+    of the same quantity measured on unadapted source predictions keeps the screening
+    mechanism active at roughly a 50% pass rate, the same move as DeYO's --calib.
+    """
+    model, tokenizer, template, system, stop_ids, pad_id, _ = rt
+    body, head = resolve_body_head(model)
+    device = next(model.parameters()).device
+    ignore = stop_ids + [pad_id]
+    cos_vals = []
+    ent_vals = []
+    ema = None
+    n = min(int(n_samples), len(task.rows))
+    with torch.no_grad():
+        for bstart in range(0, n, batch):
+            chunk = task.rows[bstart:bstart + batch]
+            if not chunk:
+                break
+            prompts, conts = [], []
+            for row in chunk:
+                _, ids = tent_run.encode(template, tokenizer, row, system)
+                gen = tent_run.generate(model, tokenizer, ids, tent_run.ADAPT_MAX_NEW,
+                                        stop_ids, pad_id) or [pad_id]
+                prompts.append(ids)
+                conts.append(gen)
+            ids_t, mask_t, plens, clens = build_batch(prompts, conts, pad_id)
+            per_sample, probs, _ = eata_alg.forward_entropy_probs(
+                body, head, ids_t.to(device), mask_t.to(device), plens, clens, ignore)
+            if per_sample.numel():
+                ent_vals.extend(per_sample.detach().cpu().tolist())
+            if ema is not None and probs.numel():
+                cos = torch.nn.functional.cosine_similarity(ema.unsqueeze(0), probs, dim=1)
+                cos_vals.extend(cos.abs().tolist())
+            if probs.numel():
+                cur = probs.mean(0)
+                ema = cur if ema is None else 0.9 * ema + 0.1 * cur
+            if log_fn and (bstart // batch + 1) % 20 == 0:
+                log_fn("d_margin_calib", done=bstart + len(chunk), total=n)
+    if not cos_vals:
+        return 0.05, None, {"n": 0}
+    cos_vals.sort()
+    med = cos_vals[len(cos_vals) // 2]
+    ent_med = None
+    ent_stats = {}
+    if ent_vals:
+        ent_vals.sort()
+        ent_med = ent_vals[len(ent_vals) // 2]
+        ent_stats = {"ent_min": ent_vals[0], "ent_med": ent_med, "ent_max": ent_vals[-1]}
+    stats = {"n": len(cos_vals), "cos_min": cos_vals[0], "cos_med": med,
+             "cos_p90": cos_vals[int(len(cos_vals) * 0.9)], "cos_max": cos_vals[-1], **ent_stats}
+    return med, ent_med, stats
+
+
 def adapt_eata(task, rt, batch, lr, opt_name, e_margin, d_margin,
-               fisher_samples=0, fisher_alpha=2000.0, ckpt_every=25, resume=True):
+               fisher_samples=0, fisher_alpha=2000.0, ckpt_every=25, resume=True,
+               fisher_batch=8, e_weight_anchor=None):
     model, tokenizer, template, system, stop_ids, pad_id, pairs = rt
     body, head = resolve_body_head(model)
     device = next(model.parameters()).device
@@ -72,9 +131,11 @@ def adapt_eata(task, rt, batch, lr, opt_name, e_margin, d_margin,
 
     fishers = {}
     if fisher_samples > 0:
-        log("fisher_start", n=fisher_samples)
-        for bstart in range(0, fisher_samples, batch):
-            chunk = task.rows[bstart:bstart + batch]
+        log("fisher_start", n=fisher_samples, batch=fisher_batch, alpha=fisher_alpha)
+        acc = {}
+        n_iter = 0
+        for bstart in range(0, min(fisher_samples, len(task.rows)), fisher_batch):
+            chunk = task.rows[bstart:bstart + fisher_batch]
             if not chunk:
                 break
             prompts, conts = [], []
@@ -90,13 +151,18 @@ def adapt_eata(task, rt, batch, lr, opt_name, e_margin, d_margin,
             f_batch = eata_alg.compute_fisher(body, head, ids_t.to(device), mask_t.to(device),
                                               plens, clens, stop_ids + [pad_id], pairs,
                                               n_batches=1)
+            n_iter += 1
             for name, (f, p0) in f_batch.items():
-                if name in fishers:
-                    fishers[name] = ((fishers[name][0] * 0.5 + f * 0.5), fishers[name][1])
+                if name in acc:
+                    acc[name][0] = acc[name][0] + f
                 else:
-                    fishers[name] = (f * 0.5, p0)
+                    acc[name] = [f.clone(), p0]
             opt.zero_grad(set_to_none=True)
-        log("fisher_done", params=len(fishers))
+            if n_iter % 25 == 0:
+                log("fisher_progress", done=n_iter * fisher_batch, total=fisher_samples)
+        fishers = {name: (v[0] / max(1, n_iter), v[1]) for name, v in acc.items()}
+        fisher_sum = float(sum(float(v[0].sum()) for v in fishers.values()))
+        log("fisher_done", params=len(fishers), batches=n_iter, fisher_sum=fisher_sum)
 
     ema = None
     idx = list(range(len(task.rows)))
@@ -135,10 +201,15 @@ def adapt_eata(task, rt, batch, lr, opt_name, e_margin, d_margin,
 
             loss_value = None
             coeff_mean = None
+            loss_ent = None
+            loss_pen = None
             if e_sel is not None and e_sel.numel() > 0:
-                loss, coeff_mean = eata_alg.eata_loss(e_sel, e_margin)
+                anchor = e_margin if e_weight_anchor is None else e_weight_anchor
+                loss, coeff_mean = eata_alg.eata_loss(e_sel, anchor)
+                loss_ent = float(loss.detach())
                 pen = eata_alg.fisher_penalty(pairs, fishers, fisher_alpha)
                 if pen is not None:
+                    loss_pen = float(pen.detach())
                     loss = loss + pen
                 loss.backward()
                 gnorm = float(torch.nn.utils.clip_grad_norm_(params, 1e9))
@@ -164,7 +235,8 @@ def adapt_eata(task, rt, batch, lr, opt_name, e_margin, d_margin,
             drift = norm_affine.drift_vs(pairs, base_snap)
             rec = {"step": steps, "samples": metas, "e_margin": e_margin,
                    "d_margin": d_margin, "entropy_before": entropy_before,
-                   "loss": loss_value, "coeff_mean": coeff_mean,
+                   "loss": loss_value, "loss_ent": loss_ent, "loss_pen": loss_pen,
+                   "coeff_mean": coeff_mean,
                    "grad_norm": gnorm, "did_backward": bool(loss_value is not None),
                    "mean_abs_gamma_delta": drift["mean_abs_delta"],
                    "max_abs_gamma_delta": drift["max_abs_delta"],
@@ -187,7 +259,7 @@ def adapt_eata(task, rt, batch, lr, opt_name, e_margin, d_margin,
     task.state["adaptation"] = {
         "method": "eata", "steps": len(recs), "batch": batch, "lr": lr, "opt": opt_name,
         "sched": tent_run.SCHED, "warmup_ratio": tent_run.WARMUP_RATIO,
-        "e_margin": e_margin, "d_margin": d_margin, "fisher_samples": fisher_samples,
+        "e_margin": e_margin, "e_weight_anchor": e_weight_anchor, "d_margin": d_margin, "fisher_samples": fisher_samples,
         "fisher_alpha": fisher_alpha,
         "backwards": backwards, "skipped_batches": skipped,
         "degenerate_zero_grad": degenerate,
@@ -218,9 +290,15 @@ def main():
                        help="absolute E0 in nats; default 0.4*log(V)")
         p.add_argument("--e0-ratio", type=float, default=0.4)
         p.add_argument("--e0-mode", default="ratio", choices=["ratio", "abs"])
-        p.add_argument("--d-margin", type=float, default=0.05)
+        p.add_argument("--d-margin", default="0.05",
+                       help="Eqn. (5) threshold; 'auto' calibrates it to the median |cos| "
+                            "measured on source predictions (see calibrate_d_margin)")
+        p.add_argument("--calib-n", type=int, default=200)
+        p.add_argument("--reweight-anchor", default="e_margin", choices=["e_margin", "auto"],
+                       help="Anchor E0 for coeff=exp(E0-H): e_margin (paper) or auto (source median)")
         p.add_argument("--fisher", type=int, default=0)
         p.add_argument("--fisher-alpha", type=float, default=2000.0)
+        p.add_argument("--fisher-batch", type=int, default=8)
         p.add_argument("--out", default=None)
         p.add_argument("--ctx", type=int, default=4096)
         p.add_argument("--grad-ckpt", default="on", choices=["on", "off"])
@@ -249,7 +327,9 @@ def main():
     V = int(rt[0].lm_head.weight.shape[0])
     e_margin = (a.e_margin if a.e_margin is not None
                 else (a.e0_ratio * math.log(V) if a.e0_mode == "ratio" else a.e0_ratio))
-    log("eata_config", vocab=V, e_margin=e_margin, d_margin=a.d_margin,
+    d_margin_arg = str(a.d_margin)
+    d_margin = 0.0 if d_margin_arg == "auto" else float(d_margin_arg)
+    log("eata_config", vocab=V, e_margin=e_margin, d_margin=d_margin_arg,
         lr=a.lr, opt=a.opt, batch=a.batch, sched=a.sched, warmup_ratio=a.warmup_ratio)
 
     task.state.update({"method": "eata", "surface": "norm_gamma_only", "new_parameters": 0,
@@ -258,7 +338,8 @@ def main():
                        "eval_max_new": tent_run.EVAL_MAX_NEW,
                        "lr": a.lr, "batch": a.batch, "opt": a.opt,
                        "sched": a.sched, "warmup_ratio": a.warmup_ratio,
-                       "vocab": V, "e_margin": e_margin, "d_margin": a.d_margin})
+                       "vocab": V, "e_margin": e_margin, "d_margin_arg": d_margin_arg,
+                       "d_margin": d_margin})
     task._save_state()
 
     if a.cmd == "formal":
@@ -266,9 +347,22 @@ def main():
             tent_run.import_source(task, a.reuse_source)
         else:
             tent_run.run_source(task, rt)
-        adapt_eata(task, rt, a.batch, a.lr, a.opt, e_margin, a.d_margin,
+        e_weight_anchor = None
+        if d_margin_arg == "auto" or a.reweight_anchor == "auto":
+            cal_dm, cal_ent, cstats = calibrate_d_margin(task, rt, a.calib_n, a.batch, log_fn=log)
+            if d_margin_arg == "auto":
+                d_margin = cal_dm
+                task.state["d_margin"] = d_margin
+            if a.reweight_anchor == "auto" and cal_ent is not None:
+                e_weight_anchor = cal_ent
+                task.state["e_weight_anchor"] = e_weight_anchor
+            task.state["d_margin_calibration"] = cstats
+            task._save_state()
+            log("d_margin_calibrated", d_margin=d_margin, e_weight_anchor=e_weight_anchor, **cstats)
+        adapt_eata(task, rt, a.batch, a.lr, a.opt, e_margin, d_margin,
                    fisher_samples=a.fisher, fisher_alpha=a.fisher_alpha,
-                   resume=not a.no_resume)
+                   resume=not a.no_resume, fisher_batch=a.fisher_batch,
+                   e_weight_anchor=e_weight_anchor)
 
     value = tent_run.run_eval(task, rt)
     if "tent" in task.state:

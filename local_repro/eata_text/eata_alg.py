@@ -155,12 +155,14 @@ def fisher_penalty(pairs, fishers, fisher_alpha):
 
 
 def compute_fisher(body, head, ids, mask, prompt_lens, cont_lens, ignore_ids,
-                   pairs, n_batches, chunk: int = 128, fisher_clip_by_norm: float = 10.0):
+                   pairs, n_batches, chunk: int = 128, fisher_clip_by_norm=None):
     """Diagonal Fisher over the adapted parameters with the model's own hard pseudo-labels.
 
-    Official EATA uses 2000 unlabeled in-distribution samples, takes the model's
-    argmax as the label, averages (grad of CE)^2 over batches, and normalises by
-    the global norm (arg --fisher_clip_by_norm).
+    Official EATA (main.py, `algorithm == 'eata'`) takes Q unlabeled in-distribution
+    samples, uses the model's own argmax as the label, squares the gradient of the CE
+    loss, sums over batches and divides by the number of batches (Eqn. 9).  The
+    `--fisher_clip_by_norm` argument exists in the official code but is never used, so
+    the default here is None; passing a number re-enables the global-norm scaling.
     """
     out = body(input_ids=ids, attention_mask=mask, use_cache=False)
     hidden = out.last_hidden_state
@@ -176,15 +178,24 @@ def compute_fisher(body, head, ids, mask, prompt_lens, cont_lens, ignore_ids,
         keep = valid_token_mask(cont_ids.tolist(), ignore_ids).to(device)
         if not bool(keep.any()):
             continue
-        nxt = torch.cat([cont_ids[1:], cont_ids[-1:]])
-        labels.append(nxt[keep])
+        # _gather_continuation selects pos = lp - 1 + k, which predicts ids[lp + k] = cont_ids[k]
+        labels.append(cont_ids[keep])
     if not labels:
         return {}
     labels = torch.cat(labels, 0)
 
-    logits = head(sel_h).float()
-    loss = F.cross_entropy(logits, labels, reduction="mean")
+    # chunk the vocabulary projection: full float32 logits for a whole batch would be
+    # batch * ~1200 positions * 128k vocab * 4 B, which is what OOMed at batch 8.
+    loss_sum = 0.0
+    n_pos = 0
+    for start in range(0, sel_h.shape[0], chunk):
+        part_logits = head(sel_h[start:start + chunk]).float()
+        part_labels = labels[start:start + chunk]
+        loss_sum = loss_sum + F.cross_entropy(part_logits, part_labels, reduction="sum")
+        n_pos += int(part_labels.numel())
+    loss = loss_sum / max(1, n_pos)
     loss.backward()
+
     out_f = {}
     total_sq = 0.0
     for name, prm in pairs:
@@ -193,10 +204,12 @@ def compute_fisher(body, head, ids, mask, prompt_lens, cont_lens, ignore_ids,
         g = prm.grad.detach().clone() ** 2
         out_f[name] = g
         total_sq += float(g.sum())
-    if total_sq <= 0:
-        return {}
-    scale = min(1.0, fisher_clip_by_norm / math.sqrt(total_sq))
     for name, prm in pairs:
         prm.grad = None
-    return {name: (g * scale, prm.detach().clone()) for name, prm in pairs
+    if total_sq <= 0:
+        return {}
+    if fisher_clip_by_norm:
+        scale = min(1.0, float(fisher_clip_by_norm) / math.sqrt(total_sq))
+        out_f = {name: g * scale for name, g in out_f.items()}
+    return {name: (out_f[name], prm.detach().clone()) for name, prm in pairs
             if name in out_f}
