@@ -361,6 +361,31 @@ def calibrate_deyo(task, rt, n_rows, chunks, seed, pad_id, log_fn=None):
     return med_e, med_p, stats
 
 
+def freeze_top_norms(model, pairs, frac: float):
+    """Freeze the top frac fraction of decoder layers and the final norm (SAR/DeYO paper)."""
+    if frac <= 0.0:
+        return pairs, []
+    import re
+    n_layers = int(getattr(getattr(model, "config", None), "num_hidden_layers", 0))
+    if n_layers <= 0:
+        raise RuntimeError("cannot infer num_hidden_layers for --freeze-top-frac")
+    n_freeze = max(1, int(round(n_layers * frac)))
+    cutoff = n_layers - n_freeze
+    kept, frozen = [], []
+    for name, prm in pairs:
+        m = re.search(r"layers\.(\d+)\.", name)
+        if m is None:
+            # final norm (e.g. model.norm.weight) -> freeze per SAR/DeYO ViT protocol
+            prm.requires_grad_(False)
+            frozen.append(name)
+        elif int(m.group(1)) >= cutoff:
+            prm.requires_grad_(False)
+            frozen.append(name)
+        else:
+            kept.append((name, prm))
+    return kept, frozen
+
+
 # --------------------------------------------------------------------------- #
 # main
 # --------------------------------------------------------------------------- #
@@ -371,6 +396,8 @@ def main():
         p = sub.add_parser(name)
         p.add_argument("--method", required=True, choices=["sar", "deyo"])
         p.add_argument("--surface", default="lora", choices=["lora", "gamma"])
+        p.add_argument("--freeze-top-frac", type=float, default=0.0,
+                       help="Freeze top fraction of decoder layer norms + final norm (e.g. 0.25 per SAR/DeYO)")
         p.add_argument("--model", default="llama3b", choices=list(tent_run.MODELS))
         p.add_argument("--dataset", default="geosignal_5k")
         p.add_argument("--gpu", default="0")
@@ -427,6 +454,11 @@ def main():
                                         a.lora_dropout, a.targets)
     else:
         rt = tent_run.build_runtime(a.model, a.gpu)
+        if a.freeze_top_frac > 0.0:
+            kept_pairs, frozen_names = freeze_top_norms(rt[0], rt[6], a.freeze_top_frac)
+            rt = (*rt[:6], kept_pairs)
+            log("freeze_top_norms", frac=a.freeze_top_frac, kept=len(kept_pairs),
+                frozen=len(frozen_names), trainable_params=sum(p.numel() for _, p in kept_pairs))
 
     V = int(run_eata.resolve_body_head(rt[0])[1].weight.shape[0])
     e_margin = a.e0_ratio * math.log(V)
@@ -449,7 +481,7 @@ def main():
                        "eval_max_new": tent_run.EVAL_MAX_NEW,
                        "lr": a.lr, "batch": a.batch, "opt": a.opt,
                        "sched": a.sched, "warmup_ratio": a.warmup_ratio,
-                       "vocab": V, "e_margin": e_margin})
+                       "vocab": V, "e_margin": e_margin, "freeze_top_frac": a.freeze_top_frac})
     if a.surface == "lora":
         task.state.update({"lora_r": a.lora_r, "lora_alpha": a.lora_alpha,
                            "targets": a.targets})

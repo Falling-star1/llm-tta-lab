@@ -50,7 +50,7 @@ local_repro/
 | `eata_text/run_eata.py` | 17646 | `914b583f5ab5a70a0b80` |
 | `eata_text/run_eata_lora.py` | 8307 | `fe40a44b1f29f2ad210e` |
 | `sar_deyo/deyo_alg.py` | 5210 | `3b7f2060ff5d672cdfb4` |
-| `sar_deyo/run_tta.py` | 24155 | `8670b0c0a428bcad2df8` |
+| `sar_deyo/run_tta.py` | 25660 | `270d858e4562146ab07a` |
 | `sar_deyo/sam.py` | 3241 | `56118ea2a1c75a8b5e49` |
 | `tent_paper/build_groups.py` | 8248 | `a70dedfa4baddba3fa36` |
 | `tent_paper/diag_nan.py` | 3238 | `fde00f2fc320cf4d8206` |
